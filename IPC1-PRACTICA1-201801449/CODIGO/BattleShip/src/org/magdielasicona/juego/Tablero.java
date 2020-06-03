@@ -18,15 +18,21 @@ public class Tablero {
     }
     //Variables
     private String[][] tableroPrincipal = new String[10][10];
-    private String[] coordenada;
-    private String[] cadenacoordenada;
+
+    private int coordenada[] = new int[4];
+
     private int x;
-    private int y;
+    private int contador = 0;
     private int portaavion = 1;
     private int submarino = 3;
     private int destructor = 3;
     private int fragata = 2;
     private int easter = 1;
+    private int tamaño;
+
+    public int getTamaño() {
+        return tamaño;
+    }
 
     private String posicionbarcos;
 
@@ -77,15 +83,17 @@ public class Tablero {
 
             switch (opcioninsertar) {
                 case 1:
+                    tamaño = 4;
                     if (opcioninsertar == 1) {
                         portaavion = portaavion - 1;
 
                         posicionPortaavion();
+                        asignarBarcos();
                     }
 
                     break;
                 case 2:
-                    System.out.println("Opcion 1");
+                    System.out.println("Opcion 2");
                     break;
                 case 3:
                     break;
@@ -107,16 +115,87 @@ public class Tablero {
     }
 
     public void posicionPortaavion() {
-        System.out.print("INGRESE LA POSICION DEL PORTAAVION: ");
+        String pos[];
+        String[] cadenacoordenada;
+        System.out.print("INGRESE LA POSICION DEL PORTAAVION (a,b)-(c,d): ");
         posicionbarcos = entradaopcion.next();
-        
+        this.contador = 0;
         String cadena = "";
+
         cadenacoordenada = posicionbarcos.split("-");
         for (int i = 0; i < cadenacoordenada.length; i++) {
-            System.out.println(cadenacoordenada[i]);
+            cadena = quitarParentesis(cadenacoordenada[i]);
+            pos = cadena.split(",");
+            for (int j = 0; j < pos.length; j++) {
+
+                x = Integer.parseInt(pos[j]);
+
+                coordenada[contador] = x;
+                contador++;
+            }
 
         }
-       
+
+        int a, b, c, d;
+        a = coordenada[0];
+        b = coordenada[1];
+        c = coordenada[2];
+        d = coordenada[3];
+
+        
+        //Horizontal 
+        if (a==c) {
+            for (int i = 0; i < 10; i++) {
+                for (int j = 0; j < 10; j++) {
+                    if (tableroPrincipal[i][j]== tableroPrincipal[a][b]) {
+                        for (int k = b; k <= d; k++) {
+                            tableroPrincipal [a][k]="O";
+                        }
+                    }
+                }
+            }
+            //Vertical
+        }else if(b==d){
+            for (int i = 0; i < 10; i++) {
+                for (int j = 0; j < 10; j++) {
+                    if (tableroPrincipal[i][j]==tableroPrincipal[a][b]) {
+                        for (int k = a; k <= c; k++) {
+                            tableroPrincipal[k][b] = "O";
+                        }
+                    }
+                }
+            }
+            //Coordenda fuera de rango
+        }else{
+            System.out.println("INGRESE UNA COORDENADA VÁLIDA!!!!!");
+        }
+        
+        
+        
+
+        System.out.println("******************TABLERO LLENADO*******************");
+        for (int i = 0; i < 10; i++) {
+            System.out.print("    " + i + "");
+        }
+        System.out.println("");
+        for (int i = 0; i < 10; i++) {
+            System.out.print(i + " ");
+            for (int j = 0; j < 10; j++) {
+
+                System.out.print("| " + tableroPrincipal[i][j] + " |");
+
+            }
+            System.out.println("");
+        }
+    }
+
+    public static String quitarParentesis(String cadena) {
+        String aux = "";
+        for (int i = 1; i < cadena.length() - 1; i++) {
+            aux = aux + cadena.charAt(i);
+
+        }
+        return aux;
 
     }
 }
