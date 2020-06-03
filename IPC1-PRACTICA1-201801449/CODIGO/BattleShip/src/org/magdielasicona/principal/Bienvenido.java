@@ -19,5 +19,8 @@ public class Bienvenido {
         
         
         );
+        
+        MenuPrincipal menu = MenuPrincipal.getInstancia();
+        menu.mostrarMenuPrincipal();
     }
 }
