@@ -83,17 +83,28 @@ public class Tablero {
 
             switch (opcioninsertar) {
                 case 1:
-                    tamaño = 4;
-                    if (opcioninsertar == 1) {
-                        portaavion = portaavion - 1;
-
-                        posicionPortaavion();
-                        asignarBarcos();
+                   
+                    if (portaavion == 0) {
+                        System.out.println("SE REEMPLAZARÁ EL PORTAAVION!!!!!!1");
+                        portaavion = 1;
+                    }else{
+                    posicionPortaavion();
+                    asignarBarcos();
                     }
+                    //contador portaavion
+                     portaavion = portaavion - 1;
 
                     break;
                 case 2:
-                    System.out.println("Opcion 2");
+                    
+                    if (submarino == 0) {
+                        System.out.println("YA SE ASIGNARON TODOS LOS SUBMARINOS!!!!!");
+                        submarino =1;
+                    } else {
+                        asignarSubmarino();
+                    }
+                    submarino = submarino - 1;
+                    
                     break;
                 case 3:
                     break;
@@ -142,23 +153,25 @@ public class Tablero {
         c = coordenada[2];
         d = coordenada[3];
 
-        
+        int casillas = 0;
         //Horizontal 
-        if (a==c) {
+        if (a == c) {
             for (int i = 0; i < 10; i++) {
                 for (int j = 0; j < 10; j++) {
-                    if (tableroPrincipal[i][j]== tableroPrincipal[a][b]) {
+                    if (tableroPrincipal[i][j] == tableroPrincipal[a][b]) {
                         for (int k = b; k <= d; k++) {
-                            tableroPrincipal [a][k]="O";
+
+                            tableroPrincipal[a][k] = "O";
                         }
+
                     }
                 }
             }
             //Vertical
-        }else if(b==d){
+        } else if (b == d) {
             for (int i = 0; i < 10; i++) {
                 for (int j = 0; j < 10; j++) {
-                    if (tableroPrincipal[i][j]==tableroPrincipal[a][b]) {
+                    if (tableroPrincipal[i][j] == tableroPrincipal[a][b]) {
                         for (int k = a; k <= c; k++) {
                             tableroPrincipal[k][b] = "O";
                         }
@@ -166,12 +179,9 @@ public class Tablero {
                 }
             }
             //Coordenda fuera de rango
-        }else{
+        } else {
             System.out.println("INGRESE UNA COORDENADA VÁLIDA!!!!!");
         }
-        
-        
-        
 
         System.out.println("******************TABLERO LLENADO*******************");
         for (int i = 0; i < 10; i++) {
@@ -187,6 +197,90 @@ public class Tablero {
             }
             System.out.println("");
         }
+    }
+
+    public void asignarSubmarino() {
+        String pos[];
+        String[] cadenacoordenada;
+        System.out.print("INGRESE LA POSICION DEL SUBMARINO (a,b)-(c,d): ");
+        posicionbarcos = entradaopcion.next();
+        this.contador = 0;
+        String cadena = "";
+
+        cadenacoordenada = posicionbarcos.split("-");
+        for (int i = 0; i < cadenacoordenada.length; i++) {
+            cadena = quitarParentesis(cadenacoordenada[i]);
+            pos = cadena.split(",");
+            for (int j = 0; j < pos.length; j++) {
+
+                x = Integer.parseInt(pos[j]);
+
+                coordenada[contador] = x;
+                contador++;
+            }
+
+        }
+
+        int a, b, c, d;
+        a = coordenada[0];
+        b = coordenada[1];
+        c = coordenada[2];
+        d = coordenada[3];
+
+        int casillas = 0;
+        //Horizontal 
+        if (a == c) {
+            for (int i = 0; i < 10; i++) {
+                for (int j = 0; j < 10; j++) {
+                    if (tableroPrincipal[i][j] == tableroPrincipal[a][b]) {
+                        for (int k = b; k <= d; k++) {
+
+                            tableroPrincipal[a][k] = "O";
+                        }
+
+                    }
+                }
+            }
+            //Vertical
+        } else if (b == d) {
+            for (int i = 0; i < 10; i++) {
+                for (int j = 0; j < 10; j++) {
+                    if (tableroPrincipal[i][j] == tableroPrincipal[a][b]) {
+                        for (int k = a; k <= c; k++) {
+                            tableroPrincipal[k][b] = "O";
+                        }
+                    }
+                }
+            }
+            //Coordenda fuera de rango
+        } else {
+            System.out.println("INGRESE UNA COORDENADA VÁLIDA!!!!!");
+        }
+
+        System.out.println("******************TABLERO LLENADO*******************");
+        for (int i = 0; i < 10; i++) {
+            System.out.print("    " + i + "");
+        }
+        System.out.println("");
+        for (int i = 0; i < 10; i++) {
+            System.out.print(i + " ");
+            for (int j = 0; j < 10; j++) {
+
+                System.out.print("| " + tableroPrincipal[i][j] + " |");
+
+            }
+            System.out.println("");
+        }
+    }
+
+    public void asignarDestructor() {
+
+    }
+
+    public void asignarFragata() {
+    }
+
+    public void asignarEaster() {
     }
 
     public static String quitarParentesis(String cadena) {
