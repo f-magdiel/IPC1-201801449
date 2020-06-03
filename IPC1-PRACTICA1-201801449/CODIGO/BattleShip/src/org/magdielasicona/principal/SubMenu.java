@@ -32,7 +32,8 @@ public class SubMenu {
             System.out.println("*    2. CAMBIAR CANTIDAD DE INTENTOS   *");
             System.out.println("*    3. INICIAR JUEGO                  *");
             System.out.println("*    4. VISUALIZAR TABLERO             *");
-            System.out.println("*    5. REGRESAR AL MENU PRINCIPAL     *");
+            System.out.println("*    5. REINICIAR TABLERO              *");
+            System.out.println("*    6. REGRESA EL MENU PRINCIPAL      *");
             System.out.println("****************************************");
             System.out.println("");
             opcionsubmenu = entradasub.nextInt();
@@ -49,14 +50,17 @@ public class SubMenu {
                 case 4:
                     break;
                 case 5:
-                   MenuPrincipal.getInstancia().mostrarMenuPrincipal();
+                   
+                    break;
+                case 6:
+                    MenuPrincipal.getInstancia().mostrarMenuPrincipal();
                     break;
                 default:
                     System.out.println("INGRESE UNA DE LAS OPCIONES DISPONIBLES!!!!!");
 
             }
 
-        } while (0<opcionsubmenu && opcionsubmenu >5);
+        } while (0<opcionsubmenu && opcionsubmenu >6);
 
     }
 
