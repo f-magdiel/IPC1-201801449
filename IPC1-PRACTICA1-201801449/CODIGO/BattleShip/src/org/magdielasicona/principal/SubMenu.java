@@ -1,6 +1,7 @@
 package org.magdielasicona.principal;
 
 import java.util.Scanner;
+import org.magdielasicona.juego.Tablero;
 
 /**
  *
@@ -38,6 +39,8 @@ public class SubMenu {
 
             switch (opcionsubmenu) {
                 case 1:
+                    Tablero.getInstancia().creandoTablero();
+                    Tablero.getInstancia().asignarBarcos();
                     break;
                 case 2:
                     break;
