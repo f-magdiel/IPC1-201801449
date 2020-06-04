@@ -2,6 +2,7 @@ package org.magdielasicona.principal;
 
 import java.util.Scanner;
 import org.magdielasicona.juego.Controlador;
+import org.magdielasicona.juego.Partida;
 import org.magdielasicona.juego.Tablero;
 
 /**
@@ -49,6 +50,7 @@ public class SubMenu {
                     crearTablero();
                     break;
                 case 3:
+                    Partida.getInstancia().ingresoNombre();
                     break;
                 case 4:
                     Controlador.getInstancia().visualizarTablero();
