@@ -1,5 +1,5 @@
 package org.magdielasicona.juego;
-
+import org.magdielasicona.principal.SubMenu;
 import java.util.Scanner;
 
 /**
@@ -152,6 +152,8 @@ public class Tablero {
                     }
                     break;
                 case 6:
+                    SubMenu.getInstancia().crearTablero();
+                    
                     break;
 
                 default:
