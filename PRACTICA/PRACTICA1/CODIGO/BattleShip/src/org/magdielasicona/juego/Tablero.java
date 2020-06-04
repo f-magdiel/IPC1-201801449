@@ -128,7 +128,7 @@ public class Tablero {
                     break;
                 case 4:
                     if (fragata == 0) {
-                        System.out.println("ERROR, YA SE INSERTARON TODOS LOS DESTRUCTORES!!!!!");
+                        System.out.println("ERROR, YA SE INSERTARON TODAS LAS FRAGATAS!!!!!");
                         fragata = 0;
                         asignarBarcos();
 
@@ -139,6 +139,17 @@ public class Tablero {
                     }
                     break;
                 case 5:
+                    if (easter == 0) {
+                        System.out.println("SE REEMPLAZARA EL EASTER EGG!!!!!!");
+                        easter = 0;
+                        asignarEaster();
+                        asignarBarcos();
+
+                    } else {
+                        easter = easter - 1;
+                        asignarEaster();
+                        asignarBarcos();
+                    }
                     break;
                 case 6:
                     break;
@@ -376,7 +387,7 @@ public class Tablero {
 
         String pos[];
         String[] cadenacoordenada;
-        System.out.print("INGRESE LA POSICION DEL DESTRUCTOR (a,b)-(c,d): ");
+        System.out.print("INGRESE LA POSICION DEL FRAGATA (a,b)-(c,d): ");
         posicionbarcos = entradaopcion.next();
         this.contador = 0;
         String cadena = "";
@@ -426,6 +437,56 @@ public class Tablero {
     }
 
     public void asignarEaster() {
+
+        String pos[];
+        String[] cadenacoordenada;
+        System.out.print("INGRESE LA POSICION DEL EASTER EGG (a,b)-(c,d): ");
+        posicionbarcos = entradaopcion.next();
+        this.contador = 0;
+        String cadena = "";
+
+        cadenacoordenada = posicionbarcos.split("-");
+        for (int i = 0; i < cadenacoordenada.length; i++) {
+            cadena = quitarParentesis(cadenacoordenada[i]);
+            pos = cadena.split(",");
+            for (int j = 0; j < pos.length; j++) {
+
+                x = Integer.parseInt(pos[j]);
+
+                coordenada[contador] = x;
+                contador++;
+            }
+
+        }
+
+        int a, b;
+        a = coordenada[0];
+        b = coordenada[1];
+
+        //Solo es una coordenada
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (tableroPrincipal[i][j] == tableroPrincipal[a][b]) {
+                    tableroPrincipal[a][b] = "O";
+                    break;
+                }
+            }
+        }
+
+        System.out.println("******************TABLERO LLENADO*******************");
+        for (int i = 0; i < 10; i++) {
+            System.out.print("    " + i + "");
+        }
+        System.out.println("");
+        for (int i = 0; i < 10; i++) {
+            System.out.print(i + " ");
+            for (int j = 0; j < 10; j++) {
+
+                System.out.print("| " + tableroPrincipal[i][j] + " |");
+
+            }
+            System.out.println("");
+        }
     }
 
     public static String quitarParentesis(String cadena) {
