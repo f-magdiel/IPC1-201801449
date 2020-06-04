@@ -83,32 +83,60 @@ public class Tablero {
 
             switch (opcioninsertar) {
                 case 1:
-                   
+
                     if (portaavion == 0) {
-                        System.out.println("SE REEMPLAZARÁ EL PORTAAVION!!!!!!1");
-                        portaavion = 1;
-                    }else{
-                    posicionPortaavion();
-                    asignarBarcos();
+                        System.out.println("SE REEMPLAZARÁ EL PORTAAVION!!!!!!");
+
+                        portaavion = 0;
+                        posicionPortaavion();
+                        asignarBarcos();
+                    } else {
+                        portaavion = portaavion - 1;
+                        posicionPortaavion();
+                        asignarBarcos();
+
                     }
-                    //contador portaavion
-                     portaavion = portaavion - 1;
 
                     break;
                 case 2:
-                    
+
                     if (submarino == 0) {
-                        System.out.println("YA SE ASIGNARON TODOS LOS SUBMARINOS!!!!!");
-                        submarino =1;
+                        System.out.println("ERROR, YA SE INSERTARON TODOS LOS SUBMARINOS!!!!!");
+                        submarino = 0;
+                        asignarBarcos();
+                        //Visualizar tablero
+
                     } else {
+                        submarino = submarino - 1;
                         asignarSubmarino();
+                        asignarBarcos();
                     }
-                    submarino = submarino - 1;
-                    
+
                     break;
                 case 3:
+
+                    if (destructor == 0) {
+                        System.out.println("ERROR, YA SE INSERTARON TODOS LOS DESTRUCTORES!!!!!");
+                        destructor = 0;
+                        asignarBarcos();
+                        //Visualizar tablero
+                    } else {
+                        destructor = destructor - 1;
+                        asignarDestructor();
+                        asignarBarcos();
+                    }
                     break;
                 case 4:
+                    if (fragata == 0) {
+                        System.out.println("ERROR, YA SE INSERTARON TODOS LOS DESTRUCTORES!!!!!");
+                        fragata = 0;
+                        asignarBarcos();
+
+                    } else {
+                        fragata = fragata - 1;
+                        asignarFragata();
+                        asignarBarcos();
+                    }
                     break;
                 case 5:
                     break;
@@ -153,7 +181,6 @@ public class Tablero {
         c = coordenada[2];
         d = coordenada[3];
 
-        int casillas = 0;
         //Horizontal 
         if (a == c) {
             for (int i = 0; i < 10; i++) {
@@ -227,7 +254,6 @@ public class Tablero {
         c = coordenada[2];
         d = coordenada[3];
 
-        int casillas = 0;
         //Horizontal 
         if (a == c) {
             for (int i = 0; i < 10; i++) {
@@ -274,10 +300,129 @@ public class Tablero {
     }
 
     public void asignarDestructor() {
+        String pos[];
+        String[] cadenacoordenada;
+        System.out.print("INGRESE LA POSICION DEL DESTRUCTOR (a,b)-(c,d): ");
+        posicionbarcos = entradaopcion.next();
+        this.contador = 0;
+        String cadena = "";
 
+        cadenacoordenada = posicionbarcos.split("-");
+        for (int i = 0; i < cadenacoordenada.length; i++) {
+            cadena = quitarParentesis(cadenacoordenada[i]);
+            pos = cadena.split(",");
+            for (int j = 0; j < pos.length; j++) {
+
+                x = Integer.parseInt(pos[j]);
+
+                coordenada[contador] = x;
+                contador++;
+            }
+
+        }
+
+        int a, b, c, d;
+        a = coordenada[0];
+        b = coordenada[1];
+        c = coordenada[2];
+        d = coordenada[3];
+
+        //Horizontal 
+        if (a == c) {
+            for (int i = 0; i < 10; i++) {
+                for (int j = 0; j < 10; j++) {
+                    if (tableroPrincipal[i][j] == tableroPrincipal[a][b]) {
+                        for (int k = b; k <= d; k++) {
+
+                            tableroPrincipal[a][k] = "O";
+                        }
+
+                    }
+                }
+            }
+            //Vertical
+        } else if (b == d) {
+            for (int i = 0; i < 10; i++) {
+                for (int j = 0; j < 10; j++) {
+                    if (tableroPrincipal[i][j] == tableroPrincipal[a][b]) {
+                        for (int k = a; k <= c; k++) {
+                            tableroPrincipal[k][b] = "O";
+                        }
+                    }
+                }
+            }
+            //Coordenda fuera de rango
+        } else {
+            System.out.println("INGRESE UNA COORDENADA VÁLIDA!!!!!");
+        }
+
+        System.out.println("******************TABLERO LLENADO*******************");
+        for (int i = 0; i < 10; i++) {
+            System.out.print("    " + i + "");
+        }
+        System.out.println("");
+        for (int i = 0; i < 10; i++) {
+            System.out.print(i + " ");
+            for (int j = 0; j < 10; j++) {
+
+                System.out.print("| " + tableroPrincipal[i][j] + " |");
+
+            }
+            System.out.println("");
+        }
     }
 
     public void asignarFragata() {
+
+        String pos[];
+        String[] cadenacoordenada;
+        System.out.print("INGRESE LA POSICION DEL DESTRUCTOR (a,b)-(c,d): ");
+        posicionbarcos = entradaopcion.next();
+        this.contador = 0;
+        String cadena = "";
+
+        cadenacoordenada = posicionbarcos.split("-");
+        for (int i = 0; i < cadenacoordenada.length; i++) {
+            cadena = quitarParentesis(cadenacoordenada[i]);
+            pos = cadena.split(",");
+            for (int j = 0; j < pos.length; j++) {
+
+                x = Integer.parseInt(pos[j]);
+
+                coordenada[contador] = x;
+                contador++;
+            }
+
+        }
+
+        int a, b;
+        a = coordenada[0];
+        b = coordenada[1];
+
+        //Solo es una coordenada
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (tableroPrincipal[i][j] == tableroPrincipal[a][b]) {
+                    tableroPrincipal[a][b] = "O";
+                    break;
+                }
+            }
+        }
+
+        System.out.println("******************TABLERO LLENADO*******************");
+        for (int i = 0; i < 10; i++) {
+            System.out.print("    " + i + "");
+        }
+        System.out.println("");
+        for (int i = 0; i < 10; i++) {
+            System.out.print(i + " ");
+            for (int j = 0; j < 10; j++) {
+
+                System.out.print("| " + tableroPrincipal[i][j] + " |");
+
+            }
+            System.out.println("");
+        }
     }
 
     public void asignarEaster() {
