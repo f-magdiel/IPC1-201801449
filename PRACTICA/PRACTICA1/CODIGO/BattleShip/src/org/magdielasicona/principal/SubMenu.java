@@ -55,7 +55,8 @@ public class SubMenu {
                     crearTablero();
                     break;
                 case 5:
-                   
+                   Controlador.getInstancia().reiniciarTablero();
+                   crearTablero();
                     break;
                 case 6:
                     MenuPrincipal.getInstancia().mostrarMenuPrincipal();

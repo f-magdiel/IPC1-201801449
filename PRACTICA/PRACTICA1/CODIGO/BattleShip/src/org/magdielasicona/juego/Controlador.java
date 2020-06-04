@@ -33,7 +33,7 @@ public class Controlador {
         System.out.println("NUEVA CANTIDAD DE INTENTOS: "+contadorIntentos);
     }
     
-    public void comenzarPartida(){}
+    
     
     public void visualizarTablero(){
     System.out.println("******************TABLERO LLENADO*******************");
@@ -50,6 +50,18 @@ public class Controlador {
             }
             System.out.println("");
         }
+    }
+    
+    public void reiniciarTablero(){
+    for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                Tablero.tableroPrincipal[i][j] = " ";
+
+            }
+        }
+    
+        System.out.println("TABLERO REINICIADO EXITOSAMENTE!!!!!!!");
+    
     }
     //GET y SET
     public int getContadorIntentos() {
