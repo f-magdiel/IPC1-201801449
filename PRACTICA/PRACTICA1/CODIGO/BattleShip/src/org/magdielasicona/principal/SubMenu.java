@@ -1,6 +1,7 @@
 package org.magdielasicona.principal;
 
 import java.util.Scanner;
+import org.magdielasicona.juego.Controlador;
 import org.magdielasicona.juego.Tablero;
 
 /**
@@ -44,10 +45,14 @@ public class SubMenu {
                     Tablero.getInstancia().asignarBarcos();
                     break;
                 case 2:
+                    Controlador.getInstancia().cantidadDeIntentos();
+                    crearTablero();
                     break;
                 case 3:
                     break;
                 case 4:
+                    Controlador.getInstancia().visualizarTablero();
+                    crearTablero();
                     break;
                 case 5:
                    

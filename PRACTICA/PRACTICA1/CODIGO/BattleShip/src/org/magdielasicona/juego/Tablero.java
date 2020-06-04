@@ -17,7 +17,7 @@ public class Tablero {
         return instanciaTablero;
     }
     //Variables
-    private String[][] tableroPrincipal = new String[10][10];
+    public static String[][] tableroPrincipal = new String[10][10];
 
     private int coordenada[] = new int[4];
 
@@ -500,4 +500,14 @@ public class Tablero {
         return aux;
 
     }
+
+    public String[][] getTableroPrincipal() {
+        return tableroPrincipal;
+    }
+
+    public void setTableroPrincipal(String[][] tableroPrincipal) {
+        this.tableroPrincipal = tableroPrincipal;
+    }
+    
+    
 }
