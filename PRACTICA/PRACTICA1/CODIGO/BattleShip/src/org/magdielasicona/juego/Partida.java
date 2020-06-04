@@ -28,10 +28,32 @@ public class Partida {
 
         listaUsuario[contadorSesion] = nombreUser;
         contadorSesion++;
-        for (int i = 0; i < 10; i++) {
-            System.out.println(listaUsuario[i]);
-        }
 
+    }
+
+    public void validacionTablero() {
+        if (Tablero.getInstancia().getPortaavion() == 0) {
+            if (Tablero.getInstancia().getSubmarino() == 0) {
+                if (Tablero.getInstancia().getDestructor() == 0) {
+                    if (Tablero.getInstancia().getFragata() == 0) {
+                        if (Tablero.getInstancia().getEaster() == 0) {
+                            System.out.println("TODOS INGRESADOS");
+                        } else {
+                            System.out.println("ERROR, EL TABLERO ESTÁ INCOMPLETO!!!!!");
+                        }
+                    } else {
+                        System.out.println("ERROR, EL TABLERO ESTÁ INCOMPLETO!!!!!");
+                    }
+                } else {
+                    System.out.println("ERROR, EL TABLERO ESTÁ INCOMPLETO!!!!!");
+                }
+
+            } else {
+                System.out.println("ERROR, EL TABLERO ESTÁ INCOMPLETO!!!!!");
+            }
+        } else {
+            System.out.println("ERROR, EL TABLERO ESTÁ INCOMPLETO!!!!!");
+        }
     }
 
 }

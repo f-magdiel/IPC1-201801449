@@ -51,6 +51,7 @@ public class SubMenu {
                     break;
                 case 3:
                     Partida.getInstancia().ingresoNombre();
+                    Partida.getInstancia().validacionTablero();
                     break;
                 case 4:
                     Controlador.getInstancia().visualizarTablero();

@@ -546,4 +546,45 @@ public class Tablero {
         this.tableroPrincipal = tableroPrincipal;
     }
 
+    public int getPortaavion() {
+        return portaavion;
+    }
+
+    public void setPortaavion(int portaavion) {
+        this.portaavion = portaavion;
+    }
+
+    public int getSubmarino() {
+        return submarino;
+    }
+
+    public void setSubmarino(int submarino) {
+        this.submarino = submarino;
+    }
+
+    public int getDestructor() {
+        return destructor;
+    }
+
+    public void setDestructor(int destructor) {
+        this.destructor = destructor;
+    }
+
+    public int getFragata() {
+        return fragata;
+    }
+
+    public void setFragata(int fragata) {
+        this.fragata = fragata;
+    }
+
+    public int getEaster() {
+        return easter;
+    }
+
+    public void setEaster(int easter) {
+        this.easter = easter;
+    }
+    
+
 }
