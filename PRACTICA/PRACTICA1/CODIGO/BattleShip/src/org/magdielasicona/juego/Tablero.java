@@ -1,4 +1,5 @@
 package org.magdielasicona.juego;
+
 import org.magdielasicona.principal.SubMenu;
 import java.util.Scanner;
 
@@ -83,7 +84,7 @@ public class Tablero {
 
             switch (opcioninsertar) {
                 case 1:
-
+                    try {
                     if (portaavion == 0) {
                         System.out.println("SE REEMPLAZARÁ EL PORTAAVION!!!!!!");
 
@@ -96,10 +97,16 @@ public class Tablero {
                         asignarBarcos();
 
                     }
+                } catch (Exception e) {
+                    System.out.println("ERROR, COORDENADA FUERA DE RANGO!!!!");
+                    portaavion = 1;
+                    asignarBarcos();
+                    
+                }
 
-                    break;
+                break;
                 case 2:
-
+                    try {
                     if (submarino == 0) {
                         System.out.println("ERROR, YA SE INSERTARON TODOS LOS SUBMARINOS!!!!!");
                         submarino = 0;
@@ -111,10 +118,16 @@ public class Tablero {
                         asignarSubmarino();
                         asignarBarcos();
                     }
+                } catch (Exception e) {
+                    System.out.println("ERROR, COORDENADA FUERA DE RANGO!!!!");
+                    submarino = 3;
+                    asignarBarcos();
+                    
+                }
 
-                    break;
+                break;
                 case 3:
-
+                    try {
                     if (destructor == 0) {
                         System.out.println("ERROR, YA SE INSERTARON TODOS LOS DESTRUCTORES!!!!!");
                         destructor = 0;
@@ -125,8 +138,16 @@ public class Tablero {
                         asignarDestructor();
                         asignarBarcos();
                     }
-                    break;
+                } catch (Exception e) {
+                    System.out.println("ERROR, COORDENADA FUERA DE RANGO!!!!");
+                    destructor = 3;
+                    asignarBarcos();
+                    
+                }
+
+                break;
                 case 4:
+                    try {
                     if (fragata == 0) {
                         System.out.println("ERROR, YA SE INSERTARON TODAS LAS FRAGATAS!!!!!");
                         fragata = 0;
@@ -137,8 +158,17 @@ public class Tablero {
                         asignarFragata();
                         asignarBarcos();
                     }
-                    break;
+                } catch (Exception e) {
+                    System.out.println("ERROR, COORDENADA FUERA DE RANGO!!!!");
+                    fragata = 2;
+                    asignarBarcos();
+                    
+                }
+
+                break;
                 case 5:
+                    
+                    try {
                     if (easter == 0) {
                         System.out.println("SE REEMPLAZARA EL EASTER EGG!!!!!!");
                         easter = 0;
@@ -150,10 +180,17 @@ public class Tablero {
                         asignarEaster();
                         asignarBarcos();
                     }
-                    break;
+                } catch (Exception e) {
+                    System.out.println("ERROR, COORDENADA FUERA DE RANGO!!!!");
+                    easter = 1;
+                    asignarBarcos();
+                    
+                }
+
+                break;
                 case 6:
                     SubMenu.getInstancia().crearTablero();
-                    
+
                     break;
 
                 default:
@@ -508,6 +545,5 @@ public class Tablero {
     public void setTableroPrincipal(String[][] tableroPrincipal) {
         this.tableroPrincipal = tableroPrincipal;
     }
-    
-    
+
 }
