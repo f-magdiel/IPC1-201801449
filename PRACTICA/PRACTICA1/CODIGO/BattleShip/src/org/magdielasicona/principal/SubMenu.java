@@ -50,6 +50,7 @@ public class SubMenu {
                     crearTablero();
                     break;
                 case 3:
+                    Partida.getInstancia().empezarJugar();
                     Partida.getInstancia().ingresoNombre();
                     Partida.getInstancia().validacionTablero();
                     break;
