@@ -31,28 +31,27 @@ public class Tablero {
     private int fragata = 2;
     private int easter = 1;
     private int tamañoCoordenada = 0;
-    
+
     public static int aP;
     public static int bP;
     public static int cP;
     public static int dP;
-    
+
     public static int aS;
     public static int bS;
     public static int cS;
     public static int dS;
-    
+
     public static int aD;
     public static int bD;
     public static int cD;
     public static int dD;
-    
+
     public static int aF;
     public static int bF;
-    
+
     public static int aE;
     public static int bE;
-    
 
     public int getTamaño() {
         return tamañoCoordenada;
@@ -132,7 +131,7 @@ public class Tablero {
                 case 2:
                     try {
                     if (submarino == 0) {
-                        
+
                         System.out.println("ERROR, YA SE INSERTARON TODOS LOS SUBMARINOS!!!!!");
                         submarino = 0;
                         asignarBarcos();
@@ -195,6 +194,7 @@ public class Tablero {
                     
                     try {
                     if (easter == 0) {
+                        reemplezarEgg();
                         System.out.println("SE REEMPLAZARA EL EASTER EGG!!!!!!");
                         easter = 0;
                         asignarEaster();
@@ -253,7 +253,6 @@ public class Tablero {
 
         }
 
-        
         aP = coordenada[0];
         bP = coordenada[1];
         cP = coordenada[2];
@@ -327,7 +326,6 @@ public class Tablero {
 
         }
 
-       
         aS = coordenada[0];
         bS = coordenada[1];
         cS = coordenada[2];
@@ -401,7 +399,6 @@ public class Tablero {
 
         }
 
-        
         aD = coordenada[0];
         bD = coordenada[1];
         cD = coordenada[2];
@@ -476,7 +473,6 @@ public class Tablero {
 
         }
 
-       
         aF = coordenada[0];
         bF = coordenada[1];
 
@@ -530,7 +526,6 @@ public class Tablero {
 
         }
 
-       
         aE = coordenada[0];
         bE = coordenada[1];
 
@@ -569,13 +564,13 @@ public class Tablero {
         return aux;
 
     }
-    
-    public void reemplezadorPortaavion(){
+
+    public void reemplezadorPortaavion() {
         aP = coordenada[0];
         bP = coordenada[1];
         cP = coordenada[2];
         dP = coordenada[3];
-    //Horizontal 
+        //Horizontal 
         if (aP == cP) {
             for (int i = 0; i < 10; i++) {
                 for (int j = 0; j < 10; j++) {
@@ -602,6 +597,21 @@ public class Tablero {
             //Coordenda fuera de rango
         } else {
             System.out.println("INGRESE UNA COORDENADA VÁLIDA!!!!!");
+        }
+    }
+
+    public void reemplezarEgg() {
+        aE = coordenada[0];
+        bE = coordenada[1];
+
+        //Solo es una coordenada
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (tableroPrincipal[i][j] == tableroPrincipal[aE][bE]) {
+                    tableroPrincipal[aE][bE] = " ";
+                    break;
+                }
+            }
         }
     }
 
