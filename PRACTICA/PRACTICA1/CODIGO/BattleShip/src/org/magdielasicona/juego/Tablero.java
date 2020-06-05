@@ -19,7 +19,7 @@ public class Tablero {
     }
     //Variables
     public static String[][] tableroPrincipal = new String[10][10];
-    public static String[] coordenadaGuardada = new String[];
+    public static String[] coordenadaGuardada = new String[20];/////AQUI ME Quede
 
     private int coordenada[] = new int[4];
 
@@ -30,10 +30,32 @@ public class Tablero {
     private int destructor = 3;
     private int fragata = 2;
     private int easter = 1;
-    private int tamaño;
+    private int tamañoCoordenada = 0;
+    
+    public static int aP;
+    public static int bP;
+    public static int cP;
+    public static int dP;
+    
+    public static int aS;
+    public static int bS;
+    public static int cS;
+    public static int dS;
+    
+    public static int aD;
+    public static int bD;
+    public static int cD;
+    public static int dD;
+    
+    public static int aF;
+    public static int bF;
+    
+    public static int aE;
+    public static int bE;
+    
 
     public int getTamaño() {
-        return tamaño;
+        return tamañoCoordenada;
     }
 
     private String posicionbarcos;
@@ -87,6 +109,7 @@ public class Tablero {
                 case 1:
                     try {
                     if (portaavion == 0) {
+                        reemplezadorPortaavion();
                         System.out.println("SE REEMPLAZARÁ EL PORTAAVION!!!!!!");
 
                         portaavion = 0;
@@ -102,13 +125,14 @@ public class Tablero {
                     System.out.println("ERROR, COORDENADA FUERA DE RANGO!!!!");
                     portaavion = 1;
                     asignarBarcos();
-                    
+
                 }
 
                 break;
                 case 2:
                     try {
                     if (submarino == 0) {
+                        
                         System.out.println("ERROR, YA SE INSERTARON TODOS LOS SUBMARINOS!!!!!");
                         submarino = 0;
                         asignarBarcos();
@@ -123,7 +147,7 @@ public class Tablero {
                     System.out.println("ERROR, COORDENADA FUERA DE RANGO!!!!");
                     submarino = 3;
                     asignarBarcos();
-                    
+
                 }
 
                 break;
@@ -143,7 +167,7 @@ public class Tablero {
                     System.out.println("ERROR, COORDENADA FUERA DE RANGO!!!!");
                     destructor = 3;
                     asignarBarcos();
-                    
+
                 }
 
                 break;
@@ -163,7 +187,7 @@ public class Tablero {
                     System.out.println("ERROR, COORDENADA FUERA DE RANGO!!!!");
                     fragata = 2;
                     asignarBarcos();
-                    
+
                 }
 
                 break;
@@ -185,11 +209,12 @@ public class Tablero {
                     System.out.println("ERROR, COORDENADA FUERA DE RANGO!!!!");
                     easter = 1;
                     asignarBarcos();
-                    
+
                 }
 
                 break;
                 case 6:
+
                     SubMenu.getInstancia().crearTablero();
 
                     break;
@@ -214,9 +239,9 @@ public class Tablero {
 
         cadenacoordenada = posicionbarcos.split("-");
         for (int i = 0; i < cadenacoordenada.length; i++) {
-           
+
             cadena = quitarParentesis(cadenacoordenada[i]);
-            
+
             pos = cadena.split(",");
             for (int j = 0; j < pos.length; j++) {
 
@@ -228,32 +253,32 @@ public class Tablero {
 
         }
 
-        int a, b, c, d;
-        a = coordenada[0];
-        b = coordenada[1];
-        c = coordenada[2];
-        d = coordenada[3];
+        
+        aP = coordenada[0];
+        bP = coordenada[1];
+        cP = coordenada[2];
+        dP = coordenada[3];
 
         //Horizontal 
-        if (a == c) {
+        if (aP == cP) {
             for (int i = 0; i < 10; i++) {
                 for (int j = 0; j < 10; j++) {
-                    if (tableroPrincipal[i][j] == tableroPrincipal[a][b]) {
-                        for (int k = b; k <= d; k++) {
+                    if (tableroPrincipal[i][j] == tableroPrincipal[aP][bP]) {
+                        for (int k = bP; k <= dP; k++) {
 
-                            tableroPrincipal[a][k] = "O";
+                            tableroPrincipal[aP][k] = "O";
                         }
 
                     }
                 }
             }
             //Vertical
-        } else if (b == d) {
+        } else if (bP == dP) {
             for (int i = 0; i < 10; i++) {
                 for (int j = 0; j < 10; j++) {
-                    if (tableroPrincipal[i][j] == tableroPrincipal[a][b]) {
-                        for (int k = a; k <= c; k++) {
-                            tableroPrincipal[k][b] = "O";
+                    if (tableroPrincipal[i][j] == tableroPrincipal[aP][bP]) {
+                        for (int k = aP; k <= cP; k++) {
+                            tableroPrincipal[k][bP] = "O";
                         }
                     }
                 }
@@ -289,6 +314,7 @@ public class Tablero {
 
         cadenacoordenada = posicionbarcos.split("-");
         for (int i = 0; i < cadenacoordenada.length; i++) {
+
             cadena = quitarParentesis(cadenacoordenada[i]);
             pos = cadena.split(",");
             for (int j = 0; j < pos.length; j++) {
@@ -301,32 +327,32 @@ public class Tablero {
 
         }
 
-        int a, b, c, d;
-        a = coordenada[0];
-        b = coordenada[1];
-        c = coordenada[2];
-        d = coordenada[3];
+       
+        aS = coordenada[0];
+        bS = coordenada[1];
+        cS = coordenada[2];
+        dS = coordenada[3];
 
         //Horizontal 
-        if (a == c) {
+        if (aS == cS) {
             for (int i = 0; i < 10; i++) {
                 for (int j = 0; j < 10; j++) {
-                    if (tableroPrincipal[i][j] == tableroPrincipal[a][b]) {
-                        for (int k = b; k <= d; k++) {
+                    if (tableroPrincipal[i][j] == tableroPrincipal[aS][bS]) {
+                        for (int k = bS; k <= dS; k++) {
 
-                            tableroPrincipal[a][k] = "O";
+                            tableroPrincipal[aS][k] = "O";
                         }
 
                     }
                 }
             }
             //Vertical
-        } else if (b == d) {
+        } else if (bS == dS) {
             for (int i = 0; i < 10; i++) {
                 for (int j = 0; j < 10; j++) {
-                    if (tableroPrincipal[i][j] == tableroPrincipal[a][b]) {
-                        for (int k = a; k <= c; k++) {
-                            tableroPrincipal[k][b] = "O";
+                    if (tableroPrincipal[i][j] == tableroPrincipal[aS][bS]) {
+                        for (int k = aS; k <= cS; k++) {
+                            tableroPrincipal[k][bS] = "O";
                         }
                     }
                 }
@@ -362,6 +388,7 @@ public class Tablero {
 
         cadenacoordenada = posicionbarcos.split("-");
         for (int i = 0; i < cadenacoordenada.length; i++) {
+
             cadena = quitarParentesis(cadenacoordenada[i]);
             pos = cadena.split(",");
             for (int j = 0; j < pos.length; j++) {
@@ -374,32 +401,32 @@ public class Tablero {
 
         }
 
-        int a, b, c, d;
-        a = coordenada[0];
-        b = coordenada[1];
-        c = coordenada[2];
-        d = coordenada[3];
+        
+        aD = coordenada[0];
+        bD = coordenada[1];
+        cD = coordenada[2];
+        dD = coordenada[3];
 
         //Horizontal 
-        if (a == c) {
+        if (aD == cD) {
             for (int i = 0; i < 10; i++) {
                 for (int j = 0; j < 10; j++) {
-                    if (tableroPrincipal[i][j] == tableroPrincipal[a][b]) {
-                        for (int k = b; k <= d; k++) {
+                    if (tableroPrincipal[i][j] == tableroPrincipal[aD][bD]) {
+                        for (int k = bD; k <= dD; k++) {
 
-                            tableroPrincipal[a][k] = "O";
+                            tableroPrincipal[aD][k] = "O";
                         }
 
                     }
                 }
             }
             //Vertical
-        } else if (b == d) {
+        } else if (bD == dD) {
             for (int i = 0; i < 10; i++) {
                 for (int j = 0; j < 10; j++) {
-                    if (tableroPrincipal[i][j] == tableroPrincipal[a][b]) {
-                        for (int k = a; k <= c; k++) {
-                            tableroPrincipal[k][b] = "O";
+                    if (tableroPrincipal[i][j] == tableroPrincipal[aD][bD]) {
+                        for (int k = aD; k <= cD; k++) {
+                            tableroPrincipal[k][bD] = "O";
                         }
                     }
                 }
@@ -436,6 +463,7 @@ public class Tablero {
 
         cadenacoordenada = posicionbarcos.split("-");
         for (int i = 0; i < cadenacoordenada.length; i++) {
+
             cadena = quitarParentesis(cadenacoordenada[i]);
             pos = cadena.split(",");
             for (int j = 0; j < pos.length; j++) {
@@ -448,15 +476,15 @@ public class Tablero {
 
         }
 
-        int a, b;
-        a = coordenada[0];
-        b = coordenada[1];
+       
+        aF = coordenada[0];
+        bF = coordenada[1];
 
         //Solo es una coordenada
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                if (tableroPrincipal[i][j] == tableroPrincipal[a][b]) {
-                    tableroPrincipal[a][b] = "O";
+                if (tableroPrincipal[i][j] == tableroPrincipal[aF][bF]) {
+                    tableroPrincipal[aF][bF] = "O";
                     break;
                 }
             }
@@ -489,6 +517,7 @@ public class Tablero {
 
         cadenacoordenada = posicionbarcos.split("-");
         for (int i = 0; i < cadenacoordenada.length; i++) {
+
             cadena = quitarParentesis(cadenacoordenada[i]);
             pos = cadena.split(",");
             for (int j = 0; j < pos.length; j++) {
@@ -501,15 +530,15 @@ public class Tablero {
 
         }
 
-        int a, b;
-        a = coordenada[0];
-        b = coordenada[1];
+       
+        aE = coordenada[0];
+        bE = coordenada[1];
 
         //Solo es una coordenada
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                if (tableroPrincipal[i][j] == tableroPrincipal[a][b]) {
-                    tableroPrincipal[a][b] = "$";
+                if (tableroPrincipal[i][j] == tableroPrincipal[aE][bE]) {
+                    tableroPrincipal[aE][bE] = "$";
                     break;
                 }
             }
@@ -539,6 +568,41 @@ public class Tablero {
         }
         return aux;
 
+    }
+    
+    public void reemplezadorPortaavion(){
+        aP = coordenada[0];
+        bP = coordenada[1];
+        cP = coordenada[2];
+        dP = coordenada[3];
+    //Horizontal 
+        if (aP == cP) {
+            for (int i = 0; i < 10; i++) {
+                for (int j = 0; j < 10; j++) {
+                    if (tableroPrincipal[i][j] == tableroPrincipal[aP][bP]) {
+                        for (int k = bP; k <= dP; k++) {
+
+                            tableroPrincipal[aP][k] = " ";
+                        }
+
+                    }
+                }
+            }
+            //Vertical
+        } else if (bP == dP) {
+            for (int i = 0; i < 10; i++) {
+                for (int j = 0; j < 10; j++) {
+                    if (tableroPrincipal[i][j] == tableroPrincipal[aP][bP]) {
+                        for (int k = aP; k <= cP; k++) {
+                            tableroPrincipal[k][bP] = " ";
+                        }
+                    }
+                }
+            }
+            //Coordenda fuera de rango
+        } else {
+            System.out.println("INGRESE UNA COORDENADA VÁLIDA!!!!!");
+        }
     }
 
     public String[][] getTableroPrincipal() {
@@ -588,6 +652,5 @@ public class Tablero {
     public void setEaster(int easter) {
         this.easter = easter;
     }
-    
 
 }
