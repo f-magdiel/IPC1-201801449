@@ -19,6 +19,7 @@ public class Tablero {
     }
     //Variables
     public static String[][] tableroPrincipal = new String[10][10];
+    public static String[] coordenadaGuardada = new String[];
 
     private int coordenada[] = new int[4];
 
@@ -213,7 +214,9 @@ public class Tablero {
 
         cadenacoordenada = posicionbarcos.split("-");
         for (int i = 0; i < cadenacoordenada.length; i++) {
+           
             cadena = quitarParentesis(cadenacoordenada[i]);
+            
             pos = cadena.split(",");
             for (int j = 0; j < pos.length; j++) {
 

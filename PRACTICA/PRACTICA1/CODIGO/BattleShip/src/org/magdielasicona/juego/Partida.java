@@ -22,6 +22,7 @@ public class Partida {
     private int año;
     private int intentosDisponibles;
     private int direccion[] = new int[4];
+    
 
     public static Partida getInstancia() {
         if (instanciaPartida == null) {
@@ -147,8 +148,8 @@ public class Partida {
         int a,b;
             a = direccion[0];
             b = direccion[1];
-            System.out.println("a _"+a);
-            System.out.println("b _"+b);
+            
+            
 
     }
 
