@@ -19,10 +19,10 @@ public class Tablero {
     }
     //Variables
     public static String[][] tableroPrincipal = new String[10][10];
-    public static String[] coordenadaGuardada = new String[20];/////AQUI ME Quede
+    public static String[] coordenadaGuardada = new String[50];/////AQUI ME Quede
 
     private int coordenada[] = new int[4];
-
+    public int contadorCoordenada = 0;
     private int x;
     private int contador = 0;
     private int portaavion = 1;
@@ -219,7 +219,7 @@ public class Tablero {
 
                 break;
                 case 6:
-
+                    
                     SubMenu.getInstancia().crearTablero();
 
                     break;
@@ -244,6 +244,8 @@ public class Tablero {
 
         cadenacoordenada = posicionbarcos.split("-");
         for (int i = 0; i < cadenacoordenada.length; i++) {
+            coordenadaGuardada[contadorCoordenada] = cadenacoordenada[i];
+            contadorCoordenada++;
 
             cadena = quitarParentesis(cadenacoordenada[i]);
 
@@ -257,6 +259,8 @@ public class Tablero {
             }
 
         }
+        contadorCoordenada++;
+        coordenadaGuardada[contadorCoordenada] = " ";
 
         aP = coordenada[0];
         bP = coordenada[1];
@@ -347,10 +351,12 @@ public class Tablero {
         posicionbarcos = entradaopcion.next();
         this.contador = 0;
         String cadena = "";
+        int cont = 2;
 
         cadenacoordenada = posicionbarcos.split("-");
         for (int i = 0; i < cadenacoordenada.length; i++) {
-
+            coordenadaGuardada[contadorCoordenada] = cadenacoordenada[i];
+            contadorCoordenada++;
             cadena = quitarParentesis(cadenacoordenada[i]);
             pos = cadena.split(",");
             for (int j = 0; j < pos.length; j++) {
@@ -362,6 +368,8 @@ public class Tablero {
             }
 
         }
+        contadorCoordenada++;
+        coordenadaGuardada[contadorCoordenada] = " ";
 
         aS = coordenada[0];
         bS = coordenada[1];
@@ -454,7 +462,8 @@ public class Tablero {
 
         cadenacoordenada = posicionbarcos.split("-");
         for (int i = 0; i < cadenacoordenada.length; i++) {
-
+            coordenadaGuardada[contadorCoordenada] = cadenacoordenada[i];
+            contadorCoordenada++;
             cadena = quitarParentesis(cadenacoordenada[i]);
             pos = cadena.split(",");
             for (int j = 0; j < pos.length; j++) {
@@ -466,6 +475,8 @@ public class Tablero {
             }
 
         }
+        contadorCoordenada++;
+        coordenadaGuardada[contadorCoordenada] = " ";
 
         aD = coordenada[0];
         bD = coordenada[1];
@@ -557,10 +568,13 @@ public class Tablero {
         posicionbarcos = entradaopcion.next();
         this.contador = 0;
         String cadena = "";
-
+        
         cadenacoordenada = posicionbarcos.split("-");
         for (int i = 0; i < cadenacoordenada.length; i++) {
-
+            coordenadaGuardada [contadorCoordenada] = cadenacoordenada[i];
+            System.out.println(contadorCoordenada);
+            contadorCoordenada++;
+            
             cadena = quitarParentesis(cadenacoordenada[i]);
             pos = cadena.split(",");
             for (int j = 0; j < pos.length; j++) {
@@ -572,6 +586,8 @@ public class Tablero {
             }
 
         }
+        contadorCoordenada++;
+        coordenadaGuardada[contadorCoordenada] = " ";
 
         aF = coordenada[0];
         bF = coordenada[1];
@@ -580,9 +596,9 @@ public class Tablero {
         if (tableroPrincipal[aF][bF] == "-") {
             tableroPrincipal[aF][bF] = "O";
 
-        }else{
-        System.out.println("ERROR, SE SOBRE PUSO EN UN BARCO!!!!!");
-        fragata = fragata +1;
+        } else {
+            System.out.println("ERROR, SE SOBRE PUSO EN UN BARCO!!!!!");
+            fragata = fragata + 1;
         }
 
         System.out.println("******************TABLERO LLENADO*******************");
@@ -612,7 +628,10 @@ public class Tablero {
 
         cadenacoordenada = posicionbarcos.split("-");
         for (int i = 0; i < cadenacoordenada.length; i++) {
-
+            coordenadaGuardada [contadorCoordenada] = cadenacoordenada[i];
+            System.out.println(contadorCoordenada);
+            contadorCoordenada++;
+            
             cadena = quitarParentesis(cadenacoordenada[i]);
             pos = cadena.split(",");
             for (int j = 0; j < pos.length; j++) {
@@ -624,17 +643,19 @@ public class Tablero {
             }
 
         }
+        contadorCoordenada++;
+        coordenadaGuardada[contadorCoordenada] = " ";
 
         aE = coordenada[0];
         bE = coordenada[1];
 
         //Solo es una coordenada
         if (tableroPrincipal[aE][bE] == "-") {
-            tableroPrincipal[aE][bE] = "O";
+            tableroPrincipal[aE][bE] = "$";
 
-        }else{
-        System.out.println("ERROR, SE SOBRE PUSO EN UN BARCO!!!!!");
-        easter = 1;
+        } else {
+            System.out.println("ERROR, SE SOBRE PUSO EN UN BARCO!!!!!");
+            easter = 1;
         }
 
         System.out.println("******************TABLERO LLENADO*******************");
@@ -728,7 +749,7 @@ public class Tablero {
         } catch (Exception e) {
         }
     }
-    
+
     public void correctorFueraSubmarino() {
         try {
             aS = coordenada[0];
@@ -755,7 +776,7 @@ public class Tablero {
         } catch (Exception e) {
         }
     }
-    
+
     public void correctorFueraDestructor() {
         try {
             aD = coordenada[0];

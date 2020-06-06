@@ -22,7 +22,6 @@ public class Partida {
     private int año;
     private int intentosDisponibles;
     private int direccion[] = new int[4];
-    
 
     public static Partida getInstancia() {
         if (instanciaPartida == null) {
@@ -123,12 +122,15 @@ public class Partida {
         String pos[];
         String coordenada[];
         String coordenadaAtaque;
-        String cadena="";
+        String cadena = "";
+        String cor1;
+        String cor2;
         int valor;
-        
+
         int contador;
         System.out.print("INGRESE LA COORDENADA (FILA,COLUMNA): ");
         coordenadaAtaque = entradaNombres.next();
+
         
         contador = 0;
 
@@ -137,19 +139,103 @@ public class Partida {
             cadena = quitarParentesis(coordenada[i]);
             pos = cadena.split(",");
             for (int j = 0; j < pos.length; j++) {
-                
+
                 valor = Integer.parseInt(pos[j]);
                 direccion[contador] = valor;
                 contador++;
             }
-            
 
         }
-        int a,b;
-            a = direccion[0];
-            b = direccion[1];
-            
-            
+        int a, b;
+        a = direccion[0];
+        b = direccion[1];
+        System.out.println("Coor emsablada:"+a +"+"+b);
+        //------------------------------------------------------
+        String valor1="";
+        String valor2="";
+        for (int i = 0; i < 50; i++) {
+            if (coordenadaAtaque.equals(Tablero.coordenadaGuardada[i])) {
+                valor1 = Tablero.coordenadaGuardada[i];
+                valor2 = Tablero.coordenadaGuardada[i+1];
+                System.out.println(valor1);
+                
+                
+                if (valor2==null) {
+                    valor2 = valor1;
+                    System.out.println(valor2);
+                }
+              
+            }
+        }
+        //------------------------------------------------------------
+        if (valor1 == valor2) {
+            contador = 0;
+
+        coordenada = valor1.split("-");
+        for (int i = 0; i < coordenada.length; i++) {
+            cadena = quitarParentesis(coordenada[i]);
+            pos = cadena.split(",");
+            for (int j = 0; j < pos.length; j++) {
+
+                valor = Integer.parseInt(pos[j]);
+                direccion[contador] = valor;
+                contador++;
+            }
+
+        }
+        int x;
+        int y;
+        x = direccion[0];
+        y = direccion[1];
+            System.out.println(x);
+            System.out.println(y);
+        //-----------------------------------------------------------------
+        }else if(valor1!=valor2){
+        contador = 0;
+
+        coordenada = valor1.split("-");
+        for (int i = 0; i < coordenada.length; i++) {
+            cadena = quitarParentesis(coordenada[i]);
+            pos = cadena.split(",");
+            for (int j = 0; j < pos.length; j++) {
+
+                valor = Integer.parseInt(pos[j]);
+                direccion[contador] = valor;
+                contador++;
+            }
+
+        }
+        int x1;
+        int y1;
+        x1 = direccion[0];
+        y1 = direccion[1];
+            System.out.println(x1);
+            System.out.println(y1);
+        //------------------------------------------------------------------
+        contador = 0;
+
+        coordenada = valor2.split("-");
+        for (int i = 0; i < coordenada.length; i++) {
+            cadena = quitarParentesis(coordenada[i]);
+            pos = cadena.split(",");
+            for (int j = 0; j < pos.length; j++) {
+
+                valor = Integer.parseInt(pos[j]);
+                direccion[contador] = valor;
+                contador++;
+            }
+
+        }
+        int x2;
+        int y2;
+        x2 = direccion[0];
+        y2 = direccion[1];
+            System.out.println(x2);
+            System.out.println(y2);
+        }
+        
+        
+        
 
     }
 
@@ -157,7 +243,6 @@ public class Partida {
         String aux = "";
         for (int i = 1; i < cadena.length() - 1; i++) {
             aux = aux + cadena.charAt(i);
-            
 
         }
         return aux;
