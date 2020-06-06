@@ -62,10 +62,10 @@ public class Tablero {
     Scanner entradaopcion = new Scanner(System.in);
 
     public void creandoTablero() {
-
+        //Crando el tablero asignadno " " para cada vector
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                tableroPrincipal[i][j] = " ";
+                tableroPrincipal[i][j] = "-";
 
             }
         }
@@ -109,6 +109,7 @@ public class Tablero {
                     try {
                     if (portaavion == 0) {
                         reemplezadorPortaavion();
+
                         System.out.println("SE REEMPLAZARÁ EL PORTAAVION!!!!!!");
 
                         portaavion = 0;
@@ -121,8 +122,10 @@ public class Tablero {
 
                     }
                 } catch (Exception e) {
+                    correctorFueraPortaavion();
                     System.out.println("ERROR, COORDENADA FUERA DE RANGO!!!!");
                     portaavion = 1;
+
                     asignarBarcos();
 
                 }
@@ -143,6 +146,7 @@ public class Tablero {
                         asignarBarcos();
                     }
                 } catch (Exception e) {
+                    correctorFueraSubmarino();
                     System.out.println("ERROR, COORDENADA FUERA DE RANGO!!!!");
                     submarino = 3;
                     asignarBarcos();
@@ -163,6 +167,7 @@ public class Tablero {
                         asignarBarcos();
                     }
                 } catch (Exception e) {
+                    correctorFueraDestructor();
                     System.out.println("ERROR, COORDENADA FUERA DE RANGO!!!!");
                     destructor = 3;
                     asignarBarcos();
@@ -255,33 +260,65 @@ public class Tablero {
 
         aP = coordenada[0];
         bP = coordenada[1];
-        cP = coordenada[2];
+        cP = coordenada[2];                     //Dar posicion original(en a,b,c,d)y no recorrer todo
         dP = coordenada[3];
 
         //Horizontal 
         if (aP == cP) {
-            for (int i = 0; i < 10; i++) {
-                for (int j = 0; j < 10; j++) {
-                    if (tableroPrincipal[i][j] == tableroPrincipal[aP][bP]) {
-                        for (int k = bP; k <= dP; k++) {
 
-                            tableroPrincipal[aP][k] = "O";
+            if (tableroPrincipal[aP][0] == "-") {
+                if (tableroPrincipal[aP][1] == "-") {
+                    if (tableroPrincipal[aP][2] == "-") {
+                        if (tableroPrincipal[aP][3] == "-") {
+                            for (int i = bP; i <= dP; i++) {
+                                tableroPrincipal[aP][i] = "O";//Principal
+                            }
+                        } else {
+                            portaavion = 1;
+                            System.out.println("ERROR, SE SOBRE PUSO EN UN BARCO!!!!!");
                         }
-
+                    } else {
+                        portaavion = 1;
+                        System.out.println("ERROR, SE SOBRE PUSO EN UN BARCO!!!!!");
                     }
+
+                } else {
+                    portaavion = 1;
+                    System.out.println("ERROR, SE SOBRE PUSO EN UN BARCO!!!!!");
                 }
+            } else {
+                portaavion = 1;
+                System.out.println("ERROR, SE SOBRE PUSO EN UN BARCO!!!!!");
             }
+
             //Vertical
         } else if (bP == dP) {
-            for (int i = 0; i < 10; i++) {
-                for (int j = 0; j < 10; j++) {
-                    if (tableroPrincipal[i][j] == tableroPrincipal[aP][bP]) {
-                        for (int k = aP; k <= cP; k++) {
-                            tableroPrincipal[k][bP] = "O";
+
+            if (tableroPrincipal[bP][0] == "-") {
+                if (tableroPrincipal[bP][1] == "-") {
+                    if (tableroPrincipal[bP][2] == "-") {
+                        if (tableroPrincipal[bP][3] == "-") {
+                            for (int k = aP; k <= cP; k++) {
+                                tableroPrincipal[k][bP] = "O";
+                            }
+                        } else {
+                            portaavion = 1;
+                            System.out.println("ERROR, SE SOBRE PUSO EN UN BARCO!!!!!");
                         }
+                    } else {
+                        portaavion = 1;
+                        System.out.println("ERROR, SE SOBRE PUSO EN UN BARCO!!!!!");
                     }
+                } else {
+                    portaavion = 1;
+                    System.out.println("ERROR, SE SOBRE PUSO EN UN BARCO!!!!!");
                 }
+
+            } else {
+                portaavion = 1;
+                System.out.println("ERROR, SE SOBRE PUSO EN UN BARCO!!!!!");
             }
+
             //Coordenda fuera de rango
         } else {
             System.out.println("INGRESE UNA COORDENADA VÁLIDA!!!!!");
@@ -331,30 +368,61 @@ public class Tablero {
         cS = coordenada[2];
         dS = coordenada[3];
 
-        //Horizontal 
         if (aS == cS) {
-            for (int i = 0; i < 10; i++) {
-                for (int j = 0; j < 10; j++) {
-                    if (tableroPrincipal[i][j] == tableroPrincipal[aS][bS]) {
-                        for (int k = bS; k <= dS; k++) {
 
-                            tableroPrincipal[aS][k] = "O";
+            if (tableroPrincipal[aS][0] == "-") {
+                if (tableroPrincipal[aS][1] == "-") {
+                    if (tableroPrincipal[aS][2] == "-") {
+                        if (tableroPrincipal[aS][3] == "-") {
+                            for (int i = bS; i <= dS; i++) {
+                                tableroPrincipal[aS][i] = "O";//Principal
+                            }
+                        } else {
+                            submarino = submarino + 1;
+                            System.out.println("ERROR, SE SOBRE PUSO EN UN BARCO!!!!!");
                         }
-
+                    } else {
+                        submarino = submarino + 1;
+                        System.out.println("ERROR, SE SOBRE PUSO EN UN BARCO!!!!!");
                     }
+
+                } else {
+                    submarino = submarino + 1;
+                    System.out.println("ERROR, SE SOBRE PUSO EN UN BARCO!!!!!");
                 }
+            } else {
+                submarino = submarino + 1;
+                System.out.println("ERROR, SE SOBRE PUSO EN UN BARCO!!!!!");
             }
+
             //Vertical
         } else if (bS == dS) {
-            for (int i = 0; i < 10; i++) {
-                for (int j = 0; j < 10; j++) {
-                    if (tableroPrincipal[i][j] == tableroPrincipal[aS][bS]) {
-                        for (int k = aS; k <= cS; k++) {
-                            tableroPrincipal[k][bS] = "O";
+
+            if (tableroPrincipal[bS][0] == "-") {
+                if (tableroPrincipal[bS][1] == "-") {
+                    if (tableroPrincipal[bS][2] == "-") {
+                        if (tableroPrincipal[bS][3] == "-") {
+                            for (int k = aS; k <= cS; k++) {
+                                tableroPrincipal[k][bS] = "O";
+                            }
+                        } else {
+                            submarino = submarino + 1;
+                            System.out.println("ERROR, SE SOBRE PUSO EN UN BARCO!!!!!");
                         }
+                    } else {
+                        submarino = submarino + 1;
+                        System.out.println("ERROR, SE SOBRE PUSO EN UN BARCO!!!!!");
                     }
+                } else {
+                    submarino = submarino + 1;
+                    System.out.println("ERROR, SE SOBRE PUSO EN UN BARCO!!!!!");
                 }
+
+            } else {
+                submarino = submarino + 1;
+                System.out.println("ERROR, SE SOBRE PUSO EN UN BARCO!!!!!");
             }
+
             //Coordenda fuera de rango
         } else {
             System.out.println("INGRESE UNA COORDENADA VÁLIDA!!!!!");
@@ -406,28 +474,60 @@ public class Tablero {
 
         //Horizontal 
         if (aD == cD) {
-            for (int i = 0; i < 10; i++) {
-                for (int j = 0; j < 10; j++) {
-                    if (tableroPrincipal[i][j] == tableroPrincipal[aD][bD]) {
-                        for (int k = bD; k <= dD; k++) {
 
-                            tableroPrincipal[aD][k] = "O";
+            if (tableroPrincipal[aD][0] == "-") {
+                if (tableroPrincipal[aD][1] == "-") {
+                    if (tableroPrincipal[aD][2] == "-") {
+                        if (tableroPrincipal[aD][3] == "-") {
+                            for (int i = bD; i <= dD; i++) {
+                                tableroPrincipal[aD][i] = "O";//Principal
+                            }
+                        } else {
+                            destructor = destructor + 1;
+                            System.out.println("ERROR, SE SOBRE PUSO EN UN BARCO!!!!!");
                         }
-
+                    } else {
+                        destructor = destructor + 1;
+                        System.out.println("ERROR, SE SOBRE PUSO EN UN BARCO!!!!!");
                     }
+
+                } else {
+                    destructor = destructor + 1;
+                    System.out.println("ERROR, SE SOBRE PUSO EN UN BARCO!!!!!");
                 }
+            } else {
+                destructor = destructor + 1;
+                System.out.println("ERROR, SE SOBRE PUSO EN UN BARCO!!!!!");
             }
+
             //Vertical
         } else if (bD == dD) {
-            for (int i = 0; i < 10; i++) {
-                for (int j = 0; j < 10; j++) {
-                    if (tableroPrincipal[i][j] == tableroPrincipal[aD][bD]) {
-                        for (int k = aD; k <= cD; k++) {
-                            tableroPrincipal[k][bD] = "O";
+
+            if (tableroPrincipal[bD][0] == "-") {
+                if (tableroPrincipal[bD][1] == "-") {
+                    if (tableroPrincipal[bD][2] == "-") {
+                        if (tableroPrincipal[bD][3] == "-") {
+                            for (int k = aD; k <= cD; k++) {
+                                tableroPrincipal[k][bD] = "O";
+                            }
+                        } else {
+                            destructor = destructor + 1;
+                            System.out.println("ERROR, SE SOBRE PUSO EN UN BARCO!!!!!");
                         }
+                    } else {
+                        destructor = destructor + 1;
+                        System.out.println("ERROR, SE SOBRE PUSO EN UN BARCO!!!!!");
                     }
+                } else {
+                    destructor = destructor + 1;
+                    System.out.println("ERROR, SE SOBRE PUSO EN UN BARCO!!!!!");
                 }
+
+            } else {
+                destructor = destructor + 1;
+                System.out.println("ERROR, SE SOBRE PUSO EN UN BARCO!!!!!");
             }
+
             //Coordenda fuera de rango
         } else {
             System.out.println("INGRESE UNA COORDENADA VÁLIDA!!!!!");
@@ -453,7 +553,7 @@ public class Tablero {
 
         String pos[];
         String[] cadenacoordenada;
-        System.out.print("INGRESE LA POSICION DEL FRAGATA (a,b)-(c,d): ");
+        System.out.print("INGRESE LA POSICION DEL FRAGATA (a,b): ");
         posicionbarcos = entradaopcion.next();
         this.contador = 0;
         String cadena = "";
@@ -477,13 +577,12 @@ public class Tablero {
         bF = coordenada[1];
 
         //Solo es una coordenada
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                if (tableroPrincipal[i][j] == tableroPrincipal[aF][bF]) {
-                    tableroPrincipal[aF][bF] = "O";
-                    break;
-                }
-            }
+        if (tableroPrincipal[aF][bF] == "-") {
+            tableroPrincipal[aF][bF] = "O";
+
+        }else{
+        System.out.println("ERROR, SE SOBRE PUSO EN UN BARCO!!!!!");
+        fragata = fragata +1;
         }
 
         System.out.println("******************TABLERO LLENADO*******************");
@@ -506,7 +605,7 @@ public class Tablero {
 
         String pos[];
         String[] cadenacoordenada;
-        System.out.print("INGRESE LA POSICION DEL EASTER EGG (a,b)-(c,d): ");
+        System.out.print("INGRESE LA POSICION DEL EASTER EGG (a,b): ");
         posicionbarcos = entradaopcion.next();
         this.contador = 0;
         String cadena = "";
@@ -530,13 +629,12 @@ public class Tablero {
         bE = coordenada[1];
 
         //Solo es una coordenada
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                if (tableroPrincipal[i][j] == tableroPrincipal[aE][bE]) {
-                    tableroPrincipal[aE][bE] = "$";
-                    break;
-                }
-            }
+        if (tableroPrincipal[aE][bE] == "-") {
+            tableroPrincipal[aE][bE] = "O";
+
+        }else{
+        System.out.println("ERROR, SE SOBRE PUSO EN UN BARCO!!!!!");
+        easter = 1;
         }
 
         System.out.println("******************TABLERO LLENADO*******************");
@@ -571,32 +669,21 @@ public class Tablero {
         cP = coordenada[2];
         dP = coordenada[3];
         //Horizontal 
-        if (aP == cP) {
-            for (int i = 0; i < 10; i++) {
-                for (int j = 0; j < 10; j++) {
-                    if (tableroPrincipal[i][j] == tableroPrincipal[aP][bP]) {
-                        for (int k = bP; k <= dP; k++) {
+        if (aP == cP) { //(0,1)-(0,2)
 
-                            tableroPrincipal[aP][k] = " ";
-                        }
+            for (int k = bP; k <= dP; k++) {
 
-                    }
-                }
+                tableroPrincipal[aP][k] = "-";
             }
+
             //Vertical
-        } else if (bP == dP) {
-            for (int i = 0; i < 10; i++) {
-                for (int j = 0; j < 10; j++) {
-                    if (tableroPrincipal[i][j] == tableroPrincipal[aP][bP]) {
-                        for (int k = aP; k <= cP; k++) {
-                            tableroPrincipal[k][bP] = " ";
-                        }
-                    }
-                }
+        } else if (bP == dP) { //(0,1)-(3,1)
+
+            for (int k = aP; k <= cP; k++) {
+                tableroPrincipal[k][bP] = "-";
             }
+
             //Coordenda fuera de rango
-        } else {
-            System.out.println("INGRESE UNA COORDENADA VÁLIDA!!!!!");
         }
     }
 
@@ -612,6 +699,87 @@ public class Tablero {
                     break;
                 }
             }
+        }
+    }
+
+    public void correctorFueraPortaavion() {
+        try {
+            aP = coordenada[0];
+            bP = coordenada[1];
+            cP = coordenada[2];
+            dP = coordenada[3];
+            //Horizontal 
+            if (aP == cP) { //(0,1)-(0,2)
+
+                for (int k = bP; k <= dP; k++) {
+
+                    tableroPrincipal[aP][k] = "-";
+                }
+
+                //Vertical
+            } else if (bP == dP) { //(0,1)-(3,1)
+
+                for (int k = aP; k <= cP; k++) {
+                    tableroPrincipal[k][bP] = "-";
+                }
+
+                //Coordenda fuera de rango
+            }
+        } catch (Exception e) {
+        }
+    }
+    
+    public void correctorFueraSubmarino() {
+        try {
+            aS = coordenada[0];
+            bS = coordenada[1];
+            cS = coordenada[2];
+            dS = coordenada[3];
+            //Horizontal 
+            if (aS == cS) { //(0,1)-(0,2)
+
+                for (int k = bS; k <= dS; k++) {
+
+                    tableroPrincipal[aS][k] = "-";
+                }
+
+                //Vertical
+            } else if (bS == dS) { //(0,1)-(3,1)
+
+                for (int k = aS; k <= cS; k++) {
+                    tableroPrincipal[k][bS] = "-";
+                }
+
+                //Coordenda fuera de rango
+            }
+        } catch (Exception e) {
+        }
+    }
+    
+    public void correctorFueraDestructor() {
+        try {
+            aD = coordenada[0];
+            bD = coordenada[1];
+            cD = coordenada[2];
+            dD = coordenada[3];
+            //Horizontal 
+            if (aD == cD) { //(0,1)-(0,2)
+
+                for (int k = bD; k <= dD; k++) {
+
+                    tableroPrincipal[aD][k] = "-";
+                }
+
+                //Vertical
+            } else if (bD == dD) { //(0,1)-(3,1)
+
+                for (int k = aD; k <= cD; k++) {
+                    tableroPrincipal[k][bD] = "-";
+                }
+
+                //Coordenda fuera de rango
+            }
+        } catch (Exception e) {
         }
     }
 
