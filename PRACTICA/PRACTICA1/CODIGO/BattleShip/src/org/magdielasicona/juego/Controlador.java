@@ -72,5 +72,7 @@ public class Controlador {
         this.contadorIntentos = contadorIntentos;
     }
     
-    
+    public void setearValoresControlador(){
+    contadorIntentos=10;
+    }
 }

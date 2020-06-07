@@ -38,19 +38,19 @@ public class MenuPrincipal {
             switch (opcionmenu) {
                 case 1:
                     subMenu.crearTablero();
-
+                    
                     break;
                 case 2:
                     subMenu.reporteCompleto();
-
+                    mostrarMenuPrincipal();
                     break;
                 case 3:
                     subMenu.reporteVictorias();
-
+                    mostrarMenuPrincipal();
                     break;
                 case 4:
 
-                    System.out.println("SE SALUÓ DEL JUEGO");
+                    System.out.println("SE SALIÓ DEL JUEGO");
                     System.exit(0);
                     break;
                 default:

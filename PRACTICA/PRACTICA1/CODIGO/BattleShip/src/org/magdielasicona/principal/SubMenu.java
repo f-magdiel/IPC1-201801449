@@ -81,7 +81,12 @@ public class SubMenu {
     }
 
     public void reporteCompleto() {
-        System.out.println("ReporteCompleto");
+        System.out.println("********************REPORTE COMPLETO********************");
+        System.out.println("NICKNAME      ESTADO       INTENTOS      BARCOS HUNDIDOS");
+        for (int i = 0; i <Partida.getInstancia().getContadorSesion(); i++) {
+            System.out.println(Partida.listaUsuario[i]+"          "+Partida.estadoPartida[i]+"            "+Partida.intentosPartida[i]+"                "+Partida.barcosHundidos[i]);
+        }
+        
     }
 
     public void reporteVictorias() {

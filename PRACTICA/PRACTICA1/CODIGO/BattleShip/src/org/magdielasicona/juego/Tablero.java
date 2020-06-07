@@ -856,5 +856,53 @@ public class Tablero {
     public void setEaster(int easter) {
         this.easter = easter;
     }
+    
+    public void setearValoresTablero(){
+     //seteano el tablero
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                tableroPrincipal[i][j] = "-";
+
+            }
+        }
+        for (int j = 0; j < 50; j++) {
+            coordenadaGuardada[j] =" ";
+        }
+        
+        
+        //seteando valores de barcos
+        Tablero.getInstancia().setPortaavion(1);
+        Tablero.getInstancia().setSubmarino(3);
+        Tablero.getInstancia().setDestructor(3);
+        Tablero.getInstancia().setFragata(2);
+        Tablero.getInstancia().setEaster(1);
+        
+        //seteando valores
+        contadorCoordenada =0;
+        contador =0;
+        x=0;
+        
+     aP=0;
+     bP=0;
+     cP=0;
+     dP=0;
+
+     aS=0;
+     bS=0;
+     cS=0;
+     dS=0;
+
+     aD=0;
+     bD=0;
+     cD=0;
+     dD=0;
+
+     aF=0;
+     bF=0;
+
+     aE=0;
+     bE=0;
+        
+    }
 
 }

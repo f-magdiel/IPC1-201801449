@@ -3,6 +3,7 @@ package org.magdielasicona.juego;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
+import org.magdielasicona.principal.SubMenu;
 
 /**
  *
@@ -11,12 +12,18 @@ import java.util.Scanner;
 public class Partida {
 
     private static Partida instanciaPartida;
-    
+
     private int contadorSesion = 0;
-    private int contadotAbandonar =0;
-    private int contadorVictoria =0;
-    
-    public static String[] listaUsuario = new String[50];
+    private int contadorAbandonar = 0;
+    private int contadorVictoria = 0;
+    private int contadorBarcosHundidos = 0;
+
+    public static String[] listaUsuario = new String[50];//guardado usuario
+    public static String[] estadoPartida = new String[50];//guardando estado partida gano, perdio, abandono
+    public static int[] intentosPartida = new int[50];//guardando intentos de lanzar misil
+    public static int[] barcosHundidos = new int[50];// guardando cantidad de barcos hundidos
+
+    private int barcosDestruidos = 0;
     private String nombreUser;
     private int hora;
     private int minuto;
@@ -25,6 +32,7 @@ public class Partida {
     private int mes;
     private int año;
     private int intentosDisponibles = Controlador.getInstancia().getContadorIntentos();
+    private int resultadoIntentos;
     private int direccion[] = new int[4];
 
     public static Partida getInstancia() {
@@ -36,14 +44,45 @@ public class Partida {
     Scanner entradaNombres = new Scanner(System.in);
     Calendar calendario = new GregorianCalendar();
 
+    public void resetarGeneral(){
+    setearValoresPartida();
+    Tablero.getInstancia().setearValoresTablero();
+    Controlador.getInstancia().setearValoresControlador();
+    }
+    
+    public void validacionAbandonar() {
+        System.out.println(":-(, Adios: " + listaUsuario[contadorSesion]);
+        estadoPartida[contadorSesion] = "ABANDONÓ";
+        barcosHundidos[contadorSesion] = barcosDestruidos;
+        intentosPartida[contadorSesion] = resultadoIntentos;
+        contadorSesion++;
+        resetarGeneral();
+        SubMenu.getInstancia().crearTablero();
+    }
+
     public void validacionIniciarJugar() {
 
         if (intentosDisponibles == 0) {
-            System.out.println(":-(, SE TE ACABARON LOS INTENTOS!!!!!");
+            System.out.println(":-(, PERDIÓ LA PARTIDA: " + listaUsuario[contadorSesion]);
+            estadoPartida[contadorSesion] = "PERDIÓ";
+            barcosHundidos[contadorSesion] = barcosDestruidos;
+            intentosPartida[contadorSesion] = resultadoIntentos;
+            contadorSesion++;
+            resetarGeneral();
+            SubMenu.getInstancia().crearTablero();
+
+        } else if (barcosDestruidos == 9) {
+            System.out.println("FELICIDADES GANÓ: " + listaUsuario[contadorSesion]);
+            estadoPartida[contadorSesion] = "GANO";
+            barcosHundidos[contadorSesion] = barcosDestruidos;
+            intentosPartida[contadorSesion] = resultadoIntentos;
+            contadorSesion++;
+            resetarGeneral();
+            SubMenu.getInstancia().crearTablero();
         } else {
-            
+
             empezarJugar();
-           
+
         }
     }
 
@@ -53,7 +92,6 @@ public class Partida {
         nombreUser = entradaNombres.next();
 
         listaUsuario[contadorSesion] = nombreUser;
-        contadorSesion++;
 
     }
 
@@ -112,15 +150,16 @@ public class Partida {
             System.out.print("SELECCIONE UNA OPCION : ");
             opcionDisparar = entradaNombres.nextInt();
             intentosDisponibles--;
+
             switch (opcionDisparar) {
                 case 1:
-                   
+                    //Metodo disparar
                     dispararMisil();
 
-                    //Metodo disparar
                     break;
                 case 2:
                     //Metodo Abandonar
+                    validacionAbandonar();
                     break;
                 default:
                     System.out.println("SELECCIONE UNA DE LAS OPCIONES DISPONIBLES!!!!!");
@@ -141,7 +180,7 @@ public class Partida {
         int contador;
         System.out.print("INGRESE LA COORDENADA (FILA,COLUMNA): ");
         coordenadaAtaque = entradaNombres.next();
-
+        resultadoIntentos++;
         contador = 0;
 
         coordenada = coordenadaAtaque.split("-");
@@ -223,6 +262,7 @@ public class Partida {
             if (Tablero.tableroPrincipal[x][y].equals("O")) {
                 Tablero.tableroPrincipal[x][y] = "X";
                 System.out.println("LE DIÓ A UN BARCO");
+                barcosDestruidos++;
                 validacionIniciarJugar();
 
             } else if (Tablero.tableroPrincipal[x][y].equals("$")) {
@@ -282,12 +322,14 @@ public class Partida {
                     for (int i = bL; i <= dL; i++) {
                         Tablero.tableroPrincipal[aL][i] = "X";
                         System.out.println("LE DIÓ A UN BARCO");
+                        barcosDestruidos++;
                     }
                     validacionIniciarJugar();
                 } else if (bL == dL) {
                     for (int j = aL; j <= cL; j++) {
                         Tablero.tableroPrincipal[j][bL] = "X";
                         System.out.println("LE DIÓ A UN BARCO");
+                        barcosDestruidos++;
                     }
                     validacionIniciarJugar();
                 }
@@ -316,12 +358,12 @@ public class Partida {
         this.contadorSesion = contadorSesion;
     }
 
-    public int getContadotAbandonar() {
-        return contadotAbandonar;
+    public int getContadorAbandonar() {
+        return contadorAbandonar;
     }
 
-    public void setContadotAbandonar(int contadotAbandonar) {
-        this.contadotAbandonar = contadotAbandonar;
+    public void setContadorAbandonar(int contadotAbandonar) {
+        this.contadorAbandonar = contadotAbandonar;
     }
 
     public int getContadorVictoria() {
@@ -331,6 +373,14 @@ public class Partida {
     public void setContadorVictoria(int contadorVictoria) {
         this.contadorVictoria = contadorVictoria;
     }
-    
-    
+
+    public void setearValoresPartida() {
+        nombreUser = " ";
+        barcosDestruidos = 0;
+        resultadoIntentos =0;
+        
+        for (int i = 0; i < direccion.length; i++) {
+            direccion[i]=0;
+        }
+    }
 }
