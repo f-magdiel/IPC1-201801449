@@ -12,7 +12,7 @@ import org.magdielasicona.juego.Tablero;
 public class SubMenu {
 
     private static SubMenu instanciaSubMenu;
-
+    
     public static SubMenu getInstancia() {
         if (instanciaSubMenu == null) {
             instanciaSubMenu = new SubMenu();
@@ -51,8 +51,9 @@ public class SubMenu {
                     break;
                 case 3:
                     try{
-                    Partida.getInstancia().empezarJugar();
-                   // Partida.getInstancia().ingresoNombre();
+                    
+                   Partida.getInstancia().ingresoNombre();
+                   Partida.getInstancia().validacionIniciarJugar();
                    // Partida.getInstancia().validacionTablero();
                     }catch(Exception e){
                     

@@ -11,7 +11,11 @@ import java.util.Scanner;
 public class Partida {
 
     private static Partida instanciaPartida;
+    
     private int contadorSesion = 0;
+    private int contadotAbandonar =0;
+    private int contadorVictoria =0;
+    
     public static String[] listaUsuario = new String[50];
     private String nombreUser;
     private int hora;
@@ -20,7 +24,7 @@ public class Partida {
     private int dia;
     private int mes;
     private int año;
-    private int intentosDisponibles;
+    private int intentosDisponibles = Controlador.getInstancia().getContadorIntentos();
     private int direccion[] = new int[4];
 
     public static Partida getInstancia() {
@@ -31,6 +35,17 @@ public class Partida {
     }
     Scanner entradaNombres = new Scanner(System.in);
     Calendar calendario = new GregorianCalendar();
+
+    public void validacionIniciarJugar() {
+
+        if (intentosDisponibles == 0) {
+            System.out.println(":-(, SE TE ACABARON LOS INTENTOS!!!!!");
+        } else {
+            
+            empezarJugar();
+           
+        }
+    }
 
     public void ingresoNombre() {
 
@@ -48,7 +63,7 @@ public class Partida {
                 if (Tablero.getInstancia().getDestructor() == 0) {
                     if (Tablero.getInstancia().getFragata() == 0) {
                         if (Tablero.getInstancia().getEaster() == 0) {
-                            empezarJugar();
+                            validacionIniciarJugar();
                         } else {
                             System.out.println("ERROR, EL TABLERO ESTÁ INCOMPLETO!!!!!");
                         }
@@ -69,7 +84,7 @@ public class Partida {
 
     public void empezarJugar() {
         int opcionDisparar;
-        int contadorIntentos;
+
         hora = calendario.get(Calendar.HOUR_OF_DAY);
         minuto = calendario.get(Calendar.MINUTE);
         segundo = calendario.get(Calendar.SECOND);
@@ -78,15 +93,15 @@ public class Partida {
         año = calendario.get(Calendar.YEAR);
 
         //Intentos
-        intentosDisponibles = Controlador.getInstancia().getContadorIntentos();
-        contadorIntentos = Controlador.getInstancia().getContadorIntentos();
         do {
+            System.out.println("");
+            System.out.println("");
             System.out.println("HORA: " + dia + "/" + mes + "/" + año + "    " + hora + ":" + minuto + ":" + segundo);
             System.out.println("");
-            System.out.println("BARCOS");
-            System.out.println("             " + "HUNDIDOS");
+            System.out.println("BARCOS HUNDIDOS");
+
             System.out.println("");
-            System.out.println(contadorIntentos + "/" + intentosDisponibles + " INTENTOS");
+            System.out.println(intentosDisponibles + "/" + Controlador.getInstancia().getContadorIntentos() + " INTENTOS");
             System.out.println("");
             System.out.println("-------------------------------------");
             Controlador.getInstancia().visualizarTablero();
@@ -96,23 +111,14 @@ public class Partida {
             System.out.println("2. TERMINAR PARTIDA");
             System.out.print("SELECCIONE UNA OPCION : ");
             opcionDisparar = entradaNombres.nextInt();
-
+            intentosDisponibles--;
             switch (opcionDisparar) {
                 case 1:
-                    try {
+                   
+                    dispararMisil();
 
-                    if (contadorIntentos == 0) {
-                        System.out.println("SE TE ACABARON LOS INTENTOS!!!! ");
-                    } else {
-                        contadorIntentos--;
-                        dispararMisil();
-                    }
-                } catch (Exception e) {
-
-                }
-
-                //Metodo disparar
-                break;
+                    //Metodo disparar
+                    break;
                 case 2:
                     //Metodo Abandonar
                     break;
@@ -186,7 +192,7 @@ public class Partida {
             }
         } else if (Tablero.tableroPrincipal[a][b].equals("-")) {
             System.out.println("NO LE DÍO A NINGUN BARCO");
-            empezarJugar();
+            validacionIniciarJugar();
         }
 
         //------------------------------------------------------
@@ -217,20 +223,20 @@ public class Partida {
             if (Tablero.tableroPrincipal[x][y].equals("O")) {
                 Tablero.tableroPrincipal[x][y] = "X";
                 System.out.println("LE DIÓ A UN BARCO");
-                empezarJugar();
+                validacionIniciarJugar();
 
             } else if (Tablero.tableroPrincipal[x][y].equals("$")) {
                 System.out.println("LE DIÓ AL EASTER EGG");
                 Tablero.tableroPrincipal[x][y] = "X";
                 System.out.println("201801449 Francisco Magdiel Asicona ");
-                empezarJugar();
+                validacionIniciarJugar();
 
             }
 
             //-----------------------------------------------------------------
             //Coordenadas diferentes (0,0)-(0,3)
         } else if (valor1 != valor2) {
-            
+
             contador = 0;
 
             coordenada = valor1.split("-");
@@ -277,13 +283,13 @@ public class Partida {
                         Tablero.tableroPrincipal[aL][i] = "X";
                         System.out.println("LE DIÓ A UN BARCO");
                     }
-                    empezarJugar();
+                    validacionIniciarJugar();
                 } else if (bL == dL) {
                     for (int j = aL; j <= cL; j++) {
                         Tablero.tableroPrincipal[j][bL] = "X";
                         System.out.println("LE DIÓ A UN BARCO");
                     }
-                    empezarJugar();
+                    validacionIniciarJugar();
                 }
 
             }
@@ -301,4 +307,30 @@ public class Partida {
         return aux;
 
     }
+
+    public int getContadorSesion() {
+        return contadorSesion;
+    }
+
+    public void setContadorSesion(int contadorSesion) {
+        this.contadorSesion = contadorSesion;
+    }
+
+    public int getContadotAbandonar() {
+        return contadotAbandonar;
+    }
+
+    public void setContadotAbandonar(int contadotAbandonar) {
+        this.contadotAbandonar = contadotAbandonar;
+    }
+
+    public int getContadorVictoria() {
+        return contadorVictoria;
+    }
+
+    public void setContadorVictoria(int contadorVictoria) {
+        this.contadorVictoria = contadorVictoria;
+    }
+    
+    
 }

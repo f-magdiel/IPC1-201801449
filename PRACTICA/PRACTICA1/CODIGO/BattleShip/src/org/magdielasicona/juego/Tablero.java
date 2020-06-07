@@ -803,7 +803,12 @@ public class Tablero {
         } catch (Exception e) {
         }
     }
-
+    
+    
+    public void abadonarPartida(){
+    
+    }
+    
     public String[][] getTableroPrincipal() {
         return tableroPrincipal;
     }
