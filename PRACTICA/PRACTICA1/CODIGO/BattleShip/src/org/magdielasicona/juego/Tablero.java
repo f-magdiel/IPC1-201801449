@@ -812,9 +812,7 @@ public class Tablero {
     }
     
     
-    public void abadonarPartida(){
-    
-    }
+   
     
     public String[][] getTableroPrincipal() {
         return tableroPrincipal;
