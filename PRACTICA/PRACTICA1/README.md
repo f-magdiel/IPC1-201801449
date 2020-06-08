@@ -13,7 +13,7 @@ S.O:  Windows 10 , Windows 8.1 , Windows 7
 
 
 
-### Instalación 🔧
+### Instalación 
 
 
 
@@ -21,38 +21,9 @@ S.O:  Windows 10 , Windows 8.1 , Windows 7
 
 
 
-### Analice las pruebas end-to-end 🔩
-
-
-```
-
-### Y las pruebas de estilo de codificación ⌨️
-
-
-
-## Despliegue 📦
-
-
-
-## Construido con 🛠️
-
-
-
-## Contribuyendo 🖇️
-
-
-
-## Wiki 📖
-
-Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/tu/proyecto/wiki)
-
-## Versionado 📌
-
-
-
 ## Autores ✒️
 
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
+FRANCISCO MAGDIEL ASICONA MATEO
 
 
 
