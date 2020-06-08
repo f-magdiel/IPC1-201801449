@@ -34,6 +34,7 @@ public class MenuPrincipal {
             System.out.println("*    4. SALIR                  *");
             System.out.println("********************************");
             System.out.println("");
+            System.out.print("INGRESE UNA OPCION: ");
             opcionmenu = entrada.nextInt();
 
             switch (opcionmenu) {

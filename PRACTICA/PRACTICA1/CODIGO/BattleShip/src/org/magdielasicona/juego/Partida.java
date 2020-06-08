@@ -322,6 +322,14 @@ public class Partida {
         this.contadorVictoria = contadorVictoria;
     }
 
+    public int getIntentosDisponibles() {
+        return intentosDisponibles;
+    }
+
+    public void setIntentosDisponibles(int intentosDisponibles) {
+        this.intentosDisponibles = intentosDisponibles;
+    }
+
     public void setearValoresPartida() {
         nombreUser = " ";
         barcosDestruidos = 0;

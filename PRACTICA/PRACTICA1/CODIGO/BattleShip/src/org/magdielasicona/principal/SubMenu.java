@@ -38,6 +38,7 @@ public class SubMenu {
             System.out.println("*    6. REGRESA EL MENU PRINCIPAL      *");
             System.out.println("****************************************");
             System.out.println("");
+            System.out.print("INGRESE UNA OPCION: ");
             opcionsubmenu = entradasub.nextInt();
 
             switch (opcionsubmenu) {
@@ -68,6 +69,11 @@ public class SubMenu {
                     break;
                 case 5:
                    Controlador.getInstancia().reiniciarTablero();
+                   Tablero.getInstancia().setPortaavion(1);
+                   Tablero.getInstancia().setSubmarino(3);
+                   Tablero.getInstancia().setDestructor(3);
+                   Tablero.getInstancia().setFragata(2);
+                   Tablero.getInstancia().setEaster(1);
                    crearTablero();
                     break;
                 case 6:
@@ -118,7 +124,7 @@ public class SubMenu {
          System.out.println("NICKNAME                 ESTADO                  INTENTOS      ");
          for (int k = 0; k < Partida.getInstancia().getContadorSesion(); k++) {
              if ("GANO"==Partida.estadoPartida[k]) {
-                 System.out.println(Partida.listaUsuario[k]+"   "+Partida.estadoPartida[k]+" "+Partida.intentosPartida[k]);
+                 System.out.println(Partida.listaUsuario[k]+"             "+Partida.estadoPartida[k]+"             "+Partida.intentosPartida[k]);
              }
         }
     }

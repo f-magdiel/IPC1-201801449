@@ -105,7 +105,7 @@ public class Tablero {
             System.out.println("*      6. SALIR AL SUBMENU                *");
             System.out.println("*******************************************");
             System.out.println("");
-
+            System.out.print("INGRESE UNA OPCION: ");
             opcioninsertar = entradaopcion.nextInt();
 
             switch (opcioninsertar) {
@@ -723,7 +723,7 @@ public class Tablero {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 if (tableroPrincipal[i][j] == tableroPrincipal[aE][bE]) {
-                    tableroPrincipal[aE][bE] = " ";
+                    tableroPrincipal[aE][bE] = "-";
                     break;
                 }
             }

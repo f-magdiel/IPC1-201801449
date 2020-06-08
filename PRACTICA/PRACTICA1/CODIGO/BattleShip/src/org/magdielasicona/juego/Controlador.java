@@ -31,6 +31,8 @@ public class Controlador {
         System.out.print("INGRESE LA CANTIDAD DE INTENTOS: ");
         contadorIntentos = entradaJugar.nextInt();
         System.out.println("NUEVA CANTIDAD DE INTENTOS: "+contadorIntentos);
+        Partida.getInstancia().setIntentosDisponibles(contadorIntentos);
+        
     }
     
     
@@ -55,7 +57,7 @@ public class Controlador {
     public void reiniciarTablero(){
     for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                Tablero.tableroPrincipal[i][j] = " ";
+                Tablero.tableroPrincipal[i][j] = "-";
 
             }
         }
