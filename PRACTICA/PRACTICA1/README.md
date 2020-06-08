@@ -13,11 +13,34 @@ S.O:  Windows 10 , Windows 8.1 , Windows 7
 
 
 
-### Instalación 
 
 
 
-## Ejecutando las pruebas ⚙️
+
+## CLASES UTILIZADOS
+## CLASES UTILIZADOS EN EL PAQUETE org.magdielasicona.principal
+### Bienvenido
+Clase que se utilió para dar la bienvenida la usuario cuando ejecuta el programa.
+### MenuPrincipal
+Clase que se utilizó para gestionar el Menu Principal, donde se puede acceder atraves de el en el sub menu.
+### SubMenu
+Clase que se utilizó para gestionar el SubMenu, donde se puede acceder atraves de él en el menu del juego.
+## CLASES UTILIZADOS EN EL PAQUETE org.magdielasicona.juego
+### Controlador
+Clase que se utilizó para controlar la cantidad de intentos, visualizar el tablero y reiniciar el tablero.
+### Partida
+Clase que se utilizó para gestionar el menu del juego, donde se indica la hora, fecha , cantidad de intentos, barcos hunidos, y en donde se puede visualizar el tablero en tiempo real.
+### Tablero
+Clase que se utilizó para gestionar el disparo que hace el usuario, donde se le indica si gana, piede o abandona la partida.
+
+## METODOS IMPLEMENTADOS
+### MenuPrincipal.mostrarMenuPrincipal
+Metodo para imprimir las 4 opciones del Menu
+### MenuPrincipal.mostrarMenuPrincipal
+
+### MenuPrincipal.mostrarMenuPrincipal
+
+### MenuPrincipal.mostrarMenuPrincipal
 
 
 
