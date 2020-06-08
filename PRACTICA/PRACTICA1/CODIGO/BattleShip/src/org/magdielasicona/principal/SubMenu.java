@@ -51,10 +51,12 @@ public class SubMenu {
                     break;
                 case 3:
                     try{
+                        
+                   Partida.getInstancia().validacionTablero();
+                   Partida.getInstancia().empezarJugar(); //DEMO
                     
-                   Partida.getInstancia().ingresoNombre();
-                   Partida.getInstancia().validacionIniciarJugar();
-                   // Partida.getInstancia().validacionTablero();
+                   
+                   
                     }catch(Exception e){
                     
                     }
@@ -90,7 +92,35 @@ public class SubMenu {
     }
 
     public void reporteVictorias() {
-        System.out.println("ReporteVictorias");
+        
+        //Ordenamiento Burbuja
+        int aux;
+        String auxL;
+        String auxE;
+        for (int i = 0; i < (Partida.getInstancia().getContadorSesion()-1); i++) {
+            for (int j = 0; j < (Partida.getInstancia().getContadorSesion()-1); j++) {
+                if (Partida.intentosPartida[j]>Partida.intentosPartida[i+j]) {
+                    aux = Partida.intentosPartida[j];
+                    Partida.intentosPartida[j] = Partida.intentosPartida[j+1];
+                    Partida.intentosPartida[j+1]=aux;
+                    
+                    auxL = Partida.listaUsuario[j];
+                    Partida.listaUsuario[j]=Partida.listaUsuario[j+1];
+                    Partida.listaUsuario[j+1] = auxL;
+                    
+                    auxE = Partida.estadoPartida[j];
+                    Partida.estadoPartida[j]=Partida.estadoPartida[j+1];
+                    Partida.estadoPartida[j+1] = auxE;
+                }
+            }
+        }
+         System.out.println("********************REPORTE VICTORIAS********************");
+         System.out.println("NICKNAME                 ESTADO                  INTENTOS      ");
+         for (int k = 0; k < Partida.getInstancia().getContadorSesion(); k++) {
+             if ("GANO"==Partida.estadoPartida[k]) {
+                 System.out.println(Partida.listaUsuario[k]+"   "+Partida.estadoPartida[k]+" "+Partida.intentosPartida[k]);
+             }
+        }
     }
 
     

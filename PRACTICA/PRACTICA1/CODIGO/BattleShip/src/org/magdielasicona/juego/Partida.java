@@ -3,6 +3,7 @@ package org.magdielasicona.juego;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
+import org.magdielasicona.principal.MenuPrincipal;
 import org.magdielasicona.principal.SubMenu;
 
 /**
@@ -16,7 +17,6 @@ public class Partida {
     private int contadorSesion = 0;
     private int contadorAbandonar = 0;
     private int contadorVictoria = 0;
-    private int contadorBarcosHundidos = 0;
 
     public static String[] listaUsuario = new String[50];//guardado usuario
     public static String[] estadoPartida = new String[50];//guardando estado partida gano, perdio, abandono
@@ -44,12 +44,13 @@ public class Partida {
     Scanner entradaNombres = new Scanner(System.in);
     Calendar calendario = new GregorianCalendar();
 
-    public void resetarGeneral(){
-    setearValoresPartida();
-    Tablero.getInstancia().setearValoresTablero();
-    Controlador.getInstancia().setearValoresControlador();
+    public void resetarGeneral() {
+        
+        Tablero.getInstancia().setearValoresTablero();
+        Controlador.getInstancia().setearValoresControlador();
+        setearValoresPartida();
     }
-    
+
     public void validacionAbandonar() {
         System.out.println(":-(, Adios: " + listaUsuario[contadorSesion]);
         estadoPartida[contadorSesion] = "ABANDONÓ";
@@ -57,7 +58,7 @@ public class Partida {
         intentosPartida[contadorSesion] = resultadoIntentos;
         contadorSesion++;
         resetarGeneral();
-        SubMenu.getInstancia().crearTablero();
+        MenuPrincipal.getInstancia().mostrarMenuPrincipal();
     }
 
     public void validacionIniciarJugar() {
@@ -69,7 +70,7 @@ public class Partida {
             intentosPartida[contadorSesion] = resultadoIntentos;
             contadorSesion++;
             resetarGeneral();
-            SubMenu.getInstancia().crearTablero();
+            MenuPrincipal.getInstancia().mostrarMenuPrincipal();
 
         } else if (barcosDestruidos == 9) {
             System.out.println("FELICIDADES GANÓ: " + listaUsuario[contadorSesion]);
@@ -78,7 +79,7 @@ public class Partida {
             intentosPartida[contadorSesion] = resultadoIntentos;
             contadorSesion++;
             resetarGeneral();
-            SubMenu.getInstancia().crearTablero();
+            MenuPrincipal.getInstancia().mostrarMenuPrincipal();
         } else {
 
             empezarJugar();
@@ -101,22 +102,31 @@ public class Partida {
                 if (Tablero.getInstancia().getDestructor() == 0) {
                     if (Tablero.getInstancia().getFragata() == 0) {
                         if (Tablero.getInstancia().getEaster() == 0) {
+                            ingresoNombre();
+
                             validacionIniciarJugar();
+
                         } else {
                             System.out.println("ERROR, EL TABLERO ESTÁ INCOMPLETO!!!!!");
+                            SubMenu.getInstancia().crearTablero();
+
                         }
                     } else {
                         System.out.println("ERROR, EL TABLERO ESTÁ INCOMPLETO!!!!!");
+                        SubMenu.getInstancia().crearTablero();
                     }
                 } else {
                     System.out.println("ERROR, EL TABLERO ESTÁ INCOMPLETO!!!!!");
+                    SubMenu.getInstancia().crearTablero();
                 }
 
             } else {
                 System.out.println("ERROR, EL TABLERO ESTÁ INCOMPLETO!!!!!");
+                SubMenu.getInstancia().crearTablero();
             }
         } else {
             System.out.println("ERROR, EL TABLERO ESTÁ INCOMPLETO!!!!!");
+            SubMenu.getInstancia().crearTablero();
         }
     }
 
@@ -136,7 +146,7 @@ public class Partida {
             System.out.println("");
             System.out.println("HORA: " + dia + "/" + mes + "/" + año + "    " + hora + ":" + minuto + ":" + segundo);
             System.out.println("");
-            System.out.println("BARCOS HUNDIDOS");
+            System.out.println(barcosDestruidos+"/"+"9"+"  BARCOS HUNDIDOS");
 
             System.out.println("");
             System.out.println(intentosDisponibles + "/" + Controlador.getInstancia().getContadorIntentos() + " INTENTOS");
@@ -175,12 +185,14 @@ public class Partida {
         String cadena = "";
         String cor1;
         String cor2;
+        int aDireccion, bDireccion;
         int valor;
 
         int contador;
         System.out.print("INGRESE LA COORDENADA (FILA,COLUMNA): ");
         coordenadaAtaque = entradaNombres.next();
         resultadoIntentos++;
+        
         contador = 0;
 
         coordenada = coordenadaAtaque.split("-");
@@ -195,149 +207,85 @@ public class Partida {
             }
 
         }
-        int a, b;
-        a = direccion[0];
-        b = direccion[1];
+        //valores de X y Y, que son ingresados por el usuario para atacar
+        aDireccion = direccion[0];
+        bDireccion = direccion[1];
 
-        String valor1 = "";//(0,0)
-        String valor2 = "";//(1,1)
-
-        if (Tablero.tableroPrincipal[a][b].equals("O")) {
+        
+        if (Tablero.tableroPrincipal[aDireccion][bDireccion] == "O") {
             //Buscar la coordenada que fue ingresada por obtener la coordenada de ataque
-            for (int i = 0; i < 50; i++) {
-                if (coordenadaAtaque.equals(Tablero.coordenadaGuardada[i])) {
-                    valor1 = Tablero.coordenadaGuardada[i];
-                    valor2 = Tablero.coordenadaGuardada[i + 1];
+            //Variable para almarcenar las coordenada en par
+            String valor1 = null;//(0,0)
+            String valor2 = null;//(1,1)
 
-                    if (valor2 == null) {
-                        valor2 = valor1;
+            for (int i = 0; i < 100; i+=3) {
+
+                valor1 = Tablero.coordenadaGuardada[i];
+                valor2 = Tablero.coordenadaGuardada[i + 1];
+                
+                
+                int aVal, bVal, cVal, dVal;
+                char a;
+                char b;
+                char c;
+                char d;
+                a = valor1.charAt(1);
+                b = valor1.charAt(3);
+                c = valor2.charAt(1);
+                d = valor2.charAt(3);
+
+                aVal = Character.getNumericValue(a);
+                bVal = Character.getNumericValue(b);
+                cVal = Character.getNumericValue(c);
+                dVal = Character.getNumericValue(d);
+
+               
+
+                //Horizontal
+                if (aDireccion == aVal && aDireccion == cVal) {
+                    
+                    if (bDireccion >= bVal && bDireccion <= dVal) {
+                        for (int k = bVal; k <= dVal; k++) {
+                            Tablero.tableroPrincipal[aVal][k] = "X";
+                            if (dVal==k) {
+                                barcosDestruidos++;
+                                valor1 ="";
+                                valor2 ="";
+                                validacionIniciarJugar();
+                            }
+                        }
 
                     }
-
-                }
-            }
-        } else if (Tablero.tableroPrincipal[a][b].equals("$")) {
-            for (int i = 0; i < 50; i++) {
-                if (coordenadaAtaque.equals(Tablero.coordenadaGuardada[i])) {
-                    valor1 = Tablero.coordenadaGuardada[i];
-                    valor2 = Tablero.coordenadaGuardada[i + 1];
-
-                    if (valor2 == null) {
-                        valor2 = valor1;
+                } 
+                //vertical
+                if (bDireccion == bVal && bDireccion == dVal) {
+                    if (aDireccion >= aVal && aDireccion <= cVal) {
+                        for (int j = aVal; j <= cVal; j++) {
+                            Tablero.tableroPrincipal[j][bDireccion] = "X";
+                            if (cVal==j) {
+                                barcosDestruidos++;
+                                valor1 ="";
+                                valor2 ="";
+                                validacionIniciarJugar();
+                            }
+                        }
 
                     }
-
                 }
+
             }
-        } else if (Tablero.tableroPrincipal[a][b].equals("-")) {
-            System.out.println("NO LE DÍO A NINGUN BARCO");
+        } else if (Tablero.tableroPrincipal[aDireccion][bDireccion].equals("$")) {
+            Tablero.tableroPrincipal[aDireccion][bDireccion] = "X";
+            System.out.println("201801449 FRANCISCO MAGDIEL ASICONA MATEO");
+            validacionIniciarJugar();
+
+        } else if (Tablero.tableroPrincipal[aDireccion][bDireccion].equals("-")) {
+            System.out.println("");
+            System.out.println("NO LE DIÓ A NINGUN BARCO");
             validacionIniciarJugar();
         }
 
-        //------------------------------------------------------
-        //busca la coordenada en el tablero
-        //------------------------------------------------------------
-        if (valor1 == valor2) {
-            contador = 0;
-
-            coordenada = valor1.split("-");
-            for (int i = 0; i < coordenada.length; i++) {
-                cadena = quitarParentesis(coordenada[i]);
-                pos = cadena.split(",");
-                for (int j = 0; j < pos.length; j++) {
-
-                    valor = Integer.parseInt(pos[j]);
-                    direccion[contador] = valor;
-                    contador++;
-                }
-
-            }
-            int x;
-            int y;
-            x = direccion[0];
-            y = direccion[1];
-
-            System.out.println(Tablero.tableroPrincipal[x][y]);
-
-            if (Tablero.tableroPrincipal[x][y].equals("O")) {
-                Tablero.tableroPrincipal[x][y] = "X";
-                System.out.println("LE DIÓ A UN BARCO");
-                barcosDestruidos++;
-                validacionIniciarJugar();
-
-            } else if (Tablero.tableroPrincipal[x][y].equals("$")) {
-                System.out.println("LE DIÓ AL EASTER EGG");
-                Tablero.tableroPrincipal[x][y] = "X";
-                System.out.println("201801449 Francisco Magdiel Asicona ");
-                validacionIniciarJugar();
-
-            }
-
-            //-----------------------------------------------------------------
-            //Coordenadas diferentes (0,0)-(0,3)
-        } else if (valor1 != valor2) {
-
-            contador = 0;
-
-            coordenada = valor1.split("-");
-            for (int i = 0; i < coordenada.length; i++) {
-                cadena = quitarParentesis(coordenada[i]);
-                pos = cadena.split(",");
-                for (int j = 0; j < pos.length; j++) {
-
-                    valor = Integer.parseInt(pos[j]);
-                    direccion[contador] = valor;
-                    contador++;
-                }
-
-            }
-            int aL;
-            int bL;
-            aL = direccion[0];
-            bL = direccion[1];
-
-            //------------------------------------------------------------------
-            contador = 0;
-
-            coordenada = valor2.split("-");
-            for (int i = 0; i < coordenada.length; i++) {
-                cadena = quitarParentesis(coordenada[i]);
-                pos = cadena.split(",");
-                for (int j = 0; j < pos.length; j++) {
-
-                    valor = Integer.parseInt(pos[j]);
-                    direccion[contador] = valor;
-                    contador++;
-                }
-
-            }
-            int cL;
-            int dL;
-            cL = direccion[0];
-            dL = direccion[1];
-
-            if (Tablero.tableroPrincipal[aL][bL] == "O") {
-                //(0,2)-(0,4)
-                if (aL == cL) {
-                    for (int i = bL; i <= dL; i++) {
-                        Tablero.tableroPrincipal[aL][i] = "X";
-                        System.out.println("LE DIÓ A UN BARCO");
-                        barcosDestruidos++;
-                    }
-                    validacionIniciarJugar();
-                } else if (bL == dL) {
-                    for (int j = aL; j <= cL; j++) {
-                        Tablero.tableroPrincipal[j][bL] = "X";
-                        System.out.println("LE DIÓ A UN BARCO");
-                        barcosDestruidos++;
-                    }
-                    validacionIniciarJugar();
-                }
-
-            }
-
-        }
-
+        
     }
 
     public static String quitarParentesis(String cadena) {
@@ -377,10 +325,11 @@ public class Partida {
     public void setearValoresPartida() {
         nombreUser = " ";
         barcosDestruidos = 0;
-        resultadoIntentos =0;
-        
+        resultadoIntentos = 0;
+        intentosDisponibles = Controlador.getInstancia().getContadorIntentos();
+
         for (int i = 0; i < direccion.length; i++) {
-            direccion[i]=0;
+            direccion[i] = 0;
         }
     }
 }

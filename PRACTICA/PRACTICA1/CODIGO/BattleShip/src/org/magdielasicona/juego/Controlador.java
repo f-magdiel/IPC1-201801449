@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Controlador {
     
      private static Controlador instanciaControlador;
-     private int contadorIntentos = 3;
+     private int contadorIntentos = 10;
      
      
      

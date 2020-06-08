@@ -19,7 +19,7 @@ public class Tablero {
     }
     //Variables
     public static String[][] tableroPrincipal = new String[10][10];
-    public static String[] coordenadaGuardada = new String[50];/////AQUI ME Quede
+    public static String[] coordenadaGuardada = new String[100];/////AQUI ME Quede
 
     private int coordenada[] = new int[4];
     public int contadorCoordenada = 0;
@@ -60,15 +60,19 @@ public class Tablero {
     private String posicionbarcos;
 
     Scanner entradaopcion = new Scanner(System.in);
-
-    public void creandoTablero() {
-        //Crando el tablero asignadno " " para cada vector
+    
+    public void rellenandoTablero(){
+    //Crando el tablero asignadno " " para cada vector
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 tableroPrincipal[i][j] = "-";
 
             }
         }
+    }
+
+    public void creandoTablero() {
+        
 
         //Imprimiendo el Tablero Vacio
         System.out.println("******************TABLERO VACIO*******************");
@@ -572,8 +576,10 @@ public class Tablero {
         cadenacoordenada = posicionbarcos.split("-");
         for (int i = 0; i < cadenacoordenada.length; i++) {
             coordenadaGuardada [contadorCoordenada] = cadenacoordenada[i];
-            System.out.println(contadorCoordenada);
             contadorCoordenada++;
+            coordenadaGuardada [contadorCoordenada] = cadenacoordenada[i];
+            contadorCoordenada++;
+            
             
             cadena = quitarParentesis(cadenacoordenada[i]);
             pos = cadena.split(",");
@@ -629,7 +635,8 @@ public class Tablero {
         cadenacoordenada = posicionbarcos.split("-");
         for (int i = 0; i < cadenacoordenada.length; i++) {
             coordenadaGuardada [contadorCoordenada] = cadenacoordenada[i];
-            System.out.println(contadorCoordenada);
+            contadorCoordenada++;
+             coordenadaGuardada [contadorCoordenada] = cadenacoordenada[i];
             contadorCoordenada++;
             
             cadena = quitarParentesis(cadenacoordenada[i]);
