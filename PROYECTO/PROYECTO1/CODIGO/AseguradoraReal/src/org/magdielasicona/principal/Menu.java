@@ -8,6 +8,7 @@ package org.magdielasicona.principal;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import org.magdielasicona.datos.SolicitudSeguro;
 
 /**
  *
@@ -22,7 +23,7 @@ public class Menu extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("MENU PRINCIPAL");
-        this.setVisible(true);
+        
         
      
     }
@@ -39,6 +40,7 @@ public class Menu extends javax.swing.JFrame {
         jButtonIniciarSesion = new javax.swing.JButton();
         jButtonSalir = new javax.swing.JButton();
         jButtonISolicitarSeguro = new javax.swing.JButton();
+        jButtonICargarDatos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,33 +52,50 @@ public class Menu extends javax.swing.JFrame {
 
         jButtonISolicitarSeguro.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonISolicitarSeguro.setText("Solicitar Seguro");
+        jButtonISolicitarSeguro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonISolicitarSeguroActionPerformed(evt);
+            }
+        });
+
+        jButtonICargarDatos.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
+        jButtonICargarDatos.setText("Cargar Datos");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addContainerGap(25, Short.MAX_VALUE)
+                .addComponent(jButtonICargarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonISolicitarSeguro, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonIniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(12, 12, 12)
                 .addComponent(jButtonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(72, 72, 72)
+                .addGap(90, 90, 90)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonICargarDatos)
                     .addComponent(jButtonISolicitarSeguro)
                     .addComponent(jButtonIniciarSesion)
                     .addComponent(jButtonSalir))
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonISolicitarSeguroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonISolicitarSeguroActionPerformed
+       SolicitudSeguro sol = new SolicitudSeguro();
+       sol.setVisible(true);
+       dispose();
+    }//GEN-LAST:event_jButtonISolicitarSeguroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -114,6 +133,7 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonICargarDatos;
     private javax.swing.JButton jButtonISolicitarSeguro;
     private javax.swing.JButton jButtonIniciarSesion;
     private javax.swing.JButton jButtonSalir;
