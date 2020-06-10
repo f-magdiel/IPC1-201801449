@@ -8,6 +8,8 @@ package org.magdielasicona.principal;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import org.magdielasicona.datos.CargarDatos;
+import org.magdielasicona.datos.Login;
 import org.magdielasicona.datos.SolicitudSeguro;
 
 /**
@@ -46,9 +48,19 @@ public class Menu extends javax.swing.JFrame {
 
         jButtonIniciarSesion.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonIniciarSesion.setText("Iniciar Sesion");
+        jButtonIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonIniciarSesionActionPerformed(evt);
+            }
+        });
 
         jButtonSalir.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonSalir.setText("Salir");
+        jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalirActionPerformed(evt);
+            }
+        });
 
         jButtonISolicitarSeguro.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonISolicitarSeguro.setText("Solicitar Seguro");
@@ -60,6 +72,11 @@ public class Menu extends javax.swing.JFrame {
 
         jButtonICargarDatos.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonICargarDatos.setText("Cargar Datos");
+        jButtonICargarDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonICargarDatosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -96,6 +113,22 @@ public class Menu extends javax.swing.JFrame {
        sol.setVisible(true);
        dispose();
     }//GEN-LAST:event_jButtonISolicitarSeguroActionPerformed
+
+    private void jButtonICargarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonICargarDatosActionPerformed
+        CargarDatos cargadatos = new CargarDatos();
+        cargadatos.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonICargarDatosActionPerformed
+
+    private void jButtonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarSesionActionPerformed
+      Login login = new Login();
+      login.setVisible(true);
+      dispose();
+    }//GEN-LAST:event_jButtonIniciarSesionActionPerformed
+
+    private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jButtonSalirActionPerformed
 
     /**
      * @param args the command line arguments

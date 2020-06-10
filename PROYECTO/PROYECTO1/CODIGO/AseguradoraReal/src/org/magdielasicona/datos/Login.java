@@ -5,22 +5,21 @@
  */
 package org.magdielasicona.datos;
 
-import javax.swing.JOptionPane;
 import org.magdielasicona.principal.Menu;
 
 /**
  *
  * @author FRANMAGDIEL_PC
  */
-public class CargarDatos extends javax.swing.JFrame {
+public class Login extends javax.swing.JFrame {
 
     /**
-     * Creates new form CargarDatos
+     * Creates new form Login
      */
-    public CargarDatos() {
+    public Login() {
         initComponents();
-        this.setTitle("CARGAR DATOS");
         this.setLocationRelativeTo(null);
+        this.setTitle("INICIAR SESIÓN");
     }
 
     /**
@@ -32,24 +31,18 @@ public class CargarDatos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextAreaCargarDatos = new javax.swing.JTextArea();
-        jButtonCargarDatos = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jTextFieldLogin = new javax.swing.JTextField();
+        jButtonLogin = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextAreaCargarDatos.setColumns(20);
-        jTextAreaCargarDatos.setRows(5);
-        jScrollPane1.setViewportView(jTextAreaCargarDatos);
+        jLabel1.setFont(new java.awt.Font("DejaVu Sans", 0, 14)); // NOI18N
+        jLabel1.setText("INGRESE SU DPI:");
 
-        jButtonCargarDatos.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
-        jButtonCargarDatos.setText("Cargar");
-        jButtonCargarDatos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCargarDatosActionPerformed(evt);
-            }
-        });
+        jButtonLogin.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
+        jButtonLogin.setText("Login");
 
         jButtonCancelar.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonCancelar.setText("Cancelar");
@@ -64,26 +57,33 @@ public class CargarDatos extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(118, 118, 118)
+                        .addComponent(jButtonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(52, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonCargarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
+                .addGap(93, 93, 93)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCargarDatos)
-                    .addComponent(jButtonCancelar))
-                .addContainerGap(44, Short.MAX_VALUE))
+                    .addComponent(jLabel1)
+                    .addComponent(jTextFieldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addComponent(jButtonLogin)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addComponent(jButtonCancelar)
+                .addGap(38, 38, 38))
         );
 
         pack();
@@ -94,16 +94,6 @@ public class CargarDatos extends javax.swing.JFrame {
        menu.setVisible(true);
        dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
-
-    private void jButtonCargarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCargarDatosActionPerformed
-        String datosIngresados = jTextAreaCargarDatos.getText().toUpperCase();
-        if (jTextAreaCargarDatos.getText().length() == 0) {
-            JOptionPane.showMessageDialog(null,"ARÉA DE TEXTO VACÍO");
-        }else{
-        
-        }
-        
-    }//GEN-LAST:event_jButtonCargarDatosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -122,28 +112,28 @@ public class CargarDatos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CargarDatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CargarDatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CargarDatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CargarDatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CargarDatos().setVisible(true);
+                new Login().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancelar;
-    private javax.swing.JButton jButtonCargarDatos;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextAreaCargarDatos;
+    private javax.swing.JButton jButtonLogin;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField jTextFieldLogin;
     // End of variables declaration//GEN-END:variables
 }
