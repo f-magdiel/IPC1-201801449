@@ -59,17 +59,17 @@
                                       </Group>
                                   </Group>
                                   <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jTextFieldTelefono" min="-2" pref="222" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldDPI" min="-2" pref="222" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldApellidos" min="-2" pref="222" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldNombres" min="-2" pref="222" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldTipoDeVehiculo" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldUsoDeVehiculo" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldMarca" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldLinea" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldModelo" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldValorDeVehiculo" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jComboBoxTipoDeVehiculo" max="32767" attributes="0"/>
+                                      <Component id="jTextFieldTelefono" pref="222" max="32767" attributes="0"/>
+                                      <Component id="jTextFieldDPI" pref="222" max="32767" attributes="0"/>
+                                      <Component id="jTextFieldApellidos" pref="222" max="32767" attributes="0"/>
+                                      <Component id="jTextFieldNombres" max="32767" attributes="0"/>
+                                      <Component id="jTextFieldValorDeVehiculo" alignment="0" pref="222" max="32767" attributes="0"/>
+                                      <Component id="jComboBoxUsoDeVehiculo" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jComboBoxMarca" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jComboBoxLinea" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jComboBoxModelo" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
@@ -129,28 +129,28 @@
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTextFieldTipoDeVehiculo" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBoxTipoDeVehiculo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTextFieldUsoDeVehiculo" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBoxUsoDeVehiculo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTextFieldMarca" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBoxMarca" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTextFieldLinea" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBoxLinea" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTextFieldModelo" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBoxModelo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -176,7 +176,7 @@
                   <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTextFieldPosibleCostoDeducible" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="35" max="32767" attributes="0"/>
+              <EmptySpace pref="25" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -277,16 +277,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldTelefono">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldTipoDeVehiculo">
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldUsoDeVehiculo">
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldMarca">
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldLinea">
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldModelo">
-    </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldValorDeVehiculo">
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
@@ -371,6 +361,56 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Solicitar Seguro"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBoxTipoDeVehiculo">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBoxUsoDeVehiculo">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBoxMarca">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBoxLinea">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBoxModelo">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

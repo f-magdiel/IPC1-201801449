@@ -6,6 +6,7 @@
 package org.magdielasicona.datos;
 
 import javax.swing.JOptionPane;
+import org.magdielasicona.controlador.DatosObtenidos;
 import org.magdielasicona.principal.Menu;
 
 /**
@@ -100,6 +101,8 @@ public class CargarDatos extends javax.swing.JFrame {
         if (jTextAreaCargarDatos.getText().length() == 0) {
             JOptionPane.showMessageDialog(null,"ARÉA DE TEXTO VACÍO");
         }else{
+        DatosObtenidos datos = DatosObtenidos.getInstancia();
+        datos.obtenerDatos(datosIngresados);
         
         }
         

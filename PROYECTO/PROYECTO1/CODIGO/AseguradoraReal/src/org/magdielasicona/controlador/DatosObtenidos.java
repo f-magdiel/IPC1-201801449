@@ -19,6 +19,9 @@ public class DatosObtenidos {
     public void obtenerDatos(String datosObtenidos){
     String [] datos;
     datos = datosObtenidos.split(",");
+        for (int i = 0; i < datos.length; i+=2) {
+            System.out.println(datos[i]);
+        }
     
     }
 }
