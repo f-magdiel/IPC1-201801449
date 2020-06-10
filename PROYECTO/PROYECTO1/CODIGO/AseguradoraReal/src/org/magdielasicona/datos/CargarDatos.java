@@ -98,6 +98,7 @@ public class CargarDatos extends javax.swing.JFrame {
 
     private void jButtonCargarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCargarDatosActionPerformed
         String datosIngresados = jTextAreaCargarDatos.getText().toUpperCase();
+       
         if (jTextAreaCargarDatos.getText().length() == 0) {
             JOptionPane.showMessageDialog(null,"ARÉA DE TEXTO VACÍO");
         }else{

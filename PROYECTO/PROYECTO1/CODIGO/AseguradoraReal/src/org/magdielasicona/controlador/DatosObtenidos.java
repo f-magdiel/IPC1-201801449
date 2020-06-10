@@ -1,4 +1,3 @@
-
 package org.magdielasicona.controlador;
 
 /**
@@ -6,8 +5,8 @@ package org.magdielasicona.controlador;
  * @author FRANMAGDIEL_PC
  */
 public class DatosObtenidos {
-    
-     private static DatosObtenidos instanciaDatosObtenidos;
+
+    private static DatosObtenidos instanciaDatosObtenidos;
 
     public static DatosObtenidos getInstancia() {
         if (instanciaDatosObtenidos == null) {
@@ -15,13 +14,33 @@ public class DatosObtenidos {
         }
         return instanciaDatosObtenidos;
     }
-    
-    public void obtenerDatos(String datosObtenidos){
-    String [] datos;
-    datos = datosObtenidos.split(",");
-        for (int i = 0; i < datos.length; i+=2) {
-            System.out.println(datos[i]);
+    DatosObtenidos[] datosAlmacenados = new DatosObtenidos[21];
+    private String tipo, nombreTipo, valorMaximoTipo;
+    private String modelo, añoModelo, porcentajeDepreaciacionModelo;
+    private String marca, nombreMarca, porcetajePolizaMarca;
+    private String linea, nombreLinea, porcentajePolizaLinea;
+    private String uso, nombreUso, porcentajePolizaUso;
+    private String mecanica, nombreMecanica, precioMecanica;
+    private String respuesto, nombreRepuesto, precioRepuesto;
+    private String[] datos;
+    private String[] listaDatos;
+
+    public void obtenerDatos(String datosObtenidos) {
+        String datosNuevos = datosObtenidos.replaceAll("\n", ",");
+        
+        datos = datosNuevos.split(",");
+        for (int contador = 0; contador < datos.length; contador++) {
+            System.out.println("Vector: " + contador + " - " + datos[contador]);
+            if (datos[contador].equalsIgnoreCase("MODELO")) {
+                System.out.println("SI MODELO");
+
+            }
+
         }
-    
     }
+
+    public void obtenerLista() {
+
+    }
+
 }
