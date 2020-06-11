@@ -19,6 +19,7 @@ public class DatosObtenidos {
     private String[] datos;
 
     public static Tipo tipo[] = new Tipo[30];
+    public static Modelo modelo[] = new Modelo[30];
 
     public void obtenerDatos(String datosObtenidos) {
         String datosNuevos = datosObtenidos.replaceAll("\n", ",");
@@ -50,7 +51,16 @@ public class DatosObtenidos {
         for (int i = 0; i < 30; i++) {
             if (tipo[i] == null) {
                 tipo[i] = obj;
-                tipo[i].imprimir();
+                
+                return;
+            }
+        }
+    }
+    
+    public void agregarModelo(Modelo obj){
+        for (int i = 0; i < 30; i++) {
+            if (modelo[i]==null) {
+                modelo[i]=obj;
                 return;
             }
         }

@@ -17,9 +17,7 @@ public class Tipo {
     Tipo() {
        
     }
-    public void imprimir(){
-        System.out.println(this.nombreTipo+" "+this.valorMaximoTipo);
-    }
+    
 
     public String getNombreTipo() {
         return nombreTipo;
