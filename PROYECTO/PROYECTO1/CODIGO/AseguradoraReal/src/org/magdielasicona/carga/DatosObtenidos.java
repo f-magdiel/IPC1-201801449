@@ -23,6 +23,7 @@ public class DatosObtenidos {
     public static Linea linea[] = new Linea[30];
     public static Uso uso[] = new Uso[30];
     public static Mecanica mecanica[] = new Mecanica[30];
+    public static Repuesto repuesto[] = new Repuesto[30];
  
     public void obtenerDatos(String datosObtenidos) {
         String datosNuevos = datosObtenidos.replaceAll("\n", ",");
@@ -49,6 +50,7 @@ public class DatosObtenidos {
                 agregarMecanica(new Mecanica(datos[contador+1],datos[contador+2]));
 
             } else if (datos[contador].equalsIgnoreCase("REPUESTO")) {
+                 agregarRepuesto(new Repuesto(datos[contador+1],datos[contador+2]));
 
             }
 
@@ -105,6 +107,15 @@ public class DatosObtenidos {
         for (int i = 0; i < 30; i++) {
             if (mecanica[i]==null) {
                 mecanica[i]=obj;
+                return;
+            }
+        }
+    }
+    
+     public void agregarRepuesto(Repuesto obj){
+        for (int i = 0; i < 30; i++) {
+            if (repuesto[i]==null) {
+                repuesto[i]=obj;
                 return;
             }
         }

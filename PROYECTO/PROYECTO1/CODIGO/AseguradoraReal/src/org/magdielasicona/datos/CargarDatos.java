@@ -105,7 +105,8 @@ public class CargarDatos extends javax.swing.JFrame {
         }else{
         DatosObtenidos datos = DatosObtenidos.getInstancia();
         datos.obtenerDatos(datosIngresados);
-        
+        JOptionPane.showMessageDialog(null, "SE HA CARGADO LOS DATOS EXITOSAMENTE!!!");
+        jTextAreaCargarDatos.setText("");
         }
         
     }//GEN-LAST:event_jButtonCargarDatosActionPerformed
