@@ -21,7 +21,8 @@ public class DatosObtenidos {
     public static Modelo modelo[] = new Modelo[30];
     public static Marca marca[] = new Marca[30];
     public static Linea linea[] = new Linea[30];
-
+    public static Uso uso[] = new Uso[30];
+ 
     public void obtenerDatos(String datosObtenidos) {
         String datosNuevos = datosObtenidos.replaceAll("\n", ",");
 
@@ -41,6 +42,7 @@ public class DatosObtenidos {
                 agregarLinea(new Linea(datos[contador+1],datos[contador+2]));
 
             } else if (datos[contador].equalsIgnoreCase("USO")) {
+                agregarUso(new Uso(datos[contador+1],datos[contador+2]));
 
             } else if (datos[contador].equalsIgnoreCase("MECANICA")) {
 
@@ -83,6 +85,15 @@ public class DatosObtenidos {
         for (int i = 0; i < 30; i++) {
             if (linea[i] == null) {
                 linea[i] = obj;
+                return;
+            }
+        }
+    }
+    
+    public void agregarUso(Uso obj){
+        for (int i = 0; i < 30; i++) {
+            if (uso[i]==null) {
+                uso[i]=obj;
                 return;
             }
         }
