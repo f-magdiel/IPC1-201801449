@@ -1,5 +1,5 @@
 
-package org.magdielasicona.controlador;
+package org.magdielasicona.carga;
 
 /**
  *

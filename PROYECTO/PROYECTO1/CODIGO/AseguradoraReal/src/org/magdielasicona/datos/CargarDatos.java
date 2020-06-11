@@ -6,7 +6,7 @@
 package org.magdielasicona.datos;
 
 import javax.swing.JOptionPane;
-import org.magdielasicona.controlador.DatosObtenidos;
+import org.magdielasicona.carga.DatosObtenidos;
 import org.magdielasicona.principal.Menu;
 
 /**

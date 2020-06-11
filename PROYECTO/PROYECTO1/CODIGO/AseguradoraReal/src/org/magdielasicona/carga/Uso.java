@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.magdielasicona.controlador;
+package org.magdielasicona.carga;
 
 /**
  *
  * @author FRANMAGDIEL_PC
  */
-public class Linea {
+public class Uso {
     
 }

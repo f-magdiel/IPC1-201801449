@@ -1,4 +1,4 @@
-package org.magdielasicona.controlador;
+package org.magdielasicona.carga;
 
 /**
  *
@@ -14,13 +14,13 @@ public class DatosObtenidos {
         }
         return instanciaDatosObtenidos;
     }
-    
 
     private String[] datos;
 
     public static Tipo tipo[] = new Tipo[30];
     public static Modelo modelo[] = new Modelo[30];
     public static Marca marca[] = new Marca[30];
+    public static Linea linea[] = new Linea[30];
 
     public void obtenerDatos(String datosObtenidos) {
         String datosNuevos = datosObtenidos.replaceAll("\n", ",");
@@ -29,15 +29,16 @@ public class DatosObtenidos {
         for (int contador = 0; contador < datos.length; contador++) {
 
             if (datos[contador].equalsIgnoreCase("TIPO")) {
-               agregarTipo(new Tipo(datos[contador+1],datos[contador+2]));
-               
+                agregarTipo(new Tipo(datos[contador + 1], datos[contador + 2]));
+
             } else if (datos[contador].equalsIgnoreCase("MODELO")) {
-                agregarModelo(new Modelo(datos[contador+1],datos[contador+2]));
+                agregarModelo(new Modelo(datos[contador + 1], datos[contador + 2]));
 
             } else if (datos[contador].equalsIgnoreCase("MARCA")) {
-                agregarMarca(new Marca(datos[contador+1],datos[contador+2]));
+                agregarMarca(new Marca(datos[contador + 1], datos[contador + 2]));
 
             } else if (datos[contador].equalsIgnoreCase("LINEA")) {
+                agregarLinea(new Linea(datos[contador+1],datos[contador+2]));
 
             } else if (datos[contador].equalsIgnoreCase("USO")) {
 
@@ -49,35 +50,42 @@ public class DatosObtenidos {
 
         }
     }
-    
-    
+
     public void agregarTipo(Tipo obj) {
         for (int i = 0; i < 30; i++) {
             if (tipo[i] == null) {
                 tipo[i] = obj;
-                
+
                 return;
             }
         }
     }
-    
-    public void agregarModelo(Modelo obj){
+
+    public void agregarModelo(Modelo obj) {
         for (int i = 0; i < 30; i++) {
-            if (modelo[i]==null) {
-                modelo[i]=obj;
+            if (modelo[i] == null) {
+                modelo[i] = obj;
                 return;
             }
         }
     }
-    
-    public void agregarMarca(Marca obj){
+
+    public void agregarMarca(Marca obj) {
         for (int i = 0; i < 30; i++) {
-            if (marca[i]==null) {
-                marca[i]=obj;
+            if (marca[i] == null) {
+                marca[i] = obj;
                 return;
             }
         }
     }
-    
-    
+
+    public void agregarLinea(Linea obj) {
+        for (int i = 0; i < 30; i++) {
+            if (linea[i] == null) {
+                linea[i] = obj;
+                return;
+            }
+        }
+    }
+
 }
