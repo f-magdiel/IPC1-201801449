@@ -14,33 +14,47 @@ public class DatosObtenidos {
         }
         return instanciaDatosObtenidos;
     }
-    DatosObtenidos[] datosAlmacenados = new DatosObtenidos[21];
-    private String tipo, nombreTipo, valorMaximoTipo;
-    private String modelo, añoModelo, porcentajeDepreaciacionModelo;
-    private String marca, nombreMarca, porcetajePolizaMarca;
-    private String linea, nombreLinea, porcentajePolizaLinea;
-    private String uso, nombreUso, porcentajePolizaUso;
-    private String mecanica, nombreMecanica, precioMecanica;
-    private String respuesto, nombreRepuesto, precioRepuesto;
+    
+
     private String[] datos;
-    private String[] listaDatos;
+
+    public static Tipo tipo[] = new Tipo[30];
 
     public void obtenerDatos(String datosObtenidos) {
         String datosNuevos = datosObtenidos.replaceAll("\n", ",");
-        
+
         datos = datosNuevos.split(",");
         for (int contador = 0; contador < datos.length; contador++) {
-            System.out.println("Vector: " + contador + " - " + datos[contador]);
-            if (datos[contador].equalsIgnoreCase("MODELO")) {
-                System.out.println("SI MODELO");
+
+            if (datos[contador].equalsIgnoreCase("TIPO")) {
+               agregarTipo(new Tipo(datos[contador+1],datos[contador+2]));
+            } else if (datos[contador].equalsIgnoreCase("MODELO")) {
+
+            } else if (datos[contador].equalsIgnoreCase("MARCA")) {
+
+            } else if (datos[contador].equalsIgnoreCase("LINEA")) {
+
+            } else if (datos[contador].equalsIgnoreCase("USO")) {
+
+            } else if (datos[contador].equalsIgnoreCase("MECANICA")) {
+
+            } else if (datos[contador].equalsIgnoreCase("REPUESTO")) {
 
             }
 
         }
     }
-
-    public void obtenerLista() {
-
+    
+    
+    public void agregarTipo(Tipo obj) {
+        for (int i = 0; i < 30; i++) {
+            if (tipo[i] == null) {
+                tipo[i] = obj;
+                tipo[i].imprimir();
+                return;
+            }
+        }
     }
-
+    
+    
 }

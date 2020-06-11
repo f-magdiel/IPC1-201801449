@@ -91,7 +91,8 @@ public class CargarDatos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
-       Menu menu = new Menu();
+       
+        Menu menu = new Menu();
        menu.setVisible(true);
        dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
