@@ -20,6 +20,7 @@ public class DatosObtenidos {
 
     public static Tipo tipo[] = new Tipo[30];
     public static Modelo modelo[] = new Modelo[30];
+    public static Marca marca[] = new Marca[30];
 
     public void obtenerDatos(String datosObtenidos) {
         String datosNuevos = datosObtenidos.replaceAll("\n", ",");
@@ -29,9 +30,12 @@ public class DatosObtenidos {
 
             if (datos[contador].equalsIgnoreCase("TIPO")) {
                agregarTipo(new Tipo(datos[contador+1],datos[contador+2]));
+               
             } else if (datos[contador].equalsIgnoreCase("MODELO")) {
+                agregarModelo(new Modelo(datos[contador+1],datos[contador+2]));
 
             } else if (datos[contador].equalsIgnoreCase("MARCA")) {
+                agregarMarca(new Marca(datos[contador+1],datos[contador+2]));
 
             } else if (datos[contador].equalsIgnoreCase("LINEA")) {
 
@@ -61,6 +65,15 @@ public class DatosObtenidos {
         for (int i = 0; i < 30; i++) {
             if (modelo[i]==null) {
                 modelo[i]=obj;
+                return;
+            }
+        }
+    }
+    
+    public void agregarMarca(Marca obj){
+        for (int i = 0; i < 30; i++) {
+            if (marca[i]==null) {
+                marca[i]=obj;
                 return;
             }
         }

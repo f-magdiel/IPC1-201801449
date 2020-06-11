@@ -9,9 +9,9 @@ public class Modelo {
     private int añoModelo;
     private double porcentajeDepreciaciónModelo;
 
-    public Modelo(int añoModelo, double porcentajeDepreciaciónModelo) {
-        this.añoModelo = añoModelo;
-        this.porcentajeDepreciaciónModelo = porcentajeDepreciaciónModelo;
+    public Modelo(String añoModelo, String porcentajeDepreciaciónModelo) {
+        this.añoModelo = Integer.parseInt(añoModelo);
+        this.porcentajeDepreciaciónModelo = Double.parseDouble(porcentajeDepreciaciónModelo);
     }
 
     public int getAñoModelo() {

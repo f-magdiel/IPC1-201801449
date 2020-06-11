@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package org.magdielasicona.controlador;
 
 /**
@@ -10,5 +6,30 @@ package org.magdielasicona.controlador;
  * @author FRANMAGDIEL_PC
  */
 public class Marca {
+    
+    private String nombreMarca;
+    private double porcentajePolizaMarca;
+
+    public Marca(String nombreMarca, String porcentajePolizaMarca) {
+        this.nombreMarca = nombreMarca;
+        this.porcentajePolizaMarca = Double.parseDouble(porcentajePolizaMarca);
+    }
+
+    public String getNombreMarca() {
+        return nombreMarca;
+    }
+
+    public void setNombreMarca(String nombreMarca) {
+        this.nombreMarca = nombreMarca;
+    }
+
+    public double getPorcentajePolizaMarca() {
+        return porcentajePolizaMarca;
+    }
+
+    public void setPorcentajePolizaMarca(double porcentajePolizaMarca) {
+        this.porcentajePolizaMarca = porcentajePolizaMarca;
+    }
+    
     
 }
