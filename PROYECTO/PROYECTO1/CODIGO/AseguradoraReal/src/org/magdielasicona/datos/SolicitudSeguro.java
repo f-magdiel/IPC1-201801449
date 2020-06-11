@@ -5,6 +5,7 @@
  */
 package org.magdielasicona.datos;
 
+import org.magdielasicona.carga.DatosObtenidos;
 import org.magdielasicona.principal.Menu;
 
 /**
@@ -20,6 +21,31 @@ public class SolicitudSeguro extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("SOLICITAR SEGURO AUTOMAS");
+        for (int i = 0; i < DatosObtenidos.tipo.length; i++) {
+            if (DatosObtenidos.tipo[i]!=null) {
+                jComboBoxTipoDeVehiculo.addItem(DatosObtenidos.tipo[i].getNombreTipo());
+            }
+        }
+        for (int i = 0; i < DatosObtenidos.uso.length; i++) {
+            if (DatosObtenidos.uso[i]!=null) {
+                jComboBoxUsoDeVehiculo.addItem(DatosObtenidos.uso[i].getNombreUso());
+            }
+        }
+        for (int i = 0; i < DatosObtenidos.marca.length; i++) {
+            if (DatosObtenidos.marca[i]!=null) {
+                jComboBoxMarca.addItem(DatosObtenidos.marca[i].getNombreMarca());
+            }
+        }
+        for (int i = 0; i < DatosObtenidos.linea.length; i++) {
+            if (DatosObtenidos.linea[i]!=null) {
+            jComboBoxLinea.addItem(DatosObtenidos.linea[i].getNombreLinea());
+            }
+        }
+        for (int i = 0; i < DatosObtenidos.modelo.length; i++) {
+            if (DatosObtenidos.modelo[i]!=null) {
+              jComboBoxModelo.addItem(DatosObtenidos.modelo[i].getAñoModelo());
+            }
+        }
         
     }
 
@@ -100,6 +126,11 @@ public class SolicitudSeguro extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButton1.setText("Cotizar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("DejaVu Sans", 0, 14)); // NOI18N
         jLabel11.setText("COSTO PRIMA:");
@@ -274,6 +305,10 @@ public class SolicitudSeguro extends javax.swing.JFrame {
        menu.setVisible(true);
        dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

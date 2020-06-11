@@ -1,9 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package org.magdielasicona.controlador;
+
+import org.magdielasicona.carga.DatosObtenidos;
+import org.magdielasicona.carga.Tipo;
 
 /**
  *
@@ -11,4 +10,12 @@ package org.magdielasicona.controlador;
  */
 public class MenuSolicitante {
     
+    
+    public void insertandoTipoVehiculo(){
+        String vehiculo;
+        for (int i = 0; i < 30; i++) {
+            vehiculo = DatosObtenidos.tipo[i].getNombreTipo();
+            
+        }
+    }
 }
