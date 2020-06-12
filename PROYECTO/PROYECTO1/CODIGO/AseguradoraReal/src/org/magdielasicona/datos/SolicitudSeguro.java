@@ -5,7 +5,9 @@
  */
 package org.magdielasicona.datos;
 
+import java.text.DecimalFormat;
 import org.magdielasicona.carga.DatosObtenidos;
+import org.magdielasicona.controlador.CalculoSolicitante;
 import org.magdielasicona.controlador.MenuSolicitante;
 import org.magdielasicona.principal.Menu;
 
@@ -14,10 +16,16 @@ import org.magdielasicona.principal.Menu;
  * @author FRANMAGDIEL_PC
  */
 public class SolicitudSeguro extends javax.swing.JFrame {
+    
+     DecimalFormat df = new DecimalFormat("#.##");
+ private static SolicitudSeguro instanciaSolicitudSeguro;
 
-    /**
-     * @return the nombreSolicitante
-     */
+    public static SolicitudSeguro getInstancia() {
+        if (instanciaSolicitudSeguro == null) {
+            instanciaSolicitudSeguro = new SolicitudSeguro();
+        }
+        return instanciaSolicitudSeguro;
+    }
     public String getNombreSolicitante() {
         return nombreSolicitante;
     }
@@ -468,10 +476,15 @@ public class SolicitudSeguro extends javax.swing.JFrame {
         setModeloVehiculoSolicitante(jComboBoxModelo.getSelectedItem().toString());
         setValorVehiculoSolicitante(Double.parseDouble(jTextFieldValorDeVehiculo.getText()));
         
-        
-        
-        
-        
+       CalculoSolicitante calculo = CalculoSolicitante.getInstancia();
+       calculo.obteniedoValoresDeSolicitante(tipoVehiculoSolicitante, usoVehiculoSolicitante, marcaVehiculoSolicitante, lineaVehiculoSolicitante, modeloVehiculoSolicitante, valorVehiculoSolicitante);
+       calculo.realizandoCalculos();
+       
+       jTextFieldCostoPrima.setText(String.valueOf(calculo.getCostoPrima()) );
+       jTextFieldDeducible.setText(String.valueOf(calculo.getCostoDeducible()));
+       
+       jTextFieldPosibleCostoPrima.setText(String.valueOf(calculo.getCostoPrima()) );
+       jTextFieldPosibleCostoDeducible.setText(String.valueOf(calculo.getCostoDeducible()));
     }//GEN-LAST:event_jButtonCotizarActionPerformed
 
     /**
