@@ -1,21 +1,39 @@
 
 package org.magdielasicona.controlador;
 
-import org.magdielasicona.carga.DatosObtenidos;
-import org.magdielasicona.carga.Tipo;
-
 /**
  *
  * @author FRANMAGDIEL_PC
  */
 public class MenuSolicitante {
     
+     private static MenuSolicitante instanciaMenuSolicitante;
+
+    public static MenuSolicitante getInstancia() {
+        if (instanciaMenuSolicitante == null) {
+            instanciaMenuSolicitante = new MenuSolicitante();
+        }
+        return instanciaMenuSolicitante;
+    }
     
-    public void insertandoTipoVehiculo(){
-        String vehiculo;
-        for (int i = 0; i < 30; i++) {
-            vehiculo = DatosObtenidos.tipo[i].getNombreTipo();
-            
+    private double costoPrima;
+    private double deducible;
+    private double posibleCostoPrima;
+    private double posibleDeducible;
+    private double valorVehiculo;
+    Asociado asociado[] = new Asociado[50];
+    
+    public void solicitarDatos(String nombre,String apellido,String dpi,String telefono,String tipoVehiculo,String usoVehiculo,String marca,String linea,String modelo,String valorVehiculo){
+    
+    }
+    
+    public void insertarAsociado(Asociado obj){
+        for (int i = 0; i < 10; i++) {
+            if (asociado[i]==null) {
+                asociado[i] = obj;
+                return;
+            }
         }
     }
+    
 }

@@ -6,6 +6,7 @@
 package org.magdielasicona.datos;
 
 import org.magdielasicona.carga.DatosObtenidos;
+import org.magdielasicona.controlador.MenuSolicitante;
 import org.magdielasicona.principal.Menu;
 
 /**
@@ -15,8 +16,157 @@ import org.magdielasicona.principal.Menu;
 public class SolicitudSeguro extends javax.swing.JFrame {
 
     /**
-     * Creates new form SolicitudSeguro
+     * @return the nombreSolicitante
      */
+    public String getNombreSolicitante() {
+        return nombreSolicitante;
+    }
+
+    /**
+     * @param nombreSolicitante the nombreSolicitante to set
+     */
+    public void setNombreSolicitante(String nombreSolicitante) {
+        this.nombreSolicitante = nombreSolicitante;
+    }
+
+    /**
+     * @return the apellidoSolicitante
+     */
+    public String getApellidoSolicitante() {
+        return apellidoSolicitante;
+    }
+
+    /**
+     * @param apellidoSolicitante the apellidoSolicitante to set
+     */
+    public void setApellidoSolicitante(String apellidoSolicitante) {
+        this.apellidoSolicitante = apellidoSolicitante;
+    }
+
+    /**
+     * @return the dpiSolicitante
+     */
+    public String getDpiSolicitante() {
+        return dpiSolicitante;
+    }
+
+    /**
+     * @param dpiSolicitante the dpiSolicitante to set
+     */
+    public void setDpiSolicitante(String dpiSolicitante) {
+        this.dpiSolicitante = dpiSolicitante;
+    }
+
+    /**
+     * @return the telefonoSolicitante
+     */
+    public String getTelefonoSolicitante() {
+        return telefonoSolicitante;
+    }
+
+    /**
+     * @param telefonoSolicitante the telefonoSolicitante to set
+     */
+    public void setTelefonoSolicitante(String telefonoSolicitante) {
+        this.telefonoSolicitante = telefonoSolicitante;
+    }
+
+    /**
+     * @return the tipoVehiculoSolicitante
+     */
+    public String getTipoVehiculoSolicitante() {
+        return tipoVehiculoSolicitante;
+    }
+
+    /**
+     * @param tipoVehiculoSolicitante the tipoVehiculoSolicitante to set
+     */
+    public void setTipoVehiculoSolicitante(String tipoVehiculoSolicitante) {
+        this.tipoVehiculoSolicitante = tipoVehiculoSolicitante;
+    }
+
+    /**
+     * @return the usoVehiculoSolicitante
+     */
+    public String getUsoVehiculoSolicitante() {
+        return usoVehiculoSolicitante;
+    }
+
+    /**
+     * @param usoVehiculoSolicitante the usoVehiculoSolicitante to set
+     */
+    public void setUsoVehiculoSolicitante(String usoVehiculoSolicitante) {
+        this.usoVehiculoSolicitante = usoVehiculoSolicitante;
+    }
+
+    /**
+     * @return the marcaVehiculoSolicitante
+     */
+    public String getMarcaVehiculoSolicitante() {
+        return marcaVehiculoSolicitante;
+    }
+
+    /**
+     * @param marcaVehiculoSolicitante the marcaVehiculoSolicitante to set
+     */
+    public void setMarcaVehiculoSolicitante(String marcaVehiculoSolicitante) {
+        this.marcaVehiculoSolicitante = marcaVehiculoSolicitante;
+    }
+
+    /**
+     * @return the lineaVehiculoSolicitante
+     */
+    public String getLineaVehiculoSolicitante() {
+        return lineaVehiculoSolicitante;
+    }
+
+    /**
+     * @param lineaVehiculoSolicitante the lineaVehiculoSolicitante to set
+     */
+    public void setLineaVehiculoSolicitante(String lineaVehiculoSolicitante) {
+        this.lineaVehiculoSolicitante = lineaVehiculoSolicitante;
+    }
+
+    /**
+     * @return the modeloVehiculoSolicitante
+     */
+    public String getModeloVehiculoSolicitante() {
+        return modeloVehiculoSolicitante;
+    }
+
+    /**
+     * @param modeloVehiculoSolicitante the modeloVehiculoSolicitante to set
+     */
+    public void setModeloVehiculoSolicitante(String modeloVehiculoSolicitante) {
+        this.modeloVehiculoSolicitante = modeloVehiculoSolicitante;
+    }
+
+    /**
+     * @return the valorVehiculoSolicitante
+     */
+    public double getValorVehiculoSolicitante() {
+        return valorVehiculoSolicitante;
+    }
+
+    /**
+     * @param valorVehiculoSolicitante the valorVehiculoSolicitante to set
+     */
+    public void setValorVehiculoSolicitante(double valorVehiculoSolicitante) {
+        this.valorVehiculoSolicitante = valorVehiculoSolicitante;
+    }
+    
+    private String nombreSolicitante;
+    private String apellidoSolicitante;
+    private String dpiSolicitante;
+    private String telefonoSolicitante;
+    private String tipoVehiculoSolicitante;
+    private String usoVehiculoSolicitante;
+    private String marcaVehiculoSolicitante;
+    private String lineaVehiculoSolicitante;
+    private String modeloVehiculoSolicitante;
+    private double valorVehiculoSolicitante;
+    
+    
     public SolicitudSeguro() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -68,12 +218,12 @@ public class SolicitudSeguro extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jTextFieldNombres = new javax.swing.JTextField();
-        jTextFieldApellidos = new javax.swing.JTextField();
+        jTextFieldNombre = new javax.swing.JTextField();
+        jTextFieldApellido = new javax.swing.JTextField();
         jTextFieldDPI = new javax.swing.JTextField();
         jTextFieldTelefono = new javax.swing.JTextField();
         jTextFieldValorDeVehiculo = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jButtonCotizar = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jTextFieldCostoPrima = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
@@ -82,10 +232,10 @@ public class SolicitudSeguro extends javax.swing.JFrame {
         jTextFieldPosibleCostoPrima = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jTextFieldPosibleCostoDeducible = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        jButtonMenoDeducible = new javax.swing.JButton();
+        jButtonMasDeducible = new javax.swing.JButton();
+        jButtonCancelar = new javax.swing.JButton();
+        jButtonSolicitarSeguro = new javax.swing.JButton();
         jComboBoxTipoDeVehiculo = new javax.swing.JComboBox<>();
         jComboBoxUsoDeVehiculo = new javax.swing.JComboBox<>();
         jComboBoxMarca = new javax.swing.JComboBox<>();
@@ -124,11 +274,11 @@ public class SolicitudSeguro extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("DejaVu Sans", 0, 14)); // NOI18N
         jLabel10.setText("VALOR DEL VEHICULO:");
 
-        jButton1.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
-        jButton1.setText("Cotizar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCotizar.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
+        jButtonCotizar.setText("Cotizar");
+        jButtonCotizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonCotizarActionPerformed(evt);
             }
         });
 
@@ -144,22 +294,22 @@ public class SolicitudSeguro extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("DejaVu Sans", 0, 14)); // NOI18N
         jLabel14.setText("POSIBLE COSTO DEDUCIBLE:");
 
-        jButton2.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
-        jButton2.setText("- Deducible");
+        jButtonMenoDeducible.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
+        jButtonMenoDeducible.setText("- Deducible");
 
-        jButton3.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
-        jButton3.setText("- Deducible");
+        jButtonMasDeducible.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
+        jButtonMasDeducible.setText("+ Deducible");
 
-        jButton4.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
-        jButton4.setText("Cancelar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCancelar.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
+        jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButtonCancelarActionPerformed(evt);
             }
         });
 
-        jButton5.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
-        jButton5.setText("Solicitar Seguro");
+        jButtonSolicitarSeguro.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
+        jButtonSolicitarSeguro.setText("Solicitar Seguro");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -169,7 +319,7 @@ public class SolicitudSeguro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(199, 199, 199)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButtonCotizar, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,8 +349,8 @@ public class SolicitudSeguro extends javax.swing.JFrame {
                                         .addComponent(jComboBoxTipoDeVehiculo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jTextFieldTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
                                         .addComponent(jTextFieldDPI, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
-                                        .addComponent(jTextFieldApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
-                                        .addComponent(jTextFieldNombres)
+                                        .addComponent(jTextFieldApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                                        .addComponent(jTextFieldNombre)
                                         .addComponent(jTextFieldValorDeVehiculo, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
                                         .addComponent(jComboBoxUsoDeVehiculo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jComboBoxMarca, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -220,14 +370,14 @@ public class SolicitudSeguro extends javax.swing.JFrame {
                                 .addComponent(jTextFieldPosibleCostoDeducible, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(8, 8, 8)
-                                .addComponent(jButton2)
+                                .addComponent(jButtonMenoDeducible)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton3)
+                                .addComponent(jButtonMasDeducible)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton5)
+                                .addComponent(jButtonSolicitarSeguro)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton4)))))
-                .addGap(53, 76, Short.MAX_VALUE))
+                                .addComponent(jButtonCancelar)))))
+                .addGap(53, 70, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,11 +385,11 @@ public class SolicitudSeguro extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1)
-                    .addComponent(jTextFieldNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextFieldApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
@@ -273,7 +423,7 @@ public class SolicitudSeguro extends javax.swing.JFrame {
                     .addComponent(jTextFieldValorDeVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(jButtonCotizar)
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
@@ -290,25 +440,39 @@ public class SolicitudSeguro extends javax.swing.JFrame {
                     .addComponent(jTextFieldPosibleCostoDeducible, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton5)
-                    .addComponent(jButton4))
+                    .addComponent(jButtonMenoDeducible)
+                    .addComponent(jButtonMasDeducible)
+                    .addComponent(jButtonSolicitarSeguro)
+                    .addComponent(jButtonCancelar))
                 .addGap(49, 49, 49))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
        Menu menu = new Menu();
        menu.setVisible(true);
        dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonCotizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCotizarActionPerformed
+        setNombreSolicitante(jTextFieldNombre.getText());
+        setApellidoSolicitante(jTextFieldApellido.getText());
+        setDpiSolicitante(jTextFieldDPI.getText());
+        setTelefonoSolicitante(jTextFieldTelefono.getText());
+        setTipoVehiculoSolicitante(jComboBoxTipoDeVehiculo.getSelectedItem().toString());
+        setUsoVehiculoSolicitante(jComboBoxUsoDeVehiculo.getSelectedItem().toString());
+        setMarcaVehiculoSolicitante(jComboBoxMarca.getSelectedItem().toString());
+        setLineaVehiculoSolicitante(jComboBoxLinea.getSelectedItem().toString());
+        setModeloVehiculoSolicitante(jComboBoxModelo.getSelectedItem().toString());
+        setValorVehiculoSolicitante(Double.parseDouble(jTextFieldValorDeVehiculo.getText()));
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+        
+        
+        
+        
+    }//GEN-LAST:event_jButtonCotizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -346,11 +510,11 @@ public class SolicitudSeguro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JButton jButtonCotizar;
+    private javax.swing.JButton jButtonMasDeducible;
+    private javax.swing.JButton jButtonMenoDeducible;
+    private javax.swing.JButton jButtonSolicitarSeguro;
     private javax.swing.JComboBox<String> jComboBoxLinea;
     private javax.swing.JComboBox<String> jComboBoxMarca;
     private javax.swing.JComboBox<String> jComboBoxModelo;
@@ -370,11 +534,11 @@ public class SolicitudSeguro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextFieldApellidos;
+    private javax.swing.JTextField jTextFieldApellido;
     private javax.swing.JTextField jTextFieldCostoPrima;
     private javax.swing.JTextField jTextFieldDPI;
     private javax.swing.JTextField jTextFieldDeducible;
-    private javax.swing.JTextField jTextFieldNombres;
+    private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JTextField jTextFieldPosibleCostoDeducible;
     private javax.swing.JTextField jTextFieldPosibleCostoPrima;
     private javax.swing.JTextField jTextFieldTelefono;
