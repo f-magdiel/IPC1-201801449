@@ -5,6 +5,8 @@
  */
 package org.magdielasicona.datos;
 
+import javax.swing.JOptionPane;
+import org.magdielasicona.administrador.PanelAdministrador;
 import org.magdielasicona.principal.Menu;
 
 /**
@@ -32,7 +34,7 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextFieldLogin = new javax.swing.JTextField();
+        jTextFieldNombreUsuario = new javax.swing.JTextField();
         jButtonLogin = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
 
@@ -43,6 +45,11 @@ public class Login extends javax.swing.JFrame {
 
         jButtonLogin.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonLogin.setText("Login");
+        jButtonLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLoginActionPerformed(evt);
+            }
+        });
 
         jButtonCancelar.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonCancelar.setText("Cancelar");
@@ -62,7 +69,7 @@ public class Login extends javax.swing.JFrame {
                         .addGap(47, 47, 47)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextFieldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextFieldNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(118, 118, 118)
                         .addComponent(jButtonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -78,7 +85,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(93, 93, 93)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextFieldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
                 .addComponent(jButtonLogin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
@@ -94,6 +101,20 @@ public class Login extends javax.swing.JFrame {
        menu.setVisible(true);
        dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
+        String nombreUsuario;
+        nombreUsuario = jTextFieldNombreUsuario.getText().toUpperCase();
+        
+        if (nombreUsuario.equals("ADMIN")) {
+            PanelAdministrador admin = new PanelAdministrador();
+            admin.setVisible(true);
+            dispose();
+        }else if(jTextFieldNombreUsuario.getText().length()==0){
+        JOptionPane.showMessageDialog(null,"INGRESE UN USUARIO POR LO MENOS!!!");
+        }
+        
+    }//GEN-LAST:event_jButtonLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,6 +155,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonLogin;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextFieldLogin;
+    private javax.swing.JTextField jTextFieldNombreUsuario;
     // End of variables declaration//GEN-END:variables
 }

@@ -9,6 +9,7 @@ import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 import org.magdielasicona.carga.DatosObtenidos;
 import org.magdielasicona.controlador.CalculoSolicitante;
+
 import org.magdielasicona.controlador.Solicitante;
 import org.magdielasicona.principal.Menu;
 
@@ -17,8 +18,13 @@ import org.magdielasicona.principal.Menu;
  * @author FRANMAGDIEL_PC
  */
 public class SolicitudSeguro extends javax.swing.JFrame {
-
+   //Arreglo objeto de solicitante
+    Solicitante solicitante [] = new Solicitante[50];
+    
+    //Formato para los decimales
     DecimalFormat df = new DecimalFormat("#.##");
+    
+    //singleton
     private static SolicitudSeguro instanciaSolicitudSeguro;
 
     public static SolicitudSeguro getInstancia() {
@@ -27,7 +33,17 @@ public class SolicitudSeguro extends javax.swing.JFrame {
         }
         return instanciaSolicitudSeguro;
     }
+    //metodo para agregar el objeto solicitante al arreglo
+    public void agregarSolicitante(Solicitante obj) {
+        for (int i = 0; i < 30; i++) {
+            if (solicitante[i] == null) {
+                solicitante[i] = obj;
 
+                return;
+            }
+        }
+    }
+    
     public String getNombreSolicitante() {
         return nombreSolicitante;
     }
@@ -550,7 +566,9 @@ public class SolicitudSeguro extends javax.swing.JFrame {
         setDeducibleSolicitante(jTextFieldDeducible.getText());
 
         //Metodo para enviar los datos fijos, del solicitante
-        Solicitante.getInstancia().solicitarDatos(this.nombreSolicitante, this.apellidoSolicitante, this.dpiSolicitante, this.telefonoSolicitante, this.tipoVehiculoSolicitante, this.usoVehiculoSolicitante, this.marcaVehiculoSolicitante, this.lineaVehiculoSolicitante, this.modeloVehiculoSolicitante, this.valorVehiculoSolicitante, this.primaSolicitante, this.deducibleSolicitante);
+       
+        agregarSolicitante(new Solicitante(this.nombreSolicitante, this.apellidoSolicitante, this.dpiSolicitante, this.telefonoSolicitante, this.tipoVehiculoSolicitante, this.usoVehiculoSolicitante, this.marcaVehiculoSolicitante, this.lineaVehiculoSolicitante, this.modeloVehiculoSolicitante, this.valorVehiculoSolicitante, this.primaSolicitante, this.deducibleSolicitante));
+        
     }//GEN-LAST:event_jButtonSolicitarSeguroActionPerformed
 
     /**

@@ -7,14 +7,7 @@ package org.magdielasicona.controlador;
  */
 public class Solicitante {
     
-     private static Solicitante instanciaSolicitante;
-
-    public static Solicitante getInstancia() {
-        if (instanciaSolicitante == null) {
-            instanciaSolicitante = new Solicitante();
-        }
-        return instanciaSolicitante;
-    }
+     
     
    
     
@@ -35,7 +28,7 @@ public class Solicitante {
     
     
     
-    public void solicitarDatos(String nombre,String apellido,String dpi,String telefono,String tipoVehiculo,String usoVehiculo,String marca,String linea,String modelo,double valorVehiculo,String prima,String deducible){
+    public Solicitante(String nombre,String apellido,String dpi,String telefono,String tipoVehiculo,String usoVehiculo,String marca,String linea,String modelo,double valorVehiculo,String prima,String deducible){
     this.nombreCandidato = nombre;
     this.apellidoCandidato = apellido;
     this.dpiCandidato = dpi;
