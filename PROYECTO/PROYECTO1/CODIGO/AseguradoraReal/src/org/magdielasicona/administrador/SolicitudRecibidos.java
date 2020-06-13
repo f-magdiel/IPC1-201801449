@@ -38,7 +38,7 @@ public class SolicitudRecibidos extends javax.swing.JFrame {
        int cont = SolicitudSeguro.getInstancia().getContadorBtnSolicitar();
         System.out.println(SolicitudSeguro.getInstancia().getContadorBtnSolicitar());
         String [] tabla = new String[8];
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < cont; i++) {
             
            
             tabla[0] = SolicitudSeguro.solicitante[i].getDpiCandidato();

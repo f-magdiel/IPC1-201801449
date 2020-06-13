@@ -23,12 +23,21 @@ public class Solicitante {
     private double valorVehiculoCandidato;
     private double costoPrimaCandidato;
     private double costoDeducibleCandidato;
+    
+    private String mecanica;
+    private String precioMecanica;
+    private String repuesto;
+    private String precioRepuesto;
+   
+    
+    
+    
    
    
     
     
-    
-    public Solicitante(String nombre,String apellido,String dpi,String telefono,String tipoVehiculo,String usoVehiculo,String marca,String linea,String modelo,double valorVehiculo,String prima,String deducible){
+                                                                                                                                                                                                                  //Aqui empieza                                                                  
+    public Solicitante(String nombre,String apellido,String dpi,String telefono,String tipoVehiculo,String usoVehiculo,String marca,String linea,String modelo,double valorVehiculo,String prima,String deducible,String mecanica,String precioMecanica,String repuesto,String precioRepuesto){
     this.nombreCandidato = nombre;
     this.apellidoCandidato = apellido;
     this.dpiCandidato = dpi;
@@ -41,8 +50,50 @@ public class Solicitante {
     this.valorVehiculoCandidato = valorVehiculo;
     this.costoPrimaCandidato = Double.parseDouble(prima);
     this.costoDeducibleCandidato = Double.parseDouble(deducible);
+    
+    this.mecanica = mecanica;
+    this.precioMecanica = precioMecanica;
+    this.repuesto = repuesto;
+    this.precioRepuesto = precioRepuesto;
+    
+    
     }
 
+    public String getMecanica() {
+        return mecanica;
+    }
+
+    public void setMecanica(String mecanica) {
+        this.mecanica = mecanica;
+    }
+
+    public String getPrecioMecanica() {
+        return precioMecanica;
+    }
+
+    public void setPrecioMecanica(String precioMecanica) {
+        this.precioMecanica = precioMecanica;
+    }
+
+    public String getRepuesto() {
+        return repuesto;
+    }
+
+    public void setRepuesto(String repuesto) {
+        this.repuesto = repuesto;
+    }
+
+    public String getPrecioRepuesto() {
+        return precioRepuesto;
+    }
+
+    public void setPrecioRepuesto(String precioRepuesto) {
+        this.precioRepuesto = precioRepuesto;
+    }
+
+    
+    
+    
     public String getNombreCandidato() {
         return nombreCandidato;
     }

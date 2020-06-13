@@ -18,12 +18,13 @@ import org.magdielasicona.principal.Menu;
  * @author FRANMAGDIEL_PC
  */
 public class SolicitudSeguro extends javax.swing.JFrame {
-   //Arreglo objeto de solicitante
-   public static Solicitante solicitante [] = new Solicitante[50];
-    
+    //Arreglo objeto de solicitante
+
+    public static Solicitante solicitante[] = new Solicitante[50];
+
     //Formato para los decimales
     DecimalFormat df = new DecimalFormat("#.##");
-    
+
     //singleton
     private static SolicitudSeguro instanciaSolicitudSeguro;
 
@@ -33,6 +34,7 @@ public class SolicitudSeguro extends javax.swing.JFrame {
         }
         return instanciaSolicitudSeguro;
     }
+
     //metodo para agregar el objeto solicitante al arreglo
     public void agregarSolicitante(Solicitante obj) {
         for (int i = 0; i < 30; i++) {
@@ -43,7 +45,7 @@ public class SolicitudSeguro extends javax.swing.JFrame {
             }
         }
     }
-    
+
     public String getNombreSolicitante() {
         return nombreSolicitante;
     }
@@ -219,10 +221,17 @@ public class SolicitudSeguro extends javax.swing.JFrame {
     private String deducibleSolicitante;
     private static int contadorBtnSolicitar;
 
+    private String mecanicaSolicitante;
+    private String precioMecanicaSolicitante;
+    private String repuestoSolicitante;
+    private String precioRepuestoSolicitante;
+   
+
     public SolicitudSeguro() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("SOLICITAR SEGURO AUTOMAS");
+
         for (int i = 0; i < DatosObtenidos.tipo.length; i++) {
             if (DatosObtenidos.tipo[i] != null) {
                 jComboBoxTipoDeVehiculo.addItem(DatosObtenidos.tipo[i].getNombreTipo());
@@ -248,6 +257,31 @@ public class SolicitudSeguro extends javax.swing.JFrame {
                 jComboBoxModelo.addItem(DatosObtenidos.modelo[i].getAñoModelo());
             }
         }
+        for (int i = 0; i < DatosObtenidos.mecanica.length; i++) {
+            if (DatosObtenidos.mecanica[i]!=null) {
+                mecanicaSolicitante =DatosObtenidos.mecanica[i].getNombreActividadMecanica();
+                mecanicaSolicitante = mecanicaSolicitante+",";
+                
+                precioMecanicaSolicitante = String.valueOf(DatosObtenidos.mecanica[i].getPrecioMecanica());
+                precioMecanicaSolicitante = precioMecanicaSolicitante+",";
+            }
+        }
+        System.out.println(mecanicaSolicitante);
+        System.out.println(precioMecanicaSolicitante);
+        for (int i = 0; i < DatosObtenidos.repuesto.length; i++) {
+            if (DatosObtenidos.repuesto[i]!=null) {
+                repuestoSolicitante = DatosObtenidos.repuesto[i].getNombreRepuesto();
+                repuestoSolicitante = repuestoSolicitante+",";
+                
+                precioRepuestoSolicitante = String.valueOf(DatosObtenidos.repuesto[i].getPrecioRepuesto());
+                precioRepuestoSolicitante = precioRepuestoSolicitante+",";
+            }
+        }
+        System.out.println(repuestoSolicitante);
+        System.out.println(precioRepuestoSolicitante);
+        
+        
+        
 
     }
 
@@ -517,6 +551,7 @@ public class SolicitudSeguro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         Menu menu = new Menu();
         menu.setVisible(true);
@@ -575,12 +610,12 @@ public class SolicitudSeguro extends javax.swing.JFrame {
         setDeducibleSolicitante(jTextFieldDeducible.getText());
 
         //Metodo para enviar los datos fijos, del solicitante
-       
-        agregarSolicitante(new Solicitante(this.nombreSolicitante, this.apellidoSolicitante, this.dpiSolicitante, this.telefonoSolicitante, this.tipoVehiculoSolicitante, this.usoVehiculoSolicitante, this.marcaVehiculoSolicitante, this.lineaVehiculoSolicitante, this.modeloVehiculoSolicitante, this.valorVehiculoSolicitante, this.primaSolicitante, this.deducibleSolicitante));
-        JOptionPane.showMessageDialog(null,"SOLICITUD ENVIADA EXITOSAMENTE!!!");
+        //Aqui comienza
+        agregarSolicitante(new Solicitante(this.nombreSolicitante, this.apellidoSolicitante, this.dpiSolicitante, this.telefonoSolicitante, this.tipoVehiculoSolicitante, this.usoVehiculoSolicitante, this.marcaVehiculoSolicitante, this.lineaVehiculoSolicitante, this.modeloVehiculoSolicitante, this.valorVehiculoSolicitante, this.primaSolicitante, this.deducibleSolicitante, this.mecanicaSolicitante,this.precioMecanicaSolicitante,this.repuestoSolicitante,this.precioRepuestoSolicitante));
+        JOptionPane.showMessageDialog(null, "SOLICITUD ENVIADA EXITOSAMENTE!!!");
         contadorBtnSolicitar++;
         System.out.println(contadorBtnSolicitar);
-        
+
         //limpiando el formulario
         jTextFieldNombre.setText("");
         jTextFieldApellido.setText("");
@@ -596,12 +631,44 @@ public class SolicitudSeguro extends javax.swing.JFrame {
         jTextFieldDeducible.setText("");
         jTextFieldPosibleCostoPrima.setText("");
         jTextFieldPosibleCostoDeducible.setText("");
-        
-        for (int i = 0; i < 10; i++) {
-            System.out.println(solicitante[i]);
+
+        for (int i = 0; i < DatosObtenidos.tipo.length; i++) {
+            if (DatosObtenidos.tipo[i] != null) {
+                DatosObtenidos.tipo[i] = null;
+            }
         }
-        
-        
+        for (int i = 0; i < DatosObtenidos.uso.length; i++) {
+            if (DatosObtenidos.uso[i] != null) {
+                DatosObtenidos.uso[i] = null;
+            }
+        }
+        for (int i = 0; i < DatosObtenidos.marca.length; i++) {
+            if (DatosObtenidos.marca[i] != null) {
+                DatosObtenidos.marca[i] = null;
+            }
+        }
+        for (int i = 0; i < DatosObtenidos.linea.length; i++) {
+            if (DatosObtenidos.linea[i] != null) {
+                DatosObtenidos.linea[i] = null;
+            }
+        }
+        for (int i = 0; i < DatosObtenidos.modelo.length; i++) {
+            if (DatosObtenidos.modelo[i] != null) {
+                DatosObtenidos.modelo[i] = null;
+            }
+        }
+        for (int i = 0; i < DatosObtenidos.mecanica.length; i++) {
+            if (DatosObtenidos.mecanica[i] != null) {
+                DatosObtenidos.mecanica[i] = null;
+            }
+        }
+        for (int i = 0; i < DatosObtenidos.repuesto.length; i++) {
+            if (DatosObtenidos.repuesto[i] != null) {
+                DatosObtenidos.repuesto[i] = null;
+            }
+        }
+
+
     }//GEN-LAST:event_jButtonSolicitarSeguroActionPerformed
 
     /**
