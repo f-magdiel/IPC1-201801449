@@ -5,21 +5,49 @@
  */
 package org.magdielasicona.administrador;
 
+import javax.swing.table.DefaultTableModel;
+import org.magdielasicona.controlador.Solicitante;
 import org.magdielasicona.datos.Login;
+import org.magdielasicona.datos.SolicitudSeguro;
 
 /**
  *
  * @author FRANMAGDIEL_PC
  */
-public class SolicitudSeguro extends javax.swing.JFrame {
+public class SolicitudRecibidos extends javax.swing.JFrame {
 
-    /**
-     * Creates new form SolicitudeSeguro
-     */
-    public SolicitudSeguro() {
+   DefaultTableModel modelo;
+    public SolicitudRecibidos() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("SOLICITUD DE SEGURO");
+        modelo = new DefaultTableModel();
+        modelo.addColumn("DPI");
+        modelo.addColumn("NOMBRE");
+        modelo.addColumn("TELEFONO");
+        modelo.addColumn("TIPO");
+        modelo.addColumn("DESCRIPCION");
+        modelo.addColumn("MONTO");
+        modelo.addColumn("POLIZA");
+        modelo.addColumn("DEDUCIBLE");
+        insertandoEnTabla();
+        this.jTableDatosSolicitante.setModel(modelo);
+    }
+    
+    public void insertandoEnTabla(){
+        String [] tabla = new String[8];
+        for (int i = 0; i < 1; i++) {
+            tabla[0] = SolicitudSeguro.solicitante[i].getDpiCandidato();
+            tabla[1] = SolicitudSeguro.solicitante[i].getNombreCandidato();
+            tabla[2] = SolicitudSeguro.solicitante[i].getTelefonoCandidato();
+            tabla[3] = SolicitudSeguro.solicitante[i].getTipoVehiculoCandidato();
+            tabla[4] = "des";
+            tabla[5] = "monto";
+            tabla[6] = String.valueOf(SolicitudSeguro.solicitante[i].getCostoPrimaCandidato());
+            tabla[7] = String.valueOf(SolicitudSeguro.solicitante[i].getCostoDeducibleCandidato());
+        }
+        modelo.addRow(tabla);
+        
     }
 
     /**
@@ -86,7 +114,7 @@ public class SolicitudSeguro extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
+                .addContainerGap(47, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -122,21 +150,23 @@ public class SolicitudSeguro extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SolicitudSeguro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SolicitudRecibidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SolicitudSeguro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SolicitudRecibidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SolicitudSeguro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SolicitudRecibidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SolicitudSeguro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SolicitudRecibidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SolicitudSeguro().setVisible(true);
+                new SolicitudRecibidos().setVisible(true);
             }
         });
     }

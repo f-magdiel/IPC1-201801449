@@ -19,7 +19,7 @@ import org.magdielasicona.principal.Menu;
  */
 public class SolicitudSeguro extends javax.swing.JFrame {
    //Arreglo objeto de solicitante
-    Solicitante solicitante [] = new Solicitante[50];
+   public static Solicitante solicitante [] = new Solicitante[50];
     
     //Formato para los decimales
     DecimalFormat df = new DecimalFormat("#.##");

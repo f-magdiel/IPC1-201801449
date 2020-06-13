@@ -116,7 +116,7 @@ public class PanelAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    SolicitudSeguro soli = new SolicitudSeguro();
+    SolicitudRecibidos soli = new SolicitudRecibidos();
     soli.setVisible(true);
     dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
