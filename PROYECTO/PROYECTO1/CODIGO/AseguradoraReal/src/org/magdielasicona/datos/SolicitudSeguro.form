@@ -337,6 +337,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="- Deducible"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonMenoDeducibleActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonMasDeducible">
       <Properties>
@@ -345,6 +348,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="+ Deducible"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonMasDeducibleActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonCancelar">
       <Properties>
@@ -364,6 +370,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Solicitar Seguro"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSolicitarSeguroActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="jComboBoxTipoDeVehiculo">
       <Properties>

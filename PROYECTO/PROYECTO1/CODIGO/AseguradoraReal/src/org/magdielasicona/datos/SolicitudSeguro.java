@@ -8,7 +8,7 @@ package org.magdielasicona.datos;
 import java.text.DecimalFormat;
 import org.magdielasicona.carga.DatosObtenidos;
 import org.magdielasicona.controlador.CalculoSolicitante;
-import org.magdielasicona.controlador.MenuSolicitante;
+import org.magdielasicona.controlador.Solicitante;
 import org.magdielasicona.principal.Menu;
 
 /**
@@ -304,9 +304,19 @@ public class SolicitudSeguro extends javax.swing.JFrame {
 
         jButtonMenoDeducible.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonMenoDeducible.setText("- Deducible");
+        jButtonMenoDeducible.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMenoDeducibleActionPerformed(evt);
+            }
+        });
 
         jButtonMasDeducible.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonMasDeducible.setText("+ Deducible");
+        jButtonMasDeducible.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMasDeducibleActionPerformed(evt);
+            }
+        });
 
         jButtonCancelar.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonCancelar.setText("Cancelar");
@@ -318,6 +328,11 @@ public class SolicitudSeguro extends javax.swing.JFrame {
 
         jButtonSolicitarSeguro.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonSolicitarSeguro.setText("Solicitar Seguro");
+        jButtonSolicitarSeguro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSolicitarSeguroActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -486,6 +501,25 @@ public class SolicitudSeguro extends javax.swing.JFrame {
        jTextFieldPosibleCostoPrima.setText(String.valueOf(calculo.getCostoPrima()) );
        jTextFieldPosibleCostoDeducible.setText(String.valueOf(calculo.getCostoDeducible()));
     }//GEN-LAST:event_jButtonCotizarActionPerformed
+
+    private void jButtonMenoDeducibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenoDeducibleActionPerformed
+        CalculoSolicitante.getInstancia().menosDeducible(jTextFieldDeducible.getText(),jTextFieldCostoPrima.getText());
+        //devolviendo los valores de posible deducible y posible prima
+        jTextFieldPosibleCostoPrima.setText(String.valueOf(CalculoSolicitante.getInstancia().getPosiblePrima()));
+        jTextFieldPosibleCostoDeducible.setText(String.valueOf(CalculoSolicitante.getInstancia().getPosibleDeducible()));
+    }//GEN-LAST:event_jButtonMenoDeducibleActionPerformed
+
+    private void jButtonMasDeducibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMasDeducibleActionPerformed
+        CalculoSolicitante.getInstancia().masDeducible(jTextFieldDeducible.getText(),jTextFieldCostoPrima.getText());
+        
+        //devolviendo los valores de posible deducible y posible prima
+        jTextFieldPosibleCostoPrima.setText(String.valueOf(CalculoSolicitante.getInstancia().getPosiblePrima()));
+        jTextFieldPosibleCostoDeducible.setText(String.valueOf(CalculoSolicitante.getInstancia().getPosibleDeducible()));
+    }//GEN-LAST:event_jButtonMasDeducibleActionPerformed
+
+    private void jButtonSolicitarSeguroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSolicitarSeguroActionPerformed
+    
+    }//GEN-LAST:event_jButtonSolicitarSeguroActionPerformed
 
     /**
      * @param args the command line arguments

@@ -35,7 +35,29 @@ public class CalculoSolicitante {
     private double polizaMarca;
     private double polizaLinea;
     private double depreciacionModelo;
+    
+    private double posiblePrima;
+    private double posibleDeducible;
 
+    public double getPosiblePrima() {
+        return posiblePrima;
+    }
+
+    public void setPosiblePrima(double posiblePrima) {
+        this.posiblePrima = posiblePrima;
+    }
+
+    public double getPosibleDeducible() {
+        return posibleDeducible;
+    }
+
+    public void setPosibleDeducible(double posibleDeducible) {
+        this.posibleDeducible = posibleDeducible;
+    }
+
+    
+    
+    
     public double getValorCarro() {
         return valorCarro;
     }
@@ -184,35 +206,71 @@ public class CalculoSolicitante {
     public void realizandoCalculos(){
         //calculando valor real
      valorReal = valorEstablecido - depreciacionModelo* valorEstablecido;
-     
+     valorReal = Double.parseDouble(df.format(valorReal));
      
      
      //porcentaje total de riego
      porcentajeTotalRiesgo = polizaMarca + polizaUso + polizaLinea;
-     
+     porcentajeTotalRiesgo = Double.parseDouble(df.format(porcentajeTotalRiesgo));
      
      
      
      // la empresa cobra el 10%
      cobroEmpresa = 0.10* valorCarro;
+     cobroEmpresa = Double.parseDouble(df.format(cobroEmpresa));
    
      
      
      
      //calculando prima total
      prima = valorCarro *(0.1+porcentajeTotalRiesgo);
-     
+     prima = Double.parseDouble(df.format(prima));
      
      
      
      //calculando costo prima
      costoPrima = prima/12;
-    df.format(costoPrima);
+    costoPrima = Double.parseDouble(df.format(costoPrima));
         System.out.println(costoPrima);
      
      
      //calculando costo deducible
      costoDeducible = 0.07*valorCarro;
-    df.format(costoDeducible);
+     costoDeducible = Double.parseDouble(df.format(costoDeducible));
+        System.out.println(costoDeducible);
+    }
+    
+    public void menosDeducible(String posibleDeducibleSolicitante,String posiblePrimaSolicitante){
+        double deducibleRecibido;
+        double primaRecibido;
+    deducibleRecibido = Double.parseDouble(posibleDeducibleSolicitante);
+    primaRecibido = Double.parseDouble(posiblePrimaSolicitante);
+    
+    
+    //Se  le resta el 10% al deducible y se le suma 3% al costoprima
+    posibleDeducible = deducibleRecibido - (0.10*deducibleRecibido);
+    posiblePrima =primaRecibido + (0.03*primaRecibido); 
+    
+    //transformada de 2 decimales
+    posibleDeducible = Double.parseDouble(df.format(posibleDeducible));
+    posiblePrima = Double.parseDouble(df.format(posiblePrima));
+    
+    
+    
+    }
+    
+    public void masDeducible(String posibleDeducibleSolicitante,String posiblePrimaSolicitante){
+        double deducibleRecibido;
+        double primaRecibido;
+    deducibleRecibido = Double.parseDouble(posibleDeducibleSolicitante);
+    primaRecibido = Double.parseDouble(posiblePrimaSolicitante);
+    
+     //Se  le resta el 10% al deducible y se le suma 3% al costoprima
+    posibleDeducible = deducibleRecibido + (0.10*deducibleRecibido);
+    posiblePrima = primaRecibido - (0.03*primaRecibido); 
+    
+    //transformada de 2 decimales
+    posibleDeducible = Double.parseDouble(df.format(posibleDeducible));
+    posiblePrima = Double.parseDouble(df.format(posiblePrima));
     }
 }
