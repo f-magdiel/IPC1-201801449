@@ -6,6 +6,7 @@
 package org.magdielasicona.datos;
 
 import java.text.DecimalFormat;
+import javax.swing.JOptionPane;
 import org.magdielasicona.carga.DatosObtenidos;
 import org.magdielasicona.controlador.CalculoSolicitante;
 import org.magdielasicona.controlador.Solicitante;
@@ -16,9 +17,9 @@ import org.magdielasicona.principal.Menu;
  * @author FRANMAGDIEL_PC
  */
 public class SolicitudSeguro extends javax.swing.JFrame {
-    
-     DecimalFormat df = new DecimalFormat("#.##");
- private static SolicitudSeguro instanciaSolicitudSeguro;
+
+    DecimalFormat df = new DecimalFormat("#.##");
+    private static SolicitudSeguro instanciaSolicitudSeguro;
 
     public static SolicitudSeguro getInstancia() {
         if (instanciaSolicitudSeguro == null) {
@@ -26,6 +27,7 @@ public class SolicitudSeguro extends javax.swing.JFrame {
         }
         return instanciaSolicitudSeguro;
     }
+
     public String getNombreSolicitante() {
         return nombreSolicitante;
     }
@@ -162,7 +164,23 @@ public class SolicitudSeguro extends javax.swing.JFrame {
     public void setValorVehiculoSolicitante(double valorVehiculoSolicitante) {
         this.valorVehiculoSolicitante = valorVehiculoSolicitante;
     }
-    
+
+    public String getPrimaSolicitante() {
+        return primaSolicitante;
+    }
+
+    public void setPrimaSolicitante(String primaSolicitante) {
+        this.primaSolicitante = primaSolicitante;
+    }
+
+    public String getDeducibleSolicitante() {
+        return deducibleSolicitante;
+    }
+
+    public void setDeducibleSolicitante(String deducibleSolicitante) {
+        this.deducibleSolicitante = deducibleSolicitante;
+    }
+
     private String nombreSolicitante;
     private String apellidoSolicitante;
     private String dpiSolicitante;
@@ -173,38 +191,39 @@ public class SolicitudSeguro extends javax.swing.JFrame {
     private String lineaVehiculoSolicitante;
     private String modeloVehiculoSolicitante;
     private double valorVehiculoSolicitante;
-    
-    
+    private String primaSolicitante;
+    private String deducibleSolicitante;
+
     public SolicitudSeguro() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("SOLICITAR SEGURO AUTOMAS");
         for (int i = 0; i < DatosObtenidos.tipo.length; i++) {
-            if (DatosObtenidos.tipo[i]!=null) {
+            if (DatosObtenidos.tipo[i] != null) {
                 jComboBoxTipoDeVehiculo.addItem(DatosObtenidos.tipo[i].getNombreTipo());
             }
         }
         for (int i = 0; i < DatosObtenidos.uso.length; i++) {
-            if (DatosObtenidos.uso[i]!=null) {
+            if (DatosObtenidos.uso[i] != null) {
                 jComboBoxUsoDeVehiculo.addItem(DatosObtenidos.uso[i].getNombreUso());
             }
         }
         for (int i = 0; i < DatosObtenidos.marca.length; i++) {
-            if (DatosObtenidos.marca[i]!=null) {
+            if (DatosObtenidos.marca[i] != null) {
                 jComboBoxMarca.addItem(DatosObtenidos.marca[i].getNombreMarca());
             }
         }
         for (int i = 0; i < DatosObtenidos.linea.length; i++) {
-            if (DatosObtenidos.linea[i]!=null) {
-            jComboBoxLinea.addItem(DatosObtenidos.linea[i].getNombreLinea());
+            if (DatosObtenidos.linea[i] != null) {
+                jComboBoxLinea.addItem(DatosObtenidos.linea[i].getNombreLinea());
             }
         }
         for (int i = 0; i < DatosObtenidos.modelo.length; i++) {
-            if (DatosObtenidos.modelo[i]!=null) {
-              jComboBoxModelo.addItem(DatosObtenidos.modelo[i].getAñoModelo());
+            if (DatosObtenidos.modelo[i] != null) {
+                jComboBoxModelo.addItem(DatosObtenidos.modelo[i].getAñoModelo());
             }
         }
-        
+
     }
 
     /**
@@ -474,9 +493,9 @@ public class SolicitudSeguro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
-       Menu menu = new Menu();
-       menu.setVisible(true);
-       dispose();
+        Menu menu = new Menu();
+        menu.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonCotizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCotizarActionPerformed
@@ -490,35 +509,48 @@ public class SolicitudSeguro extends javax.swing.JFrame {
         setLineaVehiculoSolicitante(jComboBoxLinea.getSelectedItem().toString());
         setModeloVehiculoSolicitante(jComboBoxModelo.getSelectedItem().toString());
         setValorVehiculoSolicitante(Double.parseDouble(jTextFieldValorDeVehiculo.getText()));
-        
-       CalculoSolicitante calculo = CalculoSolicitante.getInstancia();
-       calculo.obteniedoValoresDeSolicitante(tipoVehiculoSolicitante, usoVehiculoSolicitante, marcaVehiculoSolicitante, lineaVehiculoSolicitante, modeloVehiculoSolicitante, valorVehiculoSolicitante);
-       calculo.realizandoCalculos();
-       
-       jTextFieldCostoPrima.setText(String.valueOf(calculo.getCostoPrima()) );
-       jTextFieldDeducible.setText(String.valueOf(calculo.getCostoDeducible()));
-       
-       jTextFieldPosibleCostoPrima.setText(String.valueOf(calculo.getCostoPrima()) );
-       jTextFieldPosibleCostoDeducible.setText(String.valueOf(calculo.getCostoDeducible()));
+
+        CalculoSolicitante calculo = CalculoSolicitante.getInstancia();
+        calculo.obteniedoValoresDeSolicitante(tipoVehiculoSolicitante, usoVehiculoSolicitante, marcaVehiculoSolicitante, lineaVehiculoSolicitante, modeloVehiculoSolicitante, valorVehiculoSolicitante);
+        calculo.realizandoCalculos();
+
+        //validando el valorVehiculo no puede ser mayor al valor real
+        if (valorVehiculoSolicitante < CalculoSolicitante.getInstancia().getValorReal()) {
+
+            jTextFieldCostoPrima.setText(String.valueOf(calculo.getCostoPrima()));
+            jTextFieldDeducible.setText(String.valueOf(calculo.getCostoDeducible()));
+
+            jTextFieldPosibleCostoPrima.setText(String.valueOf(calculo.getCostoPrima()));
+            jTextFieldPosibleCostoDeducible.setText(String.valueOf(calculo.getCostoDeducible()));
+        } else {
+            JOptionPane.showMessageDialog(null, "EL VALOR DEL VEHICULO ES MAYOR QUE EL VALOR REAL INGRESE UN NUEVO VALOR!!!");
+            jTextFieldValorDeVehiculo.setText("");
+        }
+
+
     }//GEN-LAST:event_jButtonCotizarActionPerformed
 
     private void jButtonMenoDeducibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenoDeducibleActionPerformed
-        CalculoSolicitante.getInstancia().menosDeducible(jTextFieldDeducible.getText(),jTextFieldCostoPrima.getText());
+        CalculoSolicitante.getInstancia().menosDeducible(jTextFieldDeducible.getText(), jTextFieldCostoPrima.getText());
         //devolviendo los valores de posible deducible y posible prima
         jTextFieldPosibleCostoPrima.setText(String.valueOf(CalculoSolicitante.getInstancia().getPosiblePrima()));
         jTextFieldPosibleCostoDeducible.setText(String.valueOf(CalculoSolicitante.getInstancia().getPosibleDeducible()));
     }//GEN-LAST:event_jButtonMenoDeducibleActionPerformed
 
     private void jButtonMasDeducibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMasDeducibleActionPerformed
-        CalculoSolicitante.getInstancia().masDeducible(jTextFieldDeducible.getText(),jTextFieldCostoPrima.getText());
-        
+        CalculoSolicitante.getInstancia().masDeducible(jTextFieldDeducible.getText(), jTextFieldCostoPrima.getText());
+
         //devolviendo los valores de posible deducible y posible prima
         jTextFieldPosibleCostoPrima.setText(String.valueOf(CalculoSolicitante.getInstancia().getPosiblePrima()));
         jTextFieldPosibleCostoDeducible.setText(String.valueOf(CalculoSolicitante.getInstancia().getPosibleDeducible()));
     }//GEN-LAST:event_jButtonMasDeducibleActionPerformed
 
     private void jButtonSolicitarSeguroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSolicitarSeguroActionPerformed
-    
+        setPrimaSolicitante(jTextFieldCostoPrima.getText());
+        setDeducibleSolicitante(jTextFieldDeducible.getText());
+
+        //Metodo para enviar los datos fijos, del solicitante
+        Solicitante.getInstancia().solicitarDatos(this.nombreSolicitante, this.apellidoSolicitante, this.dpiSolicitante, this.telefonoSolicitante, this.tipoVehiculoSolicitante, this.usoVehiculoSolicitante, this.marcaVehiculoSolicitante, this.lineaVehiculoSolicitante, this.modeloVehiculoSolicitante, this.valorVehiculoSolicitante, this.primaSolicitante, this.deducibleSolicitante);
     }//GEN-LAST:event_jButtonSolicitarSeguroActionPerformed
 
     /**

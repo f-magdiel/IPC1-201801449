@@ -205,9 +205,9 @@ public class CalculoSolicitante {
     
     public void realizandoCalculos(){
         //calculando valor real
-     valorReal = valorEstablecido - depreciacionModelo* valorEstablecido;
+     valorReal = valorEstablecido - (depreciacionModelo* valorEstablecido);
      valorReal = Double.parseDouble(df.format(valorReal));
-     
+        System.out.println("Valor Real: "+valorReal);
      
      //porcentaje total de riego
      porcentajeTotalRiesgo = polizaMarca + polizaUso + polizaLinea;
