@@ -197,6 +197,14 @@ public class SolicitudSeguro extends javax.swing.JFrame {
         this.deducibleSolicitante = deducibleSolicitante;
     }
 
+    public int getContadorBtnSolicitar() {
+        return contadorBtnSolicitar;
+    }
+
+    public void setContadorBtnSolicitar(int contadorBtnSolicitar) {
+        this.contadorBtnSolicitar = contadorBtnSolicitar;
+    }
+
     private String nombreSolicitante;
     private String apellidoSolicitante;
     private String dpiSolicitante;
@@ -209,6 +217,7 @@ public class SolicitudSeguro extends javax.swing.JFrame {
     private double valorVehiculoSolicitante;
     private String primaSolicitante;
     private String deducibleSolicitante;
+    private static int contadorBtnSolicitar;
 
     public SolicitudSeguro() {
         initComponents();
@@ -515,8 +524,8 @@ public class SolicitudSeguro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonCotizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCotizarActionPerformed
-        setNombreSolicitante(jTextFieldNombre.getText());
-        setApellidoSolicitante(jTextFieldApellido.getText());
+        setNombreSolicitante(jTextFieldNombre.getText().toUpperCase());
+        setApellidoSolicitante(jTextFieldApellido.getText().toUpperCase());
         setDpiSolicitante(jTextFieldDPI.getText());
         setTelefonoSolicitante(jTextFieldTelefono.getText());
         setTipoVehiculoSolicitante(jComboBoxTipoDeVehiculo.getSelectedItem().toString());
@@ -568,6 +577,30 @@ public class SolicitudSeguro extends javax.swing.JFrame {
         //Metodo para enviar los datos fijos, del solicitante
        
         agregarSolicitante(new Solicitante(this.nombreSolicitante, this.apellidoSolicitante, this.dpiSolicitante, this.telefonoSolicitante, this.tipoVehiculoSolicitante, this.usoVehiculoSolicitante, this.marcaVehiculoSolicitante, this.lineaVehiculoSolicitante, this.modeloVehiculoSolicitante, this.valorVehiculoSolicitante, this.primaSolicitante, this.deducibleSolicitante));
+        JOptionPane.showMessageDialog(null,"SOLICITUD ENVIADA EXITOSAMENTE!!!");
+        contadorBtnSolicitar++;
+        System.out.println(contadorBtnSolicitar);
+        
+        //limpiando el formulario
+        jTextFieldNombre.setText("");
+        jTextFieldApellido.setText("");
+        jTextFieldDPI.setText("");
+        jTextFieldTelefono.setText("");
+        jComboBoxTipoDeVehiculo.removeAllItems();
+        jComboBoxUsoDeVehiculo.removeAllItems();
+        jComboBoxMarca.removeAllItems();
+        jComboBoxLinea.removeAllItems();
+        jComboBoxModelo.removeAllItems();
+        jTextFieldValorDeVehiculo.setText("");
+        jTextFieldCostoPrima.setText("");
+        jTextFieldDeducible.setText("");
+        jTextFieldPosibleCostoPrima.setText("");
+        jTextFieldPosibleCostoDeducible.setText("");
+        
+        for (int i = 0; i < 10; i++) {
+            System.out.println(solicitante[i]);
+        }
+        
         
     }//GEN-LAST:event_jButtonSolicitarSeguroActionPerformed
 

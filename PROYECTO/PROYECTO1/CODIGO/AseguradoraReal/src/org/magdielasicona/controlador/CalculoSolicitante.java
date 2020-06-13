@@ -38,6 +38,8 @@ public class CalculoSolicitante {
     
     private double posiblePrima;
     private double posibleDeducible;
+    
+    
 
     public double getPosiblePrima() {
         return posiblePrima;
@@ -55,8 +57,6 @@ public class CalculoSolicitante {
         this.posibleDeducible = posibleDeducible;
     }
 
-    
-    
     
     public double getValorCarro() {
         return valorCarro;

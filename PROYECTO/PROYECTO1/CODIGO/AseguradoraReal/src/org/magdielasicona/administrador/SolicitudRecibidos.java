@@ -35,18 +35,23 @@ public class SolicitudRecibidos extends javax.swing.JFrame {
     }
     
     public void insertandoEnTabla(){
+       int cont = SolicitudSeguro.getInstancia().getContadorBtnSolicitar();
+        System.out.println(SolicitudSeguro.getInstancia().getContadorBtnSolicitar());
         String [] tabla = new String[8];
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 50; i++) {
+            
+           
             tabla[0] = SolicitudSeguro.solicitante[i].getDpiCandidato();
-            tabla[1] = SolicitudSeguro.solicitante[i].getNombreCandidato();
+            tabla[1] = SolicitudSeguro.solicitante[i].getNombreCandidato()+" "+ SolicitudSeguro.solicitante[i].getApellidoCandidato();
             tabla[2] = SolicitudSeguro.solicitante[i].getTelefonoCandidato();
             tabla[3] = SolicitudSeguro.solicitante[i].getTipoVehiculoCandidato();
-            tabla[4] = "des";
-            tabla[5] = "monto";
+            tabla[4] = SolicitudSeguro.solicitante[i].getTipoVehiculoCandidato()+","+SolicitudSeguro.solicitante[i].getModeloVehiculoCandidato()+","+SolicitudSeguro.solicitante[i].getMarcaVehiculoCandidato()+","+SolicitudSeguro.solicitante[i].getLineaVehiculoCandidato()+","+SolicitudSeguro.solicitante[i].getUsoVehiculoCandidato();
+            tabla[5] = String.valueOf(SolicitudSeguro.solicitante[i].getValorVehiculoCandidato());
             tabla[6] = String.valueOf(SolicitudSeguro.solicitante[i].getCostoPrimaCandidato());
             tabla[7] = String.valueOf(SolicitudSeguro.solicitante[i].getCostoDeducibleCandidato());
+            modelo.addRow(tabla);
         }
-        modelo.addRow(tabla);
+        
         
     }
 
@@ -80,6 +85,7 @@ public class SolicitudRecibidos extends javax.swing.JFrame {
                 "DPI", "NOMBRE", "TELEFONO", "TIPO", "DESCRIPCION", "MONTO", "POLIZA", "DEDUCIBLE"
             }
         ));
+        jTableDatosSolicitante.setRowHeight(25);
         jScrollPane1.setViewportView(jTableDatosSolicitante);
 
         jButtonAprobar.setText("Aprobar");
