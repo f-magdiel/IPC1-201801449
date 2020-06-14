@@ -5,6 +5,7 @@
  */
 package org.magdielasicona.administrador;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.magdielasicona.controlador.Solicitante;
 import org.magdielasicona.datos.Login;
@@ -89,6 +90,11 @@ public class SolicitudRecibidos extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTableDatosSolicitante);
 
         jButtonAprobar.setText("Aprobar");
+        jButtonAprobar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAprobarActionPerformed(evt);
+            }
+        });
 
         jButtonRechazar.setText("Rechazar");
 
@@ -138,6 +144,19 @@ public class SolicitudRecibidos extends javax.swing.JFrame {
         admin.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jButtonAprobarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAprobarActionPerformed
+       String dato; 
+        int fila =jTableDatosSolicitante.getSelectedRow();
+        if (fila != -1 ) {
+            dato = (String)modelo.getValueAt(fila, 0);
+            System.out.println(dato);
+        }else{
+        JOptionPane.showMessageDialog(null, "SELECCIONE AL MENOS UNA FILA!!!");
+        }
+        
+        
+    }//GEN-LAST:event_jButtonAprobarActionPerformed
 
     /**
      * @param args the command line arguments
