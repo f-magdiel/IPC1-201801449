@@ -221,10 +221,10 @@ public class SolicitudSeguro extends javax.swing.JFrame {
     private String deducibleSolicitante;
     private static int contadorBtnSolicitar;
 
-    private String mecanicaSolicitante;
-    private String precioMecanicaSolicitante;
-    private String repuestoSolicitante;
-    private String precioRepuestoSolicitante;
+    private String mecanicaSolicitante="";
+    private String precioMecanicaSolicitante="";
+    private String repuestoSolicitante="";
+    private String precioRepuestoSolicitante="";
    
 
     public SolicitudSeguro() {
@@ -259,22 +259,27 @@ public class SolicitudSeguro extends javax.swing.JFrame {
         }
         for (int i = 0; i < DatosObtenidos.mecanica.length; i++) {
             if (DatosObtenidos.mecanica[i]!=null) {
-                mecanicaSolicitante =DatosObtenidos.mecanica[i].getNombreActividadMecanica();
-                mecanicaSolicitante = mecanicaSolicitante+",";
+                String auxm;
+                auxm =DatosObtenidos.mecanica[i].getNombreActividadMecanica();
+                mecanicaSolicitante +=auxm+",";
                 
-                precioMecanicaSolicitante = String.valueOf(DatosObtenidos.mecanica[i].getPrecioMecanica());
-                precioMecanicaSolicitante = precioMecanicaSolicitante+",";
+                String auxp;
+                auxp = String.valueOf(DatosObtenidos.mecanica[i].getPrecioMecanica());
+                precioMecanicaSolicitante += auxp+",";
             }
+            
         }
         System.out.println(mecanicaSolicitante);
         System.out.println(precioMecanicaSolicitante);
         for (int i = 0; i < DatosObtenidos.repuesto.length; i++) {
             if (DatosObtenidos.repuesto[i]!=null) {
-                repuestoSolicitante = DatosObtenidos.repuesto[i].getNombreRepuesto();
-                repuestoSolicitante = repuestoSolicitante+",";
+                String auxr;
+                auxr = DatosObtenidos.repuesto[i].getNombreRepuesto();
+                repuestoSolicitante += auxr+",";
                 
-                precioRepuestoSolicitante = String.valueOf(DatosObtenidos.repuesto[i].getPrecioRepuesto());
-                precioRepuestoSolicitante = precioRepuestoSolicitante+",";
+                String auxp;
+                auxp = String.valueOf(DatosObtenidos.repuesto[i].getPrecioRepuesto());
+                precioRepuestoSolicitante += auxp+",";
             }
         }
         System.out.println(repuestoSolicitante);
