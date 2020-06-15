@@ -109,6 +109,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Cola Taller"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonColaTallerActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonAsegurados">
       <Properties>
@@ -117,6 +120,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Asegurados"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAseguradosActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonNoAsegurados">
       <Properties>
@@ -125,6 +131,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="No Asegurados"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonNoAseguradosActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonReportes">
       <Properties>

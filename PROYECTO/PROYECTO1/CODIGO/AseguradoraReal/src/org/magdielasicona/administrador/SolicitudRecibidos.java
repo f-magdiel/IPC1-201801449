@@ -83,7 +83,7 @@ public class SolicitudRecibidos extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableDatosSolicitante = new javax.swing.JTable();
         jButtonAprobar = new javax.swing.JButton();
-        jButtonRechazar = new javax.swing.JButton();
+        jButtonEliminar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -104,6 +104,7 @@ public class SolicitudRecibidos extends javax.swing.JFrame {
         jTableDatosSolicitante.setRowHeight(25);
         jScrollPane1.setViewportView(jTableDatosSolicitante);
 
+        jButtonAprobar.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonAprobar.setText("Aprobar");
         jButtonAprobar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,13 +112,15 @@ public class SolicitudRecibidos extends javax.swing.JFrame {
             }
         });
 
-        jButtonRechazar.setText("Rechazar");
-        jButtonRechazar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEliminar.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
+        jButtonEliminar.setText("Eliminar");
+        jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRechazarActionPerformed(evt);
+                jButtonEliminarActionPerformed(evt);
             }
         });
 
+        jButtonCancelar.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,7 +141,7 @@ public class SolicitudRecibidos extends javax.swing.JFrame {
                         .addGap(313, 313, 313)
                         .addComponent(jButtonAprobar, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonRechazar, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(26, Short.MAX_VALUE))
@@ -146,11 +149,11 @@ public class SolicitudRecibidos extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(47, Short.MAX_VALUE)
+                .addContainerGap(48, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonRechazar)
+                    .addComponent(jButtonEliminar)
                     .addComponent(jButtonAprobar)
                     .addComponent(jButtonCancelar))
                 .addGap(39, 39, 39))
@@ -207,7 +210,7 @@ public class SolicitudRecibidos extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "SE HA APROBADO LA SOLICITUD!!!");
     }//GEN-LAST:event_jButtonAprobarActionPerformed
 
-    private void jButtonRechazarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRechazarActionPerformed
+    private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
        String dato = "";
         int fila = jTableDatosSolicitante.getSelectedRow();
         if (fila != -1) {
@@ -240,7 +243,7 @@ public class SolicitudRecibidos extends javax.swing.JFrame {
             }
         }
         JOptionPane.showMessageDialog(null, "SE HA RECHAZADO LA SOLICITUD!!!");
-    }//GEN-LAST:event_jButtonRechazarActionPerformed
+    }//GEN-LAST:event_jButtonEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -283,7 +286,7 @@ public class SolicitudRecibidos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAprobar;
     private javax.swing.JButton jButtonCancelar;
-    private javax.swing.JButton jButtonRechazar;
+    private javax.swing.JButton jButtonEliminar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableDatosSolicitante;
     // End of variables declaration//GEN-END:variables

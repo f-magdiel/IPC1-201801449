@@ -23,12 +23,13 @@ public class ReportarIncidente extends javax.swing.JFrame {
     private String apellidoTercero;
     private String telefonoTercero;
     private String dpiTercero;
-    String codigoGenerado;
+    private String codigoGenerado;
 
     private double total = 0;
 
     private String dpiAsegurado;
-
+    
+    public static String valorTabla[][] = new String[10][3];
     public static double precioRepuestoReal[] = new double[10];
     public static double precioMecanicaReal[] = new double[10];
     public static Asegurado asegurado[] = new Asegurado[30];
@@ -83,6 +84,7 @@ public class ReportarIncidente extends javax.swing.JFrame {
         jCheckBoxTerceroNoSeguro = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButtonBuscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -165,6 +167,14 @@ public class ReportarIncidente extends javax.swing.JFrame {
             }
         });
 
+        jButtonBuscar.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
+        jButtonBuscar.setText("Buscar");
+        jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -195,7 +205,8 @@ public class ReportarIncidente extends javax.swing.JFrame {
                             .addComponent(jCheckBoxCulpable)
                             .addComponent(jCheckBoxTerceroSeguro)
                             .addComponent(jButtonAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jCheckBoxTerceroNoSeguro)))
+                            .addComponent(jCheckBoxTerceroNoSeguro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(92, 92, 92)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,11 +255,13 @@ public class ReportarIncidente extends javax.swing.JFrame {
                         .addComponent(jComboBoxRepuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jCheckBoxTerceroNoSeguro)
-                        .addGap(50, 50, 50)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonAgregar)))
                 .addGap(37, 37, 37)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(5, 5, 5)
@@ -269,7 +282,7 @@ public class ReportarIncidente extends javax.swing.JFrame {
         dpiTercero = JOptionPane.showInputDialog("Igrese el DPI");
         telefonoTercero = JOptionPane.showInputDialog("Ingrese Número de Teléfono");
         jTextFieldDpiTercero.setText(dpiTercero);
-        cargadorDatosAseguradoCulpable();
+        
     }//GEN-LAST:event_jCheckBoxTerceroNoSeguroActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -346,7 +359,7 @@ public class ReportarIncidente extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //Logica para ser cupable o autor
-
+        this.contadorBtnReportar++;
         //Asegurado culpable y tercero es asegurado...
         if (jCheckBoxCulpable.isSelected() && jCheckBoxTerceroSeguro.isSelected()) {
             for (int i = 0; i < SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
@@ -358,12 +371,12 @@ public class ReportarIncidente extends javax.swing.JFrame {
                     porcentajecostoreal = 0.20 * this.total;
                     totalpagorequerido = deducibleapagar + porcentajecostoreal;
 
-                    datosAsegurado(new Asegurado(SolicitudRecibidos.asociado[i].getNombreAsociado(), SolicitudRecibidos.asociado[i].getApellidoAsociado(), SolicitudRecibidos.asociado[i].getDpiAsociado(), SolicitudRecibidos.asociado[i].getTelefonoAsociado(), "AUTOR", SolicitudRecibidos.asociado[i].getCostoPrimaAsociado(), SolicitudRecibidos.asociado[i].getCostoDeducibleAsociado(), "", this.total, totalpagorequerido));
+                    datosAsegurado(new Asegurado(SolicitudRecibidos.asociado[i].getNombreAsociado(), SolicitudRecibidos.asociado[i].getApellidoAsociado(), SolicitudRecibidos.asociado[i].getDpiAsociado(), SolicitudRecibidos.asociado[i].getTelefonoAsociado(), "AUTOR", SolicitudRecibidos.asociado[i].getCostoPrimaAsociado(), SolicitudRecibidos.asociado[i].getCostoDeducibleAsociado(), "", this.total, totalpagorequerido,this.codigoGenerado));
                 }
             }
             for (int i = 0; i < SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
                 if (SolicitudRecibidos.asociado[i].getDpiAsociado().equals(dpiTercero)) {
-                    datosAsegurado(new Asegurado(SolicitudRecibidos.asociado[i].getNombreAsociado(), SolicitudRecibidos.asociado[i].getApellidoAsociado(), SolicitudRecibidos.asociado[i].getDpiAsociado(), SolicitudRecibidos.asociado[i].getTelefonoAsociado(), "AFECTADO", SolicitudRecibidos.asociado[i].getCostoPrimaAsociado(), SolicitudRecibidos.asociado[i].getCostoDeducibleAsociado(), "", 0.0, 0.0));
+                    datosAsegurado(new Asegurado(SolicitudRecibidos.asociado[i].getNombreAsociado(), SolicitudRecibidos.asociado[i].getApellidoAsociado(), SolicitudRecibidos.asociado[i].getDpiAsociado(), SolicitudRecibidos.asociado[i].getTelefonoAsociado(), "AFECTADO", SolicitudRecibidos.asociado[i].getCostoPrimaAsociado(), SolicitudRecibidos.asociado[i].getCostoDeducibleAsociado(), "", 0.0, 0.0,this.codigoGenerado));
                 }
             }
 
@@ -371,7 +384,7 @@ public class ReportarIncidente extends javax.swing.JFrame {
         } else if (jCheckBoxCulpable.isSelected() && jCheckBoxTerceroNoSeguro.isSelected()) {
             for (int i = 0; i < SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
                 double pagorequerido = SolicitudRecibidos.asociado[i].getCostoDeducibleAsociado();
-                datosAsegurado(new Asegurado(SolicitudRecibidos.asociado[i].getNombreAsociado(), SolicitudRecibidos.asociado[i].getApellidoAsociado(), SolicitudRecibidos.asociado[i].getDpiAsociado(), SolicitudRecibidos.asociado[i].getTelefonoAsociado(), "AUTOR", SolicitudRecibidos.asociado[i].getCostoPrimaAsociado(), SolicitudRecibidos.asociado[i].getCostoDeducibleAsociado(), "", this.total, pagorequerido));
+                datosAsegurado(new Asegurado(SolicitudRecibidos.asociado[i].getNombreAsociado(), SolicitudRecibidos.asociado[i].getApellidoAsociado(), SolicitudRecibidos.asociado[i].getDpiAsociado(), SolicitudRecibidos.asociado[i].getTelefonoAsociado(), "AUTOR", SolicitudRecibidos.asociado[i].getCostoPrimaAsociado(), SolicitudRecibidos.asociado[i].getCostoDeducibleAsociado(), "", this.total, pagorequerido,this.codigoGenerado));
             }
             datosNoAsegurado(new NoAsegurado(this.nombreTercero, this.apellidoTercero, this.telefonoTercero, this.dpiTercero, this.codigoGenerado, "AFECTADO", this.total, 0.0));
         } else if (jCheckBoxTerceroSeguro.isSelected()) {
@@ -379,14 +392,14 @@ public class ReportarIncidente extends javax.swing.JFrame {
             //Afectado
             for (int i = 0; i < SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
                 if (SolicitudRecibidos.asociado[i].getDpiAsociado().equals(this.dpiAsegurado)) {
-                    datosAsegurado(new Asegurado(SolicitudRecibidos.asociado[i].getNombreAsociado(), SolicitudRecibidos.asociado[i].getApellidoAsociado(), SolicitudRecibidos.asociado[i].getDpiAsociado(), SolicitudRecibidos.asociado[i].getTelefonoAsociado(), "AFECTADO", SolicitudRecibidos.asociado[i].getCostoPrimaAsociado(), SolicitudRecibidos.asociado[i].getCostoDeducibleAsociado(), "", this.total, 0.0));
+                    datosAsegurado(new Asegurado(SolicitudRecibidos.asociado[i].getNombreAsociado(), SolicitudRecibidos.asociado[i].getApellidoAsociado(), SolicitudRecibidos.asociado[i].getDpiAsociado(), SolicitudRecibidos.asociado[i].getTelefonoAsociado(), "AFECTADO", SolicitudRecibidos.asociado[i].getCostoPrimaAsociado(), SolicitudRecibidos.asociado[i].getCostoDeducibleAsociado(), "", this.total, 0.0,this.codigoGenerado));
                 }
 
             }
             //Autor
             for (int i = 0; i < SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
                 if (SolicitudRecibidos.asociado[i].getDpiAsociado().equals(this.dpiTercero)) {
-                    datosAsegurado(new Asegurado(SolicitudRecibidos.asociado[i].getNombreAsociado(), SolicitudRecibidos.asociado[i].getApellidoAsociado(), SolicitudRecibidos.asociado[i].getDpiAsociado(), SolicitudRecibidos.asociado[i].getTelefonoAsociado(), "AUTOR", SolicitudRecibidos.asociado[i].getCostoPrimaAsociado(), SolicitudRecibidos.asociado[i].getCostoDeducibleAsociado(), "", this.total, this.total));
+                    datosAsegurado(new Asegurado(SolicitudRecibidos.asociado[i].getNombreAsociado(), SolicitudRecibidos.asociado[i].getApellidoAsociado(), SolicitudRecibidos.asociado[i].getDpiAsociado(), SolicitudRecibidos.asociado[i].getTelefonoAsociado(), "AUTOR", SolicitudRecibidos.asociado[i].getCostoPrimaAsociado(), SolicitudRecibidos.asociado[i].getCostoDeducibleAsociado(), "", this.total, this.total,this.codigoGenerado));
                 }
             }
 
@@ -394,22 +407,40 @@ public class ReportarIncidente extends javax.swing.JFrame {
             //Afectado
             for (int i = 0; i < SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
                 if (SolicitudRecibidos.asociado[i].getDpiAsociado().equals(this.dpiAsegurado)) {
-                    datosAsegurado(new Asegurado(SolicitudRecibidos.asociado[i].getNombreAsociado(), SolicitudRecibidos.asociado[i].getApellidoAsociado(), SolicitudRecibidos.asociado[i].getDpiAsociado(), SolicitudRecibidos.asociado[i].getTelefonoAsociado(), "AFECTADO", SolicitudRecibidos.asociado[i].getCostoPrimaAsociado(), SolicitudRecibidos.asociado[i].getCostoDeducibleAsociado(), "", this.total, 0.0));
+                    datosAsegurado(new Asegurado(SolicitudRecibidos.asociado[i].getNombreAsociado(), SolicitudRecibidos.asociado[i].getApellidoAsociado(), SolicitudRecibidos.asociado[i].getDpiAsociado(), SolicitudRecibidos.asociado[i].getTelefonoAsociado(), "AFECTADO", SolicitudRecibidos.asociado[i].getCostoPrimaAsociado(), SolicitudRecibidos.asociado[i].getCostoDeducibleAsociado(), "", this.total, 0.0,this.codigoGenerado));
                 }
 
             }
             datosNoAsegurado(new NoAsegurado(this.nombreTercero, this.apellidoTercero, this.telefonoTercero, this.dpiTercero, this.codigoGenerado, "AFECTADO", this.total, this.total));
         }
+        int col = modelo.getColumnCount();
+        int fila = modelo.getRowCount();
+        for (int i = 0; i < fila; i++) {
+            for (int j = 0; j < col; j++) {
+                valorTabla[i][j]= (String) modelo.getValueAt(i,j);
+                
+            }
+            
+        }
+        
+              
+        
+        
+        
         JOptionPane.showMessageDialog(null, "SE HA REPORTADO EXITOSAMENTE!!!");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jCheckBoxTerceroSeguroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxTerceroSeguroActionPerformed
-        cargadorDatosAseguradoCulpable();
+       
     }//GEN-LAST:event_jCheckBoxTerceroSeguroActionPerformed
 
     private void jCheckBoxCulpableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxCulpableActionPerformed
-        cargadorDatosAseguradoCulpable();
+        
     }//GEN-LAST:event_jCheckBoxCulpableActionPerformed
+
+    private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
+        cargadorDatosAseguradoCulpable();
+    }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     public void cargadorDatosAseguradoCulpable() {
         try {
@@ -489,6 +520,7 @@ public class ReportarIncidente extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonAgregar;
+    private javax.swing.JButton jButtonBuscar;
     private javax.swing.JCheckBox jCheckBoxCulpable;
     private javax.swing.JCheckBox jCheckBoxTerceroNoSeguro;
     private javax.swing.JCheckBox jCheckBoxTerceroSeguro;

@@ -61,12 +61,27 @@ public class PanelAdministrador extends javax.swing.JFrame {
 
         jButtonColaTaller.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonColaTaller.setText("Cola Taller");
+        jButtonColaTaller.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonColaTallerActionPerformed(evt);
+            }
+        });
 
         jButtonAsegurados.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonAsegurados.setText("Asegurados");
+        jButtonAsegurados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAseguradosActionPerformed(evt);
+            }
+        });
 
         jButtonNoAsegurados.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonNoAsegurados.setText("No Asegurados");
+        jButtonNoAsegurados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNoAseguradosActionPerformed(evt);
+            }
+        });
 
         jButtonReportes.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonReportes.setText("Reportes");
@@ -153,6 +168,24 @@ public class PanelAdministrador extends javax.swing.JFrame {
         reporte.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonReportarIncidenteActionPerformed
+
+    private void jButtonColaTallerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonColaTallerActionPerformed
+        ColaTaller cola = new ColaTaller();
+        cola.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonColaTallerActionPerformed
+
+    private void jButtonAseguradosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAseguradosActionPerformed
+       ListaAsegurados asegurados = new ListaAsegurados();
+       asegurados.setVisible(true);
+       dispose();
+    }//GEN-LAST:event_jButtonAseguradosActionPerformed
+
+    private void jButtonNoAseguradosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNoAseguradosActionPerformed
+        ListaNoAsegurados noasegurados = new ListaNoAsegurados();
+        noasegurados.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonNoAseguradosActionPerformed
 
     /**
      * @param args the command line arguments

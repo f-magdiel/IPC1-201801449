@@ -17,8 +17,9 @@ public class Asegurado {
     private String estadoAsegurado;
     private double costoReal;
     private double pagoRequerido;
+    private String codigo;
 
-    public Asegurado(String nombreAsegurado, String apellidoAsegurado, String dpiAsegurado, String telefonoAsegurado, String rolAsegurado, double costoPrimaAsegurado, double costoDeducibleAsegurado, String estadoAsegurado, double costoReal, double pagoRequerido) {
+    public Asegurado(String nombreAsegurado, String apellidoAsegurado, String dpiAsegurado, String telefonoAsegurado, String rolAsegurado, double costoPrimaAsegurado, double costoDeducibleAsegurado, String estadoAsegurado, double costoReal, double pagoRequerido,String codigo) {
         this.nombreAsegurado = nombreAsegurado;
         this.apellidoAsegurado = apellidoAsegurado;
         this.dpiAsegurado = dpiAsegurado;
@@ -29,6 +30,15 @@ public class Asegurado {
         this.estadoAsegurado = estadoAsegurado;
         this.costoReal = costoReal;
         this.pagoRequerido = pagoRequerido;
+        this.codigo = codigo;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     public String getNombreAsegurado() {
