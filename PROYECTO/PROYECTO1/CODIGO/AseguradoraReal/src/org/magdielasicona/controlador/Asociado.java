@@ -6,138 +6,171 @@ package org.magdielasicona.controlador;
  * @author FRANMAGDIEL_PC
  */
 public class Asociado {
-    private String nombre;
-    private String apellido;
-    private String dpi;
-    private String telefono;
-    private String tipoVehiculo;
-    private String usoVehiculo;
-    private String marcaVehiculo;
-    private String lineaVehiculo;
-    private String modeloVehiculo;
-    private double costoPrima;
-    private double deducible;
-    private double posibleCostoPrima;
-    private double posibleDeducible;
+  
+     
+    private String nombreAsociado;
+    private String apellidoAsociado;
+    private String dpiAsociado;
+    private String telefonoAsociado;
+    private String tipoVehiculoAsociado;
+    private String usoVehiculoAsociado;
+    private String marcaVehiculoAsociado;
+    private String lineaVehiculoAsociado;
+    private String modeloVehiculoAsociado;
+    private double valorVehiculoAsociado;
+    private double costoPrimaAsociado;
+    private double costoDeducibleAsociado;
+    
+    private String mecanicaAsociado;
+    private String precioMecanicaAsociado;
+    private String repuestoAsociado;
+    private String precioRepuestoAsociado;
 
-    public Asociado(String nombre, String apellido, String dpi, String telefono, String tipoVehiculo, String usoVehiculo, String marcaVehiculo, String lineaVehiculo, String modeloVehiculo, double costoPrima, double deducible, double posibleCostoPrima, double posibleDeducible) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.dpi = dpi;
-        this.telefono = telefono;
-        this.tipoVehiculo = tipoVehiculo;
-        this.usoVehiculo = usoVehiculo;
-        this.marcaVehiculo = marcaVehiculo;
-        this.lineaVehiculo = lineaVehiculo;
-        this.modeloVehiculo = modeloVehiculo;
-        this.costoPrima = costoPrima;
-        this.deducible = deducible;
-        this.posibleCostoPrima = posibleCostoPrima;
-        this.posibleDeducible = posibleDeducible;
+    public Asociado(String nombreAsociado, String apellidoAsociado, String dpiAsociado, String telefonoAsociado, String tipoVehiculoAsociado, String usoVehiculoAsociado, String marcaVehiculoAsociado, String lineaVehiculoAsociado, String modeloVehiculoAsociado, double valorVehiculoAsociado, double costoPrimaAsociado, double costoDeducibleAsociado, String mecanicaAsociado, String precioMecanicaAsociado, String repuestoAsociado, String precioRepuestoAsociado) {
+        this.nombreAsociado = nombreAsociado;
+        this.apellidoAsociado = apellidoAsociado;
+        this.dpiAsociado = dpiAsociado;
+        this.telefonoAsociado = telefonoAsociado;
+        this.tipoVehiculoAsociado = tipoVehiculoAsociado;
+        this.usoVehiculoAsociado = usoVehiculoAsociado;
+        this.marcaVehiculoAsociado = marcaVehiculoAsociado;
+        this.lineaVehiculoAsociado = lineaVehiculoAsociado;
+        this.modeloVehiculoAsociado = modeloVehiculoAsociado;
+        this.valorVehiculoAsociado = valorVehiculoAsociado;
+        this.costoPrimaAsociado = costoPrimaAsociado;
+        this.costoDeducibleAsociado = costoDeducibleAsociado;
+        this.mecanicaAsociado = mecanicaAsociado;
+        this.precioMecanicaAsociado = precioMecanicaAsociado;
+        this.repuestoAsociado = repuestoAsociado;
+        this.precioRepuestoAsociado = precioRepuestoAsociado;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombreAsociado() {
+        return nombreAsociado;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombreAsociado(String nombreAsociado) {
+        this.nombreAsociado = nombreAsociado;
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getApellidoAsociado() {
+        return apellidoAsociado;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setApellidoAsociado(String apellidoAsociado) {
+        this.apellidoAsociado = apellidoAsociado;
     }
 
-    public String getDpi() {
-        return dpi;
+    public String getDpiAsociado() {
+        return dpiAsociado;
     }
 
-    public void setDpi(String dpi) {
-        this.dpi = dpi;
+    public void setDpiAsociado(String dpiAsociado) {
+        this.dpiAsociado = dpiAsociado;
     }
 
-    public String getTelefono() {
-        return telefono;
+    public String getTelefonoAsociado() {
+        return telefonoAsociado;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setTelefonoAsociado(String telefonoAsociado) {
+        this.telefonoAsociado = telefonoAsociado;
     }
 
-    public String getTipoVehiculo() {
-        return tipoVehiculo;
+    public String getTipoVehiculoAsociado() {
+        return tipoVehiculoAsociado;
     }
 
-    public void setTipoVehiculo(String tipoVehiculo) {
-        this.tipoVehiculo = tipoVehiculo;
+    public void setTipoVehiculoAsociado(String tipoVehiculoAsociado) {
+        this.tipoVehiculoAsociado = tipoVehiculoAsociado;
     }
 
-    public String getUsoVehiculo() {
-        return usoVehiculo;
+    public String getUsoVehiculoAsociado() {
+        return usoVehiculoAsociado;
     }
 
-    public void setUsoVehiculo(String usoVehiculo) {
-        this.usoVehiculo = usoVehiculo;
+    public void setUsoVehiculoAsociado(String usoVehiculoAsociado) {
+        this.usoVehiculoAsociado = usoVehiculoAsociado;
     }
 
-    public String getMarcaVehiculo() {
-        return marcaVehiculo;
+    public String getMarcaVehiculoAsociado() {
+        return marcaVehiculoAsociado;
     }
 
-    public void setMarcaVehiculo(String marcaVehiculo) {
-        this.marcaVehiculo = marcaVehiculo;
+    public void setMarcaVehiculoAsociado(String marcaVehiculoAsociado) {
+        this.marcaVehiculoAsociado = marcaVehiculoAsociado;
     }
 
-    public String getLineaVehiculo() {
-        return lineaVehiculo;
+    public String getLineaVehiculoAsociado() {
+        return lineaVehiculoAsociado;
     }
 
-    public void setLineaVehiculo(String lineaVehiculo) {
-        this.lineaVehiculo = lineaVehiculo;
+    public void setLineaVehiculoAsociado(String lineaVehiculoAsociado) {
+        this.lineaVehiculoAsociado = lineaVehiculoAsociado;
     }
 
-    public String getModeloVehiculo() {
-        return modeloVehiculo;
+    public String getModeloVehiculoAsociado() {
+        return modeloVehiculoAsociado;
     }
 
-    public void setModeloVehiculo(String modeloVehiculo) {
-        this.modeloVehiculo = modeloVehiculo;
+    public void setModeloVehiculoAsociado(String modeloVehiculoAsociado) {
+        this.modeloVehiculoAsociado = modeloVehiculoAsociado;
     }
 
-    public double getCostoPrima() {
-        return costoPrima;
+    public double getValorVehiculoAsociado() {
+        return valorVehiculoAsociado;
     }
 
-    public void setCostoPrima(double costoPrima) {
-        this.costoPrima = costoPrima;
+    public void setValorVehiculoAsociado(double valorVehiculoAsociado) {
+        this.valorVehiculoAsociado = valorVehiculoAsociado;
     }
 
-    public double getDeducible() {
-        return deducible;
+    public double getCostoPrimaAsociado() {
+        return costoPrimaAsociado;
     }
 
-    public void setDeducible(double deducible) {
-        this.deducible = deducible;
+    public void setCostoPrimaAsociado(double costoPrimaAsociado) {
+        this.costoPrimaAsociado = costoPrimaAsociado;
     }
 
-    public double getPosibleCostoPrima() {
-        return posibleCostoPrima;
+    public double getCostoDeducibleAsociado() {
+        return costoDeducibleAsociado;
     }
 
-    public void setPosibleCostoPrima(double posibleCostoPrima) {
-        this.posibleCostoPrima = posibleCostoPrima;
+    public void setCostoDeducibleAsociado(double costoDeducibleAsociado) {
+        this.costoDeducibleAsociado = costoDeducibleAsociado;
     }
 
-    public double getPosibleDeducible() {
-        return posibleDeducible;
+    public String getMecanicaAsociado() {
+        return mecanicaAsociado;
     }
 
-    public void setPosibleDeducible(double posibleDeducible) {
-        this.posibleDeducible = posibleDeducible;
+    public void setMecanicaAsociado(String mecanicaAsociado) {
+        this.mecanicaAsociado = mecanicaAsociado;
+    }
+
+    public String getPrecioMecanicaAsociado() {
+        return precioMecanicaAsociado;
+    }
+
+    public void setPrecioMecanicaAsociado(String precioMecanicaAsociado) {
+        this.precioMecanicaAsociado = precioMecanicaAsociado;
+    }
+
+    public String getRepuestoAsociado() {
+        return repuestoAsociado;
+    }
+
+    public void setRepuestoAsociado(String repuestoAsociado) {
+        this.repuestoAsociado = repuestoAsociado;
+    }
+
+    public String getPrecioRepuestoAsociado() {
+        return precioRepuestoAsociado;
+    }
+
+    public void setPrecioRepuestoAsociado(String precioRepuestoAsociado) {
+        this.precioRepuestoAsociado = precioRepuestoAsociado;
     }
     
     

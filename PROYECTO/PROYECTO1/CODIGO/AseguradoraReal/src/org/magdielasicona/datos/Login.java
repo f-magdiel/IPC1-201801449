@@ -106,12 +106,16 @@ public class Login extends javax.swing.JFrame {
         String nombreUsuario;
         nombreUsuario = jTextFieldNombreUsuario.getText().toUpperCase();
         
-        if (nombreUsuario.equals("ADMIN")) {
+        for (int i = 0; i < SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
+            if (nombreUsuario.equals("ADMIN")) {
             PanelAdministrador admin = new PanelAdministrador();
             admin.setVisible(true);
             dispose();
+        }else if(SolicitudSeguro.solicitante[i].getDpiCandidato().equals(nombreUsuario)){
+        
         }else if(jTextFieldNombreUsuario.getText().length()==0){
         JOptionPane.showMessageDialog(null,"INGRESE UN USUARIO POR LO MENOS!!!");
+        }
         }
         
     }//GEN-LAST:event_jButtonLoginActionPerformed
