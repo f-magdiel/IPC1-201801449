@@ -8,6 +8,8 @@ package org.magdielasicona.administrador;
 import java.util.Random;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.magdielasicona.controlador.Asegurado;
+import org.magdielasicona.controlador.NoAsegurado;
 import org.magdielasicona.datos.SolicitudSeguro;
 
 /**
@@ -16,17 +18,32 @@ import org.magdielasicona.datos.SolicitudSeguro;
  */
 public class ReportarIncidente extends javax.swing.JFrame {
 
+    private int contadorBtnReportar;
     private String nombreTercero;
+    private String apellidoTercero;
     private String telefonoTercero;
     private String dpiTercero;
+    String codigoGenerado;
+
     private double total = 0;
 
     private String dpiAsegurado;
 
     public static double precioRepuestoReal[] = new double[10];
     public static double precioMecanicaReal[] = new double[10];
+    public static Asegurado asegurado[] = new Asegurado[30];
+    public static NoAsegurado noasegurado[] = new NoAsegurado[30];
 
     DefaultTableModel modelo;
+
+    private static ReportarIncidente instanciaReportarIncidente;
+
+    public static ReportarIncidente getInstancia() {
+        if (instanciaReportarIncidente == null) {
+            instanciaReportarIncidente = new ReportarIncidente();
+        }
+        return instanciaReportarIncidente;
+    }
 
     public ReportarIncidente() {
         initComponents();
@@ -63,10 +80,9 @@ public class ReportarIncidente extends javax.swing.JFrame {
         jTableReportarIncidente = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         jTextFieldTotal = new javax.swing.JTextField();
-        jCheckBoxTerceroSeguro1 = new javax.swing.JCheckBox();
+        jCheckBoxTerceroNoSeguro = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButtonBuscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,9 +104,19 @@ public class ReportarIncidente extends javax.swing.JFrame {
 
         jCheckBoxCulpable.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jCheckBoxCulpable.setText("El Asegurado es Culpable");
+        jCheckBoxCulpable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxCulpableActionPerformed(evt);
+            }
+        });
 
         jCheckBoxTerceroSeguro.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jCheckBoxTerceroSeguro.setText("El Tercero Tiene Seguro");
+        jCheckBoxTerceroSeguro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxTerceroSeguroActionPerformed(evt);
+            }
+        });
 
         jButtonAgregar.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonAgregar.setText("Agregar");
@@ -115,11 +141,11 @@ public class ReportarIncidente extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jLabel5.setText("TOTAL:");
 
-        jCheckBoxTerceroSeguro1.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
-        jCheckBoxTerceroSeguro1.setText("El Tercero No Tiene Seguro");
-        jCheckBoxTerceroSeguro1.addActionListener(new java.awt.event.ActionListener() {
+        jCheckBoxTerceroNoSeguro.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
+        jCheckBoxTerceroNoSeguro.setText("El Tercero No Tiene Seguro");
+        jCheckBoxTerceroNoSeguro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxTerceroSeguro1ActionPerformed(evt);
+                jCheckBoxTerceroNoSeguroActionPerformed(evt);
             }
         });
 
@@ -136,13 +162,6 @@ public class ReportarIncidente extends javax.swing.JFrame {
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButtonBuscar.setText("Buscar");
-        jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonBuscarActionPerformed(evt);
             }
         });
 
@@ -175,9 +194,8 @@ public class ReportarIncidente extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jCheckBoxCulpable)
                             .addComponent(jCheckBoxTerceroSeguro)
-                            .addComponent(jButtonBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jCheckBoxTerceroSeguro1)))
+                            .addComponent(jCheckBoxTerceroNoSeguro)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(92, 92, 92)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,10 +243,8 @@ public class ReportarIncidente extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jComboBoxRepuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jCheckBoxTerceroSeguro1)
-                        .addGap(6, 6, 6)
-                        .addComponent(jButtonBuscar)
-                        .addGap(12, 12, 12)
+                        .addComponent(jCheckBoxTerceroNoSeguro)
+                        .addGap(50, 50, 50)
                         .addComponent(jButtonAgregar)))
                 .addGap(37, 37, 37)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -248,17 +264,13 @@ public class ReportarIncidente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBoxTerceroSeguro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxTerceroSeguro1ActionPerformed
+    private void jCheckBoxTerceroNoSeguroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxTerceroNoSeguroActionPerformed
         nombreTercero = JOptionPane.showInputDialog("Ingrese el Nombre");
         dpiTercero = JOptionPane.showInputDialog("Igrese el DPI");
         telefonoTercero = JOptionPane.showInputDialog("Ingrese Número de Teléfono");
         jTextFieldDpiTercero.setText(dpiTercero);
-
-    }//GEN-LAST:event_jCheckBoxTerceroSeguro1ActionPerformed
-
-    private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
-        cargadorDatos();
-    }//GEN-LAST:event_jButtonBuscarActionPerformed
+        cargadorDatosAseguradoCulpable();
+    }//GEN-LAST:event_jCheckBoxTerceroNoSeguroActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         PanelAdministrador admin = new PanelAdministrador();
@@ -293,10 +305,10 @@ public class ReportarIncidente extends javax.swing.JFrame {
         }
         if (indexMecanica != 0) {
             preciolista = precioMecanicaReal[indexMecanica - 1];
-            
+
         } else if (indexRepuesto != 0) {
             preciolista = precioRepuestoReal[indexRepuesto - 1];
-            
+
         }
 
         this.total += preciolista;
@@ -307,60 +319,136 @@ public class ReportarIncidente extends javax.swing.JFrame {
         informacion[2] = precio;
 
         modelo.addRow(informacion);
-        
-        
+
         jComboBoxMecanica.setSelectedIndex(0);
         jComboBoxRepuesto.setSelectedIndex(0);
         jTextFieldTotal.setText(String.valueOf(total));
         preciolista = 0;
     }//GEN-LAST:event_jButtonAgregarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      //Logica para ser cupable o autor
-        
-        if (jCheckBoxCulpable.isSelected()) {
-            
+    public void datosAsegurado(Asegurado obj) {
+        for (int i = 0; i < 30; i++) {
+            if (asegurado[i] == null) {
+                asegurado[i] = obj;
+                return;
+            }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }
 
-    public void cargadorDatos() {
-      try{
-      
-        dpiAsegurado = jTextFieldDpiAsegurado.getText();
+    public void datosNoAsegurado(NoAsegurado obj) {
+        for (int i = 0; i < 30; i++) {
+            if (noasegurado[i] == null) {
+                noasegurado[i] = obj;
+                return;
+            }
+        }
+    }
 
-        for (int i = 0; i < SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
-            if (SolicitudRecibidos.asociado[i].getDpiAsociado().equals(dpiAsegurado)) {
-                //Se obtiene de forma de cadena
-                String mecanica = SolicitudRecibidos.asociado[i].getMecanicaAsociado();
-                String repuesto = SolicitudRecibidos.asociado[i].getRepuestoAsociado();
-                String precioMecanica = SolicitudRecibidos.asociado[i].getPrecioMecanicaAsociado();
-                String precioRepuesto = SolicitudRecibidos.asociado[i].getPrecioRepuestoAsociado();
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //Logica para ser cupable o autor
 
-                String listamecanica[] = mecanica.split(",");
-                String listarepuesto[] = repuesto.split(",");
-                String listaPrecioMecanica[] = precioMecanica.split(",");
-                String listaPrecioRepuesto[] = precioRepuesto.split(",");
+        //Asegurado culpable y tercero es asegurado...
+        if (jCheckBoxCulpable.isSelected() && jCheckBoxTerceroSeguro.isSelected()) {
+            for (int i = 0; i < SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
+                if (SolicitudRecibidos.asociado[i].getDpiAsociado().equals(dpiAsegurado)) {
+                    double deducibleapagar;
+                    double porcentajecostoreal;
+                    double totalpagorequerido;
+                    deducibleapagar = SolicitudRecibidos.asociado[i].getCostoDeducibleAsociado();
+                    porcentajecostoreal = 0.20 * this.total;
+                    totalpagorequerido = deducibleapagar + porcentajecostoreal;
 
-                for (int j = 0; j < listamecanica.length; j++) {
-                    jComboBoxMecanica.addItem(listamecanica[i]);
+                    datosAsegurado(new Asegurado(SolicitudRecibidos.asociado[i].getNombreAsociado(), SolicitudRecibidos.asociado[i].getApellidoAsociado(), SolicitudRecibidos.asociado[i].getDpiAsociado(), SolicitudRecibidos.asociado[i].getTelefonoAsociado(), "AUTOR", SolicitudRecibidos.asociado[i].getCostoPrimaAsociado(), SolicitudRecibidos.asociado[i].getCostoDeducibleAsociado(), "", this.total, totalpagorequerido));
                 }
-                for (int j = 0; j < listarepuesto.length; j++) {
-                    jComboBoxRepuesto.addItem(listarepuesto[i]);
+            }
+            for (int i = 0; i < SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
+                if (SolicitudRecibidos.asociado[i].getDpiAsociado().equals(dpiTercero)) {
+                    datosAsegurado(new Asegurado(SolicitudRecibidos.asociado[i].getNombreAsociado(), SolicitudRecibidos.asociado[i].getApellidoAsociado(), SolicitudRecibidos.asociado[i].getDpiAsociado(), SolicitudRecibidos.asociado[i].getTelefonoAsociado(), "AFECTADO", SolicitudRecibidos.asociado[i].getCostoPrimaAsociado(), SolicitudRecibidos.asociado[i].getCostoDeducibleAsociado(), "", 0.0, 0.0));
                 }
-                for (int j = 0; j < listaPrecioMecanica.length; j++) {
-                    
-                    precioMecanicaReal[j] = Double.parseDouble(listaPrecioMecanica[j]);
-                    
-                }
-                for (int j = 0; j < listaPrecioRepuesto.length; j++) {
-                  
-                    precioRepuestoReal[j] = Double.parseDouble(listaPrecioRepuesto[j]);
-                      
+            }
+
+            //Asegurado es Culpable y Tercero no tiene seguro
+        } else if (jCheckBoxCulpable.isSelected() && jCheckBoxTerceroNoSeguro.isSelected()) {
+            for (int i = 0; i < SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
+                double pagorequerido = SolicitudRecibidos.asociado[i].getCostoDeducibleAsociado();
+                datosAsegurado(new Asegurado(SolicitudRecibidos.asociado[i].getNombreAsociado(), SolicitudRecibidos.asociado[i].getApellidoAsociado(), SolicitudRecibidos.asociado[i].getDpiAsociado(), SolicitudRecibidos.asociado[i].getTelefonoAsociado(), "AUTOR", SolicitudRecibidos.asociado[i].getCostoPrimaAsociado(), SolicitudRecibidos.asociado[i].getCostoDeducibleAsociado(), "", this.total, pagorequerido));
+            }
+            datosNoAsegurado(new NoAsegurado(this.nombreTercero, this.apellidoTercero, this.telefonoTercero, this.dpiTercero, this.codigoGenerado, "AFECTADO", this.total, 0.0));
+        } else if (jCheckBoxTerceroSeguro.isSelected()) {
+            //El Culpable es UN asegurado 
+            //Afectado
+            for (int i = 0; i < SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
+                if (SolicitudRecibidos.asociado[i].getDpiAsociado().equals(this.dpiAsegurado)) {
+                    datosAsegurado(new Asegurado(SolicitudRecibidos.asociado[i].getNombreAsociado(), SolicitudRecibidos.asociado[i].getApellidoAsociado(), SolicitudRecibidos.asociado[i].getDpiAsociado(), SolicitudRecibidos.asociado[i].getTelefonoAsociado(), "AFECTADO", SolicitudRecibidos.asociado[i].getCostoPrimaAsociado(), SolicitudRecibidos.asociado[i].getCostoDeducibleAsociado(), "", this.total, 0.0));
                 }
 
             }
+            //Autor
+            for (int i = 0; i < SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
+                if (SolicitudRecibidos.asociado[i].getDpiAsociado().equals(this.dpiTercero)) {
+                    datosAsegurado(new Asegurado(SolicitudRecibidos.asociado[i].getNombreAsociado(), SolicitudRecibidos.asociado[i].getApellidoAsociado(), SolicitudRecibidos.asociado[i].getDpiAsociado(), SolicitudRecibidos.asociado[i].getTelefonoAsociado(), "AUTOR", SolicitudRecibidos.asociado[i].getCostoPrimaAsociado(), SolicitudRecibidos.asociado[i].getCostoDeducibleAsociado(), "", this.total, this.total));
+                }
+            }
+
+        } else if (jCheckBoxTerceroNoSeguro.isSelected()) {
+            //Afectado
+            for (int i = 0; i < SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
+                if (SolicitudRecibidos.asociado[i].getDpiAsociado().equals(this.dpiAsegurado)) {
+                    datosAsegurado(new Asegurado(SolicitudRecibidos.asociado[i].getNombreAsociado(), SolicitudRecibidos.asociado[i].getApellidoAsociado(), SolicitudRecibidos.asociado[i].getDpiAsociado(), SolicitudRecibidos.asociado[i].getTelefonoAsociado(), "AFECTADO", SolicitudRecibidos.asociado[i].getCostoPrimaAsociado(), SolicitudRecibidos.asociado[i].getCostoDeducibleAsociado(), "", this.total, 0.0));
+                }
+
+            }
+            datosNoAsegurado(new NoAsegurado(this.nombreTercero, this.apellidoTercero, this.telefonoTercero, this.dpiTercero, this.codigoGenerado, "AFECTADO", this.total, this.total));
         }
-      }catch(Exception e){}
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jCheckBoxTerceroSeguroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxTerceroSeguroActionPerformed
+        cargadorDatosAseguradoCulpable();
+    }//GEN-LAST:event_jCheckBoxTerceroSeguroActionPerformed
+
+    private void jCheckBoxCulpableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxCulpableActionPerformed
+        cargadorDatosAseguradoCulpable();
+    }//GEN-LAST:event_jCheckBoxCulpableActionPerformed
+
+    public void cargadorDatosAseguradoCulpable() {
+        try {
+
+            dpiAsegurado = jTextFieldDpiAsegurado.getText();
+
+            for (int i = 0; i < SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
+                if (SolicitudRecibidos.asociado[i].getDpiAsociado().equals(dpiAsegurado)) {
+                    //Se obtiene de forma de cadena
+                    String mecanica = SolicitudRecibidos.asociado[i].getMecanicaAsociado();
+                    String repuesto = SolicitudRecibidos.asociado[i].getRepuestoAsociado();
+                    String precioMecanica = SolicitudRecibidos.asociado[i].getPrecioMecanicaAsociado();
+                    String precioRepuesto = SolicitudRecibidos.asociado[i].getPrecioRepuestoAsociado();
+
+                    String listamecanica[] = mecanica.split(",");
+                    String listarepuesto[] = repuesto.split(",");
+                    String listaPrecioMecanica[] = precioMecanica.split(",");
+                    String listaPrecioRepuesto[] = precioRepuesto.split(",");
+
+                    for (int j = 0; j < listamecanica.length; j++) {
+                        jComboBoxMecanica.addItem(listamecanica[i]);
+                    }
+                    for (int j = 0; j < listarepuesto.length; j++) {
+                        jComboBoxRepuesto.addItem(listarepuesto[i]);
+                    }
+                    for (int j = 0; j < listaPrecioMecanica.length; j++) {
+
+                        precioMecanicaReal[j] = Double.parseDouble(listaPrecioMecanica[j]);
+
+                    }
+                    for (int j = 0; j < listaPrecioRepuesto.length; j++) {
+
+                        precioRepuestoReal[j] = Double.parseDouble(listaPrecioRepuesto[j]);
+
+                    }
+
+                }
+            }
+        } catch (Exception e) {
+        }
 
     }
 
@@ -400,10 +488,9 @@ public class ReportarIncidente extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonAgregar;
-    private javax.swing.JButton jButtonBuscar;
     private javax.swing.JCheckBox jCheckBoxCulpable;
+    private javax.swing.JCheckBox jCheckBoxTerceroNoSeguro;
     private javax.swing.JCheckBox jCheckBoxTerceroSeguro;
-    private javax.swing.JCheckBox jCheckBoxTerceroSeguro1;
     private javax.swing.JComboBox<String> jComboBoxMecanica;
     private javax.swing.JComboBox<String> jComboBoxRepuesto;
     private javax.swing.JLabel jLabel1;

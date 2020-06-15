@@ -54,9 +54,8 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jCheckBoxCulpable" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jCheckBoxTerceroSeguro" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButtonBuscar" max="32767" attributes="0"/>
                           <Component id="jButtonAgregar" max="32767" attributes="0"/>
-                          <Component id="jCheckBoxTerceroSeguro1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jCheckBoxTerceroNoSeguro" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -120,10 +119,8 @@
                       <Component id="jComboBoxRepuesto" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="jCheckBoxTerceroSeguro1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                      <Component id="jButtonBuscar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                      <Component id="jCheckBoxTerceroNoSeguro" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                       <Component id="jButtonAgregar" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -215,6 +212,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="El Asegurado es Culpable"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxCulpableActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JCheckBox" name="jCheckBoxTerceroSeguro">
       <Properties>
@@ -223,6 +223,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="El Tercero Tiene Seguro"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxTerceroSeguroActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonAgregar">
       <Properties>
@@ -266,7 +269,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldTotal">
     </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBoxTerceroSeguro1">
+    <Component class="javax.swing.JCheckBox" name="jCheckBoxTerceroNoSeguro">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="DejaVu Sans" size="12" style="0"/>
@@ -274,7 +277,7 @@
         <Property name="text" type="java.lang.String" value="El Tercero No Tiene Seguro"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxTerceroSeguro1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxTerceroNoSeguroActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
@@ -297,14 +300,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButtonBuscar">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Buscar"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonBuscarActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

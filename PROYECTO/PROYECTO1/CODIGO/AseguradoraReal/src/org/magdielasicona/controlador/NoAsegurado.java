@@ -7,6 +7,7 @@ package org.magdielasicona.controlador;
  */
 public class NoAsegurado {
     private String nombreNoAsociado;
+    private String apellidoNoAsociado;
     private String teledonoNoAsociado;
     private String dpiNoAsociado;
     private String codigo;
@@ -14,8 +15,9 @@ public class NoAsegurado {
     private double costoReal;
     private double precioPagar;
 
-    public NoAsegurado(String nombreNoAsociado, String teledonoNoAsociado, String dpiNoAsociado, String codigo, String rol, double costoReal, double precioPagar) {
+    public NoAsegurado(String nombreNoAsociado, String apellidoNoAsociado, String teledonoNoAsociado, String dpiNoAsociado, String codigo, String rol, double costoReal, double precioPagar) {
         this.nombreNoAsociado = nombreNoAsociado;
+        this.apellidoNoAsociado = apellidoNoAsociado;
         this.teledonoNoAsociado = teledonoNoAsociado;
         this.dpiNoAsociado = dpiNoAsociado;
         this.codigo = codigo;
@@ -30,6 +32,14 @@ public class NoAsegurado {
 
     public void setNombreNoAsociado(String nombreNoAsociado) {
         this.nombreNoAsociado = nombreNoAsociado;
+    }
+
+    public String getApellidoNoAsociado() {
+        return apellidoNoAsociado;
+    }
+
+    public void setApellidoNoAsociado(String apellidoNoAsociado) {
+        this.apellidoNoAsociado = apellidoNoAsociado;
     }
 
     public String getTeledonoNoAsociado() {
@@ -79,6 +89,8 @@ public class NoAsegurado {
     public void setPrecioPagar(double precioPagar) {
         this.precioPagar = precioPagar;
     }
+
+    
 
     
     
