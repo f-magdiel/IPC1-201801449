@@ -117,7 +117,9 @@ public class Login extends javax.swing.JFrame {
                 PanelAsegurado asegurado = new PanelAsegurado();
                 asegurado.setVisible(true);
                 dispose();
-            } else if (jTextFieldNombreUsuario.getText().length() == 0) {
+            }else if(5==1){ 
+            
+            }else if (jTextFieldNombreUsuario.getText().length() == 0) {
                 JOptionPane.showMessageDialog(null, "INGRESE UN USUARIO POR LO MENOS!!!");
             }
         }

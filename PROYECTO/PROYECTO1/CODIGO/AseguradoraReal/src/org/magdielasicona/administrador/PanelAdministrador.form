@@ -27,20 +27,20 @@
               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jButton1" min="-2" pref="187" max="-2" attributes="0"/>
+                      <Component id="jButtonSolicitudSeguro" min="-2" pref="187" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" pref="187" max="-2" attributes="0"/>
+                      <Component id="jButtonReportarIncidente" min="-2" pref="187" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton3" min="-2" pref="187" max="-2" attributes="0"/>
+                      <Component id="jButtonColaTaller" min="-2" pref="187" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jButton4" min="-2" pref="187" max="-2" attributes="0"/>
+                      <Component id="jButtonAsegurados" min="-2" pref="187" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton5" min="-2" pref="187" max="-2" attributes="0"/>
+                      <Component id="jButtonNoAsegurados" min="-2" pref="187" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jButtonCancelar" min="-2" pref="187" max="-2" attributes="0"/>
-                          <Component id="jButton6" min="-2" pref="187" max="-2" attributes="0"/>
+                          <Component id="jButtonReportes" min="-2" pref="187" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -58,21 +58,21 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButtonSolicitudSeguro" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButtonReportarIncidente" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButtonColaTaller" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButtonAsegurados" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButtonNoAsegurados" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButtonReportes" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jTextFieldFechaSistema" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="41" max="32767" attributes="0"/>
+              <EmptySpace pref="45" max="32767" attributes="0"/>
               <Component id="jButtonCancelar" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
           </Group>
@@ -80,41 +80,65 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="jButtonSolicitudSeguro">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="DejaVu Sans" size="12" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Solicitudes De Seguro"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSolicitudSeguroActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="jButtonReportarIncidente">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="DejaVu Sans" size="12" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Reportar Indicente"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonReportarIncidenteActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="jButtonColaTaller">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="DejaVu Sans" size="12" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Cola Taller"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton4">
+    <Component class="javax.swing.JButton" name="jButtonAsegurados">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="DejaVu Sans" size="12" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Asegurados"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton5">
+    <Component class="javax.swing.JButton" name="jButtonNoAsegurados">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="DejaVu Sans" size="12" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="No Asegurados"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton6">
+    <Component class="javax.swing.JButton" name="jButtonReportes">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="DejaVu Sans" size="12" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Reportes"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonCancelar">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="DejaVu Sans" size="12" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
       </Properties>
       <Events>
@@ -123,6 +147,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="DejaVu Sans" size="12" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Fecha Sistema:"/>
       </Properties>
     </Component>

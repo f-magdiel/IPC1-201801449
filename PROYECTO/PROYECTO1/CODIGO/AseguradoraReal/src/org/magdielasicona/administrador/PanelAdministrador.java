@@ -31,35 +31,47 @@ public class PanelAdministrador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        jButtonSolicitudSeguro = new javax.swing.JButton();
+        jButtonReportarIncidente = new javax.swing.JButton();
+        jButtonColaTaller = new javax.swing.JButton();
+        jButtonAsegurados = new javax.swing.JButton();
+        jButtonNoAsegurados = new javax.swing.JButton();
+        jButtonReportes = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jTextFieldFechaSistema = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Solicitudes De Seguro");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSolicitudSeguro.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
+        jButtonSolicitudSeguro.setText("Solicitudes De Seguro");
+        jButtonSolicitudSeguro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonSolicitudSeguroActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Reportar Indicente");
+        jButtonReportarIncidente.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
+        jButtonReportarIncidente.setText("Reportar Indicente");
+        jButtonReportarIncidente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonReportarIncidenteActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Cola Taller");
+        jButtonColaTaller.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
+        jButtonColaTaller.setText("Cola Taller");
 
-        jButton4.setText("Asegurados");
+        jButtonAsegurados.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
+        jButtonAsegurados.setText("Asegurados");
 
-        jButton5.setText("No Asegurados");
+        jButtonNoAsegurados.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
+        jButtonNoAsegurados.setText("No Asegurados");
 
-        jButton6.setText("Reportes");
+        jButtonReportes.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
+        jButtonReportes.setText("Reportes");
 
+        jButtonCancelar.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,6 +79,7 @@ public class PanelAdministrador extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jLabel1.setText("Fecha Sistema:");
 
         jTextFieldFechaSistema.setText("DD-MM-AA");
@@ -79,19 +92,19 @@ public class PanelAdministrador extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonSolicitudSeguro, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonReportarIncidente, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButtonColaTaller, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonAsegurados, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonNoAsegurados, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addComponent(jLabel1))))
@@ -103,19 +116,19 @@ public class PanelAdministrador extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(71, 71, 71)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(jButtonSolicitudSeguro)
+                    .addComponent(jButtonReportarIncidente)
+                    .addComponent(jButtonColaTaller))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6))
+                    .addComponent(jButtonAsegurados)
+                    .addComponent(jButtonNoAsegurados)
+                    .addComponent(jButtonReportes))
                 .addGap(24, 24, 24)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextFieldFechaSistema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(jButtonCancelar)
                 .addGap(22, 22, 22))
         );
@@ -129,11 +142,17 @@ public class PanelAdministrador extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonSolicitudSeguroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSolicitudSeguroActionPerformed
     SolicitudRecibidos soli = new SolicitudRecibidos();
     soli.setVisible(true);
     dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonSolicitudSeguroActionPerformed
+
+    private void jButtonReportarIncidenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReportarIncidenteActionPerformed
+        ReportarIncidente reporte = new ReportarIncidente();
+        reporte.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonReportarIncidenteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,13 +190,13 @@ public class PanelAdministrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButtonAsegurados;
     private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JButton jButtonColaTaller;
+    private javax.swing.JButton jButtonNoAsegurados;
+    private javax.swing.JButton jButtonReportarIncidente;
+    private javax.swing.JButton jButtonReportes;
+    private javax.swing.JButton jButtonSolicitudSeguro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTextFieldFechaSistema;
     // End of variables declaration//GEN-END:variables

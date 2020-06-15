@@ -16,6 +16,8 @@ public class ReportarIncidente extends javax.swing.JFrame {
      */
     public ReportarIncidente() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setTitle("REPORTE INCIDENTE AUTOMAS");
     }
 
     /**
@@ -43,6 +45,9 @@ public class ReportarIncidente extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         jTextFieldTotal = new javax.swing.JTextField();
+        jCheckBoxTerceroSeguro1 = new javax.swing.JCheckBox();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,12 +67,16 @@ public class ReportarIncidente extends javax.swing.JFrame {
 
         jComboBoxRepuesto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jCheckBoxCulpable.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jCheckBoxCulpable.setText("El Asegurado es Culpable");
 
+        jCheckBoxTerceroSeguro.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jCheckBoxTerceroSeguro.setText("El Tercero Tiene Seguro");
 
+        jButtonBuscar.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonBuscar.setText("Buscar");
 
+        jButtonAgregar.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonAgregar.setText("Agregar");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -85,6 +94,15 @@ public class ReportarIncidente extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jLabel5.setText("TOTAL:");
 
+        jCheckBoxTerceroSeguro1.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
+        jCheckBoxTerceroSeguro1.setText("El Tercero No Tiene Seguro");
+
+        jButton1.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
+        jButton1.setText("Reportar Incidente");
+
+        jButton2.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
+        jButton2.setText("Cancelar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -94,7 +112,7 @@ public class ReportarIncidente extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 559, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -113,13 +131,21 @@ public class ReportarIncidente extends javax.swing.JFrame {
                                     .addComponent(jCheckBoxCulpable)
                                     .addComponent(jCheckBoxTerceroSeguro)
                                     .addComponent(jButtonBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButtonAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                    .addComponent(jButtonAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jCheckBoxTerceroSeguro1)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(75, 75, 75)
                         .addComponent(jLabel5)
                         .addGap(30, 30, 30)
-                        .addComponent(jTextFieldTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(126, Short.MAX_VALUE))
+                        .addComponent(jTextFieldTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)))
+                .addContainerGap(99, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton1)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(170, 170, 170))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,27 +160,34 @@ public class ReportarIncidente extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jTextFieldDpiTercero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCheckBoxTerceroSeguro))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jComboBoxMecanica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonBuscar))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(jComboBoxMecanica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(jComboBoxRepuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
+                        .addGap(7, 7, 7)
+                        .addComponent(jCheckBoxTerceroSeguro1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonAgregar)))
                 .addGap(29, 29, 29)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jTextFieldTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -196,10 +229,13 @@ public class ReportarIncidente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonAgregar;
     private javax.swing.JButton jButtonBuscar;
     private javax.swing.JCheckBox jCheckBoxCulpable;
     private javax.swing.JCheckBox jCheckBoxTerceroSeguro;
+    private javax.swing.JCheckBox jCheckBoxTerceroSeguro1;
     private javax.swing.JComboBox<String> jComboBoxMecanica;
     private javax.swing.JComboBox<String> jComboBoxRepuesto;
     private javax.swing.JLabel jLabel1;
