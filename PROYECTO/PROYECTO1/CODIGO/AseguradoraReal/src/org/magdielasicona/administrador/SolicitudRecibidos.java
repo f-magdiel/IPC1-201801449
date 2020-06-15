@@ -7,7 +7,7 @@ import org.magdielasicona.controlador.Solicitante;
 import org.magdielasicona.datos.Login;
 import org.magdielasicona.datos.SolicitudSeguro;
 import org.magdielasicona.controlador.Asociado;
-import org.magdielasicona.controlador.NoAsociado;
+import org.magdielasicona.controlador.NoAsegurado;
 
 /**
  *
@@ -16,7 +16,7 @@ import org.magdielasicona.controlador.NoAsociado;
 public class SolicitudRecibidos extends javax.swing.JFrame {
 
     public static Asociado asociado[] = new Asociado[30];
-    public static NoAsociado noAsociado[] = new NoAsociado[30];
+    public static NoAsegurado noAsociado[] = new NoAsegurado[30];
 
     DefaultTableModel modelo;
 

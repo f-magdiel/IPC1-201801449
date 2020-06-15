@@ -125,6 +125,11 @@ public class ReportarIncidente extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButton1.setText("Reportar Incidente");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButton2.setText("Cancelar");
@@ -303,11 +308,20 @@ public class ReportarIncidente extends javax.swing.JFrame {
 
         modelo.addRow(informacion);
         
+        
         jComboBoxMecanica.setSelectedIndex(0);
         jComboBoxRepuesto.setSelectedIndex(0);
         jTextFieldTotal.setText(String.valueOf(total));
         preciolista = 0;
     }//GEN-LAST:event_jButtonAgregarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+      //Logica para ser cupable o autor
+        
+        if (jCheckBoxCulpable.isSelected()) {
+            
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public void cargadorDatos() {
       try{

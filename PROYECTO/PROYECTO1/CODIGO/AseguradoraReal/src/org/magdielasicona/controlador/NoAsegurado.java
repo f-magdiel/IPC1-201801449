@@ -5,16 +5,22 @@ package org.magdielasicona.controlador;
  *
  * @author FRANMAGDIEL_PC
  */
-public class NoAsociado {
+public class NoAsegurado {
     private String nombreNoAsociado;
     private String teledonoNoAsociado;
     private String dpiNoAsociado;
+    private String codigo;
+    private String rol;
+    private double costoReal;
     private double precioPagar;
 
-    public NoAsociado(String nombreNoAsociado, String teledonoNoAsociado, String dpiNoAsociado, double precioPagar) {
+    public NoAsegurado(String nombreNoAsociado, String teledonoNoAsociado, String dpiNoAsociado, String codigo, String rol, double costoReal, double precioPagar) {
         this.nombreNoAsociado = nombreNoAsociado;
         this.teledonoNoAsociado = teledonoNoAsociado;
         this.dpiNoAsociado = dpiNoAsociado;
+        this.codigo = codigo;
+        this.rol = rol;
+        this.costoReal = costoReal;
         this.precioPagar = precioPagar;
     }
 
@@ -42,6 +48,30 @@ public class NoAsociado {
         this.dpiNoAsociado = dpiNoAsociado;
     }
 
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    public double getCostoReal() {
+        return costoReal;
+    }
+
+    public void setCostoReal(double costoReal) {
+        this.costoReal = costoReal;
+    }
+
     public double getPrecioPagar() {
         return precioPagar;
     }
@@ -49,6 +79,7 @@ public class NoAsociado {
     public void setPrecioPagar(double precioPagar) {
         this.precioPagar = precioPagar;
     }
+
     
     
 }
