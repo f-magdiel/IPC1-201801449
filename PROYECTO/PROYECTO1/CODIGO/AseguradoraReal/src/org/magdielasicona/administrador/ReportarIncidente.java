@@ -400,6 +400,7 @@ public class ReportarIncidente extends javax.swing.JFrame {
             }
             datosNoAsegurado(new NoAsegurado(this.nombreTercero, this.apellidoTercero, this.telefonoTercero, this.dpiTercero, this.codigoGenerado, "AFECTADO", this.total, this.total));
         }
+        JOptionPane.showMessageDialog(null, "SE HA REPORTADO EXITOSAMENTE!!!");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jCheckBoxTerceroSeguroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxTerceroSeguroActionPerformed
