@@ -98,6 +98,27 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public boolean buscarAsegurado(String dato) {
+        boolean bandera = false;
+        for (int i = 0; i < SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
+
+            if (SolicitudRecibidos.asociado[i].getDpiAsociado().equals(dato)) {
+                bandera = true;
+            }
+        }
+        return bandera;
+    }
+    
+    public boolean buscarNoAsegurado(String dato){
+    boolean bandera = false;
+        for (int i = 0; i < SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
+
+            if (SolicitudRecibidos.asociado[i].getDpiAsociado().equals(dato)) {
+                bandera = true;
+            }
+        }
+        return bandera;
+    }
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         Menu menu = new Menu();
         menu.setVisible(true);
@@ -108,21 +129,20 @@ public class Login extends javax.swing.JFrame {
         String nombreUsuario;
         nombreUsuario = jTextFieldNombreUsuario.getText().toUpperCase();
 
-        for (int i = 0; i < SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
-            if (nombreUsuario.equals("ADMIN")) {
-                PanelAdministrador admin = new PanelAdministrador();
-                admin.setVisible(true);
-                dispose();
-            } else if (SolicitudRecibidos.asociado[i].getDpiAsociado().equals(nombreUsuario)) {
-                PanelAsegurado asegurado = new PanelAsegurado();
-                asegurado.setVisible(true);
-                dispose();
-            }else if(5==1){ 
-            
-            }else if (jTextFieldNombreUsuario.getText().length() == 0) {
-                JOptionPane.showMessageDialog(null, "INGRESE UN USUARIO POR LO MENOS!!!");
-            }
+        if (nombreUsuario.equals("ADMIN")) {
+            PanelAdministrador admin = new PanelAdministrador();
+            admin.setVisible(true);
+            dispose();
+        } else if (buscarAsegurado(nombreUsuario)==true) {
+            PanelAsegurado asegurado = new PanelAsegurado();
+            asegurado.setVisible(true);
+            dispose();
+        } else if (5 == 1) {
+
+        } else if (jTextFieldNombreUsuario.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "INGRESE UN USUARIO POR LO MENOS!!!");
         }
+
 
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
