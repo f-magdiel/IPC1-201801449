@@ -5,6 +5,7 @@
  */
 package org.magdielasicona.administrador;
 
+import java.util.Random;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.magdielasicona.datos.SolicitudSeguro;
@@ -18,19 +19,24 @@ public class ReportarIncidente extends javax.swing.JFrame {
     private String nombreTercero;
     private String telefonoTercero;
     private String dpiTercero;
+    private double total = 0;
 
     private String dpiAsegurado;
+
+    public static double precioRepuestoReal[] = new double[10];
+    public static double precioMecanicaReal[] = new double[10];
+
     DefaultTableModel modelo;
 
     public ReportarIncidente() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("REPORTE INCIDENTE AUTOMAS");
-         modelo = new DefaultTableModel();
-         modelo.addColumn("CODIGO");
-         modelo.addColumn("NOMBRE");
-         modelo.addColumn("PRECIO");
-         this.jTableReportarIncidente.setModel(modelo);
+        modelo = new DefaultTableModel();
+        modelo.addColumn("CODIGO");
+        modelo.addColumn("NOMBRE");
+        modelo.addColumn("PRECIO");
+        this.jTableReportarIncidente.setModel(modelo);
     }
 
     /**
@@ -76,6 +82,10 @@ public class ReportarIncidente extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jLabel4.setText("TIPO SERVICIOS:");
 
+        jComboBoxMecanica.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona..." }));
+
+        jComboBoxRepuesto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona..." }));
+
         jCheckBoxCulpable.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jCheckBoxCulpable.setText("El Asegurado es Culpable");
 
@@ -84,6 +94,11 @@ public class ReportarIncidente extends javax.swing.JFrame {
 
         jButtonAgregar.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonAgregar.setText("Agregar");
+        jButtonAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAgregarActionPerformed(evt);
+            }
+        });
 
         jTableReportarIncidente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -162,14 +177,14 @@ public class ReportarIncidente extends javax.swing.JFrame {
                         .addGap(92, 92, 92)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(30, 30, 30)
-                                .addComponent(jTextFieldTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(99, 99, 99)
                                 .addComponent(jButton1)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(30, 30, 30)
+                                .addComponent(jTextFieldTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(69, 69, 69)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -246,7 +261,57 @@ public class ReportarIncidente extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
+        String informacion[] = new String[3];
+
+        int indexMecanica = jComboBoxMecanica.getSelectedIndex();
+        int indexRepuesto = jComboBoxRepuesto.getSelectedIndex();
+        String nombreMecanica = jComboBoxMecanica.getSelectedItem().toString();
+        String nombreRepuesto = jComboBoxRepuesto.getSelectedItem().toString();
+        Random codigo = new Random();
+
+        int num1 = codigo.nextInt(9);
+        int num2 = codigo.nextInt(9);
+        int num3 = codigo.nextInt(9);
+        int num4 = codigo.nextInt(9);
+        String codigoGenerado = String.valueOf(num1 + "" + num2 + "" + num3 + "" + num4);
+        double preciolista = 0;
+
+        String detalle = "";
+        String precio;
+        if (nombreMecanica != "Selecciona...") {
+            detalle = nombreMecanica;
+
+        } else if (nombreRepuesto != "Seleciona...") {
+            detalle = nombreRepuesto;
+
+        }
+        if (indexMecanica != 0) {
+            preciolista = precioMecanicaReal[indexMecanica - 1];
+            
+        } else if (indexRepuesto != 0) {
+            preciolista = precioRepuestoReal[indexRepuesto - 1];
+            
+        }
+
+        this.total += preciolista;
+        precio = String.valueOf(preciolista);
+
+        informacion[0] = codigoGenerado;
+        informacion[1] = detalle;
+        informacion[2] = precio;
+
+        modelo.addRow(informacion);
+        
+        jComboBoxMecanica.setSelectedIndex(0);
+        jComboBoxRepuesto.setSelectedIndex(0);
+        jTextFieldTotal.setText(String.valueOf(total));
+        preciolista = 0;
+    }//GEN-LAST:event_jButtonAgregarActionPerformed
+
     public void cargadorDatos() {
+      try{
+      
         dpiAsegurado = jTextFieldDpiAsegurado.getText();
 
         for (int i = 0; i < SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
@@ -259,8 +324,8 @@ public class ReportarIncidente extends javax.swing.JFrame {
 
                 String listamecanica[] = mecanica.split(",");
                 String listarepuesto[] = repuesto.split(",");
-                String listapreciomecanica[] = precioMecanica.split(",");
-                String listapreciorepuesto[] = precioRepuesto.split(",");
+                String listaPrecioMecanica[] = precioMecanica.split(",");
+                String listaPrecioRepuesto[] = precioRepuesto.split(",");
 
                 for (int j = 0; j < listamecanica.length; j++) {
                     jComboBoxMecanica.addItem(listamecanica[i]);
@@ -268,8 +333,20 @@ public class ReportarIncidente extends javax.swing.JFrame {
                 for (int j = 0; j < listarepuesto.length; j++) {
                     jComboBoxRepuesto.addItem(listarepuesto[i]);
                 }
+                for (int j = 0; j < listaPrecioMecanica.length; j++) {
+                    
+                    precioMecanicaReal[j] = Double.parseDouble(listaPrecioMecanica[j]);
+                    
+                }
+                for (int j = 0; j < listaPrecioRepuesto.length; j++) {
+                  
+                    precioRepuestoReal[j] = Double.parseDouble(listaPrecioRepuesto[j]);
+                      
+                }
+
             }
         }
+      }catch(Exception e){}
 
     }
 

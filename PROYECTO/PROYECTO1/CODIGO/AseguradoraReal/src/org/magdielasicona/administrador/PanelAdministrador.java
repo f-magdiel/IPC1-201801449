@@ -52,7 +52,7 @@ public class PanelAdministrador extends javax.swing.JFrame {
         });
 
         jButtonReportarIncidente.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
-        jButtonReportarIncidente.setText("Reportar Indicente");
+        jButtonReportarIncidente.setText("Reportar Incidente");
         jButtonReportarIncidente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonReportarIncidenteActionPerformed(evt);

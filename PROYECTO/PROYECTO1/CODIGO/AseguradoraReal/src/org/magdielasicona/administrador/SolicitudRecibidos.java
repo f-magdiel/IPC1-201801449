@@ -181,9 +181,26 @@ public class SolicitudRecibidos extends javax.swing.JFrame {
                 agregarAsociados(new Asociado(SolicitudSeguro.solicitante[i].getNombreCandidato(), SolicitudSeguro.solicitante[i].getApellidoCandidato(), SolicitudSeguro.solicitante[i].getDpiCandidato(), SolicitudSeguro.solicitante[i].getTelefonoCandidato(), SolicitudSeguro.solicitante[i].getTipoVehiculoCandidato(), SolicitudSeguro.solicitante[i].getUsoVehiculoCandidato(), SolicitudSeguro.solicitante[i].getMarcaVehiculoCandidato(), SolicitudSeguro.solicitante[i].getLineaVehiculoCandidato(), SolicitudSeguro.solicitante[i].getModeloVehiculoCandidato(), SolicitudSeguro.solicitante[i].getValorVehiculoCandidato(), SolicitudSeguro.solicitante[i].getCostoPrimaCandidato(), SolicitudSeguro.solicitante[i].getCostoDeducibleCandidato(), SolicitudSeguro.solicitante[i].getMecanica(), SolicitudSeguro.solicitante[i].getPrecioMecanica(), SolicitudSeguro.solicitante[i].getRepuesto(), SolicitudSeguro.solicitante[i].getPrecioRepuesto()));
             }
         }
+        //borrar dato en solicitante
         for (int i = 0; i <  SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
             if (SolicitudSeguro.solicitante[i].getDpiCandidato().equals(dato)) {
-                SolicitudSeguro.solicitante[i] = null;
+                
+                SolicitudSeguro.solicitante[i].setDpiCandidato("");
+                SolicitudSeguro.solicitante[i].setNombreCandidato("");
+                SolicitudSeguro.solicitante[i].setTelefonoCandidato("");
+                SolicitudSeguro.solicitante[i].setTipoVehiculoCandidato("");
+                SolicitudSeguro.solicitante[i].setCostoDeducibleCandidato(0.00);
+                SolicitudSeguro.solicitante[i].setCostoPrimaCandidato(0.00);
+                SolicitudSeguro.solicitante[i].setLineaVehiculoCandidato("");
+                SolicitudSeguro.solicitante[i].setMarcaVehiculoCandidato("");
+                SolicitudSeguro.solicitante[i].setMecanica("");
+                SolicitudSeguro.solicitante[i].setModeloVehiculoCandidato("");
+                SolicitudSeguro.solicitante[i].setPrecioMecanica("");
+                SolicitudSeguro.solicitante[i].setPrecioRepuesto("");
+                SolicitudSeguro.solicitante[i].setRepuesto("");
+                SolicitudSeguro.solicitante[i].setUsoVehiculoCandidato("");
+                SolicitudSeguro.solicitante[i].setValorVehiculoCandidato(0.00);
+                SolicitudSeguro.solicitante[i].setApellidoCandidato("");
                
             }
         }
@@ -202,7 +219,23 @@ public class SolicitudRecibidos extends javax.swing.JFrame {
         }
         for (int i = 0; i < SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
             if (SolicitudSeguro.solicitante[i].getDpiCandidato().equals(dato)) {
-                SolicitudSeguro.solicitante[i] = null;
+                
+                SolicitudSeguro.solicitante[i].setDpiCandidato("");
+                SolicitudSeguro.solicitante[i].setNombreCandidato("");
+                SolicitudSeguro.solicitante[i].setTelefonoCandidato("");
+                SolicitudSeguro.solicitante[i].setTipoVehiculoCandidato("");
+                SolicitudSeguro.solicitante[i].setCostoDeducibleCandidato(0.00);
+                SolicitudSeguro.solicitante[i].setCostoPrimaCandidato(0.00);
+                SolicitudSeguro.solicitante[i].setLineaVehiculoCandidato("");
+                SolicitudSeguro.solicitante[i].setMarcaVehiculoCandidato("");
+                SolicitudSeguro.solicitante[i].setMecanica("");
+                SolicitudSeguro.solicitante[i].setModeloVehiculoCandidato("");
+                SolicitudSeguro.solicitante[i].setPrecioMecanica("");
+                SolicitudSeguro.solicitante[i].setPrecioRepuesto("");
+                SolicitudSeguro.solicitante[i].setRepuesto("");
+                SolicitudSeguro.solicitante[i].setUsoVehiculoCandidato("");
+                SolicitudSeguro.solicitante[i].setValorVehiculoCandidato(0.00);
+                SolicitudSeguro.solicitante[i].setApellidoCandidato("");
                
             }
         }
