@@ -7,6 +7,8 @@ package org.magdielasicona.datos;
 
 import javax.swing.JOptionPane;
 import org.magdielasicona.administrador.PanelAdministrador;
+import org.magdielasicona.administrador.SolicitudRecibidos;
+import org.magdielasicona.controlador.PanelAsegurado;
 import org.magdielasicona.principal.Menu;
 
 /**
@@ -97,27 +99,29 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
-       Menu menu = new Menu();
-       menu.setVisible(true);
-       dispose();
+        Menu menu = new Menu();
+        menu.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
         String nombreUsuario;
         nombreUsuario = jTextFieldNombreUsuario.getText().toUpperCase();
-        
+
         for (int i = 0; i < SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
             if (nombreUsuario.equals("ADMIN")) {
-            PanelAdministrador admin = new PanelAdministrador();
-            admin.setVisible(true);
-            dispose();
-        }else if(SolicitudSeguro.solicitante[i].getDpiCandidato().equals(nombreUsuario)){
-        
-        }else if(jTextFieldNombreUsuario.getText().length()==0){
-        JOptionPane.showMessageDialog(null,"INGRESE UN USUARIO POR LO MENOS!!!");
+                PanelAdministrador admin = new PanelAdministrador();
+                admin.setVisible(true);
+                dispose();
+            } else if (SolicitudRecibidos.asociado[i].getDpiAsociado().equals(nombreUsuario)) {
+                PanelAsegurado asegurado = new PanelAsegurado();
+                asegurado.setVisible(true);
+                dispose();
+            } else if (jTextFieldNombreUsuario.getText().length() == 0) {
+                JOptionPane.showMessageDialog(null, "INGRESE UN USUARIO POR LO MENOS!!!");
+            }
         }
-        }
-        
+
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
     /**

@@ -16,6 +16,8 @@ public class PanelAsegurado extends javax.swing.JFrame {
      */
     public PanelAsegurado() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setTitle("MENU ASEGURADO");
     }
 
     /**
@@ -27,17 +29,71 @@ public class PanelAsegurado extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextAreaDatosAsociado = new javax.swing.JTextArea();
+        jButtonMisSeguros = new javax.swing.JButton();
+        jButtonMisIncidentes = new javax.swing.JButton();
+        jButtonPagos = new javax.swing.JButton();
+        jButtonCancelar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
+        jLabel1.setText("Fecha:");
+
+        jTextAreaDatosAsociado.setColumns(20);
+        jTextAreaDatosAsociado.setRows(5);
+        jScrollPane1.setViewportView(jTextAreaDatosAsociado);
+
+        jButtonMisSeguros.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
+        jButtonMisSeguros.setText("Mis Seguros");
+
+        jButtonMisIncidentes.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
+        jButtonMisIncidentes.setText("Mis Incidentes");
+
+        jButtonPagos.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
+        jButtonPagos.setText("Pagos");
+
+        jButtonCancelar.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
+        jButtonCancelar.setText("Cancelar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(36, 36, 36)
+                            .addComponent(jLabel1))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jButtonMisSeguros, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButtonMisIncidentes, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jButtonPagos, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(60, 60, 60)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonMisIncidentes)
+                    .addComponent(jButtonMisSeguros)
+                    .addComponent(jButtonPagos))
+                .addGap(27, 27, 27)
+                .addComponent(jButtonCancelar)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
@@ -80,5 +136,12 @@ public class PanelAsegurado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JButton jButtonMisIncidentes;
+    private javax.swing.JButton jButtonMisSeguros;
+    private javax.swing.JButton jButtonPagos;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextAreaDatosAsociado;
     // End of variables declaration//GEN-END:variables
 }

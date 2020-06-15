@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package org.magdielasicona.administrador;
 
 import javax.swing.JOptionPane;
@@ -116,6 +112,11 @@ public class SolicitudRecibidos extends javax.swing.JFrame {
         });
 
         jButtonRechazar.setText("Rechazar");
+        jButtonRechazar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRechazarActionPerformed(evt);
+            }
+        });
 
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -188,6 +189,25 @@ public class SolicitudRecibidos extends javax.swing.JFrame {
         }
         JOptionPane.showMessageDialog(null, "SE HA APROBADO LA SOLICITUD!!!");
     }//GEN-LAST:event_jButtonAprobarActionPerformed
+
+    private void jButtonRechazarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRechazarActionPerformed
+       String dato = "";
+        int fila = jTableDatosSolicitante.getSelectedRow();
+        if (fila != -1) {
+            dato = (String) modelo.getValueAt(fila, 0);
+            modelo.removeRow(fila);
+            System.out.println(dato);
+        } else {
+            JOptionPane.showMessageDialog(null, "SELECCIONE AL MENOS UNA FILA!!!");
+        }
+        for (int i = 0; i < SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
+            if (SolicitudSeguro.solicitante[i].getDpiCandidato().equals(dato)) {
+                SolicitudSeguro.solicitante[i] = null;
+               
+            }
+        }
+        JOptionPane.showMessageDialog(null, "SE HA RECHAZADO LA SOLICITUD!!!");
+    }//GEN-LAST:event_jButtonRechazarActionPerformed
 
     /**
      * @param args the command line arguments
