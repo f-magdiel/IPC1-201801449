@@ -1,9 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package org.magdielasicona.controlador;
+
+import org.magdielasicona.administrador.PanelAdministrador;
+import org.magdielasicona.administrador.SolicitudRecibidos;
+import org.magdielasicona.datos.Login;
+import org.magdielasicona.datos.SolicitudSeguro;
 
 /**
  *
@@ -11,13 +12,17 @@ package org.magdielasicona.controlador;
  */
 public class PanelAsegurado extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PanelAsociado
-     */
+   
     public PanelAsegurado() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("MENU ASEGURADO");
+        jLabelFechaAsegurado.setText(PanelAdministrador.getInstancia().getFechaSistema());
+        for (int i = 0; i < SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
+            if (SolicitudRecibidos.asociado[i].getDpiAsociado().equals(Login.getInstancia().getNombreUsuario())) {
+                jTextAreaDatosAsociado.setText("NOMBRE: "+SolicitudRecibidos.asociado[i].getNombreAsociado()+"\nTELEFONO: "+SolicitudRecibidos.asociado[i].getTelefonoAsociado()+"\nDPI:"+SolicitudRecibidos.asociado[i].getDpiAsociado());
+            }
+        }
     }
 
     /**
@@ -29,7 +34,7 @@ public class PanelAsegurado extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLabelFechaAsegurado = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaDatosAsociado = new javax.swing.JTextArea();
         jButtonMisSeguros = new javax.swing.JButton();
@@ -39,8 +44,8 @@ public class PanelAsegurado extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
-        jLabel1.setText("Fecha:");
+        jLabelFechaAsegurado.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
+        jLabelFechaAsegurado.setText("Fecha:");
 
         jTextAreaDatosAsociado.setColumns(20);
         jTextAreaDatosAsociado.setRows(5);
@@ -48,15 +53,35 @@ public class PanelAsegurado extends javax.swing.JFrame {
 
         jButtonMisSeguros.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonMisSeguros.setText("Mis Seguros");
+        jButtonMisSeguros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMisSegurosActionPerformed(evt);
+            }
+        });
 
         jButtonMisIncidentes.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonMisIncidentes.setText("Mis Incidentes");
+        jButtonMisIncidentes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMisIncidentesActionPerformed(evt);
+            }
+        });
 
         jButtonPagos.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonPagos.setText("Pagos");
+        jButtonPagos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPagosActionPerformed(evt);
+            }
+        });
 
         jButtonCancelar.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -70,7 +95,7 @@ public class PanelAsegurado extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(36, 36, 36)
-                            .addComponent(jLabel1))
+                            .addComponent(jLabelFechaAsegurado))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jButtonMisSeguros, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -85,7 +110,7 @@ public class PanelAsegurado extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabelFechaAsegurado))
                 .addGap(60, 60, 60)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonMisIncidentes)
@@ -98,6 +123,30 @@ public class PanelAsegurado extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+        Login log = new Login();
+        log.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jButtonMisSegurosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMisSegurosActionPerformed
+        MisSegurosAsegurado misseguros = new MisSegurosAsegurado();
+        misseguros.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonMisSegurosActionPerformed
+
+    private void jButtonMisIncidentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMisIncidentesActionPerformed
+        MisIncidentesAsegurado misincidentes = new MisIncidentesAsegurado();
+        misincidentes.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonMisIncidentesActionPerformed
+
+    private void jButtonPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPagosActionPerformed
+        PagosAsegurado pagos = new PagosAsegurado();
+        pagos.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonPagosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -140,7 +189,7 @@ public class PanelAsegurado extends javax.swing.JFrame {
     private javax.swing.JButton jButtonMisIncidentes;
     private javax.swing.JButton jButtonMisSeguros;
     private javax.swing.JButton jButtonPagos;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelFechaAsegurado;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreaDatosAsociado;
     // End of variables declaration//GEN-END:variables

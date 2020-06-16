@@ -5,6 +5,8 @@
  */
 package org.magdielasicona.controlador;
 
+import org.magdielasicona.datos.Login;
+
 /**
  *
  * @author FRANMAGDIEL_PC
@@ -16,6 +18,8 @@ public class PanelNoAsegurado extends javax.swing.JFrame {
      */
     public PanelNoAsegurado() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setTitle("PANEL NO ASEGURADOS");
     }
 
     /**
@@ -51,6 +55,11 @@ public class PanelNoAsegurado extends javax.swing.JFrame {
 
         jButtonCancelar.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,6 +101,12 @@ public class PanelNoAsegurado extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+        Login log = new Login();
+        log.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     /**
      * @param args the command line arguments
