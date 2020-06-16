@@ -283,9 +283,9 @@ public class ReportarIncidente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCheckBoxTerceroNoSeguroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxTerceroNoSeguroActionPerformed
-        nombreTercero = JOptionPane.showInputDialog("Ingrese el Nombre");
-        dpiTercero = JOptionPane.showInputDialog("Igrese el DPI");
-        telefonoTercero = JOptionPane.showInputDialog("Ingrese Número de Teléfono");
+        nombreTercero = JOptionPane.showInputDialog("Ingrese el Nombre").toUpperCase();
+        dpiTercero = JOptionPane.showInputDialog("Igrese el DPI").toUpperCase();
+        telefonoTercero = JOptionPane.showInputDialog("Ingrese Número de Teléfono").toUpperCase();
         jTextFieldDpiTercero.setText(dpiTercero);
 
     }//GEN-LAST:event_jCheckBoxTerceroNoSeguroActionPerformed

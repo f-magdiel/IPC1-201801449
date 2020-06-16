@@ -18,7 +18,10 @@ import org.magdielasicona.principal.Menu;
  * @author FRANMAGDIEL_PC
  */
 public class Login extends javax.swing.JFrame {
-
+    private static String nombreLogin;
+    private static String dpiLogin;
+    private static String telefonoLogin;
+    
     //singleton
     private static Login instanciaLogin;
 
@@ -43,6 +46,30 @@ public class Login extends javax.swing.JFrame {
 
     public void setNombreUsuario(String nombreUsuario) {
         this.nombreUsuario = nombreUsuario;
+    }
+
+    public String getNombreLogin() {
+        return nombreLogin;
+    }
+
+    public void setNombreLogin(String nombreLogin) {
+        this.nombreLogin = nombreLogin;
+    }
+
+    public String getDpiLogin() {
+        return dpiLogin;
+    }
+
+    public void setDpiLogin(String dpiLogin) {
+        this.dpiLogin = dpiLogin;
+    }
+
+    public String getTelefonoLogin() {
+        return telefonoLogin;
+    }
+
+    public void setTelefonoLogin(String telefonoLogin) {
+        this.telefonoLogin = telefonoLogin;
     }
 
 
@@ -118,6 +145,9 @@ public class Login extends javax.swing.JFrame {
         for (int i = 0; i < SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
 
             if (SolicitudRecibidos.asociado[i].getDpiAsociado().equals(dato)) {
+                nombreLogin = SolicitudRecibidos.asociado[i].getNombreAsociado();
+                dpiLogin = SolicitudRecibidos.asociado[i].getDpiAsociado();
+                telefonoLogin = SolicitudRecibidos.asociado[i].getTelefonoAsociado();
                 bandera = true;
             }
         }

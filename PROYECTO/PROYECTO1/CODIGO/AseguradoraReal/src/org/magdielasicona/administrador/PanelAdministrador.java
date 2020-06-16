@@ -24,6 +24,7 @@ public class PanelAdministrador extends javax.swing.JFrame {
     
     
     private static String fechaSistema="";
+    
     public PanelAdministrador() {
         initComponents();
         this.setLocationRelativeTo(null);
