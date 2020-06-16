@@ -11,15 +11,17 @@ public class Asegurado {
     private String dpiAsegurado;
     private String telefonoAsegurado;
     private String rolAsegurado;
+    private String estadoUser;
+    private String ultimaPrima;
 
     private double costoPrimaAsegurado;
     private double costoDeducibleAsegurado;
     private String estadoAsegurado;
     private double costoReal;
     private double pagoRequerido;
-    private String codigo;
+   
 
-    public Asegurado(String nombreAsegurado, String apellidoAsegurado, String dpiAsegurado, String telefonoAsegurado, String rolAsegurado, double costoPrimaAsegurado, double costoDeducibleAsegurado, String estadoAsegurado, double costoReal, double pagoRequerido,String codigo) {
+    public Asegurado(String nombreAsegurado, String apellidoAsegurado, String dpiAsegurado, String telefonoAsegurado, String rolAsegurado, double costoPrimaAsegurado, double costoDeducibleAsegurado, String estadoAsegurado, double costoReal, double pagoRequerido,String estadoUser,String ultimaPrima) {
         this.nombreAsegurado = nombreAsegurado;
         this.apellidoAsegurado = apellidoAsegurado;
         this.dpiAsegurado = dpiAsegurado;
@@ -30,16 +32,27 @@ public class Asegurado {
         this.estadoAsegurado = estadoAsegurado;
         this.costoReal = costoReal;
         this.pagoRequerido = pagoRequerido;
-        this.codigo = codigo;
+        this.estadoUser = estadoUser;
+        this.ultimaPrima = ultimaPrima;
     }
 
-    public String getCodigo() {
-        return codigo;
+    public String getEstadoUser() {
+        return estadoUser;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public void setEstadoUser(String estadoUser) {
+        this.estadoUser = estadoUser;
     }
+
+    public String getUltimaPrima() {
+        return ultimaPrima;
+    }
+
+    public void setUltimaPrima(String ultimaPrima) {
+        this.ultimaPrima = ultimaPrima;
+    }
+
+
 
     public String getNombreAsegurado() {
         return nombreAsegurado;

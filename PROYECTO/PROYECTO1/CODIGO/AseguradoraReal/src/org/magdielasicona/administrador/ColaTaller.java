@@ -1,6 +1,7 @@
 
 package org.magdielasicona.administrador;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -55,6 +56,11 @@ public class ColaTaller extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButton1.setText("Marcar Como Terminado");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButton2.setText("Salir");
@@ -99,11 +105,11 @@ public class ColaTaller extends javax.swing.JFrame {
     
         String datos[] = new String[5];
         for (int i = 0; i < 10; i++) {
-            datos[0] = ReportarIncidente.asegurado[i].getCodigo();
-            datos[1] = ReportarIncidente.asegurado[i].getDpiAsegurado();
-            datos[2] = ReportarIncidente.noasegurado[i].getDpiNoAsociado();
-            datos[3] = "EN PROCESO";
-            datos[4] = "PENDIENTE";
+            datos[0] = ReportarIncidente.taller[i].getCodigo();
+            datos[1] = ReportarIncidente.taller[i].getAsociado();
+            datos[2] = ReportarIncidente.taller[i].getTercero();
+            datos[3] = ReportarIncidente.taller[i].getEstado();
+            datos[4] = ReportarIncidente.taller[i].getEstadopago();
             modelo.addRow(datos);
             
         }
@@ -116,6 +122,42 @@ public class ColaTaller extends javax.swing.JFrame {
        admin.setVisible(true);
        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String dato = "";
+        int fila = jTableColaTaller.getSelectedRow();
+        int contfila = jTableColaTaller.getRowCount();
+        System.out.println(contfila);
+        if (fila != -1) {
+            dato = (String) modelo.getValueAt(fila, 0);
+         
+        } else {
+            JOptionPane.showMessageDialog(null, "SELECCIONE AL MENOS UNA FILA!!!");
+        }
+        
+        for (int i = 0; i < contfila; i++) {
+            if (ReportarIncidente.taller[i].getCodigo().equals(dato)) {
+                ReportarIncidente.taller[i].setEstado("TERMINADO");
+                ReportarIncidente.taller[i].setEstadopago("PAGADO");
+            }
+        }
+        JOptionPane.showMessageDialog(null, "CAMBIO REALIZADO EXITOSAMENTE!!!  ");
+        for (int i = 0; i <jTableColaTaller.getRowCount() ; i++) {
+            modelo.removeRow(i);
+            i-=1;
+        }
+       
+        String datos[] = new String[5];
+        for (int i = 0; i < contfila; i++) {
+            datos[0] = ReportarIncidente.taller[i].getCodigo();
+            datos[1] = ReportarIncidente.taller[i].getAsociado();
+            datos[2] = ReportarIncidente.taller[i].getTercero();
+            datos[3] = ReportarIncidente.taller[i].getEstado();
+            datos[4] = ReportarIncidente.taller[i].getEstadopago();
+            modelo.addRow(datos);
+            
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

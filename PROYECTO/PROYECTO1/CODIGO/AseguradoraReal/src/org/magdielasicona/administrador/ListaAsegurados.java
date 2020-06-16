@@ -19,10 +19,22 @@ public class ListaAsegurados extends javax.swing.JFrame {
         modelo.addColumn("NOMBRE");
         modelo.addColumn("ESTADO");
         modelo.addColumn("ULTIMA PRIMA");
-        
+        try{
+        llenarTablar();
+        }catch(Exception e){}
         this.jTableListaAsegurados.setModel(modelo);
     }
 
+    public void llenarTablar(){
+    String tabla[] = new String[4];
+        for (int i = 0; i < 10; i++) {
+            tabla[0]=ReportarIncidente.asegurado[i].getDpiAsegurado();
+            tabla[1]=ReportarIncidente.asegurado[i].getNombreAsegurado();
+            tabla[2]="";
+            tabla[3]=String.valueOf(ReportarIncidente.asegurado[i].getCostoPrimaAsegurado());
+            modelo.addRow(tabla);
+        }
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

@@ -18,11 +18,23 @@ public class ListaNoAsegurados extends javax.swing.JFrame {
         modelo.addColumn("DPI");
         modelo.addColumn("NOMBRE");
         modelo.addColumn("TELEFONO");
-       
+       try{
+       llenarTabla();
+       }catch(Exception e){}
         
         this.jTableListaNoAsegurados.setModel(modelo);
     }
-
+    
+    public void llenarTabla(){
+    String tabla[] = new String[4];
+        for (int i = 0; i < 10; i++) {
+            tabla[0]=ReportarIncidente.noasegurado[i].getDpiNoAsociado();
+            tabla[1]=ReportarIncidente.noasegurado[i].getNombreNoAsociado();
+            tabla[2]=ReportarIncidente.noasegurado[i].getTeledonoNoAsociado();
+            modelo.addRow(tabla);
+        }
+    
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,13 +52,13 @@ public class ListaNoAsegurados extends javax.swing.JFrame {
 
         jTableListaNoAsegurados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3"
             }
         ));
         jScrollPane1.setViewportView(jTableListaNoAsegurados);

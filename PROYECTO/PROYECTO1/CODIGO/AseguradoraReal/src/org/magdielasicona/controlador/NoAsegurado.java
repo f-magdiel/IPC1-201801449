@@ -10,17 +10,17 @@ public class NoAsegurado {
     private String apellidoNoAsociado;
     private String teledonoNoAsociado;
     private String dpiNoAsociado;
-    private String codigo;
+    
     private String rol;
     private double costoReal;
     private double precioPagar;
 
-    public NoAsegurado(String nombreNoAsociado, String apellidoNoAsociado, String teledonoNoAsociado, String dpiNoAsociado, String codigo, String rol, double costoReal, double precioPagar) {
+    public NoAsegurado(String nombreNoAsociado, String apellidoNoAsociado, String teledonoNoAsociado, String dpiNoAsociado, String rol, double costoReal, double precioPagar) {
         this.nombreNoAsociado = nombreNoAsociado;
         this.apellidoNoAsociado = apellidoNoAsociado;
         this.teledonoNoAsociado = teledonoNoAsociado;
         this.dpiNoAsociado = dpiNoAsociado;
-        this.codigo = codigo;
+       
         this.rol = rol;
         this.costoReal = costoReal;
         this.precioPagar = precioPagar;
@@ -58,14 +58,7 @@ public class NoAsegurado {
         this.dpiNoAsociado = dpiNoAsociado;
     }
 
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
+    
     public String getRol() {
         return rol;
     }
