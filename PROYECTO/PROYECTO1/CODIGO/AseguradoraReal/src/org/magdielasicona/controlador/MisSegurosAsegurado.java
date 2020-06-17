@@ -314,8 +314,23 @@ public class MisSegurosAsegurado extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonRenovarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRenovarActionPerformed
-        //click para agrear seguro
+        //validacion para numero de incidentes
+        int contadorIncidente = 0;
+        for (int i = 0; i < 10; i++) {
+            if (ReportarIncidente.asegurado[i] != null) {
+                if (ReportarIncidente.asegurado[i].getDpiAsegurado().equals(Login.getInstancia().getDpiLogin())) {
+                    String rol = ReportarIncidente.asegurado[i].getRolAsegurado();
+                    if (rol == "AUTOR") {
+                        contadorIncidente++;
+                        System.out.println(contadorIncidente);
+                    }
 
+                }
+            }
+        }
+        if (contadorIncidente < 3) {
+            
+             //click para agrear seguro
         int dia;
         int mes;
         int año;
@@ -343,9 +358,14 @@ public class MisSegurosAsegurado extends javax.swing.JFrame {
         }
         contadorBoton++;
 
-
         JOptionPane.showMessageDialog(null, "SE HA RENOVADO EXITOSAMENTE EL SEGURO!!!");
         jLabelEstado.setText("PROTEGIDO");
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "YA NO SE PUEDE RENOVAR, UD FUE AUTOR EN 3 INCIDENTES");
+        }
+
+       
     }//GEN-LAST:event_jButtonRenovarActionPerformed
 
     /**
