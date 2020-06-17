@@ -1,11 +1,18 @@
 package org.magdielasicona.controlador;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.magdielasicona.administrador.PanelAdministrador;
 import org.magdielasicona.administrador.ReportarIncidente;
 import org.magdielasicona.administrador.SolicitudRecibidos;
 import org.magdielasicona.datos.Login;
 import org.magdielasicona.datos.SolicitudSeguro;
+import org.magdielasicona.fecha.Seguro;
 
 /**
  *
@@ -14,12 +21,19 @@ import org.magdielasicona.datos.SolicitudSeguro;
 public class MisSegurosAsegurado extends javax.swing.JFrame {
 
     DefaultTableModel modelo;
+    public static Seguro seguro[] = new Seguro[50];
+    int contadorBoton = 1;
+    public String estadoU = "SIN ESTADO";
+    public String fechaActual = PanelAdministrador.getInstancia().getFechaSistema();
+    public String fechaI;
+    public String nuevaFecha;
 
+    // Constructor
     public MisSegurosAsegurado() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("MIS SEGUROS");
-        jLabelFechaSistema.setText("Fecha Sistema: "+PanelAdministrador.getInstancia().getFechaSistema());
+        jLabelFechaSistema.setText("Fecha Sistema: " + PanelAdministrador.getInstancia().getFechaSistema());
         imprimirDatos();
         modelo = new DefaultTableModel();
         modelo.addColumn("CORRELATIVO");
@@ -27,10 +41,59 @@ public class MisSegurosAsegurado extends javax.swing.JFrame {
         modelo.addColumn("TOTAL");
         modelo.addColumn("FECHA INICIO");
         modelo.addColumn("FECHA FIN");
-       
+
         this.jTableMisSeguros.setModel(modelo);
-         
-         llenadoMenu();
+        try {
+            llenandoTablar();
+        } catch (Exception e) {
+        }
+
+        llenadoMenu();
+        veficarFecha();
+
+    }
+
+    public void veficarFecha() {
+
+        //___________________________METODO PARA VALIDAR LA FECHA____________________________________
+        try {
+
+            for (int i = 0; i < 10; i++) {
+                if (MisSegurosAsegurado.seguro[i] != null) {
+                    if (MisSegurosAsegurado.seguro[i].getDpi().equals(Login.getInstancia().getDpiLogin())) {
+
+                        String fechaIn = MisSegurosAsegurado.seguro[i].getFechaInicio();
+                        String fechaFi = MisSegurosAsegurado.seguro[i].getFechaFin();
+                        if (comparacionFecha(fechaActual, fechaIn, fechaFi) == true) {
+                            jLabelEstado.setText("PROTEGIDO");
+                            System.out.println("PRO");
+                        }
+                    }
+                }
+            }
+            if (jLabelEstado.getText() != "PROTEGIDO") {
+
+                jLabelEstado.setText("VULNERABLE");
+                System.out.println("VUL");
+
+            }
+
+        } catch (ParseException ex) {
+            Logger.getLogger(MisSegurosAsegurado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public static boolean comparacionFecha(String fechaactual, String fechaIn, String fechaFin) throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        Date actual = dateFormat.parse(fechaactual);
+        Date inicio = dateFormat.parse(fechaIn);
+        Date fin = dateFormat.parse(fechaFin);
+        // 
+        if (inicio.before(actual) && fin.after(actual)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public void imprimirDatos() {
@@ -39,19 +102,29 @@ public class MisSegurosAsegurado extends javax.swing.JFrame {
 
     }
 
+    public void agregarSeguro(Seguro obj) {
+        for (int i = 0; i < 50; i++) {
+            if (seguro[i] == null) {
+                seguro[i] = obj;
+
+                return;
+            }
+        }
+    }
+
     public void llenandoTablar() {
-        int corr=1;
+        int corr = 1;
         String seguro[] = new String[5];
-        for (int i = 0; i < SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
-            if (ReportarIncidente.asegurado[i].getDpiAsegurado().equals(Login.getInstancia().getDpiLogin())) {
-                
+        for (int i = 0; i < 10; i++) {
+            if (MisSegurosAsegurado.seguro[i].getDpi().equals(Login.getInstancia().getDpiLogin())) {
+
                 seguro[0] = String.valueOf(corr);
                 seguro[1] = "POLIZA";
-                seguro[2] = String.valueOf(ReportarIncidente.asegurado[i].getCostoPrimaAsegurado());
-                seguro[3] = "SIN FECHA";
-                seguro[4] = "SIN FECHA";
-                
-               modelo.addRow(seguro);
+                seguro[2] = MisSegurosAsegurado.seguro[i].getTotal();
+                seguro[3] = MisSegurosAsegurado.seguro[i].getFechaInicio();
+                seguro[4] = MisSegurosAsegurado.seguro[i].getFechaFin();
+
+                modelo.addRow(seguro);
                 corr++;
             }
 
@@ -65,7 +138,7 @@ public class MisSegurosAsegurado extends javax.swing.JFrame {
                 jLabelPolizaPrima.setText(String.valueOf(SolicitudRecibidos.asociado[i].getCostoPrimaAsociado()));
                 jLabelDeducible.setText(String.valueOf(SolicitudRecibidos.asociado[i].getCostoDeducibleAsociado()));
                 jLabelMontoAsegurado.setText(String.valueOf(SolicitudRecibidos.asociado[i].getValorVehiculoAsociado()));
-                jLabelEstado.setText("SIN ESTADO");
+                jLabelEstado.setText(estadoU);
             }
         }
 
@@ -155,9 +228,13 @@ public class MisSegurosAsegurado extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(97, 97, 97)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(178, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -176,26 +253,20 @@ public class MisSegurosAsegurado extends javax.swing.JFrame {
                                     .addComponent(jLabel3)
                                     .addComponent(jLabelEstado))
                                 .addGap(56, 56, 56)
-                                .addComponent(jLabelFechaSistema))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabelFechaSistema)
+                                    .addComponent(jButtonRenovar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jLabelDeducible)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(97, 97, 97)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(82, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelMontoAsegurado)
-                        .addGap(354, 354, 354)
-                        .addComponent(jButtonRenovar))
+                        .addGap(435, 435, 435))
                     .addComponent(jButtonCancelar))
                 .addGap(79, 79, 79))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -216,17 +287,17 @@ public class MisSegurosAsegurado extends javax.swing.JFrame {
                                 .addComponent(jLabelFechaSistema)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(11, 11, 11)
-                                .addComponent(jButtonRenovar))
-                            .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabelEstado)
-                                    .addComponent(jLabelMontoAsegurado)))))
+                                    .addComponent(jLabelMontoAsegurado)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButtonRenovar))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addComponent(jButtonCancelar)
@@ -243,23 +314,38 @@ public class MisSegurosAsegurado extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonRenovarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRenovarActionPerformed
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        //click para agrear seguro
+
+        int dia;
+        int mes;
+        int año;
+        this.fechaActual = PanelAdministrador.getInstancia().getFechaSistema();
+        String[] fechaAccion;
+
+        fechaAccion = fechaActual.split("-");
+        dia = Integer.parseInt(fechaAccion[0]);
+        mes = Integer.parseInt(fechaAccion[1]);
+        año = Integer.parseInt(fechaAccion[2]);
+        mes = mes + 1;
+        nuevaFecha = String.valueOf(dia + "-" + mes + "-" + año);
+        this.fechaI = fechaActual;
+
+        agregarSeguro(new Seguro(fechaI, nuevaFecha, Login.getInstancia().getDpiLogin(), jLabelPolizaPrima.getText()));
+
+        String dato[] = new String[5];
+        for (int i = 0; i < 1; i++) {
+            dato[0] = String.valueOf(contadorBoton);
+            dato[1] = "POLIZA";
+            dato[2] = jLabelPolizaPrima.getText();
+            dato[3] = fechaI;
+            dato[4] = nuevaFecha;
+            modelo.addRow(dato);
+        }
+        contadorBoton++;
+
+
+        JOptionPane.showMessageDialog(null, "SE HA RENOVADO EXITOSAMENTE EL SEGURO!!!");
+        jLabelEstado.setText("PROTEGIDO");
     }//GEN-LAST:event_jButtonRenovarActionPerformed
 
     /**

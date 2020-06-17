@@ -25,6 +25,7 @@ public class ColaTaller extends javax.swing.JFrame {
         llenadoTabla();
         }catch(Exception e){}
         this.jTableColaTaller.setModel(modelo);
+       
     }
 
     
