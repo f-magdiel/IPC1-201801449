@@ -156,9 +156,12 @@ public class Login extends javax.swing.JFrame {
     
     public boolean buscarNoAsegurado(String dato){
     boolean bandera = false;
-        for (int i = 0; i < ReportarIncidente.getInstancia().getContadorAgregar(); i++) {
+        for (int i = 0; i < SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
 
             if (ReportarIncidente.noasegurado[i].getDpiNoAsociado().equals(dato)) {
+                nombreLogin = ReportarIncidente.noasegurado[i].getNombreNoAsociado();
+                dpiLogin = ReportarIncidente.noasegurado[i].getDpiNoAsociado();
+                telefonoLogin = ReportarIncidente.noasegurado[i].getTeledonoNoAsociado();
                 bandera = true;
             }
         }

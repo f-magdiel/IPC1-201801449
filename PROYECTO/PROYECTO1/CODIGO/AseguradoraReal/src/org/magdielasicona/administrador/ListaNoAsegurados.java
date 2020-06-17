@@ -61,6 +61,7 @@ public class ListaNoAsegurados extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3"
             }
         ));
+        jTableListaNoAsegurados.setRowHeight(20);
         jScrollPane1.setViewportView(jTableListaNoAsegurados);
 
         jButtonCancelar.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N

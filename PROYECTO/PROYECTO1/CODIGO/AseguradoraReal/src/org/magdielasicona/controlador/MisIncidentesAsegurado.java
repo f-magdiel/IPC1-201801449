@@ -72,7 +72,7 @@ public class MisIncidentesAsegurado extends javax.swing.JFrame {
             if (ReportarIncidente.asegurado[i] != null) {
                 if (ReportarIncidente.asegurado[i].getDpiAsegurado().equals(Login.getInstancia().getDpiLogin())) {
                     tabla[0] = ReportarIncidente.taller[i].getCodigo();
-                    tabla[1] =  ReportarIncidente.asegurado[i].getRolAsegurado();
+                    tabla[1] = ReportarIncidente.asegurado[i].getRolAsegurado();
                     tabla[2] = String.valueOf(ReportarIncidente.asegurado[i].getCostoReal());
                     tabla[3] = String.valueOf(ReportarIncidente.asegurado[i].getPagoRequerido());
                     tabla[4] = ReportarIncidente.taller[i].getEstado();
