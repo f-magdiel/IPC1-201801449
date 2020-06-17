@@ -49,9 +49,19 @@ public class PanelNoAsegurado extends javax.swing.JFrame {
 
         jButtonPagos.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonPagos.setText("Pagos");
+        jButtonPagos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPagosActionPerformed(evt);
+            }
+        });
 
         jButtonIncidentes.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonIncidentes.setText("Incidentes");
+        jButtonIncidentes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonIncidentesActionPerformed(evt);
+            }
+        });
 
         jButtonCancelar.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonCancelar.setText("Cancelar");
@@ -107,6 +117,18 @@ public class PanelNoAsegurado extends javax.swing.JFrame {
         log.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jButtonIncidentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIncidentesActionPerformed
+        NoAseguradoIncidentes inci = new NoAseguradoIncidentes();
+        inci.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonIncidentesActionPerformed
+
+    private void jButtonPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPagosActionPerformed
+        NoAseguradoPagos pagos = new NoAseguradoPagos();
+        pagos.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonPagosActionPerformed
 
     /**
      * @param args the command line arguments
