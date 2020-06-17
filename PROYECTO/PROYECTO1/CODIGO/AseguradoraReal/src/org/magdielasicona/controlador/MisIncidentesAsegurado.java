@@ -1,5 +1,6 @@
 package org.magdielasicona.controlador;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.magdielasicona.administrador.ReportarIncidente;
 import org.magdielasicona.administrador.SolicitudRecibidos;
@@ -52,26 +53,16 @@ public class MisIncidentesAsegurado extends javax.swing.JFrame {
     public void llenadoTabla() {
 
         String tabla[] = new String[6];
-
         for (int i = 0; i < 10; i++) {
             if (ReportarIncidente.asegurado[i] != null) {
                 if (ReportarIncidente.asegurado[i].getDpiAsegurado().equals(Login.getInstancia().getDpiLogin())) {
-
-                    for (int j = 0; j < 10; j++) {
-                        if (ReportarIncidente.taller[j] != null) {
-                            if (ReportarIncidente.taller[j].getAsociado().equals(Login.getInstancia().getDpiLogin())) {
-                                tabla[0] = ReportarIncidente.taller[j].getCodigo();
-                                tabla[1] = ReportarIncidente.asegurado[i].getRolAsegurado();
-                                tabla[2] = String.valueOf(ReportarIncidente.asegurado[i].getCostoReal());
-                                tabla[3] = String.valueOf(ReportarIncidente.asegurado[i].getPagoRequerido());
-                                tabla[4] = ReportarIncidente.taller[j].getEstado();
-                                tabla[5] = "PENDIENTE";
-                                modelo.addRow(tabla);
-
-                            }
-                        }
-                    }
-
+                    tabla[0] = ReportarIncidente.taller[i].getCodigo();
+                    tabla[1] =  ReportarIncidente.asegurado[i].getRolAsegurado();
+                    tabla[2] = String.valueOf(ReportarIncidente.asegurado[i].getCostoReal());
+                    tabla[3] = String.valueOf(ReportarIncidente.asegurado[i].getPagoRequerido());
+                    tabla[4] = ReportarIncidente.taller[i].getEstado();
+                    tabla[5] = ReportarIncidente.taller[i].getEstadopago();
+                    modelo.addRow(tabla);
                 }
             }
         }
@@ -93,6 +84,7 @@ public class MisIncidentesAsegurado extends javax.swing.JFrame {
         jButtonDetalle = new javax.swing.JButton();
         jButtonPagar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
+        jLabelFechaSistema = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -136,6 +128,11 @@ public class MisIncidentesAsegurado extends javax.swing.JFrame {
 
         jButtonPagar.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonPagar.setText("Pagar");
+        jButtonPagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPagarActionPerformed(evt);
+            }
+        });
 
         jButtonCancelar.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonCancelar.setText("Cancelar");
@@ -145,6 +142,8 @@ public class MisIncidentesAsegurado extends javax.swing.JFrame {
             }
         });
 
+        jLabelFechaSistema.setText("Fecha sistema:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -152,18 +151,25 @@ public class MisIncidentesAsegurado extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 715, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 715, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(50, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(65, 65, 65)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabelPrecioPrima))
-                        .addGap(115, 115, 115)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelPrecioDeducible)
-                            .addComponent(jLabel2))))
-                .addContainerGap(50, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(46, 46, 46)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabelPrecioPrima))
+                                .addGap(115, 115, 115)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelPrecioDeducible)
+                                    .addComponent(jLabel2)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabelFechaSistema)
+                                .addGap(135, 135, 135))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -181,7 +187,9 @@ public class MisIncidentesAsegurado extends javax.swing.JFrame {
                         .addGap(38, 38, 38)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabelFechaSistema)
+                        .addGap(52, 52, 52)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
@@ -213,6 +221,47 @@ public class MisIncidentesAsegurado extends javax.swing.JFrame {
         asegurado.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jButtonPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPagarActionPerformed
+        
+        String dato = "";
+        int fila = jTableIncidentes.getSelectedRow();
+        int contfila = jTableIncidentes.getRowCount();
+        System.out.println(contfila);
+        if (fila != -1) {
+            dato = (String) modelo.getValueAt(fila, 0);
+         
+        } else {
+            JOptionPane.showMessageDialog(null, "SELECCIONE AL MENOS UNA FILA!!!");
+        }
+        for (int i = 0; i < contfila; i++) {
+            if (ReportarIncidente.taller[i].getCodigo().equals(dato)) {
+                ReportarIncidente.taller[i].setEstadopago("PAGADO");
+                
+            }
+        }
+        JOptionPane.showMessageDialog(null, "CAMBIO REALIZADO EXITOSAMENTE!!!  ");
+        for (int i = 0; i <jTableIncidentes.getRowCount() ; i++) {
+            modelo.removeRow(i);
+            i-=1;
+        }
+        
+        String tabla[] = new String[6];
+        for (int i = 0; i < 10; i++) {
+            if (ReportarIncidente.asegurado[i] != null) {
+                if (ReportarIncidente.asegurado[i].getDpiAsegurado().equals(Login.getInstancia().getDpiLogin())) {
+                    tabla[0] = ReportarIncidente.taller[i].getCodigo();
+                    tabla[1] =  ReportarIncidente.asegurado[i].getRolAsegurado();
+                    tabla[2] = String.valueOf(ReportarIncidente.asegurado[i].getCostoReal());
+                    tabla[3] = String.valueOf(ReportarIncidente.asegurado[i].getPagoRequerido());
+                    tabla[4] = ReportarIncidente.taller[i].getEstado();
+                    tabla[5] = ReportarIncidente.taller[i].getEstadopago();
+                    modelo.addRow(tabla);
+                }
+            }
+        }
+        
+    }//GEN-LAST:event_jButtonPagarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -255,6 +304,7 @@ public class MisIncidentesAsegurado extends javax.swing.JFrame {
     private javax.swing.JButton jButtonPagar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabelFechaSistema;
     private javax.swing.JLabel jLabelPrecioDeducible;
     private javax.swing.JLabel jLabelPrecioPrima;
     private javax.swing.JScrollPane jScrollPane1;
