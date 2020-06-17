@@ -2,10 +2,13 @@ package org.magdielasicona.controlador;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.magdielasicona.administrador.PanelAdministrador;
 import org.magdielasicona.administrador.ReportarIncidente;
 import org.magdielasicona.administrador.SolicitudRecibidos;
+import static org.magdielasicona.controlador.MisSegurosAsegurado.pagos;
 import org.magdielasicona.datos.Login;
 import org.magdielasicona.datos.SolicitudSeguro;
+import org.magdielasicona.fecha.Pagos;
 
 /**
  *
@@ -15,10 +18,12 @@ public class MisIncidentesAsegurado extends javax.swing.JFrame {
 
     DefaultTableModel modelo;
 
+    public static Pagos pagos[] = new Pagos[50];
     public MisIncidentesAsegurado() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("MIS INCIDENTES");
+        jLabelFechaSistema.setText("Fecha Sistema: " + PanelAdministrador.getInstancia().getFechaSistema());
         modelo = new DefaultTableModel();
         modelo.addColumn("CODIGO");
         modelo.addColumn("ROL");
@@ -48,6 +53,16 @@ public class MisIncidentesAsegurado extends javax.swing.JFrame {
             }
         }
 
+    }
+    
+     public void insercionPago(Pagos obj) {
+        for (int i = 0; i < 50; i++) {
+            if (pagos[i] == null) {
+                pagos[i] = obj;
+
+                return;
+            }
+        }
     }
 
     public void llenadoTabla() {
@@ -260,6 +275,26 @@ public class MisIncidentesAsegurado extends javax.swing.JFrame {
                 }
             }
         }
+        
+        //Metodo para insercion de Pagos
+        String fechaActual = PanelAdministrador.getInstancia().getFechaSistema();
+        String fechas[];
+        fechas = fechaActual.split("-");
+        int dia = Integer.parseInt(fechas[0]);
+        int mes = Integer.parseInt(fechas[1]);
+        int año = Integer.parseInt(fechas[2]);
+        mes = mes + 1;
+        String fechaNueva = String.valueOf(dia+"-"+mes+"-"+año);
+        
+        //Ingreso de datos en el pago
+            for (int i = 0; i < 15; i++) {
+                if (ReportarIncidente.asegurado[i]!=null) {
+                    if (ReportarIncidente.asegurado[i].getDpiAsegurado().equals(Login.getInstancia().getDpiLogin())) {
+                    insercionPago(new Pagos(ReportarIncidente.asegurado[i].getDpiAsegurado(),ReportarIncidente.asegurado[i].getEstadoAsegurado(),String.valueOf(ReportarIncidente.asegurado[i].getPagoRequerido()),fechaActual,fechaNueva));
+                }
+                }
+            }
+        
         
     }//GEN-LAST:event_jButtonPagarActionPerformed
 

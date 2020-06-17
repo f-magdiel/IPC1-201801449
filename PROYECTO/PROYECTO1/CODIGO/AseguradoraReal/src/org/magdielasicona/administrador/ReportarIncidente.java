@@ -19,7 +19,7 @@ import org.magdielasicona.datos.SolicitudSeguro;
 public class ReportarIncidente extends javax.swing.JFrame {
 
     private int contadorBtn;
-    private int contadorAgregar=1;
+    private int contadorAgregar = 1;
     private String nombreTercero;
     private String apellidoTercero;
     private String telefonoTercero;
@@ -30,6 +30,7 @@ public class ReportarIncidente extends javax.swing.JFrame {
 
     private String dpiAsegurado;
 
+    public static Detalles detalles[] = new Detalles[60];
     public static Taller taller[] = new Taller[60];
     public static String valorTabla[][] = new String[10][3];
     public static double precioRepuestoReal[] = new double[10];
@@ -304,10 +305,9 @@ public class ReportarIncidente extends javax.swing.JFrame {
         int indexRepuesto = jComboBoxRepuesto.getSelectedIndex();
         String nombreMecanica = jComboBoxMecanica.getSelectedItem().toString();
         String nombreRepuesto = jComboBoxRepuesto.getSelectedItem().toString();
-        
+
         double preciolista = 0;
 
-        
         Random codigo = new Random();
 
         int num1 = codigo.nextInt(9);
@@ -331,7 +331,7 @@ public class ReportarIncidente extends javax.swing.JFrame {
             preciolista = precioRepuestoReal[indexRepuesto - 1];
 
         }
-
+        datosDatalles(new Detalles(jTextFieldDpiAsegurado.getText(), codigoGen, String.valueOf(preciolista), detalle));
         this.total += preciolista;
         precio = String.valueOf(preciolista);
 
@@ -340,7 +340,7 @@ public class ReportarIncidente extends javax.swing.JFrame {
         informacion[2] = precio;
 
         modelo.addRow(informacion);
-        
+
         jComboBoxMecanica.setSelectedIndex(0);
         jComboBoxRepuesto.setSelectedIndex(0);
         jTextFieldTotal.setText(String.valueOf(total));
@@ -376,12 +376,20 @@ public class ReportarIncidente extends javax.swing.JFrame {
         }
     }
 
+    public void datosDatalles(Detalles obj) {
+        for (int i = 0; i < 60; i++) {
+            if (detalles[i] == null) {
+                detalles[i] = obj;
+                return;
+            }
+        }
+    }
+
     private void jButtonReportarIncidenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReportarIncidenteActionPerformed
         dpiAsegurado = jTextFieldDpiAsegurado.getText();
         dpiTercero = jTextFieldDpiTercero.getText();
-        
+
         //Generador de codigo y tabla taller
-        
         Random codigo = new Random();
 
         int num1 = codigo.nextInt(9);
@@ -389,13 +397,10 @@ public class ReportarIncidente extends javax.swing.JFrame {
         int num3 = codigo.nextInt(9);
         int num4 = codigo.nextInt(9);
         String codigoGenerado = String.valueOf(num1 + "" + num2 + "" + num3 + "" + num4);
-        
-        datosAlTaller(new Taller(codigoGenerado, jTextFieldDpiAsegurado.getText(), jTextFieldDpiTercero.getText(), "EN PROCESO", "PENDIENTE"));
-        
-        
-        
-        //Logica para ser cupable o autor
 
+        datosAlTaller(new Taller(codigoGenerado, jTextFieldDpiAsegurado.getText(), jTextFieldDpiTercero.getText(), "EN PROCESO", "PENDIENTE"));
+
+        //Logica para ser cupable o autor
         //Asegurado culpable y tercero es asegurado...
         if (jCheckBoxCulpable.isSelected() && jCheckBoxTerceroSeguro.isSelected()) {
             for (int i = 0; i < SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {

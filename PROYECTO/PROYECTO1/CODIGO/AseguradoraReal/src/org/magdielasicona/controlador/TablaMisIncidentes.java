@@ -1,17 +1,46 @@
 
 package org.magdielasicona.controlador;
 
+import javax.swing.table.DefaultTableModel;
+import org.magdielasicona.administrador.ReportarIncidente;
+import org.magdielasicona.administrador.SolicitudRecibidos;
+import org.magdielasicona.datos.Login;
+
 /**
  *
  * @author FRANMAGDIEL_PC
  */
 public class TablaMisIncidentes extends javax.swing.JFrame {
 
-   
+   DefaultTableModel modelo;
     public TablaMisIncidentes() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("TABLA REPUESTOS");
+        modelo = new DefaultTableModel();
+        modelo.addColumn("CODIGO");
+        modelo.addColumn("NOMBRE");
+        modelo.addColumn("PRECIO");
+        
+        this.jTableListaRepuestos.setModel(modelo);
+        llenarTablaDetalles();
+    }
+    
+    public void llenarTablaDetalles(){
+    
+    String tabla[] = new String[4];
+    
+        for (int i = 0; i < 10; i++) {
+            if (ReportarIncidente.detalles[i]!=null) {
+                if (ReportarIncidente.detalles[i].getDpi().equals(Login.getInstancia().getDpiLogin())) {
+                tabla[0]=ReportarIncidente.detalles[i].getCodigo();
+                tabla[1]=ReportarIncidente.detalles[i].getNombre();
+                tabla[2]=ReportarIncidente.detalles[i].getPrecio();
+                modelo.addRow(tabla);
+            }
+            }
+        }
+    
     }
 
   
@@ -20,12 +49,12 @@ public class TablaMisIncidentes extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableListaRepuestos = new javax.swing.JTable();
         jButtonCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableListaRepuestos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -36,7 +65,7 @@ public class TablaMisIncidentes extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableListaRepuestos);
 
         jButtonCancelar.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonCancelar.setText("Cancelar");
@@ -116,6 +145,6 @@ public class TablaMisIncidentes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableListaRepuestos;
     // End of variables declaration//GEN-END:variables
 }

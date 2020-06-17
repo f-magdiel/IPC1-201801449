@@ -13,6 +13,7 @@ import org.magdielasicona.administrador.ReportarIncidente;
 import org.magdielasicona.administrador.SolicitudRecibidos;
 import org.magdielasicona.datos.Login;
 import org.magdielasicona.datos.SolicitudSeguro;
+import org.magdielasicona.fecha.Pagos;
 import org.magdielasicona.fecha.Seguro;
 
 /**
@@ -31,6 +32,8 @@ public class MisSegurosAsegurado extends javax.swing.JFrame {
     }
 
     DefaultTableModel modelo;
+    
+    public static Pagos pagos[] = new Pagos[50];
     public static Seguro seguro[] = new Seguro[50];
     int contadorBoton = 1;
     private String estadoU = "SIN ESTADO";
@@ -134,6 +137,15 @@ public class MisSegurosAsegurado extends javax.swing.JFrame {
         for (int i = 0; i < 50; i++) {
             if (seguro[i] == null) {
                 seguro[i] = obj;
+
+                return;
+            }
+        }
+    }
+     public void insercionPago(Pagos obj) {
+        for (int i = 0; i < 50; i++) {
+            if (pagos[i] == null) {
+                pagos[i] = obj;
 
                 return;
             }
@@ -380,7 +392,15 @@ public class MisSegurosAsegurado extends javax.swing.JFrame {
             mes = mes + 1;
             nuevaFecha = String.valueOf(dia + "-" + mes + "-" + año);
             this.fechaI = fechaActual;
-
+            //Ingreso de datos en el pago
+            for (int i = 0; i < 10; i++) {
+                if (ReportarIncidente.asegurado[i]!=null) {
+                    if (ReportarIncidente.asegurado[i].getDpiAsegurado().equals(Login.getInstancia().getDpiLogin())) {
+                    insercionPago(new Pagos(ReportarIncidente.asegurado[i].getDpiAsegurado(),"POLIZA",jLabelPolizaPrima.getText(),fechaI,nuevaFecha));
+                }
+                }
+            }
+            
             agregarSeguro(new Seguro(fechaI, nuevaFecha, Login.getInstancia().getDpiLogin(), jLabelPolizaPrima.getText()));
 
             String dato[] = new String[5];

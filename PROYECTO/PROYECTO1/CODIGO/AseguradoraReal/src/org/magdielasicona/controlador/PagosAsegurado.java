@@ -1,6 +1,7 @@
-
 package org.magdielasicona.controlador;
 
+import javax.swing.table.DefaultTableModel;
+import org.magdielasicona.administrador.ReportarIncidente;
 import org.magdielasicona.datos.Login;
 
 /**
@@ -9,17 +10,64 @@ import org.magdielasicona.datos.Login;
  */
 public class PagosAsegurado extends javax.swing.JFrame {
 
-  
+     DefaultTableModel modelo;
     public PagosAsegurado() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("PAGOS");
+        modelo = new DefaultTableModel();
+        modelo.addColumn("CORRELATIVO");
+        modelo.addColumn("TIPO");
+        modelo.addColumn("TOTAL");
+        modelo.addColumn("FECHA INICIO");
+        modelo.addColumn("FECHA FIN");
+       
+        this.jTablePagos.setModel(modelo);
+        
         imprimirDatos();
+        try{
+        llenarTabla();
+        }catch(Exception e){}
     }
-public void imprimirDatos() {
+
+    public void imprimirDatos() {
+
+        jTextAreaPagos.setText("NOMBRE: " + Login.getInstancia().getNombreLogin() + "\nDPI: " + Login.getInstancia().getDpiLogin() + "\nTELEFONO: " + Login.getInstancia().getTelefonoLogin() + "\nTIPO: ASEGURADO");
+
+    }
+    
+    public void llenarTabla(){
+    int corre=1;
+        String tabla[] = new String[5];
+        for (int i = 0; i < 15; i++) {
+            if (MisIncidentesAsegurado.pagos[i] != null) {
+                if (MisIncidentesAsegurado.pagos[i].getDpiPagos().equals(Login.getInstancia().getDpiLogin())) {
+                    tabla[0]= String.valueOf(corre);
+                    tabla[1]=MisIncidentesAsegurado.pagos[i].getTipoPagos();
+                    tabla[2]=MisIncidentesAsegurado.pagos[i].getTotalPagos();
+                    tabla[3]=MisIncidentesAsegurado.pagos[i].getFechaInicio();
+                    tabla[4]=MisIncidentesAsegurado.pagos[i].getFechaFin();
+                    modelo.addRow(tabla);
+                    corre++;
+                }
+            }
+        }
         
-                jTextAreaPagos.setText("NOMBRE: "+Login.getInstancia().getNombreLogin() + "\nDPI: "+Login.getInstancia().getDpiLogin()+ "\nTELEFONO: "+Login.getInstancia().getTelefonoLogin()+"\nTIPO: ASEGURADO");
         
+        String table[] = new String[5];
+        for (int i = 0; i < 15; i++) {
+            if (MisSegurosAsegurado.pagos != null) {
+                if (MisSegurosAsegurado.pagos[i].getDpiPagos().equals(Login.getInstancia().getDpiLogin())) {
+                    table[0]= String.valueOf(corre);
+                    table[1]=MisSegurosAsegurado.pagos[i].getTipoPagos();
+                    table[2]=MisSegurosAsegurado.pagos[i].getTotalPagos();
+                    table[3]=MisSegurosAsegurado.pagos[i].getFechaInicio();
+                    table[4]=MisSegurosAsegurado.pagos[i].getFechaFin();
+                    modelo.addRow(table);
+                    corre++;
+                }
+            }
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -29,7 +77,7 @@ public void imprimirDatos() {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaPagos = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTablePagos = new javax.swing.JTable();
         jButtonCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -38,7 +86,7 @@ public void imprimirDatos() {
         jTextAreaPagos.setRows(5);
         jScrollPane1.setViewportView(jTextAreaPagos);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTablePagos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -49,8 +97,8 @@ public void imprimirDatos() {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
-        jTable1.setRowHeight(20);
-        jScrollPane2.setViewportView(jTable1);
+        jTablePagos.setRowHeight(20);
+        jScrollPane2.setViewportView(jTablePagos);
 
         jButtonCancelar.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonCancelar.setText("Cancelar");
@@ -138,7 +186,7 @@ public void imprimirDatos() {
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTablePagos;
     private javax.swing.JTextArea jTextAreaPagos;
     // End of variables declaration//GEN-END:variables
 }
