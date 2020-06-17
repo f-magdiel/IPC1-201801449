@@ -139,7 +139,7 @@ public class ColaTaller extends javax.swing.JFrame {
         for (int i = 0; i < contfila; i++) {
             if (ReportarIncidente.taller[i].getCodigo().equals(dato)) {
                 ReportarIncidente.taller[i].setEstado("TERMINADO");
-                ReportarIncidente.taller[i].setEstadopago("PAGADO");
+                
             }
         }
         JOptionPane.showMessageDialog(null, "CAMBIO REALIZADO EXITOSAMENTE!!!  ");

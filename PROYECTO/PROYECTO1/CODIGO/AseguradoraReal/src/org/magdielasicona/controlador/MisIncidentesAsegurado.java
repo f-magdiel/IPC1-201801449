@@ -1,7 +1,10 @@
-
 package org.magdielasicona.controlador;
 
+import javax.swing.table.DefaultTableModel;
+import org.magdielasicona.administrador.ReportarIncidente;
+import org.magdielasicona.administrador.SolicitudRecibidos;
 import org.magdielasicona.datos.Login;
+import org.magdielasicona.datos.SolicitudSeguro;
 
 /**
  *
@@ -9,19 +12,72 @@ import org.magdielasicona.datos.Login;
  */
 public class MisIncidentesAsegurado extends javax.swing.JFrame {
 
- 
+    DefaultTableModel modelo;
+
     public MisIncidentesAsegurado() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("MIS INCIDENTES");
+        modelo = new DefaultTableModel();
+        modelo.addColumn("CODIGO");
+        modelo.addColumn("ROL");
+        modelo.addColumn("COSTO REAL");
+        modelo.addColumn("PAGO REQUERIDO");
+        modelo.addColumn("ESTADO");
+        modelo.addColumn("PAGO");
+        this.jTableIncidentes.setModel(modelo);
+
         imprimirDatos();
+        llenadoMenu();
+        llenadoTabla();
     }
-public void imprimirDatos() {
-        
-                jTextAreaMisIncidentes.setText("NOMBRE: "+Login.getInstancia().getNombreLogin() + "\nDPI: "+Login.getInstancia().getDpiLogin()+ "\nTELEFONO: "+Login.getInstancia().getTelefonoLogin()+"\nTIPO: ASEGURADO");
-        
+
+    public void imprimirDatos() {
+
+        jTextAreaMisIncidentes.setText("NOMBRE: " + Login.getInstancia().getNombreLogin() + "\nDPI: " + Login.getInstancia().getDpiLogin() + "\nTELEFONO: " + Login.getInstancia().getTelefonoLogin() + "\nTIPO: ASEGURADO");
+
     }
- 
+
+    public void llenadoMenu() {
+        for (int i = 0; i < SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
+            if (SolicitudRecibidos.asociado[i].getDpiAsociado().equals(Login.getInstancia().getDpiLogin())) {
+                jLabelPrecioPrima.setText(String.valueOf(SolicitudRecibidos.asociado[i].getCostoPrimaAsociado()));
+                jLabelPrecioDeducible.setText(String.valueOf(SolicitudRecibidos.asociado[i].getCostoDeducibleAsociado()));
+
+            }
+        }
+
+    }
+
+    public void llenadoTabla() {
+
+        String tabla[] = new String[6];
+
+        for (int i = 0; i < 10; i++) {
+            if (ReportarIncidente.asegurado[i] != null) {
+                if (ReportarIncidente.asegurado[i].getDpiAsegurado().equals(Login.getInstancia().getDpiLogin())) {
+
+                    for (int j = 0; j < 10; j++) {
+                        if (ReportarIncidente.taller[j] != null) {
+                            if (ReportarIncidente.taller[j].getAsociado().equals(Login.getInstancia().getDpiLogin())) {
+                                tabla[0] = ReportarIncidente.taller[j].getCodigo();
+                                tabla[1] = ReportarIncidente.asegurado[i].getRolAsegurado();
+                                tabla[2] = String.valueOf(ReportarIncidente.asegurado[i].getCostoReal());
+                                tabla[3] = String.valueOf(ReportarIncidente.asegurado[i].getPagoRequerido());
+                                tabla[4] = ReportarIncidente.taller[j].getEstado();
+                                tabla[5] = "PENDIENTE";
+                                modelo.addRow(tabla);
+
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -33,7 +89,7 @@ public void imprimirDatos() {
         jLabelPrecioPrima = new javax.swing.JLabel();
         jLabelPrecioDeducible = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableIncidentes = new javax.swing.JTable();
         jButtonDetalle = new javax.swing.JButton();
         jButtonPagar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
@@ -56,7 +112,7 @@ public void imprimirDatos() {
         jLabelPrecioDeducible.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jLabelPrecioDeducible.setText("0");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableIncidentes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -67,8 +123,8 @@ public void imprimirDatos() {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
-        jTable1.setRowHeight(20);
-        jScrollPane2.setViewportView(jTable1);
+        jTableIncidentes.setRowHeight(20);
+        jScrollPane2.setViewportView(jTableIncidentes);
 
         jButtonDetalle.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonDetalle.setText("Detalle");
@@ -147,13 +203,13 @@ public void imprimirDatos() {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonDetalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDetalleActionPerformed
-       TablaMisIncidentes tabla = new TablaMisIncidentes();
-       tabla.setVisible(true);
-       dispose();
+        TablaMisIncidentes tabla = new TablaMisIncidentes();
+        tabla.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButtonDetalleActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
-       PanelAsegurado asegurado = new PanelAsegurado();
+        PanelAsegurado asegurado = new PanelAsegurado();
         asegurado.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
@@ -203,7 +259,7 @@ public void imprimirDatos() {
     private javax.swing.JLabel jLabelPrecioPrima;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableIncidentes;
     private javax.swing.JTextArea jTextAreaMisIncidentes;
     // End of variables declaration//GEN-END:variables
 }

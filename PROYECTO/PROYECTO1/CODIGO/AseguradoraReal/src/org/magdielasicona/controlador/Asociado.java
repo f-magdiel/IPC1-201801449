@@ -25,8 +25,11 @@ public class Asociado {
     private String precioMecanicaAsociado;
     private String repuestoAsociado;
     private String precioRepuestoAsociado;
+    
+    private String estadoSeguro;
+    private String estadoUltimaPrima;
 
-    public Asociado(String nombreAsociado, String apellidoAsociado, String dpiAsociado, String telefonoAsociado, String tipoVehiculoAsociado, String usoVehiculoAsociado, String marcaVehiculoAsociado, String lineaVehiculoAsociado, String modeloVehiculoAsociado, double valorVehiculoAsociado, double costoPrimaAsociado, double costoDeducibleAsociado, String mecanicaAsociado, String precioMecanicaAsociado, String repuestoAsociado, String precioRepuestoAsociado) {
+    public Asociado(String nombreAsociado, String apellidoAsociado, String dpiAsociado, String telefonoAsociado, String tipoVehiculoAsociado, String usoVehiculoAsociado, String marcaVehiculoAsociado, String lineaVehiculoAsociado, String modeloVehiculoAsociado, double valorVehiculoAsociado, double costoPrimaAsociado, double costoDeducibleAsociado, String mecanicaAsociado, String precioMecanicaAsociado, String repuestoAsociado, String precioRepuestoAsociado,String estadoSeguro,String estadoUltimaPrima) {
         this.nombreAsociado = nombreAsociado;
         this.apellidoAsociado = apellidoAsociado;
         this.dpiAsociado = dpiAsociado;
@@ -43,6 +46,24 @@ public class Asociado {
         this.precioMecanicaAsociado = precioMecanicaAsociado;
         this.repuestoAsociado = repuestoAsociado;
         this.precioRepuestoAsociado = precioRepuestoAsociado;
+        this.estadoSeguro = estadoSeguro;
+        this.estadoUltimaPrima = estadoUltimaPrima;
+    }
+
+    public String getEstadoSeguro() {
+        return estadoSeguro;
+    }
+
+    public void setEstadoSeguro(String estadoSeguro) {
+        this.estadoSeguro = estadoSeguro;
+    }
+
+    public String getEstadoUltimaPrima() {
+        return estadoUltimaPrima;
+    }
+
+    public void setEstadoUltimaPrima(String estadoUltimaPrima) {
+        this.estadoUltimaPrima = estadoUltimaPrima;
     }
 
     public String getNombreAsociado() {

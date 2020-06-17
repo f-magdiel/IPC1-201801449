@@ -181,7 +181,7 @@ public class SolicitudRecibidos extends javax.swing.JFrame {
 
         for (int i = 0; i < SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
             if (SolicitudSeguro.solicitante[i].getDpiCandidato().equals(dato)) {
-                agregarAsociados(new Asociado(SolicitudSeguro.solicitante[i].getNombreCandidato(), SolicitudSeguro.solicitante[i].getApellidoCandidato(), SolicitudSeguro.solicitante[i].getDpiCandidato(), SolicitudSeguro.solicitante[i].getTelefonoCandidato(), SolicitudSeguro.solicitante[i].getTipoVehiculoCandidato(), SolicitudSeguro.solicitante[i].getUsoVehiculoCandidato(), SolicitudSeguro.solicitante[i].getMarcaVehiculoCandidato(), SolicitudSeguro.solicitante[i].getLineaVehiculoCandidato(), SolicitudSeguro.solicitante[i].getModeloVehiculoCandidato(), SolicitudSeguro.solicitante[i].getValorVehiculoCandidato(), SolicitudSeguro.solicitante[i].getCostoPrimaCandidato(), SolicitudSeguro.solicitante[i].getCostoDeducibleCandidato(), SolicitudSeguro.solicitante[i].getMecanica(), SolicitudSeguro.solicitante[i].getPrecioMecanica(), SolicitudSeguro.solicitante[i].getRepuesto(), SolicitudSeguro.solicitante[i].getPrecioRepuesto()));
+                agregarAsociados(new Asociado(SolicitudSeguro.solicitante[i].getNombreCandidato(), SolicitudSeguro.solicitante[i].getApellidoCandidato(), SolicitudSeguro.solicitante[i].getDpiCandidato(), SolicitudSeguro.solicitante[i].getTelefonoCandidato(), SolicitudSeguro.solicitante[i].getTipoVehiculoCandidato(), SolicitudSeguro.solicitante[i].getUsoVehiculoCandidato(), SolicitudSeguro.solicitante[i].getMarcaVehiculoCandidato(), SolicitudSeguro.solicitante[i].getLineaVehiculoCandidato(), SolicitudSeguro.solicitante[i].getModeloVehiculoCandidato(), SolicitudSeguro.solicitante[i].getValorVehiculoCandidato(), SolicitudSeguro.solicitante[i].getCostoPrimaCandidato(), SolicitudSeguro.solicitante[i].getCostoDeducibleCandidato(), SolicitudSeguro.solicitante[i].getMecanica(), SolicitudSeguro.solicitante[i].getPrecioMecanica(), SolicitudSeguro.solicitante[i].getRepuesto(), SolicitudSeguro.solicitante[i].getPrecioRepuesto(),"",""));
             }
         }
         //borrar dato en solicitante
@@ -242,7 +242,7 @@ public class SolicitudRecibidos extends javax.swing.JFrame {
                
             }
         }
-        JOptionPane.showMessageDialog(null, "SE HA RECHAZADO LA SOLICITUD!!!");
+        JOptionPane.showMessageDialog(null, "SE HA ELIMINADO LA SOLICITUD!!!");
     }//GEN-LAST:event_jButtonEliminarActionPerformed
 
     /**

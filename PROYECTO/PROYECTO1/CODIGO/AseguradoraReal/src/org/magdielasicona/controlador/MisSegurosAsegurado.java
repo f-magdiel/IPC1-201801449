@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.magdielasicona.administrador.PanelAdministrador;
@@ -20,10 +21,19 @@ import org.magdielasicona.fecha.Seguro;
  */
 public class MisSegurosAsegurado extends javax.swing.JFrame {
 
+    private static MisSegurosAsegurado instanciaMisSegurosAsegurado;
+
+    public static MisSegurosAsegurado getInstancia() {
+        if (instanciaMisSegurosAsegurado == null) {
+            instanciaMisSegurosAsegurado = new MisSegurosAsegurado();
+        }
+        return instanciaMisSegurosAsegurado;
+    }
+
     DefaultTableModel modelo;
     public static Seguro seguro[] = new Seguro[50];
     int contadorBoton = 1;
-    public String estadoU = "SIN ESTADO";
+    private String estadoU = "SIN ESTADO";
     public String fechaActual = PanelAdministrador.getInstancia().getFechaSistema();
     public String fechaI;
     public String nuevaFecha;
@@ -48,9 +58,25 @@ public class MisSegurosAsegurado extends javax.swing.JFrame {
         } catch (Exception e) {
         }
 
-        llenadoMenu();
         veficarFecha();
+        llenadoMenu();
 
+    }
+
+    public JLabel getjLabelEstado() {
+        return jLabelEstado;
+    }
+
+    public void setjLabelEstado(JLabel jLabelEstado) {
+        this.jLabelEstado = jLabelEstado;
+    }
+
+    public String getEstadoU() {
+        return estadoU;
+    }
+
+    public void setEstadoU(String estadoU) {
+        this.estadoU = estadoU;
     }
 
     public void veficarFecha() {
@@ -67,6 +93,7 @@ public class MisSegurosAsegurado extends javax.swing.JFrame {
                         if (comparacionFecha(fechaActual, fechaIn, fechaFi) == true) {
                             jLabelEstado.setText("PROTEGIDO");
                             System.out.println("PRO");
+                            estadoU = "PROTEGIDO";
                         }
                     }
                 }
@@ -75,6 +102,7 @@ public class MisSegurosAsegurado extends javax.swing.JFrame {
 
                 jLabelEstado.setText("VULNERABLE");
                 System.out.println("VUL");
+                estadoU = "VULNERABLE";
 
             }
 
@@ -139,6 +167,13 @@ public class MisSegurosAsegurado extends javax.swing.JFrame {
                 jLabelDeducible.setText(String.valueOf(SolicitudRecibidos.asociado[i].getCostoDeducibleAsociado()));
                 jLabelMontoAsegurado.setText(String.valueOf(SolicitudRecibidos.asociado[i].getValorVehiculoAsociado()));
                 jLabelEstado.setText(estadoU);
+                SolicitudRecibidos.asociado[i].setEstadoSeguro(estadoU);
+                
+                if (estadoU == "PROTEGIDO") {
+                SolicitudRecibidos.asociado[i].setEstadoUltimaPrima("PAGADO");
+                }else if(estadoU == "VULNERABLE"){
+                SolicitudRecibidos.asociado[i].setEstadoUltimaPrima("PENDIENTE");
+                }
             }
         }
 
@@ -319,6 +354,7 @@ public class MisSegurosAsegurado extends javax.swing.JFrame {
         for (int i = 0; i < 10; i++) {
             if (ReportarIncidente.asegurado[i] != null) {
                 if (ReportarIncidente.asegurado[i].getDpiAsegurado().equals(Login.getInstancia().getDpiLogin())) {
+
                     String rol = ReportarIncidente.asegurado[i].getRolAsegurado();
                     if (rol == "AUTOR") {
                         contadorIncidente++;
@@ -329,43 +365,52 @@ public class MisSegurosAsegurado extends javax.swing.JFrame {
             }
         }
         if (contadorIncidente < 3) {
+
+            //click para agrear seguro
+            int dia;
+            int mes;
+            int año;
+            this.fechaActual = PanelAdministrador.getInstancia().getFechaSistema();
+            String[] fechaAccion;
+
+            fechaAccion = fechaActual.split("-");
+            dia = Integer.parseInt(fechaAccion[0]);
+            mes = Integer.parseInt(fechaAccion[1]);
+            año = Integer.parseInt(fechaAccion[2]);
+            mes = mes + 1;
+            nuevaFecha = String.valueOf(dia + "-" + mes + "-" + año);
+            this.fechaI = fechaActual;
+
+            agregarSeguro(new Seguro(fechaI, nuevaFecha, Login.getInstancia().getDpiLogin(), jLabelPolizaPrima.getText()));
+
+            String dato[] = new String[5];
+            for (int i = 0; i < 1; i++) {
+                dato[0] = String.valueOf(contadorBoton);
+                dato[1] = "POLIZA";
+                dato[2] = jLabelPolizaPrima.getText();
+                dato[3] = fechaI;
+                dato[4] = nuevaFecha;
+                modelo.addRow(dato);
+            }
+            contadorBoton++;
+            for (int i = 0; i < 10; i++) {
+                if (SolicitudRecibidos.asociado[i]!=null) {
+                    if (SolicitudRecibidos.asociado[i].getDpiAsociado().equals(Login.getInstancia().getDpiLogin())) {
+                    SolicitudRecibidos.asociado[i].setEstadoSeguro("PROTEGIDO");
+                    SolicitudRecibidos.asociado[i].setEstadoUltimaPrima("PAGADO");
+                }
+                }
+            }
+            JOptionPane.showMessageDialog(null, "SE HA RENOVADO EXITOSAMENTE EL SEGURO!!!");
+            jLabelEstado.setText("PROTEGIDO");
+
             
-             //click para agrear seguro
-        int dia;
-        int mes;
-        int año;
-        this.fechaActual = PanelAdministrador.getInstancia().getFechaSistema();
-        String[] fechaAccion;
 
-        fechaAccion = fechaActual.split("-");
-        dia = Integer.parseInt(fechaAccion[0]);
-        mes = Integer.parseInt(fechaAccion[1]);
-        año = Integer.parseInt(fechaAccion[2]);
-        mes = mes + 1;
-        nuevaFecha = String.valueOf(dia + "-" + mes + "-" + año);
-        this.fechaI = fechaActual;
-
-        agregarSeguro(new Seguro(fechaI, nuevaFecha, Login.getInstancia().getDpiLogin(), jLabelPolizaPrima.getText()));
-
-        String dato[] = new String[5];
-        for (int i = 0; i < 1; i++) {
-            dato[0] = String.valueOf(contadorBoton);
-            dato[1] = "POLIZA";
-            dato[2] = jLabelPolizaPrima.getText();
-            dato[3] = fechaI;
-            dato[4] = nuevaFecha;
-            modelo.addRow(dato);
-        }
-        contadorBoton++;
-
-        JOptionPane.showMessageDialog(null, "SE HA RENOVADO EXITOSAMENTE EL SEGURO!!!");
-        jLabelEstado.setText("PROTEGIDO");
-            
         } else {
             JOptionPane.showMessageDialog(null, "YA NO SE PUEDE RENOVAR, UD FUE AUTOR EN 3 INCIDENTES");
         }
 
-       
+
     }//GEN-LAST:event_jButtonRenovarActionPerformed
 
     /**

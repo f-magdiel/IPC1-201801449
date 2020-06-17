@@ -1,7 +1,7 @@
-
 package org.magdielasicona.administrador;
 
 import javax.swing.table.DefaultTableModel;
+import org.magdielasicona.controlador.MisSegurosAsegurado;
 
 /**
  *
@@ -9,7 +9,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ListaAsegurados extends javax.swing.JFrame {
 
-     DefaultTableModel modelo;
+    DefaultTableModel modelo;
+
     public ListaAsegurados() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -19,22 +20,31 @@ public class ListaAsegurados extends javax.swing.JFrame {
         modelo.addColumn("NOMBRE");
         modelo.addColumn("ESTADO");
         modelo.addColumn("ULTIMA PRIMA");
-        try{
-        llenarTablar();
-        }catch(Exception e){}
+        try {
+            llenarTablar();
+        } catch (Exception e) {
+        }
         this.jTableListaAsegurados.setModel(modelo);
     }
 
-    public void llenarTablar(){
-    String tabla[] = new String[4];
+    public void llenarTablar() {
+     
+        String tabla[] = new String[4];
         for (int i = 0; i < 10; i++) {
-            tabla[0]=ReportarIncidente.asegurado[i].getDpiAsegurado();
-            tabla[1]=ReportarIncidente.asegurado[i].getNombreAsegurado();
-            tabla[2]="";
-            tabla[3]=String.valueOf(ReportarIncidente.asegurado[i].getCostoPrimaAsegurado());
-            modelo.addRow(tabla);
+
+            
+                tabla[0] = SolicitudRecibidos.asociado[i].getDpiAsociado();
+                tabla[1] = SolicitudRecibidos.asociado[i].getNombreAsociado();
+                tabla[2] = SolicitudRecibidos.asociado[i].getEstadoSeguro();
+                tabla[3] = SolicitudRecibidos.asociado[i].getEstadoUltimaPrima();
+                modelo.addRow(tabla);
+                
+            
+
         }
+
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
