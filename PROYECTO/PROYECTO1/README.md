@@ -82,6 +82,7 @@ Metodo que obtiene los datos en el arreglo de objetos.
 
 
 # Diagrama de Clases
+![Descripcion](IMAGENES/imagen.jpg)
 
 
 
