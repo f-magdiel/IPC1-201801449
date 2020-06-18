@@ -331,7 +331,7 @@ public class ReportarIncidente extends javax.swing.JFrame {
             preciolista = precioRepuestoReal[indexRepuesto - 1];
 
         }
-        datosDatalles(new Detalles(jTextFieldDpiAsegurado.getText(), codigoGen, String.valueOf(preciolista), detalle));
+        datosDatalles(new Detalles(jTextFieldDpiAsegurado.getText(),jTextFieldDpiTercero.getText() , codigoGen, String.valueOf(preciolista), detalle));
         this.total += preciolista;
         precio = String.valueOf(preciolista);
 

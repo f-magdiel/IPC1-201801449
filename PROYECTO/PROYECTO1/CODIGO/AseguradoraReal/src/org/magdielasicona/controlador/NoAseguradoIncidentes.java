@@ -12,6 +12,7 @@ import org.magdielasicona.datos.Login;
  */
 public class NoAseguradoIncidentes extends javax.swing.JFrame {
 
+    public static PagosNoAsegurado nopagos[] = new PagosNoAsegurado[30];
     DefaultTableModel modelo;
     public String fechaActual = PanelAdministrador.getInstancia().getFechaSistema();
 
@@ -55,6 +56,16 @@ public class NoAseguradoIncidentes extends javax.swing.JFrame {
 
         jTextAreaIncidentes.setText("NOMBRE: " + Login.getInstancia().getNombreLogin() + "\nDPI: " + Login.getInstancia().getDpiLogin() + "\nTELEFONO: " + Login.getInstancia().getTelefonoLogin() + "\nTIPO: NO ASEGURADO");
 
+    }
+
+    public void insercionPagosNoAsegurados(PagosNoAsegurado obj) {
+        for (int i = 0; i < 50; i++) {
+            if (nopagos[i] == null) {
+                nopagos[i] = obj;
+
+                return;
+            }
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -108,6 +119,11 @@ public class NoAseguradoIncidentes extends javax.swing.JFrame {
 
         jButtonDetalles.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonDetalles.setText("Detalles");
+        jButtonDetalles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDetallesActionPerformed(evt);
+            }
+        });
 
         jLabelFechaSistema.setText("Fecha Sistema:");
 
@@ -182,8 +198,7 @@ public class NoAseguradoIncidentes extends javax.swing.JFrame {
             modelo.removeRow(i);
             i -= 1;
         }
-        
-        
+
         String tabla[] = new String[6];
         for (int i = 0; i < 10; i++) {
             if (ReportarIncidente.noasegurado[i] != null) {
@@ -198,25 +213,34 @@ public class NoAseguradoIncidentes extends javax.swing.JFrame {
                 }
             }
         }
-        
+
         String fecha[];
         fecha = fechaActual.split("-");
         int dia = Integer.parseInt(fecha[0]);
         int mes = Integer.parseInt(fecha[1]);
         int año = Integer.parseInt(fecha[2]);
-        mes = mes+1;
-        String fechaNueva = String.valueOf(dia+"-"+mes+"-"+año);
-        
-        for (int i = 0; i < 15; i++) {
-            if (ReportarIncidente.noasegurado!=null) {
-                if (ReportarIncidente.noasegurado[i].getDpiNoAsociado().equals(Login.getInstancia().getDpiLogin())) {
-                    
+        mes = mes + 1;
+        String fechaNueva = String.valueOf(dia + "-" + mes + "-" + año);
+
+        try {
+            for (int i = 0; i < 15; i++) {
+                if (ReportarIncidente.noasegurado != null) {
+                    if (ReportarIncidente.noasegurado[i].getDpiNoAsociado().equals(Login.getInstancia().getDpiLogin())) {
+                        insercionPagosNoAsegurados(new PagosNoAsegurado(ReportarIncidente.taller[i].getCodigo(), ReportarIncidente.noasegurado[i].getDpiNoAsociado(), "INCIDENTE AUTO", String.valueOf(ReportarIncidente.noasegurado[i].getPrecioPagar()), fechaActual, fechaNueva));
+                    }
                 }
             }
+        } catch (Exception e) {
         }
 
 
     }//GEN-LAST:event_jButtonPagarActionPerformed
+
+    private void jButtonDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDetallesActionPerformed
+       DetallesNoAsegurado detno = new DetallesNoAsegurado();
+       detno.setVisible(true);
+       dispose();
+    }//GEN-LAST:event_jButtonDetallesActionPerformed
 
     /**
      * @param args the command line arguments

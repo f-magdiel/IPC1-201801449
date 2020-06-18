@@ -35,7 +35,7 @@ public class MisIncidentesAsegurado extends javax.swing.JFrame {
 
         imprimirDatos();
         llenadoMenu();
-        llenadoTabla();
+        try{llenadoTabla();}catch(Exception e){}
     }
 
     public void imprimirDatos() {

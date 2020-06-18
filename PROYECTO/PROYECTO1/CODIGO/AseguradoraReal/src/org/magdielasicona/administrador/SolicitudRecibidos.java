@@ -1,4 +1,3 @@
-
 package org.magdielasicona.administrador;
 
 import javax.swing.JOptionPane;
@@ -33,9 +32,10 @@ public class SolicitudRecibidos extends javax.swing.JFrame {
         modelo.addColumn("MONTO");
         modelo.addColumn("POLIZA");
         modelo.addColumn("DEDUCIBLE");
-        try{
-        insertandoEnTabla();
-        }catch(Exception e){}
+        try {
+            insertandoEnTabla();
+        } catch (Exception e) {
+        }
         this.jTableDatosSolicitante.setModel(modelo);
     }
 
@@ -45,15 +45,17 @@ public class SolicitudRecibidos extends javax.swing.JFrame {
         String[] tabla = new String[8];
         for (int i = 0; i < cont; i++) {
 
-            tabla[0] = SolicitudSeguro.solicitante[i].getDpiCandidato();
-            tabla[1] = SolicitudSeguro.solicitante[i].getNombreCandidato() + " " + SolicitudSeguro.solicitante[i].getApellidoCandidato();
-            tabla[2] = SolicitudSeguro.solicitante[i].getTelefonoCandidato();
-            tabla[3] = SolicitudSeguro.solicitante[i].getTipoVehiculoCandidato();
-            tabla[4] = SolicitudSeguro.solicitante[i].getTipoVehiculoCandidato() + "," + SolicitudSeguro.solicitante[i].getModeloVehiculoCandidato() + "," + SolicitudSeguro.solicitante[i].getMarcaVehiculoCandidato() + "," + SolicitudSeguro.solicitante[i].getLineaVehiculoCandidato() + "," + SolicitudSeguro.solicitante[i].getUsoVehiculoCandidato();
-            tabla[5] = String.valueOf(SolicitudSeguro.solicitante[i].getValorVehiculoCandidato());
-            tabla[6] = String.valueOf(SolicitudSeguro.solicitante[i].getCostoPrimaCandidato());
-            tabla[7] = String.valueOf(SolicitudSeguro.solicitante[i].getCostoDeducibleCandidato());
-            modelo.addRow(tabla);
+            if (!SolicitudSeguro.solicitante[i].getDpiCandidato().equals("")) {
+                tabla[0] = SolicitudSeguro.solicitante[i].getDpiCandidato();
+                tabla[1] = SolicitudSeguro.solicitante[i].getNombreCandidato() + " " + SolicitudSeguro.solicitante[i].getApellidoCandidato();
+                tabla[2] = SolicitudSeguro.solicitante[i].getTelefonoCandidato();
+                tabla[3] = SolicitudSeguro.solicitante[i].getTipoVehiculoCandidato();
+                tabla[4] = SolicitudSeguro.solicitante[i].getTipoVehiculoCandidato() + "," + SolicitudSeguro.solicitante[i].getModeloVehiculoCandidato() + "," + SolicitudSeguro.solicitante[i].getMarcaVehiculoCandidato() + "," + SolicitudSeguro.solicitante[i].getLineaVehiculoCandidato() + "," + SolicitudSeguro.solicitante[i].getUsoVehiculoCandidato();
+                tabla[5] = String.valueOf(SolicitudSeguro.solicitante[i].getValorVehiculoCandidato());
+                tabla[6] = String.valueOf(SolicitudSeguro.solicitante[i].getCostoPrimaCandidato());
+                tabla[7] = String.valueOf(SolicitudSeguro.solicitante[i].getCostoDeducibleCandidato());
+                modelo.addRow(tabla);
+            }
         }
 
     }
@@ -181,13 +183,13 @@ public class SolicitudRecibidos extends javax.swing.JFrame {
 
         for (int i = 0; i < SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
             if (SolicitudSeguro.solicitante[i].getDpiCandidato().equals(dato)) {
-                agregarAsociados(new Asociado(SolicitudSeguro.solicitante[i].getNombreCandidato(), SolicitudSeguro.solicitante[i].getApellidoCandidato(), SolicitudSeguro.solicitante[i].getDpiCandidato(), SolicitudSeguro.solicitante[i].getTelefonoCandidato(), SolicitudSeguro.solicitante[i].getTipoVehiculoCandidato(), SolicitudSeguro.solicitante[i].getUsoVehiculoCandidato(), SolicitudSeguro.solicitante[i].getMarcaVehiculoCandidato(), SolicitudSeguro.solicitante[i].getLineaVehiculoCandidato(), SolicitudSeguro.solicitante[i].getModeloVehiculoCandidato(), SolicitudSeguro.solicitante[i].getValorVehiculoCandidato(), SolicitudSeguro.solicitante[i].getCostoPrimaCandidato(), SolicitudSeguro.solicitante[i].getCostoDeducibleCandidato(), SolicitudSeguro.solicitante[i].getMecanica(), SolicitudSeguro.solicitante[i].getPrecioMecanica(), SolicitudSeguro.solicitante[i].getRepuesto(), SolicitudSeguro.solicitante[i].getPrecioRepuesto(),"",""));
+                agregarAsociados(new Asociado(SolicitudSeguro.solicitante[i].getNombreCandidato(), SolicitudSeguro.solicitante[i].getApellidoCandidato(), SolicitudSeguro.solicitante[i].getDpiCandidato(), SolicitudSeguro.solicitante[i].getTelefonoCandidato(), SolicitudSeguro.solicitante[i].getTipoVehiculoCandidato(), SolicitudSeguro.solicitante[i].getUsoVehiculoCandidato(), SolicitudSeguro.solicitante[i].getMarcaVehiculoCandidato(), SolicitudSeguro.solicitante[i].getLineaVehiculoCandidato(), SolicitudSeguro.solicitante[i].getModeloVehiculoCandidato(), SolicitudSeguro.solicitante[i].getValorVehiculoCandidato(), SolicitudSeguro.solicitante[i].getCostoPrimaCandidato(), SolicitudSeguro.solicitante[i].getCostoDeducibleCandidato(), SolicitudSeguro.solicitante[i].getMecanica(), SolicitudSeguro.solicitante[i].getPrecioMecanica(), SolicitudSeguro.solicitante[i].getRepuesto(), SolicitudSeguro.solicitante[i].getPrecioRepuesto(), "", ""));
             }
         }
         //borrar dato en solicitante
-        for (int i = 0; i <  SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
+        for (int i = 0; i < SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
             if (SolicitudSeguro.solicitante[i].getDpiCandidato().equals(dato)) {
-                
+
                 SolicitudSeguro.solicitante[i].setDpiCandidato("");
                 SolicitudSeguro.solicitante[i].setNombreCandidato("");
                 SolicitudSeguro.solicitante[i].setTelefonoCandidato("");
@@ -204,14 +206,14 @@ public class SolicitudRecibidos extends javax.swing.JFrame {
                 SolicitudSeguro.solicitante[i].setUsoVehiculoCandidato("");
                 SolicitudSeguro.solicitante[i].setValorVehiculoCandidato(0.00);
                 SolicitudSeguro.solicitante[i].setApellidoCandidato("");
-               
+
             }
         }
         JOptionPane.showMessageDialog(null, "SE HA APROBADO LA SOLICITUD!!!");
     }//GEN-LAST:event_jButtonAprobarActionPerformed
 
     private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
-       String dato = "";
+        String dato = "";
         int fila = jTableDatosSolicitante.getSelectedRow();
         if (fila != -1) {
             dato = (String) modelo.getValueAt(fila, 0);
@@ -222,7 +224,7 @@ public class SolicitudRecibidos extends javax.swing.JFrame {
         }
         for (int i = 0; i < SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
             if (SolicitudSeguro.solicitante[i].getDpiCandidato().equals(dato)) {
-                
+
                 SolicitudSeguro.solicitante[i].setDpiCandidato("");
                 SolicitudSeguro.solicitante[i].setNombreCandidato("");
                 SolicitudSeguro.solicitante[i].setTelefonoCandidato("");
@@ -239,7 +241,7 @@ public class SolicitudRecibidos extends javax.swing.JFrame {
                 SolicitudSeguro.solicitante[i].setUsoVehiculoCandidato("");
                 SolicitudSeguro.solicitante[i].setValorVehiculoCandidato(0.00);
                 SolicitudSeguro.solicitante[i].setApellidoCandidato("");
-               
+
             }
         }
         JOptionPane.showMessageDialog(null, "SE HA ELIMINADO LA SOLICITUD!!!");

@@ -1,5 +1,7 @@
-
 package org.magdielasicona.controlador;
+
+import javax.swing.table.DefaultTableModel;
+import org.magdielasicona.datos.Login;
 
 /**
  *
@@ -7,14 +9,51 @@ package org.magdielasicona.controlador;
  */
 public class NoAseguradoPagos extends javax.swing.JFrame {
 
-   
+    DefaultTableModel modelo;
+
     public NoAseguradoPagos() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("PAGOS NO ASOCIADOS");
+        modelo = new DefaultTableModel();
+        modelo.addColumn("CORRELATIVO");
+        modelo.addColumn("CODIGO");
+        modelo.addColumn("TIPO");
+        modelo.addColumn("TOTAL");
+        modelo.addColumn("FECHA INICIO");
+        modelo.addColumn("FECHA FIN");
+        this.jTablePagos.setModel(modelo);
+        imprimirDatos();
+        llenarTabla();
     }
 
-  
+    public void imprimirDatos() {
+
+        jTextAreaPagos.setText("NOMBRE: " + Login.getInstancia().getNombreLogin() + "\nDPI: " + Login.getInstancia().getDpiLogin() + "\nTELEFONO: " + Login.getInstancia().getTelefonoLogin() + "\nTIPO: NO ASEGURADO");
+
+    }
+
+    public void llenarTabla() {
+        int corre = 1;
+
+        String tabla[] = new String[6];
+        for (int i = 0; i < 15; i++) {
+            if (NoAseguradoIncidentes.nopagos[i] != null) {
+                if (NoAseguradoIncidentes.nopagos[i].getDpi().equals(Login.getInstancia().getDpiLogin())) {
+                    tabla[0] = String.valueOf(corre);
+                    tabla[1] = NoAseguradoIncidentes.nopagos[i].getCodigoQ();
+                    tabla[2] = NoAseguradoIncidentes.nopagos[i].getTipo();
+                    tabla[3] = NoAseguradoIncidentes.nopagos[i].getTotal();
+                    tabla[4] = NoAseguradoIncidentes.nopagos[i].getFechaInicio();
+                    tabla[5] = NoAseguradoIncidentes.nopagos[i].getFechaFin();
+                    modelo.addRow(tabla);
+                    corre++;
+                }
+            }
+        }
+
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

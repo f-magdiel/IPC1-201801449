@@ -7,15 +7,25 @@ package org.magdielasicona.administrador;
  */
 public class Detalles {
     private String dpi;
+    private String dpiTercero;
     private String codigo;
     private String precio;
     private String nombre;
 
-    public Detalles(String dpi, String codigo, String precio, String nombre) {
+    public Detalles(String dpi,String dpiTercero, String codigo, String precio, String nombre) {
         this.dpi = dpi;
         this.codigo = codigo;
         this.precio = precio;
         this.nombre = nombre;
+        this.dpiTercero = dpiTercero;
+    }
+
+    public String getDpiTercero() {
+        return dpiTercero;
+    }
+
+    public void setDpiTercero(String dpiTercero) {
+        this.dpiTercero = dpiTercero;
     }
 
     public String getDpi() {

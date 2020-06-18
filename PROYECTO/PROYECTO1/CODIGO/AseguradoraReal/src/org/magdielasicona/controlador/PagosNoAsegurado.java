@@ -7,13 +7,15 @@ package org.magdielasicona.controlador;
  */
 public class PagosNoAsegurado {
     private String codigoQ;
+    private String dpi;
     private String tipo;
     private String total;
     private String fechaInicio;
     private String fechaFin;
 
-    public PagosNoAsegurado(String codigoQ, String tipo, String total, String fechaInicio, String fechaFin) {
+    public PagosNoAsegurado(String codigoQ, String dpi, String tipo, String total, String fechaInicio, String fechaFin) {
         this.codigoQ = codigoQ;
+        this.dpi = dpi;
         this.tipo = tipo;
         this.total = total;
         this.fechaInicio = fechaInicio;
@@ -26,6 +28,14 @@ public class PagosNoAsegurado {
 
     public void setCodigoQ(String codigoQ) {
         this.codigoQ = codigoQ;
+    }
+
+    public String getDpi() {
+        return dpi;
+    }
+
+    public void setDpi(String dpi) {
+        this.dpi = dpi;
     }
 
     public String getTipo() {
@@ -59,7 +69,7 @@ public class PagosNoAsegurado {
     public void setFechaFin(String fechaFin) {
         this.fechaFin = fechaFin;
     }
-    
+
     
     
 }

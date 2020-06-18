@@ -1,6 +1,7 @@
 
 package org.magdielasicona.controlador;
 
+import javax.swing.table.DefaultTableModel;
 import org.magdielasicona.datos.Login;
 
 /**
@@ -14,6 +15,7 @@ public class PanelNoAsegurado extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("PANEL NO ASEGURADOS");
+         
         imprimirDatos();
     }
 

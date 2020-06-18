@@ -142,13 +142,16 @@ public class Login extends javax.swing.JFrame {
 
     public boolean buscarAsegurado(String dato) {
         boolean bandera = false;
-        for (int i = 0; i < SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
+        for (int i = 0; i < 10; i++) {
 
-            if (SolicitudRecibidos.asociado[i].getDpiAsociado().equals(dato)) {
+            if (SolicitudRecibidos.asociado[i]!=null) {
+                if (SolicitudRecibidos.asociado[i].getDpiAsociado().equals(dato)) {
                 nombreLogin = SolicitudRecibidos.asociado[i].getNombreAsociado();
                 dpiLogin = SolicitudRecibidos.asociado[i].getDpiAsociado();
                 telefonoLogin = SolicitudRecibidos.asociado[i].getTelefonoAsociado();
                 bandera = true;
+                break;
+            }
             }
         }
         return bandera;
@@ -156,13 +159,16 @@ public class Login extends javax.swing.JFrame {
     
     public boolean buscarNoAsegurado(String dato){
     boolean bandera = false;
-        for (int i = 0; i < SolicitudSeguro.getInstancia().getContadorBtnSolicitar(); i++) {
+        for (int i = 0; i < 10; i++) {
 
-            if (ReportarIncidente.noasegurado[i].getDpiNoAsociado().equals(dato)) {
+            if (ReportarIncidente.noasegurado[i]!=null) {
+                if (ReportarIncidente.noasegurado[i].getDpiNoAsociado().equals(dato)) {
                 nombreLogin = ReportarIncidente.noasegurado[i].getNombreNoAsociado();
                 dpiLogin = ReportarIncidente.noasegurado[i].getDpiNoAsociado();
                 telefonoLogin = ReportarIncidente.noasegurado[i].getTeledonoNoAsociado();
                 bandera = true;
+                break;
+            }
             }
         }
         return bandera;
@@ -174,6 +180,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
+        
         
         nombreUsuario = jTextFieldNombreUsuario.getText().toUpperCase();
 
@@ -195,6 +202,8 @@ public class Login extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null,"USUARIO NO EXISTE");
         }
 
+        
+        
 
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
