@@ -82,7 +82,7 @@ Metodo que obtiene los datos en el arreglo de objetos.
 
 
 # Diagrama de Clases
-![Diagrama de Clases](https://github.com/magdielasicona/IPC1-201801449/tree/master/PROYECTO/PROYECTO1/IMAGENES/Diagrama.jpg)
+![Diagrama](https://user-images.githubusercontent.com/64621199/84975954-f3a59000-b0e3-11ea-812d-d8b00013b1eb.jpg)
 
 
 
