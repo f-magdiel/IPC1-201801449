@@ -19,7 +19,7 @@ public class Misil extends Thread {
             posOriginal = misil.getY();
             misil.setBounds(misil.getX(), misil.getY() - 10, misil.getWidth(), misil.getHeight());
             System.out.println(misil.getY());
-            if (misil.getY()==5) {
+            if (misil.getY()==4) {
                 bandera = false;
             }
             try {
