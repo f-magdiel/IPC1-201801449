@@ -18,6 +18,7 @@ public class Misil extends Thread {
         while (bandera ==true) {
             posOriginal = misil.getY();
             misil.setBounds(misil.getX(), misil.getY() - 10, misil.getWidth(), misil.getHeight());
+           
             System.out.println(misil.getY());
             if (misil.getY()==4) {
                 bandera = false;
@@ -33,6 +34,7 @@ public class Misil extends Thread {
 
     public void lanzarMisil(JButton misil) {
         this.misil = misil;
+        
 
     }
 

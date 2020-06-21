@@ -1,5 +1,6 @@
 package org.magdielasicona.controlador;
 
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import javax.swing.Icon;
@@ -11,35 +12,34 @@ import javax.swing.JButton;
  * @author FRANMAGDIEL_PC
  */
 public class MenuJuego extends javax.swing.JFrame {
-    
+
     public MenuJuego() {
         initComponents();
-        
+
         this.setLocationRelativeTo(null);
         this.setTitle("CAMPO DE BATALLA");
-        
-        
-        //jButtonMisil.setVisible(false);
+
+        jButtonMisil.setBackground(Color.white);
         jButtonShip.setIcon(setIcono("/Imagenes/ship.png", jButtonShip));
         jButtonRayo.setIcon(setIcono("/Imagenes/rayo.png", jButtonRayo));
         jButtonCaracol.setIcon(setIcono("/Imagenes/caracol.png", jButtonCaracol));
         jButtonAsteroide.setIcon(setIcono("/Imagenes/asteroide.png", jButtonAsteroide));
         jButtonCorazon.setIcon(setIcono("/Imagenes/corazon.png", jButtonCorazon));
         jButtonOjo.setIcon(setIcono("/Imagenes/ojo.png", jButtonOjo));
-        jButtonMisil.setIcon(setIcono("/Imagenes/misil.png", jButtonMisil));
-        
+        jButtonMisil.setIcon(setIcono("/Imagenes/Invisibilidad.png", jButtonMisil));
+
     }
-    
+
     public Icon setIcono(String url, JButton boton) {
         ImageIcon icon = new ImageIcon(getClass().getResource(url));
         int ancho = boton.getWidth();
         int alto = boton.getHeight();
-        
+
         ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
         return icono;
-        
+
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -155,6 +155,7 @@ public class MenuJuego extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
+        jPanelCampoBatalla.setBackground(new java.awt.Color(255, 255, 255));
         jPanelCampoBatalla.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 0, 153)));
 
         jButtonShip.addActionListener(new java.awt.event.ActionListener() {
@@ -168,6 +169,7 @@ public class MenuJuego extends javax.swing.JFrame {
             }
         });
 
+        jButtonMisil.setBorder(null);
         jButtonMisil.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jButtonMisilKeyPressed(evt);
@@ -262,40 +264,43 @@ public class MenuJuego extends javax.swing.JFrame {
     public JButton getjButtonShip() {
         return jButtonShip;
     }
-    
+
     public void setjButtonShip(JButton jButtonShip) {
         this.jButtonShip = jButtonShip;
     }
-    
+
 
     private void jButtonShipKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonShipKeyPressed
-        
+
         if (evt.getExtendedKeyCode() == KeyEvent.VK_LEFT) {
             jButtonShip.setLocation(jButtonShip.getX() - 10, jButtonShip.getY());
-           
+
             System.out.println(jButtonShip.getX());
             if (jButtonShip.getX() == 4) {
                 jButtonShip.setLocation(jButtonShip.getX() + 10, jButtonShip.getY());
-               
+
             }
-            
+
         }
         if (evt.getExtendedKeyCode() == KeyEvent.VK_RIGHT) {
             jButtonShip.setLocation(jButtonShip.getX() + 10, jButtonShip.getY());
-            
+
             System.out.println(jButtonShip.getX());
             if (jButtonShip.getX() == 764) {
                 jButtonShip.setLocation(jButtonShip.getX() - 10, jButtonShip.getY());
-                
+
             }
         }
         if (evt.getExtendedKeyCode() == KeyEvent.VK_SPACE) {
-             jButtonMisil.setLocation(jButtonShip.getX(),jButtonShip.getY());
+            jButtonMisil.setIcon(setIcono("/Imagenes/misil.png", jButtonMisil));
+            jButtonMisil.setLocation(jButtonShip.getX(), jButtonShip.getY());
+
             Misil mis = new Misil();
             mis.start();
             mis.lanzarMisil(jButtonMisil);
+
         }
-        
+
 
     }//GEN-LAST:event_jButtonShipKeyPressed
 
@@ -304,12 +309,11 @@ public class MenuJuego extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonShipActionPerformed
 
     private void jButtonEmpezarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEmpezarActionPerformed
-    jButtonShip.requestFocusInWindow();
-        
+        jButtonShip.requestFocusInWindow();
+
     }//GEN-LAST:event_jButtonEmpezarActionPerformed
 
     private void jButtonMisilKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonMisilKeyPressed
-        
 
         if (evt.getExtendedKeyCode() == KeyEvent.VK_SPACE) {
             Misil mis = new Misil();
@@ -318,9 +322,9 @@ public class MenuJuego extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButtonMisilKeyPressed
-    
+
     public void keyTyped(KeyEvent e) {
-        
+
     }
 
     /**
