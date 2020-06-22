@@ -3,6 +3,8 @@ package org.magdielasicona.controlador;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -13,20 +15,28 @@ import javax.swing.JButton;
  */
 public class MenuJuego extends javax.swing.JFrame {
 
+    private int contadorMisil = 0;
+
     public MenuJuego() {
         initComponents();
 
         this.setLocationRelativeTo(null);
         this.setTitle("CAMPO DE BATALLA");
 
-        jButtonMisil.setBackground(Color.white);
+//        jButtonMisil1.setBackground(Color.white);
+//        jButtonMisil2.setBackground(Color.white);
+//        jButtonMisil3.setBackground(Color.white);
+//        jButtonMisil4.setBackground(Color.white);
         jButtonShip.setIcon(setIcono("/Imagenes/ship.png", jButtonShip));
         jButtonRayo.setIcon(setIcono("/Imagenes/rayo.png", jButtonRayo));
         jButtonCaracol.setIcon(setIcono("/Imagenes/caracol.png", jButtonCaracol));
         jButtonAsteroide.setIcon(setIcono("/Imagenes/asteroide.png", jButtonAsteroide));
         jButtonCorazon.setIcon(setIcono("/Imagenes/corazon.png", jButtonCorazon));
         jButtonOjo.setIcon(setIcono("/Imagenes/ojo.png", jButtonOjo));
-        jButtonMisil.setIcon(setIcono("/Imagenes/Invisibilidad.png", jButtonMisil));
+        jButtonMisil1.setIcon(setIcono("/Imagenes/misil.png", jButtonMisil1));
+        jButtonMisil2.setIcon(setIcono("/Imagenes/misil.png", jButtonMisil1));
+        jButtonMisil3.setIcon(setIcono("/Imagenes/misil.png", jButtonMisil1));
+        jButtonMisil4.setIcon(setIcono("/Imagenes/misil.png", jButtonMisil1));
 
     }
 
@@ -66,7 +76,10 @@ public class MenuJuego extends javax.swing.JFrame {
         jButtonAsteroide = new javax.swing.JButton();
         jButtonCorazon = new javax.swing.JButton();
         jButtonOjo = new javax.swing.JButton();
-        jButtonMisil = new javax.swing.JButton();
+        jButtonMisil1 = new javax.swing.JButton();
+        jButtonMisil2 = new javax.swing.JButton();
+        jButtonMisil3 = new javax.swing.JButton();
+        jButtonMisil4 = new javax.swing.JButton();
         jButtonEmpezar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -169,10 +182,37 @@ public class MenuJuego extends javax.swing.JFrame {
             }
         });
 
-        jButtonMisil.setBorder(null);
-        jButtonMisil.addKeyListener(new java.awt.event.KeyAdapter() {
+        jButtonRayo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRayoActionPerformed(evt);
+            }
+        });
+
+        jButtonMisil1.setBorder(null);
+        jButtonMisil1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jButtonMisilKeyPressed(evt);
+                jButtonMisil1KeyPressed(evt);
+            }
+        });
+
+        jButtonMisil2.setBorder(null);
+        jButtonMisil2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonMisil2KeyPressed(evt);
+            }
+        });
+
+        jButtonMisil3.setBorder(null);
+        jButtonMisil3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonMisil3KeyPressed(evt);
+            }
+        });
+
+        jButtonMisil4.setBorder(null);
+        jButtonMisil4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonMisil4KeyPressed(evt);
             }
         });
 
@@ -183,43 +223,55 @@ public class MenuJuego extends javax.swing.JFrame {
             .addGroup(jPanelCampoBatallaLayout.createSequentialGroup()
                 .addGroup(jPanelCampoBatallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelCampoBatallaLayout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(jButtonRayo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelCampoBatallaLayout.createSequentialGroup()
-                        .addGap(253, 253, 253)
-                        .addComponent(jButtonCaracol, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(100, 100, 100)
-                        .addComponent(jButtonAsteroide, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelCampoBatallaLayout.createSequentialGroup()
-                        .addGap(393, 393, 393)
+                        .addGap(268, 268, 268)
                         .addGroup(jPanelCampoBatallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonMisil, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonShip, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
-                .addComponent(jButtonCorazon, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(86, 86, 86)
-                .addComponent(jButtonOjo, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44))
+                            .addComponent(jButtonShip, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelCampoBatallaLayout.createSequentialGroup()
+                                .addComponent(jButtonAsteroide, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonRayo, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonCorazon, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelCampoBatallaLayout.createSequentialGroup()
+                                .addComponent(jButtonOjo, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonCaracol, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 119, Short.MAX_VALUE))
+                    .addGroup(jPanelCampoBatallaLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButtonMisil2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonMisil3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelCampoBatallaLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButtonMisil1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonMisil4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanelCampoBatallaLayout.setVerticalGroup(
             jPanelCampoBatallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCampoBatallaLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(6, 6, 6)
                 .addGroup(jPanelCampoBatallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelCampoBatallaLayout.createSequentialGroup()
-                        .addGroup(jPanelCampoBatallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonAsteroide, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonCaracol, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonCorazon, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 247, Short.MAX_VALUE)
-                        .addComponent(jButtonMisil, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonShip, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelCampoBatallaLayout.createSequentialGroup()
-                        .addGroup(jPanelCampoBatallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonOjo, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonRayo, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())))
+                    .addComponent(jButtonAsteroide, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonRayo, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCorazon, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelCampoBatallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonOjo, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCaracol, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addGroup(jPanelCampoBatallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonMisil2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonMisil3, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(jPanelCampoBatallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonMisil1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonMisil4, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(83, 83, 83)
+                .addComponent(jButtonShip, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         jButtonEmpezar.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
@@ -236,23 +288,24 @@ public class MenuJuego extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(35, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButtonEmpezar, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanelEstadistica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanelCampoBatalla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(29, 29, 29))))
+                .addComponent(jPanelEstadistica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanelCampoBatalla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonEmpezar, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(81, 81, 81))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jPanelEstadistica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(jPanelCampoBatalla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanelCampoBatalla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonEmpezar)
                 .addContainerGap())
@@ -272,33 +325,90 @@ public class MenuJuego extends javax.swing.JFrame {
 
     private void jButtonShipKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonShipKeyPressed
 
+//        if (evt.getExtendedKeyCode() == KeyEvent.VK_UP) {
+//            jButtonShip.setLocation(jButtonShip.getX() , jButtonShip.getY()-89);
+//
+//            System.out.println(jButtonShip.getY());
+//           
+//            if (jButtonShip.getX() == -81) {
+//                jButtonShip.setLocation(jButtonShip.getX() + 95, jButtonShip.getY());
+//
+//            }
+//
+//        }
+//        if (evt.getExtendedKeyCode() == KeyEvent.VK_DOWN) {
+//            jButtonShip.setLocation(jButtonShip.getX() , jButtonShip.getY()+89);
+//
+//            System.out.println(jButtonShip.getY());
+//           
+//            if (jButtonShip.getX() == -81) {
+//                jButtonShip.setLocation(jButtonShip.getX() + 95, jButtonShip.getY());
+//
+//            }
+//
+//        }
+        //--------------------------------------------------------------------------
         if (evt.getExtendedKeyCode() == KeyEvent.VK_LEFT) {
-            jButtonShip.setLocation(jButtonShip.getX() - 10, jButtonShip.getY());
+            jButtonShip.setLocation(jButtonShip.getX() - 108, jButtonShip.getY());
 
-            System.out.println(jButtonShip.getX());
-            if (jButtonShip.getX() == 4) {
-                jButtonShip.setLocation(jButtonShip.getX() + 10, jButtonShip.getY());
+            System.out.println("X:" + jButtonShip.getX());
+            System.out.println("Y:" + jButtonShip.getY());
+
+            if (jButtonShip.getX() == 53) {
+                jButtonShip.setLocation(jButtonShip.getX() + 108, jButtonShip.getY());
 
             }
 
         }
         if (evt.getExtendedKeyCode() == KeyEvent.VK_RIGHT) {
-            jButtonShip.setLocation(jButtonShip.getX() + 10, jButtonShip.getY());
+            jButtonShip.setLocation(jButtonShip.getX() + 108, jButtonShip.getY());
 
             System.out.println(jButtonShip.getX());
-            if (jButtonShip.getX() == 764) {
-                jButtonShip.setLocation(jButtonShip.getX() - 10, jButtonShip.getY());
+            if (jButtonShip.getX() == 593) {
+                jButtonShip.setLocation(jButtonShip.getX() - 108, jButtonShip.getY());
 
             }
         }
         if (evt.getExtendedKeyCode() == KeyEvent.VK_SPACE) {
-            jButtonMisil.setIcon(setIcono("/Imagenes/misil.png", jButtonMisil));
-            jButtonMisil.setLocation(jButtonShip.getX(), jButtonShip.getY());
 
-            Misil mis = new Misil();
-            mis.start();
-            mis.lanzarMisil(jButtonMisil);
+            contadorMisil++;
+            System.out.println(contadorMisil);
 
+            if (contadorMisil == 1) {
+                jButtonMisil1.setIcon(setIcono("/Imagenes/misil.png", jButtonMisil1));
+                jButtonMisil1.setLocation(jButtonShip.getX(), jButtonShip.getY());
+                System.out.println("MISIL 1 SOLTADO");
+                Misil mis1 = new Misil();
+                mis1.obtenerRayo(jButtonRayo);
+                mis1.start();
+
+                mis1.lanzarMisil(jButtonMisil1);
+            } else if (contadorMisil == 2) {
+                jButtonMisil2.setIcon(setIcono("/Imagenes/misil.png", jButtonMisil2));
+                jButtonMisil2.setLocation(jButtonShip.getX(), jButtonShip.getY());
+                System.out.println("MISIL 2 SOLTADO");
+                Misil mis2 = new Misil();
+                mis2.obtenerRayo(jButtonRayo);
+                mis2.start();
+                mis2.lanzarMisil(jButtonMisil2);
+            } else if (contadorMisil == 3) {
+                jButtonMisil3.setIcon(setIcono("/Imagenes/misil.png", jButtonMisil3));
+                jButtonMisil3.setLocation(jButtonShip.getX(), jButtonShip.getY());
+                System.out.println("MISIL 3 SOLTADO");
+                Misil mis3 = new Misil();
+                mis3.obtenerRayo(jButtonRayo);
+                mis3.start();
+                mis3.lanzarMisil(jButtonMisil3);
+            } else if (contadorMisil == 4) {
+                contadorMisil = 0;
+                jButtonMisil4.setIcon(setIcono("/Imagenes/misil.png", jButtonMisil4));
+                jButtonMisil4.setLocation(jButtonShip.getX(), jButtonShip.getY());
+                System.out.println("MISIL 4 SOLTADO");
+                Misil mis4 = new Misil();
+                mis4.obtenerRayo(jButtonRayo);
+                mis4.start();
+                mis4.lanzarMisil(jButtonMisil4);
+            }
         }
 
 
@@ -310,18 +420,36 @@ public class MenuJuego extends javax.swing.JFrame {
 
     private void jButtonEmpezarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEmpezarActionPerformed
         jButtonShip.requestFocusInWindow();
+        Rayo ray = new Rayo();
+        ray.lanzarRayo(jButtonRayo);
+        ray.obtenerMisil(jButtonMisil1);
+        
+//Inicializando hilos
+        
+        ray.start();
 
     }//GEN-LAST:event_jButtonEmpezarActionPerformed
 
-    private void jButtonMisilKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonMisilKeyPressed
+    private void jButtonMisil1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonMisil1KeyPressed
 
-        if (evt.getExtendedKeyCode() == KeyEvent.VK_SPACE) {
-            Misil mis = new Misil();
-            mis.start();
-            mis.lanzarMisil(jButtonMisil);
-        }
 
-    }//GEN-LAST:event_jButtonMisilKeyPressed
+    }//GEN-LAST:event_jButtonMisil1KeyPressed
+
+    private void jButtonMisil2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonMisil2KeyPressed
+
+    }//GEN-LAST:event_jButtonMisil2KeyPressed
+
+    private void jButtonMisil3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonMisil3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonMisil3KeyPressed
+
+    private void jButtonMisil4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonMisil4KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonMisil4KeyPressed
+
+    private void jButtonRayoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRayoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonRayoActionPerformed
 
     public void keyTyped(KeyEvent e) {
 
@@ -367,7 +495,10 @@ public class MenuJuego extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCaracol;
     private javax.swing.JButton jButtonCorazon;
     private javax.swing.JButton jButtonEmpezar;
-    private javax.swing.JButton jButtonMisil;
+    private javax.swing.JButton jButtonMisil1;
+    private javax.swing.JButton jButtonMisil2;
+    private javax.swing.JButton jButtonMisil3;
+    private javax.swing.JButton jButtonMisil4;
     private javax.swing.JButton jButtonOjo;
     private javax.swing.JButton jButtonRayo;
     private javax.swing.JButton jButtonShip;
