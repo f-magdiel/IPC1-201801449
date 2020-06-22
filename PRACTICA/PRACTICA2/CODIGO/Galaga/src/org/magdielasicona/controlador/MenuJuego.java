@@ -14,14 +14,16 @@ import javax.swing.JButton;
  * @author FRANMAGDIEL_PC
  */
 public class MenuJuego extends javax.swing.JFrame {
-
+    
     private int contadorMisil = 0;
-
+    
     public MenuJuego() {
         initComponents();
-
+        
         this.setLocationRelativeTo(null);
         this.setTitle("CAMPO DE BATALLA");
+        //Posicionando objetos
+        
 
 //        jButtonMisil1.setBackground(Color.white);
 //        jButtonMisil2.setBackground(Color.white);
@@ -37,19 +39,19 @@ public class MenuJuego extends javax.swing.JFrame {
         jButtonMisil2.setIcon(setIcono("/Imagenes/misil.png", jButtonMisil1));
         jButtonMisil3.setIcon(setIcono("/Imagenes/misil.png", jButtonMisil1));
         jButtonMisil4.setIcon(setIcono("/Imagenes/misil.png", jButtonMisil1));
-
+        
     }
-
+    
     public Icon setIcono(String url, JButton boton) {
         ImageIcon icon = new ImageIcon(getClass().getResource(url));
         int ancho = boton.getWidth();
         int alto = boton.getHeight();
-
+        
         ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
         return icono;
-
+        
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -254,8 +256,8 @@ public class MenuJuego extends javax.swing.JFrame {
             .addGroup(jPanelCampoBatallaLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addGroup(jPanelCampoBatallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonAsteroide, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonRayo, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonAsteroide, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonCorazon, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelCampoBatallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -269,9 +271,9 @@ public class MenuJuego extends javax.swing.JFrame {
                 .addGroup(jPanelCampoBatallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonMisil1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonMisil4, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(83, 83, 83)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                 .addComponent(jButtonShip, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
         );
 
         jButtonEmpezar.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
@@ -317,63 +319,41 @@ public class MenuJuego extends javax.swing.JFrame {
     public JButton getjButtonShip() {
         return jButtonShip;
     }
-
+    
     public void setjButtonShip(JButton jButtonShip) {
         this.jButtonShip = jButtonShip;
     }
-
+    
 
     private void jButtonShipKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonShipKeyPressed
 
-//        if (evt.getExtendedKeyCode() == KeyEvent.VK_UP) {
-//            jButtonShip.setLocation(jButtonShip.getX() , jButtonShip.getY()-89);
-//
-//            System.out.println(jButtonShip.getY());
-//           
-//            if (jButtonShip.getX() == -81) {
-//                jButtonShip.setLocation(jButtonShip.getX() + 95, jButtonShip.getY());
-//
-//            }
-//
-//        }
-//        if (evt.getExtendedKeyCode() == KeyEvent.VK_DOWN) {
-//            jButtonShip.setLocation(jButtonShip.getX() , jButtonShip.getY()+89);
-//
-//            System.out.println(jButtonShip.getY());
-//           
-//            if (jButtonShip.getX() == -81) {
-//                jButtonShip.setLocation(jButtonShip.getX() + 95, jButtonShip.getY());
-//
-//            }
-//
-//        }
         //--------------------------------------------------------------------------
         if (evt.getExtendedKeyCode() == KeyEvent.VK_LEFT) {
             jButtonShip.setLocation(jButtonShip.getX() - 108, jButtonShip.getY());
-
+            
             System.out.println("X:" + jButtonShip.getX());
             System.out.println("Y:" + jButtonShip.getY());
-
+            
             if (jButtonShip.getX() == 53) {
                 jButtonShip.setLocation(jButtonShip.getX() + 108, jButtonShip.getY());
-
+                
             }
-
+            
         }
         if (evt.getExtendedKeyCode() == KeyEvent.VK_RIGHT) {
             jButtonShip.setLocation(jButtonShip.getX() + 108, jButtonShip.getY());
-
+            
             System.out.println(jButtonShip.getX());
             if (jButtonShip.getX() == 593) {
                 jButtonShip.setLocation(jButtonShip.getX() - 108, jButtonShip.getY());
-
+                
             }
         }
         if (evt.getExtendedKeyCode() == KeyEvent.VK_SPACE) {
-
+            
             contadorMisil++;
             System.out.println(contadorMisil);
-
+            
             if (contadorMisil == 1) {
                 jButtonMisil1.setIcon(setIcono("/Imagenes/misil.png", jButtonMisil1));
                 jButtonMisil1.setLocation(jButtonShip.getX(), jButtonShip.getY());
@@ -381,7 +361,7 @@ public class MenuJuego extends javax.swing.JFrame {
                 Misil mis1 = new Misil();
                 mis1.obtenerRayo(jButtonRayo);
                 mis1.start();
-
+                
                 mis1.lanzarMisil(jButtonMisil1);
             } else if (contadorMisil == 2) {
                 jButtonMisil2.setIcon(setIcono("/Imagenes/misil.png", jButtonMisil2));
@@ -410,7 +390,7 @@ public class MenuJuego extends javax.swing.JFrame {
                 mis4.lanzarMisil(jButtonMisil4);
             }
         }
-
+        
 
     }//GEN-LAST:event_jButtonShipKeyPressed
 
@@ -421,17 +401,18 @@ public class MenuJuego extends javax.swing.JFrame {
     private void jButtonEmpezarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEmpezarActionPerformed
         jButtonShip.requestFocusInWindow();
         Rayo ray = new Rayo();
+        jButtonRayo.setBounds(377, 20, jButtonRayo.getWidth(), jButtonRayo.getHeight());
+       
         ray.lanzarRayo(jButtonRayo);
         ray.obtenerMisil(jButtonMisil1);
-        
-//Inicializando hilos
-        
+
+
         ray.start();
 
     }//GEN-LAST:event_jButtonEmpezarActionPerformed
 
     private void jButtonMisil1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonMisil1KeyPressed
-
+        
 
     }//GEN-LAST:event_jButtonMisil1KeyPressed
 
@@ -450,9 +431,9 @@ public class MenuJuego extends javax.swing.JFrame {
     private void jButtonRayoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRayoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonRayoActionPerformed
-
+    
     public void keyTyped(KeyEvent e) {
-
+        
     }
 
     /**

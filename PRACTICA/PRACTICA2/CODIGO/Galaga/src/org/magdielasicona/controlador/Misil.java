@@ -1,6 +1,7 @@
 package org.magdielasicona.controlador;
 
 import java.awt.Image;
+import java.awt.geom.Rectangle2D;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
@@ -34,26 +35,25 @@ public class Misil extends Thread {
         Rayo raio = new Rayo();
         while (banderaMisil == true) {
 
-            misil.setBounds(misil.getX(), misil.getY() - 1, misil.getWidth(), misil.getHeight());
+            misil.setBounds(misil.getX(), misil.getY() - 10, misil.getWidth(), misil.getHeight());
 
             System.out.println("MISIL:" + misil.getX() + "-" + misil.getY());
-            System.out.println("RAYO:" + rayo.getX() + "-" + rayo.getY());
-            System.out.println("");
+
             if ((misil.getX() == raio.getRayo().getX()) && (misil.getY() == raio.getRayo().getY())) {
                 System.out.println("COLISION MISIL Y RAYO");
-                rayo.setBounds(269, -82, rayo.getWidth(), rayo.getHeight());
-
-                // misil.setIcon(setIcono("/Imagenes/Invisibilidad.png", misil));
+                misil.setBounds(-800, 450, misil.getWidth(), misil.getHeight());
+                raio.getRayo().setBounds(269,30, raio.getRayo().getWidth(), raio.getRayo().getHeight());
+                
                 banderaMisil = false;
             }
 
-            if (misil.getY() == -82) {
+            if (misil.getY() == -90) {
+                misil.setBounds(-800, 450, misil.getWidth(), misil.getHeight());
 
-                misil.setIcon(setIcono("/Imagenes/Invisibilidad.png", misil));
                 banderaMisil = false;
             }
             try {
-                Thread.sleep(100);
+                Thread.sleep(500);
 
             } catch (Exception e) {
             }

@@ -22,17 +22,17 @@ public class Rayo extends Thread {
 
         while (banderaRayo == true) {
 
-            rayo.setBounds(rayo.getX(), rayo.getY() + 1, rayo.getWidth(), rayo.getHeight());
+            rayo.setBounds(rayo.getX(), (rayo.getY()) + 10, rayo.getWidth(), rayo.getHeight());
             posY = rayo.getY();
             posX = rayo.getX();
-            
+            System.out.println("RAYO:"+posX+"-"+posY);
 
-            if (posY == 541) {
-                rayo.setBounds(rayo.getX(), rayo.getY() - 534, rayo.getWidth(), rayo.getHeight());
+            if (posY == 560) {
+                rayo.setBounds(rayo.getX(), rayo.getY() - 660, rayo.getWidth(), rayo.getHeight());
                 retrasoRayo();
             }
             try {
-                Thread.sleep(100);
+                Thread.sleep(1000);
             } catch (Exception e) {
             }
 

@@ -259,8 +259,8 @@
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jButtonAsteroide" min="-2" pref="77" max="-2" attributes="0"/>
                       <Component id="jButtonRayo" min="-2" pref="77" max="-2" attributes="0"/>
+                      <Component id="jButtonAsteroide" min="-2" pref="77" max="-2" attributes="0"/>
                       <Component id="jButtonCorazon" min="-2" pref="77" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -278,9 +278,9 @@
                       <Component id="jButtonMisil1" min="-2" pref="77" max="-2" attributes="0"/>
                       <Component id="jButtonMisil4" min="-2" pref="77" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
+                  <EmptySpace pref="91" max="32767" attributes="0"/>
                   <Component id="jButtonShip" min="-2" pref="77" max="-2" attributes="0"/>
-                  <EmptySpace pref="23" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
