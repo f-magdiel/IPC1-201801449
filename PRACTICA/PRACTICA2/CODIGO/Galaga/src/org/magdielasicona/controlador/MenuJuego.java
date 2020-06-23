@@ -24,6 +24,8 @@ public class MenuJuego extends javax.swing.JFrame {
 
         this.setLocationRelativeTo(null);
         this.setTitle("CAMPO DE BATALLA");
+        
+        
         //Posicionando objetos
 
 //        jButtonMisil1.setBackground(Color.white);
@@ -427,6 +429,7 @@ public class MenuJuego extends javax.swing.JFrame {
         Corazon corazon = new Corazon();
         Ojo ojo = new Ojo();
         Ship ship = new Ship();
+        Tiempo tiempo = new Tiempo();
 
         jButtonOjo.setBounds(269, -180, jButtonOjo.getWidth(), jButtonOjo.getHeight());
         jButtonCorazon.setBounds(485, -90, jButtonCorazon.getWidth(), jButtonCorazon.getHeight());
@@ -450,6 +453,7 @@ public class MenuJuego extends javax.swing.JFrame {
         corazon.start();
         ojo.start();
         ship.start();
+        tiempo.start();
 
 
     }//GEN-LAST:event_jButtonEmpezarActionPerformed
@@ -496,12 +500,23 @@ public class MenuJuego extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonSalirActionPerformed
 
+    public void obterTiempo(int tiempo){
+    jTextFieldTiempoConsumido.setText(String.valueOf(tiempo));
+    }
     public JTextField getjTextFieldVelocidad() {
         return jTextFieldVelocidad;
     }
 
     public void setjTextFieldVelocidad(JTextField jTextFieldVelocidad) {
         this.jTextFieldVelocidad = jTextFieldVelocidad;
+    }
+
+    public JTextField getjTextFieldTiempoConsumido() {
+        return jTextFieldTiempoConsumido;
+    }
+
+    public void setjTextFieldTiempoConsumido(JTextField jTextFieldTiempoConsumido) {
+        this.jTextFieldTiempoConsumido = jTextFieldTiempoConsumido;
     }
 
     public void keyTyped(KeyEvent e) {

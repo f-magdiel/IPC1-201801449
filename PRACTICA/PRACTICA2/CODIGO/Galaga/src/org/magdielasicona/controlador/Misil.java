@@ -167,6 +167,11 @@ public class Misil extends Thread {
 
             if (areaMisil.intersects(areaCorazon.getBounds2D())) {
                 System.out.println("RANDO:" + randomCorazon);
+                int vida= Ship.getInstancia().getVidaShip();
+                if (Ship.getInstancia().getVidaShip()<3) {
+                    vida+=1;
+                    Ship.getInstancia().setVidaShip(vida);
+                }
                 if (randomCorazon == 0) {
                     System.out.println("COLISION MISIL Y CORAZON");
                     misil.setBounds(-800, 450, misil.getWidth(), misil.getHeight());
