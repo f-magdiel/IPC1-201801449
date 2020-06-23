@@ -22,10 +22,11 @@ public class Caracol extends Thread {
     //---------------------------
     private static JButton caracol;
     private static boolean banderaCaracol = false;
+    private static boolean señalCaracol = true;
 
     @Override
     public void run() {
-        while (true) {
+        while (señalCaracol == true) {
             Random rand = new Random();
             int locacion = rand.nextInt(4);
 
@@ -59,7 +60,7 @@ public class Caracol extends Thread {
             }
             //VELOCIDAD
             try {
-                Thread.sleep(1000);
+                Thread.sleep(Misil.getInstancia().getVelocidadObjetos());
             } catch (InterruptedException ex) {
                 Logger.getLogger(Caracol.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -94,6 +95,14 @@ public class Caracol extends Thread {
 
     public void setBanderaCaracol(boolean banderaCaracol) {
         this.banderaCaracol = banderaCaracol;
+    }
+
+    public boolean isSeñalCaracol() {
+        return señalCaracol;
+    }
+
+    public void setSeñalCaracol(boolean señalCaracol) {
+        this.señalCaracol = señalCaracol;
     }
 
 }

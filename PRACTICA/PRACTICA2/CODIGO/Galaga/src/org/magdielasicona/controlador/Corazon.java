@@ -22,10 +22,11 @@ public class Corazon extends Thread {
 
     private static JButton corazon;
     private static boolean banderaCorazon;
+    private static boolean señalCorazon = true;
 
     @Override
     public void run() {
-        while (true) {
+        while (señalCorazon == true) {
             Random rand = new Random();
             int locacion = rand.nextInt(4);
 
@@ -61,7 +62,7 @@ public class Corazon extends Thread {
             }
             try {
                 //VELOCIDAD
-                Thread.sleep(1000);
+                Thread.sleep(Misil.getInstancia().getVelocidadObjetos());
             } catch (InterruptedException ex) {
                 Logger.getLogger(Corazon.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -97,6 +98,14 @@ public class Corazon extends Thread {
 
     public void setBanderaCorazon(boolean banderaCorazon) {
         this.banderaCorazon = banderaCorazon;
+    }
+
+    public boolean isSeñalCorazon() {
+        return señalCorazon;
+    }
+
+    public void setSeñalCorazon(boolean señalCorazon) {
+        this.señalCorazon = señalCorazon;
     }
 
 }

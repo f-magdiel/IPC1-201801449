@@ -24,16 +24,17 @@ public class Rayo extends Thread {
     }
     //---------------------------------
     private static JButton rayo;
+    
    
     int posY;
     int posX;
     private static boolean indicadorRayo = false;
-    private boolean banderaRayo = true;
+    private static boolean señalRayo = true;
 
     @Override
     public void run() {
 
-        while (true) {
+        while (señalRayo == true) {
             Random rand = new Random();
             int locacion = rand.nextInt(4);
             rayo.setBounds(rayo.getX(), (rayo.getY()) + 10, rayo.getWidth(), rayo.getHeight());
@@ -71,7 +72,7 @@ public class Rayo extends Thread {
             
             //VELOCIDAD
             try {
-                Thread.sleep(1000);
+                Thread.sleep(Misil.getInstancia().getVelocidadObjetos());
             } catch (InterruptedException ex) {
                 Logger.getLogger(Rayo.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -112,14 +113,15 @@ public class Rayo extends Thread {
         this.rayo = rayo;
     }
 
-    public boolean isBanderaRayo() {
-        return banderaRayo;
+    public boolean isSeñalRayo() {
+        return señalRayo;
     }
 
-    public void setBanderaRayo(boolean banderaRayo) {
-        this.banderaRayo = banderaRayo;
+    public void setSeñalRayo(boolean señalRayo) {
+        this.señalRayo = señalRayo;
     }
 
+    
     public boolean isIndicadorRayo() {
         return indicadorRayo;
     }

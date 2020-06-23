@@ -23,12 +23,14 @@ public class Asteroide extends Thread{
     
     //___________________________________
     private static JButton asteroide;
+    
     private  static boolean banderaAsteroide = false;
+    private static boolean señalAsteroide = true;
     
     
     @Override
     public void run(){
-    while(true){
+    while(señalAsteroide == true){
         Random rand = new Random();
         int locacion = rand.nextInt(4);
     asteroide.setBounds(asteroide.getX(),asteroide.getY()+10, asteroide.getWidth(), asteroide.getHeight());
@@ -45,7 +47,9 @@ public class Asteroide extends Thread{
                 this.banderaAsteroide = false;
             }
         
+        //Impacto a SHIP
         
+            
        //Cuando pasa de largo
         if (asteroide.getY()==560) {
             System.out.println("RANDOM:" + locacion);
@@ -63,8 +67,9 @@ public class Asteroide extends Thread{
                     retrasoAsteroide();
                 }
         }
+        //VELOCIDAD
         try {
-                Thread.sleep(1000);
+                Thread.sleep(Misil.getInstancia().getVelocidadObjetos());
             } catch (InterruptedException ex) {
                 Logger.getLogger(Rayo.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -86,6 +91,7 @@ public class Asteroide extends Thread{
     this.asteroide = asteroide;
     
     }
+    
 
     public  JButton getAsteroide() {
         return asteroide;
@@ -101,6 +107,14 @@ public class Asteroide extends Thread{
 
     public void setBanderaAsteroide(boolean banderaAsteroide) {
         Asteroide.banderaAsteroide = banderaAsteroide;
+    }
+
+    public boolean isSeñalAsteroide() {
+        return señalAsteroide;
+    }
+
+    public void setSeñalAsteroide(boolean señalAsteroide) {
+        this.señalAsteroide = señalAsteroide;
     }
 
     

@@ -23,10 +23,11 @@ public class Ojo extends Thread {
 //------------------------------------
     private static JButton ojo;
     private static boolean banderaOjo = false;
+    private static boolean señalOjo = true;
 
     @Override
     public void run() {
-        while (true) {
+        while (señalOjo == true) {
             Random rand = new Random();
             int locacion = rand.nextInt(4);
 
@@ -67,7 +68,7 @@ public class Ojo extends Thread {
             //VELOCIDAD
             try {
 
-                Thread.sleep(1000);
+                Thread.sleep(Misil.getInstancia().getVelocidadObjetos());
             } catch (InterruptedException ex) {
                 Logger.getLogger(Ojo.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -100,6 +101,14 @@ public class Ojo extends Thread {
 
     public void setBanderaOjo(boolean banderaOjo) {
         this.banderaOjo = banderaOjo;
+    }
+
+    public boolean isSeñalOjo() {
+        return señalOjo;
+    }
+
+    public void setSeñalOjo(boolean señalOjo) {
+        this.señalOjo = señalOjo;
     }
 
 }
