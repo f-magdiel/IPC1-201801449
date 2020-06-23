@@ -56,6 +56,7 @@ public class Ship extends Thread {
                         Caracol.getInstancia().setSeñalCaracol(false);
                         Corazon.getInstancia().setSeñalCorazon(false);
                         Ojo.getInstancia().setSeñalOjo(false);
+                        Tiempo.getInstancia().setSeñalTiempo(false);
                         this.banderaShip = false;
                         JOptionPane.showMessageDialog(null, "GAME OVER, INTENTA OTRA VEZ :-(!!");
 

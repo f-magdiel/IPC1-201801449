@@ -28,10 +28,15 @@ public class MenuJuego extends javax.swing.JFrame {
     }
     private int contadorMisil = 0;
     private static boolean llavePoder = true;
+    public static String nickNamePunto[] = new String[50];
+    public static String nickNameTiempo[] = new String[50];
+    public static int puntos[] = new int[50];
+    public static int tiempo[] = new int[50];
+    private static int contadorGeneral = 0;
     
     public MenuJuego() {
         initComponents();
-        
+        jLabelNombreJugador.setText(Menu.getInstancia().getNombre());
         this.setLocationRelativeTo(null);
         this.setTitle("CAMPO DE BATALLA");
 
@@ -46,8 +51,6 @@ public class MenuJuego extends javax.swing.JFrame {
         jButtonAsteroide.setBackground(Color.white);
         jButtonCorazon.setBackground(Color.white);
         jButtonOjo.setBackground(Color.white);
-        
-        
         
         jButtonShip.setIcon(setIcono("/Imagenes/space-ship.png", jButtonShip));
         jButtonRayo.setIcon(setIcono("/Imagenes/rayo.png", jButtonRayo));
@@ -455,6 +458,21 @@ public class MenuJuego extends javax.swing.JFrame {
 
     private void jButtonEmpezarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEmpezarActionPerformed
         
+        Rayo.getInstancia().setSeñalRayo(true);
+        Asteroide.getInstancia().setSeñalAsteroide(true);
+        Caracol.getInstancia().setSeñalCaracol(true);
+        Corazon.getInstancia().setSeñalCorazon(true);
+        Ojo.getInstancia().setSeñalOjo(true);
+        Ship.getInstancia().setBanderaShip(true);
+        Tiempo.getInstancia().setSeñalTiempo(true);
+
+        //Inicializando variables
+        Tiempo.getInstancia().setTimer1(0);
+        Tiempo.getInstancia().setTimer2(240);
+        Ship.getInstancia().setVidaShip(3);
+        Misil.getInstancia().setPunteo(0);
+        Misil.getInstancia().setVelocidadObjetos(1000);
+        
         jButtonShip.requestFocusInWindow();
         Misil mis = new Misil();
         Rayo ray = new Rayo();
@@ -520,25 +538,23 @@ public class MenuJuego extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonRayoActionPerformed
 
     private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
-        Rayo ray = new Rayo();
-        Asteroide asteroide = new Asteroide();
-        Caracol caracol = new Caracol();
-        Corazon corazon = new Corazon();
-        Ojo ojo = new Ojo();
-        Ship ship = new Ship();
+        
         Menu menu = new Menu();
-        //Inicializadno hilos
-        ray.stop();
-        asteroide.stop();
-        caracol.stop();
-        corazon.stop();
-        ojo.stop();
-        ship.stop();
+        
+        datosAGuardar();
         menu.setVisible(true);
         dispose();
         
 
     }//GEN-LAST:event_jButtonSalirActionPerformed
+    
+    public void datosAGuardar() {
+        nickNamePunto[contadorGeneral] = Menu.getInstancia().getNombre();
+        nickNameTiempo[contadorGeneral] = Menu.getInstancia().getNombre();
+        puntos[contadorGeneral] = Misil.getInstancia().getPunteo();
+        tiempo[contadorGeneral] = Tiempo.getInstancia().getTimer1();
+        contadorGeneral++;
+    }
     
     public JTextField getjTextFieldVelocidad() {
         return jTextFieldVelocidad;

@@ -27,7 +27,7 @@ public class Tiempo extends Thread {
     //-------------------------------------
     private static JTextField jTextFieldTiempoConsumido;
     private static JTextField jTextFieldTiempoRestante;
-    private static int timer1 = 1;
+    private static int timer1 = 0;
     private static int timer2 = 240;
     private static boolean señalTiempo = true;
     private static JButton ship;
@@ -59,6 +59,7 @@ public class Tiempo extends Thread {
                 Caracol.getInstancia().setSeñalCaracol(false);
                 Corazon.getInstancia().setSeñalCorazon(false);
                 Ojo.getInstancia().setSeñalOjo(false);
+                Ship.getInstancia().setBanderaShip(false);
                 señalTiempo = false;
                 JOptionPane.showMessageDialog(null, "FELICIDADES GANO!!!");
             }
@@ -81,6 +82,22 @@ public class Tiempo extends Thread {
         ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
         return icono;
 
+    }
+
+    public int getTimer2() {
+        return timer2;
+    }
+
+    public void setTimer2(int timer2) {
+        this.timer2 = timer2;
+    }
+
+    public int getTimer1() {
+        return timer1;
+    }
+
+    public void setTimer1(int timer1) {
+        this.timer1 = timer1;
     }
 
     public void obtenerCamuflajeShip(JButton ship) {

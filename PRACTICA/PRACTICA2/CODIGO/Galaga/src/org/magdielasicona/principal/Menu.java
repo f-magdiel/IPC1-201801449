@@ -1,7 +1,9 @@
-
 package org.magdielasicona.principal;
 
+import java.io.FileWriter;
+import javax.swing.JOptionPane;
 import org.magdielasicona.controlador.MenuJuego;
+import org.magdielasicona.controlador.Ship;
 
 /**
  *
@@ -9,13 +11,23 @@ import org.magdielasicona.controlador.MenuJuego;
  */
 public class Menu extends javax.swing.JFrame {
 
-   
+    private static Menu instanciaMenu;
+
+    public static Menu getInstancia() {
+        if (instanciaMenu == null) {
+            instanciaMenu = new Menu();
+        }
+        return instanciaMenu;
+    }
+    private static String nombre;
+    private String burbuja;
+    private String ordenacion;
+
     public Menu() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("MENU PRINCIPAL");
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -31,9 +43,19 @@ public class Menu extends javax.swing.JFrame {
 
         jButtonTopQuick.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonTopQuick.setText("Top 5 QuickSort");
+        jButtonTopQuick.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTopQuickActionPerformed(evt);
+            }
+        });
 
         jButtonTopBubble.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonTopBubble.setText("Top 5 BubbleSort");
+        jButtonTopBubble.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTopBubbleActionPerformed(evt);
+            }
+        });
 
         jButtonInicarJuego.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonInicarJuego.setText("Iniciar Juego");
@@ -53,6 +75,11 @@ public class Menu extends javax.swing.JFrame {
 
         jButtonInfo.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonInfo.setText("Acerda del Desarrolador");
+        jButtonInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonInfoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,10 +119,81 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSalirActionPerformed
 
     private void jButtonInicarJuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInicarJuegoActionPerformed
+        nombre = JOptionPane.showInputDialog(null, "INGRESE SU NOMBRE:");
         MenuJuego menuj = new MenuJuego();
         menuj.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonInicarJuegoActionPerformed
+
+    private void jButtonTopQuickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTopQuickActionPerformed
+        for (int i = 0; i < 10; i++) {
+            System.out.println(MenuJuego.nickNamePunto[i] + "-" + MenuJuego.puntos[i] + "-" + MenuJuego.tiempo[i]);
+        }
+    }//GEN-LAST:event_jButtonTopQuickActionPerformed
+
+    private void jButtonInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInfoActionPerformed
+        DatosEstudiante datosedu = new DatosEstudiante();
+        datosedu.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonInfoActionPerformed
+
+    private void jButtonTopBubbleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTopBubbleActionPerformed
+
+        //METODO BURBUJA
+        //LINEAS DE HTML
+        burbuja = "<h2>TABLA TOP 5 JUGADORES BUBBLESORT</h2>\n"
+                + "\n"
+                + "<table class=\"editorDemoTable\">\n"
+                + "<tbody>\n"
+                + "<tr>\n"
+                + "<td><strong>NICKNAME</strong></td>\n"
+                + "<td><strong>SEGUNDOS TRANCURRIDOS</strong></td>\n"
+                
+                + "</tr>\n"
+                + "<tr>\n"
+                
+                + "<td>John</td>\n"
+                + "<td>Chicago</td>\n"
+               
+                
+                + "</tr>\n"
+                + "<tr>\n"
+                
+                + "<td>Lucy</td>\n"
+                + "<td>Wisconsin</td>\n"
+               
+                
+                + "</tr>\n"
+                + "<tr>\n"
+                
+                + "<td>Amanda</td>\n"
+                + "<td>Madison</td>\n"
+                
+                
+                + "</tr>\n"
+                + "</tbody>\n"
+                + "</table>\n"
+                + "<p>Galaga.</p>";
+        recibirTexto(burbuja);
+    }//GEN-LAST:event_jButtonTopBubbleActionPerformed
+    public void recibirTexto(String entrada) {
+        try {
+
+            FileWriter fw = new FileWriter("top5Bubble.html");
+            fw.write(entrada);
+            fw.close();
+        } catch (Exception e) {
+        }
+
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
     /**
      * @param args the command line arguments
