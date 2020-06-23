@@ -1,6 +1,7 @@
 package org.magdielasicona.controlador;
 
 import java.awt.Image;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
@@ -21,8 +22,9 @@ public class Rayo extends Thread {
         }
         return instanciaRayo;
     }
+    //---------------------------------
     private static JButton rayo;
-    private JButton misil;
+   
     int posY;
     int posX;
     private static boolean indicadorRayo = false;
@@ -32,13 +34,16 @@ public class Rayo extends Thread {
     public void run() {
 
         while (true) {
-
+            Random rand = new Random();
+            int locacion = rand.nextInt(4);
             rayo.setBounds(rayo.getX(), (rayo.getY()) + 10, rayo.getWidth(), rayo.getHeight());
             posY = rayo.getY();
             posX = rayo.getX();
             System.out.println("RAYO:" + posX + "-" + posY);
+            
+            //Es impacatado por misil
             if (this.indicadorRayo == true) {
-                System.out.println("SI");
+                
                 try {
                     Thread.sleep(10000);
                 } catch (InterruptedException ex) {
@@ -46,11 +51,25 @@ public class Rayo extends Thread {
                 }
                 this.indicadorRayo = false;
             }
-
+            //Cuando solo pasa de largo
             if (posY == 560) {
-                rayo.setBounds(rayo.getX(), rayo.getY() - 660, rayo.getWidth(), rayo.getHeight());
-                retrasoRayo();
+                System.out.println("RANDOM:" + locacion);
+                if (locacion == 0) {
+                    rayo.setBounds(161, rayo.getY() - 660, rayo.getWidth(), rayo.getHeight());
+                    retrasoRayo();
+                } else if (locacion == 1) {
+                    rayo.setBounds(269, rayo.getY() - 660, rayo.getWidth(), rayo.getHeight());
+                    retrasoRayo();
+                } else if (locacion == 2) {
+                    rayo.setBounds(377, rayo.getY() - 660, rayo.getWidth(), rayo.getHeight());
+                    retrasoRayo();
+                } else if (locacion == 3) {
+                    rayo.setBounds(485, rayo.getY() - 660, rayo.getWidth(), rayo.getHeight());
+                    retrasoRayo();
+                }
             }
+            
+            //VELOCIDAD
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException ex) {
@@ -84,10 +103,7 @@ public class Rayo extends Thread {
 
     }
 
-    public void obtenerMisil(JButton misil) {
-        this.misil = misil;
-    }
-
+    
     public JButton getRayo() {
         return rayo;
     }

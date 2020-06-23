@@ -414,13 +414,26 @@ public class MenuJuego extends javax.swing.JFrame {
     private void jButtonEmpezarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEmpezarActionPerformed
         jButtonShip.requestFocusInWindow();
         Rayo ray = new Rayo();
-        jButtonRayo.setBounds(377, -90, jButtonRayo.getWidth(), jButtonRayo.getHeight());
-       
+        Asteroide asteroide = new Asteroide ();
+        Caracol caracol = new Caracol();
+        Corazon corazon = new Corazon();
+        jButtonCorazon.setBounds(485, -90, jButtonCorazon.getWidth(), jButtonCorazon.getHeight());
+        jButtonCaracol.setBounds(269,-90 , jButtonCaracol.getWidth(), jButtonCaracol.getHeight());
+        jButtonAsteroide.setBounds(161, -180, jButtonAsteroide.getWidth(), jButtonAsteroide.getHeight());
+        jButtonRayo.setBounds(377, -180, jButtonRayo.getWidth(), jButtonRayo.getHeight());
+        
+        
+        corazon.lanzarCorazon(jButtonCorazon);
+        caracol.lanzarCaracol(jButtonCaracol);
+        asteroide.lanzarAsteroide(jButtonAsteroide);
         ray.lanzarRayo(jButtonRayo);
-        ray.obtenerMisil(jButtonMisil1);
+        
 
-
+        //Inicializadno hilos
         ray.start();
+        asteroide.start();
+        caracol.start();
+        corazon.start();
 
     }//GEN-LAST:event_jButtonEmpezarActionPerformed
 
