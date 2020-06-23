@@ -1,7 +1,9 @@
 package org.magdielasicona.controlador;
 
 import java.awt.Image;
+import java.awt.geom.Area;
 import java.awt.geom.Rectangle2D;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
@@ -26,25 +28,51 @@ public class Misil extends Thread {
     private JButton misil;
     private JButton rayo;
 
+    
+
     int posOriginal;
     private boolean banderaMisil = true;
 
     @Override
     public void run() {
-
+        Random rand = new Random();
+        int randomObjeto = rand.nextInt(4);
         Rayo raio = new Rayo();
         while (banderaMisil == true) {
 
             misil.setBounds(misil.getX(), misil.getY() - 10, misil.getWidth(), misil.getHeight());
 
             System.out.println("MISIL:" + misil.getX() + "-" + misil.getY());
+            Area areaMisil = new Area(misil.getBounds());
+            Area areaRayo = new Area(raio.getRayo().getBounds());
 
-            if ((misil.getX() == raio.getRayo().getX()) && (misil.getY() == raio.getRayo().getY())) {
-                System.out.println("COLISION MISIL Y RAYO");
-                misil.setBounds(-800, 450, misil.getWidth(), misil.getHeight());
-                raio.getRayo().setBounds(269,30, raio.getRayo().getWidth(), raio.getRayo().getHeight());
-                
-                banderaMisil = false;
+            if (areaMisil.intersects(areaRayo.getBounds2D())) {
+                System.out.println("RANDO:"+randomObjeto);
+                if (randomObjeto == 0) {
+                    System.out.println("COLISION MISIL Y RAYO");
+                    misil.setBounds(-800, 450, misil.getWidth(), misil.getHeight());
+                    raio.getRayo().setBounds(269, -90, raio.getRayo().getWidth(), raio.getRayo().getHeight());
+                    Rayo.getInstancia().setIndicadorRayo(true);
+                    banderaMisil = false;
+                } else if (randomObjeto == 1) {
+                    System.out.println("COLISION MISIL Y RAYO");
+                    misil.setBounds(-800, 550, misil.getWidth(), misil.getHeight());
+                    raio.getRayo().setBounds(161, -90, raio.getRayo().getWidth(), raio.getRayo().getHeight());
+                    Rayo.getInstancia().setIndicadorRayo(true);
+                    banderaMisil = false;
+                } else if (randomObjeto == 2) {
+                    System.out.println("COLISION MISIL Y RAYO");
+                    misil.setBounds(-800, 650, misil.getWidth(), misil.getHeight());
+                    raio.getRayo().setBounds(377, -90, raio.getRayo().getWidth(), raio.getRayo().getHeight());
+                    Rayo.getInstancia().setIndicadorRayo(true);
+                    banderaMisil = false;
+                } else if (randomObjeto == 3) {
+                    System.out.println("COLISION MISIL Y RAYO");
+                    misil.setBounds(-800, 750, misil.getWidth(), misil.getHeight());
+                    raio.getRayo().setBounds(485, -90, raio.getRayo().getWidth(), raio.getRayo().getHeight());
+                    Rayo.getInstancia().setIndicadorRayo(true);
+                    banderaMisil = false;
+                }
             }
 
             if (misil.getY() == -90) {

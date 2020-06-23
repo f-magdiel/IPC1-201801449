@@ -83,6 +83,7 @@ public class MenuJuego extends javax.swing.JFrame {
         jButtonMisil3 = new javax.swing.JButton();
         jButtonMisil4 = new javax.swing.JButton();
         jButtonEmpezar = new javax.swing.JButton();
+        jButtonSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -284,6 +285,14 @@ public class MenuJuego extends javax.swing.JFrame {
             }
         });
 
+        jButtonSalir.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
+        jButtonSalir.setText("Salir");
+        jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -299,7 +308,9 @@ public class MenuJuego extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonEmpezar, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(81, 81, 81))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(262, 262, 262))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -309,7 +320,9 @@ public class MenuJuego extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jPanelCampoBatalla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonEmpezar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonEmpezar)
+                    .addComponent(jButtonSalir))
                 .addContainerGap())
         );
 
@@ -343,7 +356,7 @@ public class MenuJuego extends javax.swing.JFrame {
         if (evt.getExtendedKeyCode() == KeyEvent.VK_RIGHT) {
             jButtonShip.setLocation(jButtonShip.getX() + 108, jButtonShip.getY());
             
-            System.out.println(jButtonShip.getX());
+            
             if (jButtonShip.getX() == 593) {
                 jButtonShip.setLocation(jButtonShip.getX() - 108, jButtonShip.getY());
                 
@@ -401,7 +414,7 @@ public class MenuJuego extends javax.swing.JFrame {
     private void jButtonEmpezarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEmpezarActionPerformed
         jButtonShip.requestFocusInWindow();
         Rayo ray = new Rayo();
-        jButtonRayo.setBounds(377, 20, jButtonRayo.getWidth(), jButtonRayo.getHeight());
+        jButtonRayo.setBounds(377, -90, jButtonRayo.getWidth(), jButtonRayo.getHeight());
        
         ray.lanzarRayo(jButtonRayo);
         ray.obtenerMisil(jButtonMisil1);
@@ -431,6 +444,10 @@ public class MenuJuego extends javax.swing.JFrame {
     private void jButtonRayoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRayoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonRayoActionPerformed
+
+    private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonSalirActionPerformed
     
     public void keyTyped(KeyEvent e) {
         
@@ -482,6 +499,7 @@ public class MenuJuego extends javax.swing.JFrame {
     private javax.swing.JButton jButtonMisil4;
     private javax.swing.JButton jButtonOjo;
     private javax.swing.JButton jButtonRayo;
+    private javax.swing.JButton jButtonSalir;
     private javax.swing.JButton jButtonShip;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
