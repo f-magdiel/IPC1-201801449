@@ -3,6 +3,7 @@ package org.magdielasicona.controlador;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
+import java.util.Timer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
@@ -16,45 +17,61 @@ import org.magdielasicona.principal.Menu;
  * @author FRANMAGDIEL_PC
  */
 public class MenuJuego extends javax.swing.JFrame {
-
+    
+    private static MenuJuego instanciaMenuJuego;
+    
+    public static MenuJuego getInstancia() {
+        if (instanciaMenuJuego == null) {
+            instanciaMenuJuego = new MenuJuego();
+        }
+        return instanciaMenuJuego;
+    }
     private int contadorMisil = 0;
-
+    private static boolean llavePoder = true;
+    
     public MenuJuego() {
         initComponents();
-
+        
         this.setLocationRelativeTo(null);
         this.setTitle("CAMPO DE BATALLA");
-        
-        
-        //Posicionando objetos
 
-//        jButtonMisil1.setBackground(Color.white);
-//        jButtonMisil2.setBackground(Color.white);
-//        jButtonMisil3.setBackground(Color.white);
-//        jButtonMisil4.setBackground(Color.white);
+        //Posicionando objetos
+        jButtonMisil1.setBackground(Color.white);
+        jButtonMisil2.setBackground(Color.white);
+        jButtonMisil3.setBackground(Color.white);
+        jButtonMisil4.setBackground(Color.white);
+        jButtonShip.setBackground(Color.white);
+        jButtonRayo.setBackground(Color.white);
+        jButtonCaracol.setBackground(Color.white);
+        jButtonAsteroide.setBackground(Color.white);
+        jButtonCorazon.setBackground(Color.white);
+        jButtonOjo.setBackground(Color.white);
+        
+        
+        
         jButtonShip.setIcon(setIcono("/Imagenes/space-ship.png", jButtonShip));
         jButtonRayo.setIcon(setIcono("/Imagenes/rayo.png", jButtonRayo));
         jButtonCaracol.setIcon(setIcono("/Imagenes/caracol.png", jButtonCaracol));
         jButtonAsteroide.setIcon(setIcono("/Imagenes/asteroide.png", jButtonAsteroide));
         jButtonCorazon.setIcon(setIcono("/Imagenes/corazon.png", jButtonCorazon));
         jButtonOjo.setIcon(setIcono("/Imagenes/ojo.png", jButtonOjo));
-        jButtonMisil1.setIcon(setIcono("/Imagenes/misil.png", jButtonMisil1));
-        jButtonMisil2.setIcon(setIcono("/Imagenes/misil.png", jButtonMisil1));
-        jButtonMisil3.setIcon(setIcono("/Imagenes/misil.png", jButtonMisil1));
-        jButtonMisil4.setIcon(setIcono("/Imagenes/misil.png", jButtonMisil1));
-
+        jButtonMisil1.setIcon(setIcono("/Imagenes/Invisibilidad.png", jButtonMisil1));
+        jButtonMisil2.setIcon(setIcono("/Imagenes/Invisibilidad.png", jButtonMisil1));
+        jButtonMisil3.setIcon(setIcono("/Imagenes/Invisibilidad.png", jButtonMisil1));
+        jButtonMisil4.setIcon(setIcono("/Imagenes/Invisibilidad.png", jButtonMisil1));
+        
     }
-
+    
     public Icon setIcono(String url, JButton boton) {
         ImageIcon icon = new ImageIcon(getClass().getResource(url));
         int ancho = boton.getWidth();
         int alto = boton.getHeight();
-
+        
         ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
         return icono;
-
+        
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -98,11 +115,19 @@ public class MenuJuego extends javax.swing.JFrame {
 
         jLabel2.setText("Vidas:");
 
+        jTextFieldVidas.setText("3");
+
         jLabel3.setText("Poder:");
+
+        jTextFieldPoder.setText("0");
 
         jLabel4.setText("Velocidad: ");
 
+        jTextFieldPunteo.setText("0");
+
         jLabel5.setText("Punteo:");
+
+        jTextFieldVelocidad.setText("1000");
 
         jLabel6.setText("Tiempo Restante:");
 
@@ -335,48 +360,42 @@ public class MenuJuego extends javax.swing.JFrame {
     public JButton getjButtonShip() {
         return jButtonShip;
     }
-
+    
     public void setjButtonShip(JButton jButtonShip) {
         this.jButtonShip = jButtonShip;
     }
-
+    
 
     private void jButtonShipKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonShipKeyPressed
 
         //--------------------------------------------------------------------------
         if (evt.getExtendedKeyCode() == KeyEvent.VK_LEFT) {
-            jTextFieldVelocidad.setText(String.valueOf(Misil.getInstancia().getVelocidadObjetos()));
-            jTextFieldPunteo.setText(String.valueOf(Misil.getInstancia().getPunteo()));
-            jTextFieldVidas.setText(String.valueOf(Ship.getInstancia().getVidaShip()));
             
             jButtonShip.setLocation(jButtonShip.getX() - 108, jButtonShip.getY());
-
+            
             System.out.println("X:" + jButtonShip.getX());
             System.out.println("Y:" + jButtonShip.getY());
-
+            
             if (jButtonShip.getX() == 53) {
                 jButtonShip.setLocation(jButtonShip.getX() + 108, jButtonShip.getY());
-
+                
             }
-
+            
         }
         if (evt.getExtendedKeyCode() == KeyEvent.VK_RIGHT) {
-            jTextFieldVelocidad.setText(String.valueOf(Misil.getInstancia().getVelocidadObjetos()));
-            jTextFieldPunteo.setText(String.valueOf(Misil.getInstancia().getPunteo()));
-             jTextFieldVidas.setText(String.valueOf(Ship.getInstancia().getVidaShip()));
             
             jButtonShip.setLocation(jButtonShip.getX() + 108, jButtonShip.getY());
-
+            
             if (jButtonShip.getX() == 593) {
                 jButtonShip.setLocation(jButtonShip.getX() - 108, jButtonShip.getY());
-
+                
             }
         }
         if (evt.getExtendedKeyCode() == KeyEvent.VK_SPACE) {
-
+            
             contadorMisil++;
             System.out.println(contadorMisil);
-
+            
             if (contadorMisil == 1) {
                 jButtonMisil1.setIcon(setIcono("/Imagenes/misil.png", jButtonMisil1));
                 jButtonMisil1.setLocation(jButtonShip.getX(), jButtonShip.getY());
@@ -384,7 +403,7 @@ public class MenuJuego extends javax.swing.JFrame {
                 Misil mis1 = new Misil();
                 mis1.obtenerRayo(jButtonRayo);
                 mis1.start();
-
+                
                 mis1.lanzarMisil(jButtonMisil1);
             } else if (contadorMisil == 2) {
                 jButtonMisil2.setIcon(setIcono("/Imagenes/misil.png", jButtonMisil2));
@@ -413,7 +432,20 @@ public class MenuJuego extends javax.swing.JFrame {
                 mis4.lanzarMisil(jButtonMisil4);
             }
         }
-
+        
+        if (evt.getExtendedKeyCode() == KeyEvent.VK_DOWN) {
+            if (Ship.getInstancia().getPoderShip() > 0) {
+                int pod = Ship.getInstancia().getPoderShip();
+                pod--;
+                Ship.getInstancia().setPoderShip(pod);
+                jTextFieldPoder.setText(String.valueOf(Ship.getInstancia().getPoderShip()));
+                jButtonShip.setIcon(setIcono("/Imagenes/ship.png", jButtonShip));
+                Tiempo.getInstancia().obtenerCamuflajeShip(jButtonShip);
+                Ship.getInstancia().setLlaveAccion(false);
+                this.llavePoder = false;
+            }
+            
+        }
 
     }//GEN-LAST:event_jButtonShipKeyPressed
 
@@ -422,7 +454,9 @@ public class MenuJuego extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonShipActionPerformed
 
     private void jButtonEmpezarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEmpezarActionPerformed
+        
         jButtonShip.requestFocusInWindow();
+        Misil mis = new Misil();
         Rayo ray = new Rayo();
         Asteroide asteroide = new Asteroide();
         Caracol caracol = new Caracol();
@@ -430,21 +464,26 @@ public class MenuJuego extends javax.swing.JFrame {
         Ojo ojo = new Ojo();
         Ship ship = new Ship();
         Tiempo tiempo = new Tiempo();
-
+        
         jButtonOjo.setBounds(269, -180, jButtonOjo.getWidth(), jButtonOjo.getHeight());
         jButtonCorazon.setBounds(485, -90, jButtonCorazon.getWidth(), jButtonCorazon.getHeight());
         jButtonCaracol.setBounds(269, -90, jButtonCaracol.getWidth(), jButtonCaracol.getHeight());
         jButtonAsteroide.setBounds(161, -180, jButtonAsteroide.getWidth(), jButtonAsteroide.getHeight());
         jButtonRayo.setBounds(377, -180, jButtonRayo.getWidth(), jButtonRayo.getHeight());
         
-        
-       
         ojo.lanzarOjo(jButtonOjo);
         corazon.lanzarCorazon(jButtonCorazon);
         caracol.lanzarCaracol(jButtonCaracol);
         asteroide.lanzarAsteroide(jButtonAsteroide);
         ray.lanzarRayo(jButtonRayo);
         ship.obtenerShip(jButtonShip);
+        ship.obtenerJtextVidaship(jTextFieldVidas);
+        tiempo.obtenerJtext1(jTextFieldTiempoConsumido);
+        tiempo.obtenerJtext2(jTextFieldTiempoRestante);
+        mis.obtenerJtextPoder(jTextFieldPoder);
+        mis.obtenerJtextPunteo(jTextFieldPunteo);
+        mis.obtenerJtextVelocidad(jTextFieldVelocidad);
+        mis.obtenerJtextVida(jTextFieldVidas);
 
         //Inicializadno hilos
         ray.start();
@@ -454,12 +493,13 @@ public class MenuJuego extends javax.swing.JFrame {
         ojo.start();
         ship.start();
         tiempo.start();
-
+        
 
     }//GEN-LAST:event_jButtonEmpezarActionPerformed
+    
 
     private void jButtonMisil1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonMisil1KeyPressed
-
+        
 
     }//GEN-LAST:event_jButtonMisil1KeyPressed
 
@@ -497,30 +537,27 @@ public class MenuJuego extends javax.swing.JFrame {
         menu.setVisible(true);
         dispose();
         
-        
-    }//GEN-LAST:event_jButtonSalirActionPerformed
 
-    public void obterTiempo(int tiempo){
-    jTextFieldTiempoConsumido.setText(String.valueOf(tiempo));
-    }
+    }//GEN-LAST:event_jButtonSalirActionPerformed
+    
     public JTextField getjTextFieldVelocidad() {
         return jTextFieldVelocidad;
     }
-
+    
     public void setjTextFieldVelocidad(JTextField jTextFieldVelocidad) {
         this.jTextFieldVelocidad = jTextFieldVelocidad;
     }
-
-    public JTextField getjTextFieldTiempoConsumido() {
-        return jTextFieldTiempoConsumido;
+    
+    public boolean isLlavePoder() {
+        return llavePoder;
     }
-
-    public void setjTextFieldTiempoConsumido(JTextField jTextFieldTiempoConsumido) {
-        this.jTextFieldTiempoConsumido = jTextFieldTiempoConsumido;
+    
+    public void setLlavePoder(boolean llavePoder) {
+        this.llavePoder = llavePoder;
     }
-
+    
     public void keyTyped(KeyEvent e) {
-
+        
     }
 
     /**

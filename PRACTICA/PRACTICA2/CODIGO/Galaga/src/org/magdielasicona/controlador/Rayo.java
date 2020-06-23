@@ -56,16 +56,16 @@ public class Rayo extends Thread {
             if (posY == 560) {
                 System.out.println("RANDOM:" + locacion);
                 if (locacion == 0) {
-                    rayo.setBounds(161, rayo.getY() - 660, rayo.getWidth(), rayo.getHeight());
+                    rayo.setBounds(161, -180, rayo.getWidth(), rayo.getHeight());
                     retrasoRayo();
                 } else if (locacion == 1) {
-                    rayo.setBounds(269, rayo.getY() - 660, rayo.getWidth(), rayo.getHeight());
+                    rayo.setBounds(269, -180, rayo.getWidth(), rayo.getHeight());
                     retrasoRayo();
                 } else if (locacion == 2) {
-                    rayo.setBounds(377, rayo.getY() - 660, rayo.getWidth(), rayo.getHeight());
+                    rayo.setBounds(377, -180, rayo.getWidth(), rayo.getHeight());
                     retrasoRayo();
                 } else if (locacion == 3) {
-                    rayo.setBounds(485, rayo.getY() - 660, rayo.getWidth(), rayo.getHeight());
+                    rayo.setBounds(485, -180, rayo.getWidth(), rayo.getHeight());
                     retrasoRayo();
                 }
             }

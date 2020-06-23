@@ -47,16 +47,16 @@ public class Corazon extends Thread {
             if (corazon.getY() == 560) {
                 System.out.println("RANDO:" + locacion);
                 if (locacion == 0) {
-                    corazon.setBounds(161, corazon.getY() - 660, corazon.getWidth(), corazon.getHeight());
+                    corazon.setBounds(161, -360, corazon.getWidth(), corazon.getHeight());
                     retrasoCorazon();
                 } else if (locacion == 1) {
-                    corazon.setBounds(269, corazon.getY() - 660, corazon.getWidth(), corazon.getHeight());
+                    corazon.setBounds(269, -360, corazon.getWidth(), corazon.getHeight());
                     retrasoCorazon();
                 } else if (locacion == 2) {
-                    corazon.setBounds(377, corazon.getY() - 660, corazon.getWidth(), corazon.getHeight());
+                    corazon.setBounds(377, -360, corazon.getWidth(), corazon.getHeight());
                     retrasoCorazon();
                 } else if (locacion == 3) {
-                    corazon.setBounds(485, corazon.getY() - 660, corazon.getWidth(), corazon.getHeight());
+                    corazon.setBounds(485, -360, corazon.getWidth(), corazon.getHeight());
                     retrasoCorazon();
                 }
             }

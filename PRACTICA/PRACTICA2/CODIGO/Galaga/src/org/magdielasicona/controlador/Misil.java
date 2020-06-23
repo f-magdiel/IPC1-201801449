@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JTextField;
 
 /**
  *
@@ -24,10 +25,17 @@ public class Misil extends Thread {
         }
         return instanciaMisil;
     }
+    //JTEXT
+    private static JTextField jTextFieldPoder;
+    private static JTextField jTextFieldVelocidad;
+    private static JTextField jTextFieldVida;
+    private static JTextField jTextFieldPunteo;
+
     //VARIABLES IMPORTANTES
-    
-    private static int punteo=0;
-    private static int velocidadObjetos=1100;
+    private static int punteo = 0;
+    private static int velocidadObjetos = 1000;
+    private static int poder = 0;
+    private static int vida;
     private JButton misil;
     private JButton rayo;
 
@@ -36,6 +44,7 @@ public class Misil extends Thread {
 
     @Override
     public void run() {
+        this.jTextFieldVida.setText(String.valueOf(Ship.getInstancia().getVidaShip()));
         Random rand = new Random();
         int randomRayo = rand.nextInt(4);
         int randomAsteroide = rand.nextInt(4);
@@ -62,9 +71,10 @@ public class Misil extends Thread {
 
             if (areaMisil.intersects(areaRayo.getBounds2D())) {
                 System.out.println("RANDO:" + randomRayo);
-                if (velocidadObjetos > 100) {
-                    velocidadObjetos= velocidadObjetos -200;
-                    System.out.println("VELOCIDA:"+velocidadObjetos);
+                if (velocidadObjetos > 200) {
+                    velocidadObjetos = velocidadObjetos - 200;
+                    System.out.println("VELOCIDA:" + velocidadObjetos);
+                    this.jTextFieldVelocidad.setText(String.valueOf(velocidadObjetos));
                 }
                 if (randomRayo == 0) {
                     System.out.println("COLISION MISIL Y RAYO");
@@ -98,7 +108,8 @@ public class Misil extends Thread {
 
             if (areaMisil.intersects(areaAsteroide.getBounds2D())) {
                 System.out.println("RANDO:" + randomAsteroide);
-                punteo+=100;
+                punteo += 100;
+                this.jTextFieldPunteo.setText(String.valueOf(punteo));
                 if (randomAsteroide == 0) {
                     System.out.println("COLISION MISIL Y ASTEROIDE");
                     misil.setBounds(-800, 450, misil.getWidth(), misil.getHeight());
@@ -131,9 +142,10 @@ public class Misil extends Thread {
 
             if (areaMisil.intersects(areaCaracol.getBounds2D())) {
                 System.out.println("RANDO:" + randomCaracol);
-                if (velocidadObjetos <1100) {
-                    velocidadObjetos= velocidadObjetos + 200;
-                    System.out.println("VELOCIDA:"+velocidadObjetos);
+                if (velocidadObjetos < 1000) {
+                    velocidadObjetos = velocidadObjetos + 200;
+                    System.out.println("VELOCIDA:" + velocidadObjetos);
+                    this.jTextFieldVelocidad.setText(String.valueOf(velocidadObjetos));
                 }
                 if (randomCaracol == 0) {
                     System.out.println("COLISION MISIL Y CARACOL");
@@ -167,10 +179,11 @@ public class Misil extends Thread {
 
             if (areaMisil.intersects(areaCorazon.getBounds2D())) {
                 System.out.println("RANDO:" + randomCorazon);
-                int vida= Ship.getInstancia().getVidaShip();
-                if (Ship.getInstancia().getVidaShip()<3) {
-                    vida+=1;
+                 vida = Ship.getInstancia().getVidaShip();
+                if (vida < 3) {
+                    vida += 1;
                     Ship.getInstancia().setVidaShip(vida);
+                    this.jTextFieldVida.setText(String.valueOf(Ship.getInstancia().getVidaShip()));
                 }
                 if (randomCorazon == 0) {
                     System.out.println("COLISION MISIL Y CORAZON");
@@ -204,6 +217,10 @@ public class Misil extends Thread {
 
             if (areaMisil.intersects(areaOjo.getBounds2D())) {
                 System.out.println("RANDO:" + randomOjo);
+                
+                poder++;
+                Ship.getInstancia().setPoderShip(poder);
+                this.jTextFieldPoder.setText(String.valueOf(poder));
                 if (randomOjo == 0) {
                     System.out.println("COLISION MISIL Y OJO");
                     misil.setBounds(-800, 450, misil.getWidth(), misil.getHeight());
@@ -237,7 +254,7 @@ public class Misil extends Thread {
                 banderaMisil = false;
             }
             try {
-                Thread.sleep(150);
+                Thread.sleep(100);
 
             } catch (Exception e) {
             }
@@ -263,6 +280,18 @@ public class Misil extends Thread {
         return icono;
 
     }
+    public void obtenerJtextVelocidad(JTextField velocidad) {
+        this.jTextFieldVelocidad = velocidad;
+    }
+    public void obtenerJtextPoder(JTextField poder) {
+        this.jTextFieldPoder= poder;
+    }
+    public void obtenerJtextPunteo(JTextField punteo) {
+        this.jTextFieldPunteo = punteo;
+    }
+    public void obtenerJtextVida(JTextField vida) {
+        this.jTextFieldVida = vida;
+    }
 
     public boolean isBanderaMisil() {
         return banderaMisil;
@@ -287,6 +316,5 @@ public class Misil extends Thread {
     public void setPunteo(int punteo) {
         this.punteo = punteo;
     }
-    
 
 }

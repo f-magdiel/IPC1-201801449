@@ -3,8 +3,11 @@ package org.magdielasicona.controlador;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.geom.Area;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -24,6 +27,9 @@ public class Ship extends Thread {
     private JButton ship;
     private static boolean banderaShip = true;
     private static int vidaShip = 3;
+    private static int poderShip = 0;
+    private static JTextField jTextFieldVida;
+    private static boolean llaveAccion = true;
 
     @Override
     public void run() {
@@ -35,25 +41,26 @@ public class Ship extends Thread {
         Corazon cora = new Corazon();
         Ojo ojo = new Ojo();
         while (banderaShip == true) {
+            System.out.println("NAVE SIGUE");
+            if (llaveAccion == true) {
+                Area areaShip = new Area(ship.getBounds());
+                Area areaAste = new Area(asteroide.getAsteroide().getBounds());
+                if (areaShip.intersects(areaAste.getBounds2D())) {
+                    asteroide.getAsteroide().setBounds(ship.getX(), -110, asteroide.getAsteroide().getWidth(), asteroide.getAsteroide().getHeight());
+                    vidaShip -= 1;
+                    this.jTextFieldVida.setText(String.valueOf(vidaShip));
+                    if (vidaShip == 0) {
 
-            Area areaShip = new Area(ship.getBounds());
-            Area areaAste = new Area(asteroide.getAsteroide().getBounds());
-            if (areaShip.intersects(areaAste.getBounds2D())) {
-                asteroide.getAsteroide().setBounds(ship.getX(), -110, asteroide.getAsteroide().getWidth(), asteroide.getAsteroide().getHeight());
-                vidaShip -= 1;
-                if (vidaShip == 0) {
-                    vidaShip = 0;
-                    
-                    Rayo.getInstancia().setSeñalRayo(false);
-                    Asteroide.getInstancia().setSeñalAsteroide(false);
-                    Caracol.getInstancia().setSeñalCaracol(false);
-                    Corazon.getInstancia().setSeñalCorazon(false);
-                    Ojo.getInstancia().setSeñalOjo(false);
-                    this.banderaShip = false;
-                    JOptionPane.showMessageDialog(null, "GAME OVER, INTENTA OTRA VEZ :-(!!");
+                        Rayo.getInstancia().setSeñalRayo(false);
+                        Asteroide.getInstancia().setSeñalAsteroide(false);
+                        Caracol.getInstancia().setSeñalCaracol(false);
+                        Corazon.getInstancia().setSeñalCorazon(false);
+                        Ojo.getInstancia().setSeñalOjo(false);
+                        this.banderaShip = false;
+                        JOptionPane.showMessageDialog(null, "GAME OVER, INTENTA OTRA VEZ :-(!!");
 
-                    
-                } 
+                    }
+                }
             }
         }
 
@@ -61,6 +68,10 @@ public class Ship extends Thread {
 
     public void obtenerShip(JButton ship) {
         this.ship = ship;
+    }
+
+    public void obtenerJtextVidaship(JTextField vida) {
+        this.jTextFieldVida = vida;
     }
 
     public JButton getShip() {
@@ -85,6 +96,22 @@ public class Ship extends Thread {
 
     public void setVidaShip(int vidaShip) {
         this.vidaShip = vidaShip;
+    }
+
+    public int getPoderShip() {
+        return poderShip;
+    }
+
+    public void setPoderShip(int poderShip) {
+        this.poderShip = poderShip;
+    }
+
+    public boolean isLlaveAccion() {
+        return llaveAccion;
+    }
+
+    public void setLlaveAccion(boolean llaveAccion) {
+        this.llaveAccion = llaveAccion;
     }
 
 }

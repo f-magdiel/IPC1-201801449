@@ -48,19 +48,19 @@ public class Ojo extends Thread {
             if (ojo.getY() == 560) {
                 System.out.println("RANDO:" + locacion);
                 if (locacion == 0) {
-                    ojo.setBounds(161, ojo.getY() - 660, ojo.getWidth(), ojo.getHeight());
+                    ojo.setBounds(161, -270, ojo.getWidth(), ojo.getHeight());
                     retrasoOjo();
 
                 } else if (locacion == 1) {
-                    ojo.setBounds(269, ojo.getY() - 660, ojo.getWidth(), ojo.getHeight());
+                    ojo.setBounds(269, -270, ojo.getWidth(), ojo.getHeight());
                     retrasoOjo();
 
                 } else if (locacion == 2) {
-                    ojo.setBounds(377, ojo.getY() - 660, ojo.getWidth(), ojo.getHeight());
+                    ojo.setBounds(377, -270, ojo.getWidth(), ojo.getHeight());
                     retrasoOjo();
 
                 } else if (locacion == 3) {
-                    ojo.setBounds(485, ojo.getY() - 660, ojo.getWidth(), ojo.getHeight());
+                    ojo.setBounds(485, -270, ojo.getWidth(), ojo.getHeight());
                     retrasoOjo();
                 }
             }

@@ -1,7 +1,13 @@
 package org.magdielasicona.controlador;
 
+import java.awt.Image;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -19,17 +25,45 @@ public class Tiempo extends Thread {
     }
 
     //-------------------------------------
-    private static int timer = 1;
+    private static JTextField jTextFieldTiempoConsumido;
+    private static JTextField jTextFieldTiempoRestante;
+    private static int timer1 = 1;
+    private static int timer2 = 240;
     private static boolean señalTiempo = true;
+    private static JButton ship;
+    private int contadorLlave = 0;
 
     @Override
     public void run() {
-        MenuJuego menu = new MenuJuego();
+
         while (señalTiempo == true) {
 
-            System.out.println("TIMER:" + timer);
-            menu.obterTiempo(timer);
-            timer++;
+            System.out.println("TIMER:" + timer1);
+            this.jTextFieldTiempoConsumido.setText(String.valueOf(timer1));
+            this.jTextFieldTiempoRestante.setText(String.valueOf(timer2));
+
+            //Camufalje
+            if (MenuJuego.getInstancia().isLlavePoder() == false) {
+                contadorLlave++;
+                if (contadorLlave == 6) {
+                    ship.setIcon(setIcono("/Imagenes/space-ship.png", ship));
+                    MenuJuego.getInstancia().setLlavePoder(true);
+                    Ship.getInstancia().setLlaveAccion(true);
+                    contadorLlave=0;
+                }
+            }
+            if (timer1 == 240) {
+
+                Rayo.getInstancia().setSeñalRayo(false);
+                Asteroide.getInstancia().setSeñalAsteroide(false);
+                Caracol.getInstancia().setSeñalCaracol(false);
+                Corazon.getInstancia().setSeñalCorazon(false);
+                Ojo.getInstancia().setSeñalOjo(false);
+                señalTiempo = false;
+                JOptionPane.showMessageDialog(null, "FELICIDADES GANO!!!");
+            }
+            timer2--;
+            timer1++;
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException ex) {
@@ -39,12 +73,26 @@ public class Tiempo extends Thread {
         }
     }
 
-    public int getTimer() {
-        return timer;
+    public Icon setIcono(String url, JButton boton) {
+        ImageIcon icon = new ImageIcon(getClass().getResource(url));
+        int ancho = boton.getWidth();
+        int alto = boton.getHeight();
+
+        ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
+        return icono;
+
     }
 
-    public void setTimer(int timer) {
-        this.timer = timer;
+    public void obtenerCamuflajeShip(JButton ship) {
+        this.ship = ship;
+    }
+
+    public void obtenerJtext1(JTextField tiempoC) {
+        this.jTextFieldTiempoConsumido = tiempoC;
+    }
+
+    public void obtenerJtext2(JTextField tiempoR) {
+        this.jTextFieldTiempoRestante = tiempoR;
     }
 
     public boolean isSeñalTiempo() {

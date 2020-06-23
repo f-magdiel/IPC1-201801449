@@ -45,16 +45,16 @@ public class Caracol extends Thread {
             if (caracol.getY() == 560) {
                 System.out.println("RANDO:" + locacion);
                 if (locacion == 0) {
-                    caracol.setBounds(161, caracol.getY() - 660, caracol.getWidth(), caracol.getHeight());
+                    caracol.setBounds(161, -450, caracol.getWidth(), caracol.getHeight());
                     retrasoCaracol();
                 } else if (locacion == 1) {
-                    caracol.setBounds(269, caracol.getY() - 660, caracol.getWidth(), caracol.getHeight());
+                    caracol.setBounds(269, -450, caracol.getWidth(), caracol.getHeight());
                     retrasoCaracol();
                 } else if (locacion == 2) {
-                    caracol.setBounds(377, caracol.getY() - 660, caracol.getWidth(), caracol.getHeight());
+                    caracol.setBounds(377, -450, caracol.getWidth(), caracol.getHeight());
                     retrasoCaracol();
                 } else if (locacion == 3) {
-                    caracol.setBounds(485, caracol.getY() - 660, caracol.getWidth(), caracol.getHeight());
+                    caracol.setBounds(485, -450, caracol.getWidth(), caracol.getHeight());
                     retrasoCaracol();
                 }
             }

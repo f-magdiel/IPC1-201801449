@@ -54,16 +54,16 @@ public class Asteroide extends Thread{
         if (asteroide.getY()==560) {
             System.out.println("RANDOM:" + locacion);
                 if (locacion == 0) {
-                    asteroide.setBounds(161, asteroide.getY() - 660, asteroide.getWidth(), asteroide.getHeight());
+                    asteroide.setBounds(161, -90, asteroide.getWidth(), asteroide.getHeight());
                     retrasoAsteroide();
                 } else if (locacion == 1) {
-                    asteroide.setBounds(269, asteroide.getY() - 660, asteroide.getWidth(), asteroide.getHeight());
+                    asteroide.setBounds(269, -90, asteroide.getWidth(), asteroide.getHeight());
                     retrasoAsteroide();
                 } else if (locacion == 2) {
-                    asteroide.setBounds(377, asteroide.getY() - 660, asteroide.getWidth(), asteroide.getHeight());
+                    asteroide.setBounds(377, -90, asteroide.getWidth(), asteroide.getHeight());
                     retrasoAsteroide();
                 } else if (locacion == 3) {
-                    asteroide.setBounds(485, asteroide.getY() - 660, asteroide.getWidth(), asteroide.getHeight());
+                    asteroide.setBounds(485, -90, asteroide.getWidth(), asteroide.getHeight());
                     retrasoAsteroide();
                 }
         }
