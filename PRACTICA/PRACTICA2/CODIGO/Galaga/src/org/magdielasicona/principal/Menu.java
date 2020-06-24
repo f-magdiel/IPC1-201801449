@@ -147,10 +147,10 @@ public class Menu extends javax.swing.JFrame {
                 if (MenuJuego.tiempo[j] > MenuJuego.tiempo[j + 1]) {
                     temp = MenuJuego.tiempo[j];
                     aux = MenuJuego.nickNameTiempo[j];
-                    MenuJuego.tiempo[j] = MenuJuego.tiempo[j+1];
-                    MenuJuego.nickNameTiempo[j] = MenuJuego.nickNameTiempo[j+1];
-                    MenuJuego.tiempo[j+1] = temp;
-                    MenuJuego.nickNameTiempo[j+1] = aux;
+                    MenuJuego.tiempo[j] = MenuJuego.tiempo[j + 1];
+                    MenuJuego.nickNameTiempo[j] = MenuJuego.nickNameTiempo[j + 1];
+                    MenuJuego.tiempo[j + 1] = temp;
+                    MenuJuego.nickNameTiempo[j + 1] = aux;
                 }
 
             }
@@ -165,16 +165,28 @@ public class Menu extends javax.swing.JFrame {
                 + "<td><strong>SEGUNDOS TRANCURRIDOS</strong></td>\n"
                 + "</tr>\n"
                 + "<tr>\n"
-                + "<td>John</td>\n"
-                + "<td>Chicago</td>\n"
+                + "<td>" + MenuJuego.nickNameTiempo[0] + "</td>\n"
+                + "<td>" + MenuJuego.tiempo[0] + "</td>\n"
                 + "</tr>\n"
                 + "<tr>\n"
-                + "<td>Lucy</td>\n"
-                + "<td>Wisconsin</td>\n"
+                + "<td>" + MenuJuego.nickNameTiempo[1] + "</td>\n"
+                + "<td>" + MenuJuego.tiempo[1] + "</td>\n"
                 + "</tr>\n"
                 + "<tr>\n"
-                + "<td>Amanda</td>\n"
-                + "<td>Madison</td>\n"
+                + "<td>" + MenuJuego.nickNameTiempo[2] + "</td>\n"
+                + "<td>" + MenuJuego.tiempo[2] + "</td>\n"
+                + "</tr>\n"
+                + "<tr>\n"
+                + "<td>" + MenuJuego.nickNameTiempo[3] + "</td>\n"
+                + "<td>" + MenuJuego.tiempo[3] + "</td>\n"
+                + "</tr>\n"
+                + "<tr>\n"
+                + "<td>" + MenuJuego.nickNameTiempo[4] + "</td>\n"
+                + "<td>" + MenuJuego.tiempo[4] + "</td>\n"
+                + "</tr>\n"
+                + "<tr>\n"
+                + "<td>" + MenuJuego.nickNameTiempo[5] + "</td>\n"
+                + "<td>" + MenuJuego.tiempo[5] + "</td>\n"
                 + "</tr>\n"
                 + "</tbody>\n"
                 + "</table>\n"
@@ -184,7 +196,7 @@ public class Menu extends javax.swing.JFrame {
     public void recibirTexto(String entrada) {
         try {
 
-            FileWriter fw = new FileWriter("top5Bubble.html");
+            FileWriter fw = new FileWriter("Top5Bubble.html");
             fw.write(entrada);
             fw.close();
         } catch (Exception e) {
