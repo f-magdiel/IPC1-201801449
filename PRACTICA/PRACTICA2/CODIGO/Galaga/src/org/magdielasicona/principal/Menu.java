@@ -194,13 +194,14 @@ public class Menu extends javax.swing.JFrame {
                 + "<td>" + MenuJuego.puntos[5] + "</td>\n"
                 + "</tr>\n"
                 + "<tr>\n"
-                + "<td>" + MenuJuego.nickNamePunto[0] + "</td>\n"
-                + "<td>" + MenuJuego.puntos[0] + "</td>\n"
+                + "<td>" + MenuJuego.nickNamePunto[2] + "</td>\n"
+                + "<td>" + MenuJuego.puntos[2] + "</td>\n"
                 + "</tr>\n"
                 + "</tbody>\n"
                 + "</table>\n"
                 + "<p>Galaga.</p>";
        entradatext(rapido);
+       JOptionPane.showMessageDialog(null, "SE HA GENERADO EL REPORTE");
     }//GEN-LAST:event_jButtonTopQuickActionPerformed
 
     
@@ -274,6 +275,7 @@ public class Menu extends javax.swing.JFrame {
                 + "</table>\n"
                 + "<p>Galaga.</p>";
         recibirTexto(burbuja);
+        JOptionPane.showMessageDialog(null, "SE HA GENERADO EL REPORTE");
     }//GEN-LAST:event_jButtonTopBubbleActionPerformed
     public void recibirTexto(String entrada) {
         try {

@@ -205,6 +205,7 @@ public class MenuJuego extends javax.swing.JFrame {
         jPanelCampoBatalla.setBackground(new java.awt.Color(255, 255, 255));
         jPanelCampoBatalla.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 0, 153)));
 
+        jButtonShip.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jButtonShip.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonShipActionPerformed(evt);
@@ -216,11 +217,20 @@ public class MenuJuego extends javax.swing.JFrame {
             }
         });
 
+        jButtonRayo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jButtonRayo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRayoActionPerformed(evt);
             }
         });
+
+        jButtonCaracol.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        jButtonAsteroide.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        jButtonCorazon.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        jButtonOjo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         jButtonMisil1.setBorder(null);
         jButtonMisil1.addKeyListener(new java.awt.event.KeyAdapter() {
