@@ -555,6 +555,14 @@ public class MenuJuego extends javax.swing.JFrame {
         tiempo[contadorGeneral] = Tiempo.getInstancia().getTimer1();
         contadorGeneral++;
     }
+
+    public int getContadorGeneral() {
+        return contadorGeneral;
+    }
+
+    public void setContadorGeneral(int contadorGeneral) {
+        this.contadorGeneral = contadorGeneral;
+    }
     
     public JTextField getjTextFieldVelocidad() {
         return jTextFieldVelocidad;

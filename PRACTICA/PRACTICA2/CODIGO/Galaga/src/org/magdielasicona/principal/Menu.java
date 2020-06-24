@@ -138,8 +138,23 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonInfoActionPerformed
 
     private void jButtonTopBubbleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTopBubbleActionPerformed
-
+        int temp;
+        String aux;
         //METODO BURBUJA
+        int elementos = MenuJuego.getInstancia().getContadorGeneral();
+        for (int i = 0; i < (elementos - 1); i++) {
+            for (int j = 0; j < (elementos - 1); j++) {
+                if (MenuJuego.tiempo[j] > MenuJuego.tiempo[j + 1]) {
+                    temp = MenuJuego.tiempo[j];
+                    aux = MenuJuego.nickNameTiempo[j];
+                    MenuJuego.tiempo[j] = MenuJuego.tiempo[j+1];
+                    MenuJuego.nickNameTiempo[j] = MenuJuego.nickNameTiempo[j+1];
+                    MenuJuego.tiempo[j+1] = temp;
+                    MenuJuego.nickNameTiempo[j+1] = aux;
+                }
+
+            }
+        }
         //LINEAS DE HTML
         burbuja = "<h2>TABLA TOP 5 JUGADORES BUBBLESORT</h2>\n"
                 + "\n"
@@ -148,28 +163,18 @@ public class Menu extends javax.swing.JFrame {
                 + "<tr>\n"
                 + "<td><strong>NICKNAME</strong></td>\n"
                 + "<td><strong>SEGUNDOS TRANCURRIDOS</strong></td>\n"
-                
                 + "</tr>\n"
                 + "<tr>\n"
-                
                 + "<td>John</td>\n"
                 + "<td>Chicago</td>\n"
-               
-                
                 + "</tr>\n"
                 + "<tr>\n"
-                
                 + "<td>Lucy</td>\n"
                 + "<td>Wisconsin</td>\n"
-               
-                
                 + "</tr>\n"
                 + "<tr>\n"
-                
                 + "<td>Amanda</td>\n"
                 + "<td>Madison</td>\n"
-                
-                
                 + "</tr>\n"
                 + "</tbody>\n"
                 + "</table>\n"
