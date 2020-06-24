@@ -114,6 +114,40 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void quickSort(int primero, int ultimo, int []v,String c[]){
+    int i = primero;
+    int j = ultimo;
+    int central = v[(primero+ultimo)/2];
+    
+        do {
+            while(central>v[i]){
+            i++;
+            }
+            while(central <=v[j]){
+            j--;
+            }
+            if (i<=j) {
+                int temp;
+                String aux;
+                
+                temp = v[i];
+                aux = c[i];
+                v[i]=v[j];
+                c[i]=c[j];
+                v[j] = temp;
+                c[j] = aux;
+                
+            }
+        } while (i<=j);
+        if (primero <j) {
+             quickSort(primero,j,v,c);
+        }
+        if (ultimo>i) {
+            quickSort(i,ultimo,v,c);
+        }
+    }
+    
+    
     private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButtonSalirActionPerformed
@@ -126,11 +160,59 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonInicarJuegoActionPerformed
 
     private void jButtonTopQuickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTopQuickActionPerformed
-        for (int i = 0; i < 10; i++) {
-            System.out.println(MenuJuego.nickNamePunto[i] + "-" + MenuJuego.puntos[i] + "-" + MenuJuego.tiempo[i]);
-        }
+   int elementos = MenuJuego.getInstancia().getContadorGeneral();
+        quickSort(0, (elementos-1) , MenuJuego.puntos, MenuJuego.nickNamePunto);
+        String nombre [] = new String[50];
+        
+        //LINEAS DE HTML
+       String rapido = "<h2>TABLA TOP 5 JUGADORES QUICKSORT</h2>\n"
+                + "\n"
+                + "<table class=\"editorDemoTable\">\n"
+                + "<tbody>\n"
+                + "<tr>\n"
+                + "<td><strong>NICKNAME</strong></td>\n"
+                + "<td><strong>PUNTOS</strong></td>\n"
+                + "</tr>\n"
+                + "<tr>\n"
+                + "<td>" + MenuJuego.nickNamePunto[1] + "</td>\n"
+                + "<td>" + MenuJuego.puntos[1] + "</td>\n"
+                + "</tr>\n"
+                + "<tr>\n"
+                + "<td>" + MenuJuego.nickNamePunto[0] + "</td>\n"
+                + "<td>" + MenuJuego.puntos[0] + "</td>\n"
+                + "</tr>\n"
+                + "<tr>\n"
+                + "<td>" + MenuJuego.nickNamePunto[3] + "</td>\n"
+                + "<td>" + MenuJuego.puntos[3] + "</td>\n"
+                + "</tr>\n"
+                + "<tr>\n"
+                + "<td>" + MenuJuego.nickNamePunto[4] + "</td>\n"
+                + "<td>" + MenuJuego.puntos[4] + "</td>\n"
+                + "</tr>\n"
+                + "<tr>\n"
+                + "<td>" + MenuJuego.nickNamePunto[5]+ "</td>\n"
+                + "<td>" + MenuJuego.puntos[5] + "</td>\n"
+                + "</tr>\n"
+                + "<tr>\n"
+                + "<td>" + MenuJuego.nickNamePunto[0] + "</td>\n"
+                + "<td>" + MenuJuego.puntos[0] + "</td>\n"
+                + "</tr>\n"
+                + "</tbody>\n"
+                + "</table>\n"
+                + "<p>Galaga.</p>";
+       entradatext(rapido);
     }//GEN-LAST:event_jButtonTopQuickActionPerformed
 
+    
+    public void entradatext(String dato){
+    try {
+
+            FileWriter fw = new FileWriter("Top5QuickSort.html");
+            fw.write(dato);
+            fw.close();
+        } catch (Exception e) {
+        }
+    }
     private void jButtonInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInfoActionPerformed
         DatosEstudiante datosedu = new DatosEstudiante();
         datosedu.setVisible(true);
