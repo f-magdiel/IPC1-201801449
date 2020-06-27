@@ -7,6 +7,7 @@ package org.magdielasicona.menu;
  */
 public class Main {
     public static void main(String[] args) {
-        System.out.println("HOLA");
+        Principal pri = new Principal();
+        pri.setVisible(true);
     }
 }
