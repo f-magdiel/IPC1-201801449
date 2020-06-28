@@ -7,25 +7,26 @@ package org.magdielasicona.listaSimple;
  */
 public class NodoDatos {
     
-    private int columana;
+    private int columna;
     private int fila;
     private int valor;
     private String color;
     private NodoDatos siguiente;
 
-    public NodoDatos(int columana, int fila, int valor, String color) {
-        this.columana = columana;
+    public NodoDatos(int fila, int columna, int valor, String color) {
+        this.columna = columna;
         this.fila = fila;
         this.valor = valor;
         this.color = color;
+        this.siguiente = null;
     }
 
     public int getColumana() {
-        return columana;
+        return columna;
     }
 
     public void setColumana(int columana) {
-        this.columana = columana;
+        this.columna = columana;
     }
 
     public int getFila() {

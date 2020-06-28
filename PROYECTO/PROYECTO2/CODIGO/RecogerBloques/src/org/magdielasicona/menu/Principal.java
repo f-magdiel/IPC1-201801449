@@ -8,7 +8,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-
+import org.magdielasicona.listaSimple.FrameListaSimple;
+import org.magdielasicona.listaSimple.ListaSimple;
 
 /**
  *
@@ -16,9 +17,9 @@ import javax.swing.JOptionPane;
  */
 public class Principal extends javax.swing.JFrame {
 
-    
-    private String datosIngresados;
+    private String datosIngresados = "";
     private String datosNuevos = "";
+    private String info[];
 
     public Principal() {
         initComponents();
@@ -60,6 +61,11 @@ public class Principal extends javax.swing.JFrame {
 
         jButtonListaSimple.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonListaSimple.setText("Lista Simple");
+        jButtonListaSimple.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonListaSimpleActionPerformed(evt);
+            }
+        });
 
         jButtonReiniciar.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonReiniciar.setText("Reiniciar");
@@ -192,7 +198,14 @@ public class Principal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonCargarDatosActionPerformed
 
+    private void jButtonListaSimpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaSimpleActionPerformed
+        FrameListaSimple ls = new FrameListaSimple();
+        ls.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonListaSimpleActionPerformed
+
     public void agregarDatos() {
+        ListaSimple listaSimple = ListaSimple.getInstancia();
         String lin = "";
         JFileChooser navegador = new JFileChooser();
         navegador.showOpenDialog(navegador);
@@ -204,13 +217,19 @@ public class Principal extends javax.swing.JFrame {
             BufferedReader br = new BufferedReader(new InputStreamReader(entrada));
 
             while ((lin = br.readLine()) != null) {
-                System.out.println(lin);
+                info = lin.split(",");
+                
+               listaSimple.insertarDatos(Integer.parseInt(info[0]), Integer.parseInt(info[1]), Integer.parseInt(info[2]), info[3]);
 
             }
             entrada.close();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Ocurrió un error al abrir el archivo!");
         }
+
+        System.out.println("Lista Simple:");
+        listaSimple.imprimir();
+
     }
 
     /**
