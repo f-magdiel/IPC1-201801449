@@ -1,6 +1,8 @@
 
 package org.magdielasicona.listaSimple;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author FRANMAGDIEL_PC
@@ -42,6 +44,11 @@ public class AgregarListaSimple extends javax.swing.JFrame {
         });
 
         jButtonAgregar.setText("Agregar");
+        jButtonAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAgregarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,6 +99,16 @@ public class AgregarListaSimple extends javax.swing.JFrame {
        ls.setVisible(true);
        dispose();
     }//GEN-LAST:event_jButtonRegresarActionPerformed
+
+    private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
+        ListaSimple ls = ListaSimple.getInstancia();
+        ls.insertarDatos(5,5 , Integer.parseInt(jTextFieldValor.getText()), jTextFieldColor.getText());
+        JOptionPane.showMessageDialog(null, "SE HA AGREDADO EXITOSAMENTE!");
+        jTextFieldValor.setText("");
+        jTextFieldColor.setText("");
+        
+        
+    }//GEN-LAST:event_jButtonAgregarActionPerformed
 
     /**
      * @param args the command line arguments

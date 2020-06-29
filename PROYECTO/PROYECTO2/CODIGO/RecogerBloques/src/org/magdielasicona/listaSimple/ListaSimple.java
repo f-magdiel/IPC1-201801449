@@ -23,6 +23,15 @@ public class ListaSimple {
         }
         return instanciaListaSimple;
     }
+    //Arreglos 
+    public static int valoR[] = new int[100];
+    public static String coloR[] = new String[100];
+    public static int enFila[] = new int[100];
+    public static int enColumna[] = new int[100];
+
+    //Contador
+    public static int contG = 0;
+    public static int contL = 0;
 
     private NodoDatos cabeza;
     private String color;
@@ -121,12 +130,37 @@ public class ListaSimple {
 
     }
 
-    public void llenarTabla() {
+    public void eliminar(int valor) {
         NodoDatos aux = this.getCabeza();
         while (aux != null) {
-            String boton = aux.getFila() + "" + aux.getColumana();
-            String color = aux.getColor();
-            int valor = aux.getValor();
+            if (aux.getSiguiente().getValor() == valor) {
+                aux.setSiguiente(aux.getSiguiente().getSiguiente());
+                break;
+            }
+            aux = aux.getSiguiente();
+        }
+    }
+
+    public void copia() {
+        NodoDatos aux = this.getCabeza();
+        while (aux != null) {
+            enFila[contG] = aux.getFila();
+            enColumna[contG] = aux.getColumana();
+            valoR[contG] = aux.getValor();
+            coloR[contG] = aux.getColor();
+            contG++;
+            aux = aux.getSiguiente();
+        }
+
+    }
+
+    public void llenarTabla() {
+       
+        while (contL <= contG) {
+            String boton = enFila[contL] + "" + enColumna[contL];
+            String color = coloR[contL];
+            int valor = valoR[contL];
+            
             System.out.println(boton);
             switch (boton) {
                 case "00":
@@ -750,8 +784,9 @@ public class ListaSimple {
                     break;
 
             }
-            aux = aux.getSiguiente();
+            contL++;
         }
+        contL=0;
         this.btn00.setBackground(Color.black);
     }
 

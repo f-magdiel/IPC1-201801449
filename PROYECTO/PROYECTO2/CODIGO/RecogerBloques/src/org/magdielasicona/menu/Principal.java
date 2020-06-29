@@ -22,7 +22,7 @@ public class Principal extends javax.swing.JFrame {
     private String datosIngresados = "";
     private String datosNuevos = "";
     private String info[];
-    DefaultTableCellRenderer modelo = new DefaultTableCellRenderer();
+   
 
     public Principal() {
         initComponents();
@@ -108,6 +108,7 @@ public class Principal extends javax.swing.JFrame {
         ls.obtener45(btn45);
         ls.obtener46(btn46);
         this.btn00.requestFocusInWindow();
+        ls.llenarTabla();
 
     }
 
@@ -583,6 +584,7 @@ public class Principal extends javax.swing.JFrame {
 
         System.out.println("Lista Simple:");
         listaSimple.imprimir();
+        listaSimple.copia();
         listaSimple.llenarTabla();
 
     }

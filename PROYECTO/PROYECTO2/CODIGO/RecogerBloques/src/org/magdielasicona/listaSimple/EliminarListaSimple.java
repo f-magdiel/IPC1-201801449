@@ -1,6 +1,8 @@
 
 package org.magdielasicona.listaSimple;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author FRANMAGDIEL_PC
@@ -36,6 +38,11 @@ public class EliminarListaSimple extends javax.swing.JFrame {
         });
 
         jButton2.setText("Eliminar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,6 +89,14 @@ public class EliminarListaSimple extends javax.swing.JFrame {
        ls.setVisible(true);
        dispose();
     }//GEN-LAST:event_jButtonRegresarActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        ListaSimple ls = ListaSimple.getInstancia();
+        int valor = Integer.parseInt(jTextFieldValor.getText());
+        ls.eliminar(valor);
+        JOptionPane.showMessageDialog(null, "SE HA ELIMINADO EXISTOSAMENTE!");
+        jTextFieldValor.setText("");
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
