@@ -21,6 +21,7 @@ public class ColaTaller extends javax.swing.JFrame {
         modelo.addColumn("TERCERO");
         modelo.addColumn("ESTADO");
         modelo.addColumn("PAGO");
+        
         try{
         llenadoTabla();
         }catch(Exception e){}
@@ -131,6 +132,7 @@ public class ColaTaller extends javax.swing.JFrame {
         System.out.println(contfila);
         if (fila != -1) {
             dato = (String) modelo.getValueAt(fila, 0);
+            
          
         } else {
             JOptionPane.showMessageDialog(null, "SELECCIONE AL MENOS UNA FILA!!!");
@@ -156,6 +158,8 @@ public class ColaTaller extends javax.swing.JFrame {
             datos[3] = ReportarIncidente.taller[i].getEstado();
             datos[4] = ReportarIncidente.taller[i].getEstadopago();
             modelo.addRow(datos);
+           
+            
             
         }
     }//GEN-LAST:event_jButton1ActionPerformed
