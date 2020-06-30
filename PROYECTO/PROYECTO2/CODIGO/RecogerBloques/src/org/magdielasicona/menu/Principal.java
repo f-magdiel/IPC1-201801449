@@ -10,6 +10,8 @@ import java.io.InputStreamReader;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
+import org.magdielasciona.listaCircular.MenuListaC;
+import org.magdielasicona.controlador.Seleccion;
 import org.magdielasicona.listaSimple.FrameListaSimple;
 import org.magdielasicona.listaSimple.ListaSimple;
 
@@ -22,10 +24,10 @@ public class Principal extends javax.swing.JFrame {
     private String datosIngresados = "";
     private String datosNuevos = "";
     private String info[];
-   
 
     public Principal() {
         initComponents();
+        this.btn00.requestFocusInWindow();
         this.setLocationRelativeTo(null);
         this.setTitle("PRINCIPAL");
         this.btn00.setBackground(Color.white);
@@ -107,8 +109,49 @@ public class Principal extends javax.swing.JFrame {
         ls.obtener44(btn44);
         ls.obtener45(btn45);
         ls.obtener46(btn46);
-        this.btn00.requestFocusInWindow();
+
         ls.llenarTabla();
+
+        Seleccion sl = Seleccion.getInstancia();
+        sl.obtener00(btn00);
+        sl.obtener01(btn01);
+        sl.obtener02(btn02);
+        sl.obtener03(btn03);
+        sl.obtener04(btn04);
+        sl.obtener05(btn05);
+        sl.obtener06(btn06);
+
+        sl.obtener10(btn10);
+        sl.obtener11(btn11);
+        sl.obtener12(btn12);
+        sl.obtener13(btn13);
+        sl.obtener14(btn14);
+        sl.obtener15(btn15);
+        sl.obtener16(btn16);
+
+        sl.obtener20(btn10);
+        sl.obtener21(btn21);
+        sl.obtener22(btn22);
+        sl.obtener23(btn23);
+        sl.obtener24(btn24);
+        sl.obtener25(btn25);
+        sl.obtener26(btn26);
+
+        sl.obtener30(btn30);
+        sl.obtener31(btn31);
+        sl.obtener32(btn32);
+        sl.obtener33(btn33);
+        sl.obtener34(btn34);
+        sl.obtener35(btn35);
+        sl.obtener36(btn36);
+
+        sl.obtener40(btn40);
+        sl.obtener41(btn41);
+        sl.obtener42(btn42);
+        sl.obtener43(btn43);
+        sl.obtener44(btn44);
+        sl.obtener45(btn45);
+        sl.obtener46(btn46);
 
     }
 
@@ -260,6 +303,7 @@ public class Principal extends javax.swing.JFrame {
         btn40.setText("40");
 
         btn01.setText("01");
+        btn01.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         btn02.setText("02");
 
@@ -495,7 +539,10 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonListaDobleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaDobleActionPerformed
-        // TODO add your handling code here:
+        MenuListaC ld = new MenuListaC();
+        ld.setVisible(true);
+        dispose();
+
     }//GEN-LAST:event_jButtonListaDobleActionPerformed
 
     private void jButtonCargarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCargarDatosActionPerformed
@@ -518,10 +565,13 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonReiniciarActionPerformed
 
     private void btn00KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn00KeyPressed
+
         if (evt.getExtendedKeyCode() == KeyEvent.VK_LEFT) {
 
-            btn00.setLocation(btn00.getX() - 92, btn00.getY());
-
+            btn00.setBounds(btn00.getX() - 92, btn00.getY(), btn00.getWidth(), btn00.getHeight());
+            System.out.println(btn00.getX() + "," + btn00.getY());
+            System.out.println("<-");
+            Seleccion.getInstancia().recogerBloeques();
             if (btn00.getX() == -79) {
                 btn00.setLocation(btn00.getX() + 92, btn00.getY());
             }
@@ -529,8 +579,10 @@ public class Principal extends javax.swing.JFrame {
         }
         if (evt.getExtendedKeyCode() == KeyEvent.VK_RIGHT) {
 
-            btn00.setLocation(btn00.getX() + 92, btn00.getY());
-
+            btn00.setBounds(btn00.getX() + 92, btn00.getY(), btn00.getWidth(), btn00.getHeight());
+            System.out.println(btn00.getX() + "," + btn00.getY());
+            System.out.println("->");
+            Seleccion.getInstancia().recogerBloeques();
             if (btn00.getX() == 657) {
                 btn00.setLocation(btn00.getX() - 92, btn00.getY());
             }
@@ -538,16 +590,13 @@ public class Principal extends javax.swing.JFrame {
         }
         if (evt.getExtendedKeyCode() == KeyEvent.VK_UP) {
             btn00.setLocation(btn00.getX(), btn00.getY() - 90);
-            System.out.println("X:" + btn00.getX());
-            System.out.println("Y:" + btn00.getY());
+
             if (btn00.getY() == -77) {
                 btn00.setLocation(btn00.getX(), btn00.getY() + 90);
             }
         }
         if (evt.getExtendedKeyCode() == KeyEvent.VK_DOWN) {
             btn00.setLocation(btn00.getX(), btn00.getY() + 90);
-            System.out.println("X:" + btn00.getX());
-            System.out.println("Y:" + btn00.getY());
 
             if (btn00.getY() == 463) {
                 btn00.setLocation(btn00.getX(), btn00.getY() - 90);

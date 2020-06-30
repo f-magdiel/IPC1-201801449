@@ -155,12 +155,12 @@ public class ListaSimple {
     }
 
     public void llenarTabla() {
-       
+
         while (contL <= contG) {
             String boton = enFila[contL] + "" + enColumna[contL];
             String color = coloR[contL];
             int valor = valoR[contL];
-            
+
             System.out.println(boton);
             switch (boton) {
                 case "00":
@@ -182,7 +182,7 @@ public class ListaSimple {
                     } else if (color.equals("VERDE")) {
                         this.btn01.setText(String.valueOf(valor));
                         this.btn01.setBackground(Color.green);
-                    }
+                    } 
                     break;
                 case "02":
                     if (color.equals("ROJO")) {
@@ -778,6 +778,8 @@ public class ListaSimple {
                         this.btn46.setBackground(Color.green);
                     }
                     break;
+                case "66":
+                    break;
 
                 default:
                     JOptionPane.showMessageDialog(null, "VALOR FUERA DE RANGO");
@@ -786,7 +788,7 @@ public class ListaSimple {
             }
             contL++;
         }
-        contL=0;
+        contL = 0;
         this.btn00.setBackground(Color.black);
     }
 
