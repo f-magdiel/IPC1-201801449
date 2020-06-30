@@ -6,6 +6,15 @@ package org.magdielasciona.listaCircular;
  */
 public class ListaCircular {
 
+    private static ListaCircular instanciaListaCircular;
+
+    public static ListaCircular getInstancia() {
+        if (instanciaListaCircular == null) {
+            instanciaListaCircular = new ListaCircular();
+        }
+        return instanciaListaCircular;
+    }
+    
     private NodoListaC cabeza;
     private NodoListaC fin;
 
@@ -42,7 +51,7 @@ public class ListaCircular {
     public void imprimir() {
         NodoListaC aux = this.cabeza;
         do {
-            System.out.println(aux.getColor() + "" + aux.getValor());
+            System.out.println(aux.getColor() + "," + aux.getValor());
             aux = aux.getSiguiente();
         } while (aux != cabeza);
 

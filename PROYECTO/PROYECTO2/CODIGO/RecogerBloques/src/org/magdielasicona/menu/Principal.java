@@ -26,10 +26,12 @@ public class Principal extends javax.swing.JFrame {
     private String info[];
 
     public Principal() {
+
         initComponents();
         this.btn00.requestFocusInWindow();
         this.setLocationRelativeTo(null);
         this.setTitle("PRINCIPAL");
+
         this.btn00.setBackground(Color.white);
         this.btn01.setBackground(Color.white);
         this.btn02.setBackground(Color.white);
@@ -69,6 +71,7 @@ public class Principal extends javax.swing.JFrame {
         this.btn44.setBackground(Color.white);
         this.btn45.setBackground(Color.white);
         this.btn46.setBackground(Color.white);
+
         ListaSimple ls = ListaSimple.getInstancia();
         ls.obtener00(btn00);
         ls.obtener01(btn01);
@@ -86,7 +89,7 @@ public class Principal extends javax.swing.JFrame {
         ls.obtener15(btn15);
         ls.obtener16(btn16);
 
-        ls.obtener20(btn10);
+        ls.obtener20(btn20);
         ls.obtener21(btn21);
         ls.obtener22(btn22);
         ls.obtener23(btn23);
@@ -129,7 +132,7 @@ public class Principal extends javax.swing.JFrame {
         sl.obtener15(btn15);
         sl.obtener16(btn16);
 
-        sl.obtener20(btn10);
+        sl.obtener20(btn20);
         sl.obtener21(btn21);
         sl.obtener22(btn22);
         sl.obtener23(btn23);
@@ -293,81 +296,82 @@ public class Principal extends javax.swing.JFrame {
         jPanelTabla.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 0, 255)));
         jPanelTabla.setForeground(new java.awt.Color(0, 51, 204));
 
-        btn00.setText("00");
+        btn00.setText("0,0");
+        btn00.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btn00.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 btn00KeyPressed(evt);
             }
         });
 
-        btn40.setText("40");
+        btn40.setText("4,0");
 
-        btn01.setText("01");
+        btn01.setText("0,1");
         btn01.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        btn02.setText("02");
+        btn02.setText("0,2");
 
-        btn03.setText("03");
+        btn03.setText("0,3");
 
-        btn04.setText("04");
+        btn04.setText("0,4");
 
-        btn05.setText("05");
+        btn05.setText("0,5");
 
-        btn06.setText("06");
+        btn06.setText("0,6");
 
-        btn12.setText("12");
+        btn12.setText("1,2");
 
-        btn11.setText("11");
+        btn11.setText("1,1");
 
-        btn13.setText("13");
+        btn13.setText("1,3");
 
-        btn14.setText("14");
+        btn14.setText("1,4");
 
-        btn15.setText("15");
+        btn15.setText("1,5");
 
-        btn16.setText("16");
+        btn16.setText("1,6");
 
-        btn21.setText("21");
+        btn21.setText("2,1");
 
-        btn23.setText("23");
+        btn23.setText("2,3");
 
-        btn22.setText("22");
+        btn22.setText("2,2");
 
-        btn24.setText("24");
+        btn24.setText("2,4");
 
-        btn25.setText("25");
+        btn25.setText("2,5");
 
-        btn26.setText("26");
+        btn26.setText("2,6");
 
-        btn31.setText("31");
+        btn31.setText("3,1");
 
-        btn32.setText("32");
+        btn32.setText("3,2");
 
-        btn33.setText("33");
+        btn33.setText("3,3");
 
-        btn34.setText("34");
+        btn34.setText("3,4");
 
-        btn35.setText("35");
+        btn35.setText("3,5");
 
-        btn36.setText("36");
+        btn36.setText("3,6");
 
-        btn41.setText("41");
+        btn41.setText("4,1");
 
-        btn42.setText("42");
+        btn42.setText("4,2");
 
-        btn43.setText("43");
+        btn43.setText("4,3");
 
-        btn44.setText("44");
+        btn44.setText("4,4");
 
-        btn45.setText("45");
+        btn45.setText("4,5");
 
-        btn46.setText("46");
+        btn46.setText("4,6");
 
-        btn20.setText("20");
+        btn20.setText("2,0");
 
-        btn10.setText("10");
+        btn10.setText("1,0");
 
-        btn30.setText("30");
+        btn30.setText("3,0");
 
         javax.swing.GroupLayout jPanelTablaLayout = new javax.swing.GroupLayout(jPanelTabla);
         jPanelTabla.setLayout(jPanelTablaLayout);
@@ -554,9 +558,11 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCargarDatosActionPerformed
 
     private void jButtonListaSimpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaSimpleActionPerformed
+
         FrameListaSimple ls = new FrameListaSimple();
         ls.setVisible(true);
         dispose();
+
     }//GEN-LAST:event_jButtonListaSimpleActionPerformed
 
     private void jButtonReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReiniciarActionPerformed
@@ -590,14 +596,16 @@ public class Principal extends javax.swing.JFrame {
         }
         if (evt.getExtendedKeyCode() == KeyEvent.VK_UP) {
             btn00.setLocation(btn00.getX(), btn00.getY() - 90);
-
+            System.out.println("arriba");
+            Seleccion.getInstancia().recogerBloeques();
             if (btn00.getY() == -77) {
                 btn00.setLocation(btn00.getX(), btn00.getY() + 90);
             }
         }
         if (evt.getExtendedKeyCode() == KeyEvent.VK_DOWN) {
             btn00.setLocation(btn00.getX(), btn00.getY() + 90);
-
+            System.out.println("abajo");
+            Seleccion.getInstancia().recogerBloeques();
             if (btn00.getY() == 463) {
                 btn00.setLocation(btn00.getX(), btn00.getY() - 90);
             }
