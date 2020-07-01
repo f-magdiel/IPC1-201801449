@@ -14,7 +14,7 @@ public class ListaCircular {
         }
         return instanciaListaCircular;
     }
-    
+
     private NodoListaC cabeza;
     private NodoListaC fin;
 
@@ -35,26 +35,31 @@ public class ListaCircular {
             cabeza.setAnterior(nuevo);
 
         } else {
-            NodoListaC aux = this.cabeza;
-            while (aux != cabeza) {
+            NodoListaC aux = cabeza;
+            while (aux.getSiguiente() != cabeza) {
                 aux = aux.getSiguiente();
             }
             aux.setSiguiente(nuevo);
             nuevo.setAnterior(aux);
             nuevo.setSiguiente(cabeza);
             cabeza.setAnterior(nuevo);
-
         }
 
     }
 
     public void imprimir() {
-        NodoListaC aux = this.cabeza;
-        do {
-            System.out.println(aux.getColor() + "," + aux.getValor());
-            aux = aux.getSiguiente();
-        } while (aux != cabeza);
 
+        if (!esVacia()) {
+            NodoListaC aux = cabeza;
+
+            do {
+                System.out.println(aux.getValor() + "," + aux.getColor());
+                aux = aux.getSiguiente();
+            } while (aux != cabeza);
+
+        } else {
+            System.out.println("");
+        }
     }
 
     public NodoListaC getCabeza() {
@@ -72,6 +77,5 @@ public class ListaCircular {
     public void setFin(NodoListaC fin) {
         this.fin = fin;
     }
-    
-    
+
 }

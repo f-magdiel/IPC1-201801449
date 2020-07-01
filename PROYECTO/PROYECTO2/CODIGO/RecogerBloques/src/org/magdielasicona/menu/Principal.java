@@ -10,6 +10,7 @@ import java.io.InputStreamReader;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
+import org.magdielasciona.listaCircular.ListaCircular;
 import org.magdielasciona.listaCircular.MenuListaC;
 import org.magdielasicona.controlador.Seleccion;
 import org.magdielasicona.listaSimple.FrameListaSimple;
@@ -222,6 +223,11 @@ public class Principal extends javax.swing.JFrame {
 
         jButtonListaCircular.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonListaCircular.setText("Lista Circular");
+        jButtonListaCircular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonListaCircularActionPerformed(evt);
+            }
+        });
 
         jButtonListaSimple.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonListaSimple.setText("Lista Simple");
@@ -613,6 +619,10 @@ public class Principal extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btn00KeyPressed
+
+    private void jButtonListaCircularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaCircularActionPerformed
+       ListaCircular.getInstancia().imprimir();
+    }//GEN-LAST:event_jButtonListaCircularActionPerformed
 
     public void agregarDatos() {
         ListaSimple listaSimple = ListaSimple.getInstancia();
