@@ -14,8 +14,8 @@ S.O:  Windows 10 , Windows 8.1 , Windows 7
 
 
 
-## CLASES UTILIZADOS
-## CLASES UTILIZADOS EN EL PAQUETE org.magdielasicona.principal
+## CLASES UTILIZADAS
+## CLASES UTILIZADAS EN EL PAQUETE org.magdielasicona.principal
 ### Bienvenido
 Clase que se utilió para dar la bienvenida la usuario cuando ejecuta el programa.
 ### MenuPrincipal
