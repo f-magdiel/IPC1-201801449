@@ -11,7 +11,7 @@ Memoria Ram: 8 GB DDR4 a 2400 MHz
 Tarjeta de video: Intel HD Graphics 620
 S.O:  Windows 10 , Windows 8.1 , Windows 7.
 
-### CLASES UTILIZADAS EN EL PROYECTO
+## CLASES UTILIZADAS EN EL PROYECTO
 ### CLASES UTILIZADAS EN EL PAQUETE org.magdielasicona.menu
 ### Main 
 Clase que arranca el programa.
@@ -80,7 +80,7 @@ Clase que contiene los metodos de push, pop, etc.
 Clase que contiene el nodo de la Cola.
 
 ###
-### METODOS IMPLEMENTADOS
+## METODOS IMPLEMENTADOS
 
 
 
