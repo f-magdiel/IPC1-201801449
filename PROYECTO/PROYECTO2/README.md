@@ -11,6 +11,10 @@ Memoria Ram: 8 GB DDR4 a 2400 MHz
 Tarjeta de video: Intel HD Graphics 620
 S.O:  Windows 10 , Windows 8.1 , Windows 7.
 
+### CLASES UTILIZADAS EN EL PROYECTO
+### org.magdielasicona.menu
+
+
 
 
 
