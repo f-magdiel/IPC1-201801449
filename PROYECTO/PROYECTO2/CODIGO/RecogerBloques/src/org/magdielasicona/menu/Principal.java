@@ -589,8 +589,51 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonListaSimpleActionPerformed
 
     private void jButtonReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReiniciarActionPerformed
-        // TODO add your handling code here:
+        ListaSimple.getInstancia().reiniciarListaSimple();
+        ListaPila.getInstancia().reiniciarListaPila();
+        ListaDoble.getInstancia().reiniciarListaDoble();
+        ListaCola.getInstancia().reiniciarListaCola();
+        ListaCircular.getInstancia().reiniciarListaCircular();
+        btn00.setText("");
+        btn01.setText("");
+        btn02.setText("");
+        btn03.setText("");
+        btn04.setText("");
+        btn05.setText("");
+        btn06.setText("");
 
+        btn10.setText("");
+        btn11.setText("");
+        btn12.setText("");
+        btn13.setText("");
+        btn14.setText("");
+        btn15.setText("");
+        btn16.setText("");
+
+        btn20.setText("");
+        btn21.setText("");
+        btn22.setText("");
+        btn23.setText("");
+        btn24.setText("");
+        btn25.setText("");
+        btn26.setText("");
+
+        btn30.setText("");
+        btn31.setText("");
+        btn32.setText("");
+        btn33.setText("");
+        btn34.setText("");
+        btn35.setText("");
+        btn36.setText("");
+
+        btn40.setText("");
+        btn41.setText("");
+        btn42.setText("");
+        btn43.setText("");
+        btn44.setText("");
+        btn45.setText("");
+        btn46.setText("");
+JOptionPane.showMessageDialog(null, "SE HA REINICIADO TODO");
     }//GEN-LAST:event_jButtonReiniciarActionPerformed
 
     private void btn00KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn00KeyPressed
@@ -645,15 +688,15 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonListaCircularActionPerformed
 
     private void jButtonPilaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPilaActionPerformed
-       MenuPila menu = new MenuPila();
-       menu.setVisible(true);
-       dispose();
+        MenuPila menu = new MenuPila();
+        menu.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButtonPilaActionPerformed
 
     private void jButtonColaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonColaActionPerformed
-       MenuCola menu = new MenuCola();
-       menu.setVisible(true);
-       dispose();
+        MenuCola menu = new MenuCola();
+        menu.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButtonColaActionPerformed
 
     public void agregarDatos() {

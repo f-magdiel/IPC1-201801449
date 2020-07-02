@@ -30,6 +30,9 @@ public class ListaDoble {
         return cabeza == null;
 
     }
+    public void reiniciarListaDoble(){
+    cabeza =null;
+    }
 
     public void agregar(String color, int valor) {
         contador++;

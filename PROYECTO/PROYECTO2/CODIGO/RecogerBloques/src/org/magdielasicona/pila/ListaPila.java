@@ -19,7 +19,7 @@ public class ListaPila {
 
     //...............
     private static JTextArea areaTexto;
-    private static int contador=0;
+    private static int contador = 0;
     private NodoPila cima;
 
     public ListaPila() {
@@ -28,6 +28,10 @@ public class ListaPila {
 
     public boolean esVacia() {
         return cima == null;
+    }
+
+    public void reiniciarListaPila() {
+        cima = null;
     }
 
     public void insertarPila(String color, int valor) {
@@ -73,12 +77,12 @@ public class ListaPila {
             areaTexto.append(0 + "[label=\"" + "TOPE\"]" + "\n");
             do {
                 i++;
-                
+
                 areaTexto.append(i + "[label=\"" + aux.getValor() + "," + aux.getColor() + "\"]" + "\n");
-                if (i>=1) {
+                if (i >= 1) {
                     int iaux = i;
-                iaux--;
-                areaTexto.append(iaux + "->" + i + ";" + "\n");
+                    iaux--;
+                    areaTexto.append(iaux + "->" + i + ";" + "\n");
                 }
                 aux = aux.getSiguiente();
             } while (aux != null);
@@ -86,8 +90,6 @@ public class ListaPila {
         }
 
     }
-   
-    
 
     public void obtenerAreaPila(JTextArea area) {
         this.areaTexto = area;

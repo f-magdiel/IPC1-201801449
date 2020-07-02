@@ -29,7 +29,10 @@ public class ListaCola {
     public boolean esVacia() {
         return frente == null;
     }
-
+public void reiniciarListaCola(){
+    frente =null;
+    fin =null;
+    }
     public void insertar(String color, int valor) {
         NodoCola nuevo = new NodoCola(color, valor);
         if (esVacia()) {

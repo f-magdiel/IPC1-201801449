@@ -30,6 +30,11 @@ public class ListaCircular {
         return cabeza == null;
     }
 
+    public void reiniciarListaCircular() {
+        cabeza = null;
+        fin = null;
+    }
+
     public void insertar(String color, int valor) {
         contador++;
         NodoListaC nuevo = new NodoListaC(color, valor);

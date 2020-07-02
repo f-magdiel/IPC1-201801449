@@ -129,6 +129,9 @@ public class ListaSimple {
         areaTexto.append("}");
 
     }
+    public void reiniciarListaSimple(){
+    cabeza =null;
+    }
 
     public void eliminar(int valor) {
         if (cabeza.getValor() == valor) {
@@ -146,14 +149,20 @@ public class ListaSimple {
     }
 
     public void copia() {
+        int cont =0;
         NodoDatos aux = this.getCabeza();
         while (aux != null) {
+            cont++;
             enFila[contG] = aux.getFila();
             enColumna[contG] = aux.getColumana();
             valoR[contG] = aux.getValor();
             coloR[contG] = aux.getColor();
             contG++;
             aux = aux.getSiguiente();
+            if (cont == 34) {
+                JOptionPane.showMessageDialog(null, "LIMITE MÁXIMO 34 CELDAS");
+                break;
+            }
         }
 
     }
