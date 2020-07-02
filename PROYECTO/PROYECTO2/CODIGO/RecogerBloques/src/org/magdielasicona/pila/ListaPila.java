@@ -47,11 +47,15 @@ public class ListaPila {
     }
 
     public void imprimir() {
-        NodoPila aux = cima;
+        if (!esVacia()) {
+            NodoPila aux = cima;
         do {
             System.out.println(aux.getValor() + "," + aux.getColor());
             aux = aux.getSiguiente();
         } while (aux!=null);
+        }else{
+            System.out.println("PILA VACIA");
+        }
 
     }
 
