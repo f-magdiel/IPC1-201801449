@@ -79,6 +79,10 @@ Clase que contiene los metodos de push, pop, etc.
 ### NodoCola
 Clase que contiene el nodo de la Cola.
 
+###
+### METODOS IMPLEMENTADOS
+
+
 
 
 
