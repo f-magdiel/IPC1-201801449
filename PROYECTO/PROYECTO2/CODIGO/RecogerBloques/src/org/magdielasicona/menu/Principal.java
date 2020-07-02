@@ -13,12 +13,14 @@ import javax.swing.table.DefaultTableCellRenderer;
 import org.magdielasciona.listaCircular.ListaCircular;
 import org.magdielasciona.listaCircular.MenuListaC;
 import org.magdielasicona.cola.ListaCola;
+import org.magdielasicona.cola.MenuCola;
 import org.magdielasicona.controlador.Seleccion;
 import org.magdielasicona.listaDoble.ListaDoble;
 import org.magdielasicona.listaDoble.MenuDoble;
 import org.magdielasicona.listaSimple.FrameListaSimple;
 import org.magdielasicona.listaSimple.ListaSimple;
 import org.magdielasicona.pila.ListaPila;
+import org.magdielasicona.pila.MenuPila;
 
 /**
  *
@@ -643,11 +645,15 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonListaCircularActionPerformed
 
     private void jButtonPilaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPilaActionPerformed
-        ListaPila.getInstancia().imprimir();
+       MenuPila menu = new MenuPila();
+       menu.setVisible(true);
+       dispose();
     }//GEN-LAST:event_jButtonPilaActionPerformed
 
     private void jButtonColaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonColaActionPerformed
-        ListaCola.getInstancia().imprimir();
+       MenuCola menu = new MenuCola();
+       menu.setVisible(true);
+       dispose();
     }//GEN-LAST:event_jButtonColaActionPerformed
 
     public void agregarDatos() {
