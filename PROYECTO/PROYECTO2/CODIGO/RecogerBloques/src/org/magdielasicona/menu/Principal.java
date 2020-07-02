@@ -327,73 +327,107 @@ public class Principal extends javax.swing.JFrame {
         });
 
         btn40.setText("4,0");
+        btn40.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         btn01.setText("0,1");
+        btn01.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btn01.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         btn02.setText("0,2");
+        btn02.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         btn03.setText("0,3");
+        btn03.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         btn04.setText("0,4");
+        btn04.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         btn05.setText("0,5");
+        btn05.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         btn06.setText("0,6");
+        btn06.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         btn12.setText("1,2");
+        btn12.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         btn11.setText("1,1");
+        btn11.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         btn13.setText("1,3");
+        btn13.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         btn14.setText("1,4");
+        btn14.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         btn15.setText("1,5");
+        btn15.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         btn16.setText("1,6");
+        btn16.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         btn21.setText("2,1");
+        btn21.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         btn23.setText("2,3");
+        btn23.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         btn22.setText("2,2");
+        btn22.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         btn24.setText("2,4");
+        btn24.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         btn25.setText("2,5");
+        btn25.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         btn26.setText("2,6");
+        btn26.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         btn31.setText("3,1");
+        btn31.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         btn32.setText("3,2");
+        btn32.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         btn33.setText("3,3");
+        btn33.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         btn34.setText("3,4");
+        btn34.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         btn35.setText("3,5");
+        btn35.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         btn36.setText("3,6");
+        btn36.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         btn41.setText("4,1");
+        btn41.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         btn42.setText("4,2");
+        btn42.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         btn43.setText("4,3");
+        btn43.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         btn44.setText("4,4");
+        btn44.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         btn45.setText("4,5");
+        btn45.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         btn46.setText("4,6");
+        btn46.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         btn20.setText("2,0");
+        btn20.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         btn10.setText("1,0");
+        btn10.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         btn30.setText("3,0");
+        btn30.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         javax.swing.GroupLayout jPanelTablaLayout = new javax.swing.GroupLayout(jPanelTabla);
         jPanelTabla.setLayout(jPanelTablaLayout);
@@ -594,46 +628,86 @@ public class Principal extends javax.swing.JFrame {
         ListaDoble.getInstancia().reiniciarListaDoble();
         ListaCola.getInstancia().reiniciarListaCola();
         ListaCircular.getInstancia().reiniciarListaCircular();
-        btn00.setText("");
-        btn01.setText("");
-        btn02.setText("");
-        btn03.setText("");
-        btn04.setText("");
-        btn05.setText("");
-        btn06.setText("");
+        btn00.setText("0,0");
+        btn01.setText("0,1");
+        btn02.setText("0,2");
+        btn03.setText("0,3");
+        btn04.setText("0,4");
+        btn05.setText("0,5");
+        btn06.setText("0,6");
 
-        btn10.setText("");
-        btn11.setText("");
-        btn12.setText("");
-        btn13.setText("");
-        btn14.setText("");
-        btn15.setText("");
-        btn16.setText("");
+        btn10.setText("1,0");
+        btn11.setText("1,1");
+        btn12.setText("1,2");
+        btn13.setText("1,3");
+        btn14.setText("1,4");
+        btn15.setText("1,5");
+        btn16.setText("1,6");
 
-        btn20.setText("");
-        btn21.setText("");
-        btn22.setText("");
-        btn23.setText("");
-        btn24.setText("");
-        btn25.setText("");
-        btn26.setText("");
+        btn20.setText("2,0");
+        btn21.setText("2,1");
+        btn22.setText("2,2");
+        btn23.setText("2,3");
+        btn24.setText("2,4");
+        btn25.setText("2,5");
+        btn26.setText("2,6");
 
-        btn30.setText("");
-        btn31.setText("");
-        btn32.setText("");
-        btn33.setText("");
-        btn34.setText("");
-        btn35.setText("");
-        btn36.setText("");
+        btn30.setText("3,0");
+        btn31.setText("3,1");
+        btn32.setText("3,2");
+        btn33.setText("3,3");
+        btn34.setText("3,4");
+        btn35.setText("3,5");
+        btn36.setText("3,6");
 
-        btn40.setText("");
-        btn41.setText("");
-        btn42.setText("");
-        btn43.setText("");
-        btn44.setText("");
-        btn45.setText("");
-        btn46.setText("");
-JOptionPane.showMessageDialog(null, "SE HA REINICIADO TODO");
+        btn40.setText("4,0");
+        btn41.setText("4,1");
+        btn42.setText("4,2");
+        btn43.setText("4,3");
+        btn44.setText("4,4");
+        btn45.setText("4,5");
+        btn46.setText("4,6");
+
+        
+        this.btn01.setBackground(Color.white);
+        this.btn02.setBackground(Color.white);
+        this.btn03.setBackground(Color.white);
+        this.btn04.setBackground(Color.white);
+        this.btn05.setBackground(Color.white);
+        this.btn06.setBackground(Color.white);
+
+        this.btn10.setBackground(Color.white);
+        this.btn11.setBackground(Color.white);
+        this.btn12.setBackground(Color.white);
+        this.btn13.setBackground(Color.white);
+        this.btn14.setBackground(Color.white);
+        this.btn15.setBackground(Color.white);
+        this.btn16.setBackground(Color.white);
+
+        this.btn20.setBackground(Color.white);
+        this.btn21.setBackground(Color.white);
+        this.btn22.setBackground(Color.white);
+        this.btn23.setBackground(Color.white);
+        this.btn24.setBackground(Color.white);
+        this.btn25.setBackground(Color.white);
+        this.btn26.setBackground(Color.white);
+
+        this.btn30.setBackground(Color.white);
+        this.btn31.setBackground(Color.white);
+        this.btn32.setBackground(Color.white);
+        this.btn33.setBackground(Color.white);
+        this.btn34.setBackground(Color.white);
+        this.btn35.setBackground(Color.white);
+        this.btn36.setBackground(Color.white);
+
+        this.btn40.setBackground(Color.white);
+        this.btn41.setBackground(Color.white);
+        this.btn42.setBackground(Color.white);
+        this.btn43.setBackground(Color.white);
+        this.btn44.setBackground(Color.white);
+        this.btn45.setBackground(Color.white);
+        this.btn46.setBackground(Color.white);
+        JOptionPane.showMessageDialog(null, "SE HA REINICIADO TODO");
     }//GEN-LAST:event_jButtonReiniciarActionPerformed
 
     private void btn00KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn00KeyPressed
