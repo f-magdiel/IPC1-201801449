@@ -13,8 +13,10 @@ import javax.swing.table.DefaultTableCellRenderer;
 import org.magdielasciona.listaCircular.ListaCircular;
 import org.magdielasciona.listaCircular.MenuListaC;
 import org.magdielasicona.controlador.Seleccion;
+import org.magdielasicona.listaDoble.ListaDoble;
 import org.magdielasicona.listaSimple.FrameListaSimple;
 import org.magdielasicona.listaSimple.ListaSimple;
+import org.magdielasicona.pila.ListaPila;
 
 /**
  *
@@ -258,6 +260,11 @@ public class Principal extends javax.swing.JFrame {
 
         jButtonPila.setFont(new java.awt.Font("DejaVu Sans", 0, 12)); // NOI18N
         jButtonPila.setText("Pila");
+        jButtonPila.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPilaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelBotonesLayout = new javax.swing.GroupLayout(jPanelBotones);
         jPanelBotones.setLayout(jPanelBotonesLayout);
@@ -549,9 +556,12 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonListaDobleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaDobleActionPerformed
-        MenuListaC ld = new MenuListaC();
-        ld.setVisible(true);
-        dispose();
+        ListaDoble ld = ListaDoble.getInstancia();
+        ld.imprimir();
+//        MenuListaC ld = new MenuListaC();
+//        ld.setVisible(true);
+//        dispose();
+        
 
     }//GEN-LAST:event_jButtonListaDobleActionPerformed
 
@@ -623,6 +633,10 @@ public class Principal extends javax.swing.JFrame {
     private void jButtonListaCircularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaCircularActionPerformed
        ListaCircular.getInstancia().imprimir();
     }//GEN-LAST:event_jButtonListaCircularActionPerformed
+
+    private void jButtonPilaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPilaActionPerformed
+       ListaPila.getInstancia().imprimir();
+    }//GEN-LAST:event_jButtonPilaActionPerformed
 
     public void agregarDatos() {
         ListaSimple listaSimple = ListaSimple.getInstancia();
