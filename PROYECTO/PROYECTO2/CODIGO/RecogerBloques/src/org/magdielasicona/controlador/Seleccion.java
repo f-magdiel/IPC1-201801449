@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.geom.Area;
 import javax.swing.JButton;
 import org.magdielasciona.listaCircular.ListaCircular;
+import org.magdielasicona.cola.ListaCola;
 import org.magdielasicona.listaDoble.ListaDoble;
 import org.magdielasicona.listaSimple.ListaSimple;
 import org.magdielasicona.menu.Principal;
@@ -68,6 +69,7 @@ public class Seleccion {
         ListaCircular listac = ListaCircular.getInstancia();
         ListaDoble listad = ListaDoble.getInstancia();
         ListaPila listap = ListaPila.getInstancia();
+        ListaCola listaco = ListaCola.getInstancia();
 //FILA 0 ------------------------------------------------------------------------------------------------------
         //BOTON01
         if (btn00.getX() == btn01.getX() && btn00.getY() == btn01.getY()) {
@@ -97,6 +99,21 @@ public class Seleccion {
                 //VERDE
             } else if (btn01.getBackground().toString().equals("java.awt.Color[r=0,g=255,b=0]")) {
                 System.out.println("Es VERDE");
+                int valor = Integer.parseInt(btn01.getText());
+
+                listaco.insertar("VERDE", valor);
+
+                for (int i = 0; i < 100; i++) {
+                    if (valor == ListaSimple.valoR[i]) {
+                        ListaSimple.valoR[i] = 0;
+                        ListaSimple.enColumna[i] = 6;
+                        ListaSimple.enFila[i] = 6;
+                        ListaSimple.coloR[i] = "";
+                    }
+                }
+
+                btn01.setBackground(Color.white);
+                btn01.setLocation(105, 1000);
 
                 //AZUL
             } else if (btn01.getBackground().toString().equals("java.awt.Color[r=0,g=0,b=255]")) {
@@ -157,8 +174,22 @@ public class Seleccion {
                 //VERDE
             } else if (btn02.getBackground().toString().equals("java.awt.Color[r=0,g=255,b=0]")) {
                 System.out.println("Es VERDE");
+                int valor = Integer.parseInt(btn02.getText());
 
-                //AZUL
+                listaco.insertar("VERDE", valor);
+
+                for (int i = 0; i < 100; i++) {
+                    if (valor == ListaSimple.valoR[i]) {
+                        ListaSimple.valoR[i] = 0;
+                        ListaSimple.enColumna[i] = 6;
+                        ListaSimple.enFila[i] = 6;
+                        ListaSimple.coloR[i] = "";
+                    }
+                }
+
+                btn02.setBackground(Color.white);
+                btn02.setLocation(197, 1000);
+
             } else if (btn02.getBackground().toString().equals("java.awt.Color[r=0,g=0,b=255]")) {
                 System.out.println("Es AZUL");
                 int valor = Integer.parseInt(btn02.getText());
@@ -229,7 +260,7 @@ public class Seleccion {
                 btn03.setBackground(Color.white);
                 btn03.setLocation(289, 1000);
 
-            }else if (btn03.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
+            } else if (btn03.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
                 System.out.println("Es AMARILLO");
                 int valor = Integer.parseInt(btn03.getText());
                 listap.insertarPila("AMARILLO", valor);
@@ -243,6 +274,25 @@ public class Seleccion {
                 }
                 btn03.setBackground(Color.white);
                 btn03.setLocation(289, 1000);
+            } else if (btn03.getBackground().toString().equals("java.awt.Color[r=0,g=255,b=0]")) {
+                System.out.println("Es VERDE");
+                int valor = Integer.parseInt(btn03.getText());
+
+                listaco.insertar("VERDE", valor);
+
+                for (int i = 0; i < 100; i++) {
+                    if (valor == ListaSimple.valoR[i]) {
+                        ListaSimple.valoR[i] = 0;
+                        ListaSimple.enColumna[i] = 6;
+                        ListaSimple.enFila[i] = 6;
+                        ListaSimple.coloR[i] = "";
+                    }
+                }
+
+                btn03.setBackground(Color.white);
+                btn03.setLocation(289, 1000);
+
+                //AZUL
             }
 
         }
@@ -286,7 +336,7 @@ public class Seleccion {
                 btn04.setLocation(381, 1000);
 
                 //
-            }else if (btn04.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
+            } else if (btn04.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
                 System.out.println("Es AMARILLO");
                 int valor = Integer.parseInt(btn04.getText());
                 listap.insertarPila("AMARILLO", valor);
@@ -300,6 +350,24 @@ public class Seleccion {
                 }
                 btn04.setBackground(Color.white);
                 btn04.setLocation(381, 1000);
+            } else if (btn04.getBackground().toString().equals("java.awt.Color[r=0,g=255,b=0]")) {
+                System.out.println("Es VERDE");
+                int valor = Integer.parseInt(btn04.getText());
+
+                listaco.insertar("VERDE", valor);
+
+                for (int i = 0; i < 100; i++) {
+                    if (valor == ListaSimple.valoR[i]) {
+                        ListaSimple.valoR[i] = 0;
+                        ListaSimple.enColumna[i] = 6;
+                        ListaSimple.enFila[i] = 6;
+                        ListaSimple.coloR[i] = "";
+                    }
+                }
+
+                btn04.setBackground(Color.white);
+                btn04.setLocation(381, 1000);
+
             }
 
         }
@@ -342,7 +410,7 @@ public class Seleccion {
                 btn05.setLocation(473, 1000);
 
                 //AMARILLO
-            }else if (btn05.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
+            } else if (btn05.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
                 System.out.println("Es AMARILLO");
                 int valor = Integer.parseInt(btn05.getText());
                 listap.insertarPila("AMARILLO", valor);
@@ -356,6 +424,24 @@ public class Seleccion {
                 }
                 btn05.setBackground(Color.white);
                 btn05.setLocation(473, 1000);
+            } else if (btn05.getBackground().toString().equals("java.awt.Color[r=0,g=255,b=0]")) {
+                System.out.println("Es VERDE");
+                int valor = Integer.parseInt(btn05.getText());
+
+                listaco.insertar("VERDE", valor);
+
+                for (int i = 0; i < 100; i++) {
+                    if (valor == ListaSimple.valoR[i]) {
+                        ListaSimple.valoR[i] = 0;
+                        ListaSimple.enColumna[i] = 6;
+                        ListaSimple.enFila[i] = 6;
+                        ListaSimple.coloR[i] = "";
+                    }
+                }
+
+                btn05.setBackground(Color.white);
+                btn05.setLocation(473, 1000);
+
             }
 
         }
@@ -398,7 +484,7 @@ public class Seleccion {
                 btn06.setLocation(565, 1000);
 
                 //
-            }else if (btn06.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
+            } else if (btn06.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
                 System.out.println("Es AMARILLO");
                 int valor = Integer.parseInt(btn06.getText());
                 listap.insertarPila("AMARILLO", valor);
@@ -412,6 +498,24 @@ public class Seleccion {
                 }
                 btn06.setBackground(Color.white);
                 btn06.setLocation(565, 1000);
+            } else if (btn06.getBackground().toString().equals("java.awt.Color[r=0,g=255,b=0]")) {
+                System.out.println("Es VERDE");
+                int valor = Integer.parseInt(btn06.getText());
+
+                listaco.insertar("VERDE", valor);
+
+                for (int i = 0; i < 100; i++) {
+                    if (valor == ListaSimple.valoR[i]) {
+                        ListaSimple.valoR[i] = 0;
+                        ListaSimple.enColumna[i] = 6;
+                        ListaSimple.enFila[i] = 6;
+                        ListaSimple.coloR[i] = "";
+                    }
+                }
+
+                btn06.setBackground(Color.white);
+                btn06.setLocation(565, 1000);
+
             }
 
         }
@@ -456,7 +560,7 @@ public class Seleccion {
                 btn10.setLocation(13, 1000);
 
                 //AMARILLO
-            }else if (btn10.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
+            } else if (btn10.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
                 System.out.println("Es AMARILLO");
                 int valor = Integer.parseInt(btn10.getText());
                 listap.insertarPila("AMARILLO", valor);
@@ -470,6 +574,24 @@ public class Seleccion {
                 }
                 btn10.setBackground(Color.white);
                 btn10.setLocation(13, 1000);
+            } else if (btn10.getBackground().toString().equals("java.awt.Color[r=0,g=255,b=0]")) {
+                System.out.println("Es VERDE");
+                int valor = Integer.parseInt(btn10.getText());
+
+                listaco.insertar("VERDE", valor);
+
+                for (int i = 0; i < 100; i++) {
+                    if (valor == ListaSimple.valoR[i]) {
+                        ListaSimple.valoR[i] = 0;
+                        ListaSimple.enColumna[i] = 6;
+                        ListaSimple.enFila[i] = 6;
+                        ListaSimple.coloR[i] = "";
+                    }
+                }
+
+                btn10.setBackground(Color.white);
+                btn10.setLocation(13, 1000);
+
             }
 
         }
@@ -512,7 +634,7 @@ public class Seleccion {
                 btn11.setLocation(105, 1000);
 
                 //AMARILLO
-            }else if (btn11.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
+            } else if (btn11.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
                 System.out.println("Es AMARILLO");
                 int valor = Integer.parseInt(btn11.getText());
                 listap.insertarPila("AMARILLO", valor);
@@ -526,6 +648,24 @@ public class Seleccion {
                 }
                 btn11.setBackground(Color.white);
                 btn11.setLocation(105, 1000);
+            } else if (btn11.getBackground().toString().equals("java.awt.Color[r=0,g=255,b=0]")) {
+                System.out.println("Es VERDE");
+                int valor = Integer.parseInt(btn11.getText());
+
+                listaco.insertar("VERDE", valor);
+
+                for (int i = 0; i < 100; i++) {
+                    if (valor == ListaSimple.valoR[i]) {
+                        ListaSimple.valoR[i] = 0;
+                        ListaSimple.enColumna[i] = 6;
+                        ListaSimple.enFila[i] = 6;
+                        ListaSimple.coloR[i] = "";
+                    }
+                }
+
+                btn11.setBackground(Color.white);
+                btn11.setLocation(105, 1000);
+
             }
 
         }
@@ -568,7 +708,7 @@ public class Seleccion {
                 btn12.setLocation(197, 1000);
 
                 //AMARILLO
-            }else if (btn12.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
+            } else if (btn12.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
                 System.out.println("Es AMARILLO");
                 int valor = Integer.parseInt(btn12.getText());
                 listap.insertarPila("AMARILLO", valor);
@@ -581,7 +721,25 @@ public class Seleccion {
                     }
                 }
                 btn12.setBackground(Color.white);
-                btn12.setLocation(13, 1000);
+                btn12.setLocation(197, 1000);
+            } else if (btn12.getBackground().toString().equals("java.awt.Color[r=0,g=255,b=0]")) {
+                System.out.println("Es VERDE");
+                int valor = Integer.parseInt(btn12.getText());
+
+                listaco.insertar("VERDE", valor);
+
+                for (int i = 0; i < 100; i++) {
+                    if (valor == ListaSimple.valoR[i]) {
+                        ListaSimple.valoR[i] = 0;
+                        ListaSimple.enColumna[i] = 6;
+                        ListaSimple.enFila[i] = 6;
+                        ListaSimple.coloR[i] = "";
+                    }
+                }
+
+                btn12.setBackground(Color.white);
+                btn12.setLocation(197, 1000);
+
             }
 
         }
@@ -623,7 +781,7 @@ public class Seleccion {
                 btn13.setBackground(Color.white);
                 btn13.setLocation(289, 1000);
 
-            }else if (btn13.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
+            } else if (btn13.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
                 System.out.println("Es AMARILLO");
                 int valor = Integer.parseInt(btn13.getText());
                 listap.insertarPila("AMARILLO", valor);
@@ -637,6 +795,24 @@ public class Seleccion {
                 }
                 btn13.setBackground(Color.white);
                 btn13.setLocation(289, 1000);
+            } else if (btn13.getBackground().toString().equals("java.awt.Color[r=0,g=255,b=0]")) {
+                System.out.println("Es VERDE");
+                int valor = Integer.parseInt(btn13.getText());
+
+                listaco.insertar("VERDE", valor);
+
+                for (int i = 0; i < 100; i++) {
+                    if (valor == ListaSimple.valoR[i]) {
+                        ListaSimple.valoR[i] = 0;
+                        ListaSimple.enColumna[i] = 6;
+                        ListaSimple.enFila[i] = 6;
+                        ListaSimple.coloR[i] = "";
+                    }
+                }
+
+                btn13.setBackground(Color.white);
+                btn13.setLocation(289, 1000);
+
             }
 
         }
@@ -678,7 +854,7 @@ public class Seleccion {
                 btn14.setBackground(Color.white);
                 btn14.setLocation(381, 1000);
 
-            }else if (btn14.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
+            } else if (btn14.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
                 System.out.println("Es AMARILLO");
                 int valor = Integer.parseInt(btn14.getText());
                 listap.insertarPila("AMARILLO", valor);
@@ -692,6 +868,24 @@ public class Seleccion {
                 }
                 btn14.setBackground(Color.white);
                 btn14.setLocation(381, 1000);
+            } else if (btn14.getBackground().toString().equals("java.awt.Color[r=0,g=255,b=0]")) {
+                System.out.println("Es VERDE");
+                int valor = Integer.parseInt(btn14.getText());
+
+                listaco.insertar("VERDE", valor);
+
+                for (int i = 0; i < 100; i++) {
+                    if (valor == ListaSimple.valoR[i]) {
+                        ListaSimple.valoR[i] = 0;
+                        ListaSimple.enColumna[i] = 6;
+                        ListaSimple.enFila[i] = 6;
+                        ListaSimple.coloR[i] = "";
+                    }
+                }
+
+                btn14.setBackground(Color.white);
+                btn14.setLocation(381, 1000);
+
             }
 
         }
@@ -733,7 +927,7 @@ public class Seleccion {
                 btn15.setBackground(Color.white);
                 btn15.setLocation(473, 1000);
 
-            }else if (btn15.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
+            } else if (btn15.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
                 System.out.println("Es AMARILLO");
                 int valor = Integer.parseInt(btn15.getText());
                 listap.insertarPila("AMARILLO", valor);
@@ -747,6 +941,24 @@ public class Seleccion {
                 }
                 btn15.setBackground(Color.white);
                 btn15.setLocation(473, 1000);
+            } else if (btn15.getBackground().toString().equals("java.awt.Color[r=0,g=255,b=0]")) {
+                System.out.println("Es VERDE");
+                int valor = Integer.parseInt(btn15.getText());
+
+                listaco.insertar("VERDE", valor);
+
+                for (int i = 0; i < 100; i++) {
+                    if (valor == ListaSimple.valoR[i]) {
+                        ListaSimple.valoR[i] = 0;
+                        ListaSimple.enColumna[i] = 6;
+                        ListaSimple.enFila[i] = 6;
+                        ListaSimple.coloR[i] = "";
+                    }
+                }
+
+                btn15.setBackground(Color.white);
+                btn15.setLocation(473, 1000);
+
             }
 
         }
@@ -788,7 +1000,7 @@ public class Seleccion {
                 btn16.setBackground(Color.white);
                 btn16.setLocation(565, 1000);
 
-            }else if (btn16.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
+            } else if (btn16.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
                 System.out.println("Es AMARILLO");
                 int valor = Integer.parseInt(btn16.getText());
                 listap.insertarPila("AMARILLO", valor);
@@ -802,6 +1014,24 @@ public class Seleccion {
                 }
                 btn16.setBackground(Color.white);
                 btn16.setLocation(565, 1000);
+            } else if (btn16.getBackground().toString().equals("java.awt.Color[r=0,g=255,b=0]")) {
+                System.out.println("Es VERDE");
+                int valor = Integer.parseInt(btn16.getText());
+
+                listaco.insertar("VERDE", valor);
+
+                for (int i = 0; i < 100; i++) {
+                    if (valor == ListaSimple.valoR[i]) {
+                        ListaSimple.valoR[i] = 0;
+                        ListaSimple.enColumna[i] = 6;
+                        ListaSimple.enFila[i] = 6;
+                        ListaSimple.coloR[i] = "";
+                    }
+                }
+
+                btn16.setBackground(Color.white);
+                btn16.setLocation(565, 1000);
+
             }
 
         }
@@ -845,7 +1075,7 @@ public class Seleccion {
                 btn20.setBackground(Color.white);
                 btn20.setLocation(13, 1000);
 
-            }else if (btn20.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
+            } else if (btn20.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
                 System.out.println("Es AMARILLO");
                 int valor = Integer.parseInt(btn20.getText());
                 listap.insertarPila("AMARILLO", valor);
@@ -859,6 +1089,24 @@ public class Seleccion {
                 }
                 btn20.setBackground(Color.white);
                 btn20.setLocation(13, 1000);
+            } else if (btn20.getBackground().toString().equals("java.awt.Color[r=0,g=255,b=0]")) {
+                System.out.println("Es VERDE");
+                int valor = Integer.parseInt(btn20.getText());
+
+                listaco.insertar("VERDE", valor);
+
+                for (int i = 0; i < 100; i++) {
+                    if (valor == ListaSimple.valoR[i]) {
+                        ListaSimple.valoR[i] = 0;
+                        ListaSimple.enColumna[i] = 6;
+                        ListaSimple.enFila[i] = 6;
+                        ListaSimple.coloR[i] = "";
+                    }
+                }
+
+                btn20.setBackground(Color.white);
+                btn20.setLocation(13, 1000);
+
             }
 
         }
@@ -900,7 +1148,7 @@ public class Seleccion {
                 btn21.setBackground(Color.white);
                 btn21.setLocation(105, 1000);
 
-            }else if (btn21.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
+            } else if (btn21.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
                 System.out.println("Es AMARILLO");
                 int valor = Integer.parseInt(btn21.getText());
                 listap.insertarPila("AMARILLO", valor);
@@ -914,6 +1162,24 @@ public class Seleccion {
                 }
                 btn21.setBackground(Color.white);
                 btn21.setLocation(105, 1000);
+            } else if (btn21.getBackground().toString().equals("java.awt.Color[r=0,g=255,b=0]")) {
+                System.out.println("Es VERDE");
+                int valor = Integer.parseInt(btn21.getText());
+
+                listaco.insertar("VERDE", valor);
+
+                for (int i = 0; i < 100; i++) {
+                    if (valor == ListaSimple.valoR[i]) {
+                        ListaSimple.valoR[i] = 0;
+                        ListaSimple.enColumna[i] = 6;
+                        ListaSimple.enFila[i] = 6;
+                        ListaSimple.coloR[i] = "";
+                    }
+                }
+
+                btn21.setBackground(Color.white);
+                btn21.setLocation(105, 1000);
+
             }
 
         }
@@ -955,7 +1221,7 @@ public class Seleccion {
                 btn22.setBackground(Color.white);
                 btn22.setLocation(197, 1000);
 
-            }else if (btn22.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
+            } else if (btn22.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
                 System.out.println("Es AMARILLO");
                 int valor = Integer.parseInt(btn22.getText());
                 listap.insertarPila("AMARILLO", valor);
@@ -969,6 +1235,24 @@ public class Seleccion {
                 }
                 btn22.setBackground(Color.white);
                 btn22.setLocation(197, 1000);
+            } else if (btn22.getBackground().toString().equals("java.awt.Color[r=0,g=255,b=0]")) {
+                System.out.println("Es VERDE");
+                int valor = Integer.parseInt(btn22.getText());
+
+                listaco.insertar("VERDE", valor);
+
+                for (int i = 0; i < 100; i++) {
+                    if (valor == ListaSimple.valoR[i]) {
+                        ListaSimple.valoR[i] = 0;
+                        ListaSimple.enColumna[i] = 6;
+                        ListaSimple.enFila[i] = 6;
+                        ListaSimple.coloR[i] = "";
+                    }
+                }
+
+                btn22.setBackground(Color.white);
+                btn22.setLocation(197, 1000);
+
             }
 
         }
@@ -1010,7 +1294,7 @@ public class Seleccion {
                 btn23.setBackground(Color.white);
                 btn23.setLocation(289, 1000);
 
-            }else if (btn23.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
+            } else if (btn23.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
                 System.out.println("Es AMARILLO");
                 int valor = Integer.parseInt(btn23.getText());
                 listap.insertarPila("AMARILLO", valor);
@@ -1024,6 +1308,24 @@ public class Seleccion {
                 }
                 btn23.setBackground(Color.white);
                 btn23.setLocation(289, 1000);
+            } else if (btn23.getBackground().toString().equals("java.awt.Color[r=0,g=255,b=0]")) {
+                System.out.println("Es VERDE");
+                int valor = Integer.parseInt(btn23.getText());
+
+                listaco.insertar("VERDE", valor);
+
+                for (int i = 0; i < 100; i++) {
+                    if (valor == ListaSimple.valoR[i]) {
+                        ListaSimple.valoR[i] = 0;
+                        ListaSimple.enColumna[i] = 6;
+                        ListaSimple.enFila[i] = 6;
+                        ListaSimple.coloR[i] = "";
+                    }
+                }
+
+                btn23.setBackground(Color.white);
+                btn23.setLocation(289, 1000);
+
             }
 
         }
@@ -1065,7 +1367,7 @@ public class Seleccion {
                 btn24.setBackground(Color.white);
                 btn24.setLocation(381, 1000);
 
-            }else if (btn24.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
+            } else if (btn24.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
                 System.out.println("Es AMARILLO");
                 int valor = Integer.parseInt(btn24.getText());
                 listap.insertarPila("AMARILLO", valor);
@@ -1079,6 +1381,24 @@ public class Seleccion {
                 }
                 btn24.setBackground(Color.white);
                 btn24.setLocation(381, 1000);
+            } else if (btn24.getBackground().toString().equals("java.awt.Color[r=0,g=255,b=0]")) {
+                System.out.println("Es VERDE");
+                int valor = Integer.parseInt(btn24.getText());
+
+                listaco.insertar("VERDE", valor);
+
+                for (int i = 0; i < 100; i++) {
+                    if (valor == ListaSimple.valoR[i]) {
+                        ListaSimple.valoR[i] = 0;
+                        ListaSimple.enColumna[i] = 6;
+                        ListaSimple.enFila[i] = 6;
+                        ListaSimple.coloR[i] = "";
+                    }
+                }
+
+                btn24.setBackground(Color.white);
+                btn24.setLocation(381, 1000);
+
             }
 
         }
@@ -1120,7 +1440,7 @@ public class Seleccion {
                 btn25.setBackground(Color.white);
                 btn25.setLocation(473, 1000);
 
-            }else if (btn25.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
+            } else if (btn25.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
                 System.out.println("Es AMARILLO");
                 int valor = Integer.parseInt(btn25.getText());
                 listap.insertarPila("AMARILLO", valor);
@@ -1134,6 +1454,24 @@ public class Seleccion {
                 }
                 btn25.setBackground(Color.white);
                 btn25.setLocation(473, 1000);
+            } else if (btn25.getBackground().toString().equals("java.awt.Color[r=0,g=255,b=0]")) {
+                System.out.println("Es VERDE");
+                int valor = Integer.parseInt(btn25.getText());
+
+                listaco.insertar("VERDE", valor);
+
+                for (int i = 0; i < 100; i++) {
+                    if (valor == ListaSimple.valoR[i]) {
+                        ListaSimple.valoR[i] = 0;
+                        ListaSimple.enColumna[i] = 6;
+                        ListaSimple.enFila[i] = 6;
+                        ListaSimple.coloR[i] = "";
+                    }
+                }
+
+                btn25.setBackground(Color.white);
+                btn25.setLocation(473, 1000);
+
             }
 
         }
@@ -1175,7 +1513,7 @@ public class Seleccion {
                 btn26.setBackground(Color.white);
                 btn26.setLocation(565, 1000);
 
-            }else if (btn26.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
+            } else if (btn26.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
                 System.out.println("Es AMARILLO");
                 int valor = Integer.parseInt(btn26.getText());
                 listap.insertarPila("AMARILLO", valor);
@@ -1189,6 +1527,24 @@ public class Seleccion {
                 }
                 btn26.setBackground(Color.white);
                 btn26.setLocation(565, 1000);
+            } else if (btn26.getBackground().toString().equals("java.awt.Color[r=0,g=255,b=0]")) {
+                System.out.println("Es VERDE");
+                int valor = Integer.parseInt(btn26.getText());
+
+                listaco.insertar("VERDE", valor);
+
+                for (int i = 0; i < 100; i++) {
+                    if (valor == ListaSimple.valoR[i]) {
+                        ListaSimple.valoR[i] = 0;
+                        ListaSimple.enColumna[i] = 6;
+                        ListaSimple.enFila[i] = 6;
+                        ListaSimple.coloR[i] = "";
+                    }
+                }
+
+                btn26.setBackground(Color.white);
+                btn26.setLocation(565, 1000);
+
             }
 
         }
@@ -1232,7 +1588,7 @@ public class Seleccion {
                 btn30.setBackground(Color.white);
                 btn30.setLocation(13, 1000);
 
-            }else if (btn30.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
+            } else if (btn30.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
                 System.out.println("Es AMARILLO");
                 int valor = Integer.parseInt(btn30.getText());
                 listap.insertarPila("AMARILLO", valor);
@@ -1246,6 +1602,24 @@ public class Seleccion {
                 }
                 btn30.setBackground(Color.white);
                 btn30.setLocation(13, 1000);
+            } else if (btn30.getBackground().toString().equals("java.awt.Color[r=0,g=255,b=0]")) {
+                System.out.println("Es VERDE");
+                int valor = Integer.parseInt(btn30.getText());
+
+                listaco.insertar("VERDE", valor);
+
+                for (int i = 0; i < 100; i++) {
+                    if (valor == ListaSimple.valoR[i]) {
+                        ListaSimple.valoR[i] = 0;
+                        ListaSimple.enColumna[i] = 6;
+                        ListaSimple.enFila[i] = 6;
+                        ListaSimple.coloR[i] = "";
+                    }
+                }
+
+                btn30.setBackground(Color.white);
+                btn30.setLocation(13, 1000);
+
             }
 
         }
@@ -1287,7 +1661,7 @@ public class Seleccion {
                 btn31.setBackground(Color.white);
                 btn31.setLocation(105, 1000);
 
-            }else if (btn31.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
+            } else if (btn31.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
                 System.out.println("Es AMARILLO");
                 int valor = Integer.parseInt(btn31.getText());
                 listap.insertarPila("AMARILLO", valor);
@@ -1301,6 +1675,24 @@ public class Seleccion {
                 }
                 btn31.setBackground(Color.white);
                 btn31.setLocation(105, 1000);
+            } else if (btn31.getBackground().toString().equals("java.awt.Color[r=0,g=255,b=0]")) {
+                System.out.println("Es VERDE");
+                int valor = Integer.parseInt(btn31.getText());
+
+                listaco.insertar("VERDE", valor);
+
+                for (int i = 0; i < 100; i++) {
+                    if (valor == ListaSimple.valoR[i]) {
+                        ListaSimple.valoR[i] = 0;
+                        ListaSimple.enColumna[i] = 6;
+                        ListaSimple.enFila[i] = 6;
+                        ListaSimple.coloR[i] = "";
+                    }
+                }
+
+                btn31.setBackground(Color.white);
+                btn31.setLocation(105, 1000);
+
             }
 
         }
@@ -1342,7 +1734,7 @@ public class Seleccion {
                 btn32.setBackground(Color.white);
                 btn32.setLocation(197, 1000);
 
-            }else if (btn32.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
+            } else if (btn32.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
                 System.out.println("Es AMARILLO");
                 int valor = Integer.parseInt(btn32.getText());
                 listap.insertarPila("AMARILLO", valor);
@@ -1356,6 +1748,24 @@ public class Seleccion {
                 }
                 btn32.setBackground(Color.white);
                 btn32.setLocation(197, 1000);
+            } else if (btn32.getBackground().toString().equals("java.awt.Color[r=0,g=255,b=0]")) {
+                System.out.println("Es VERDE");
+                int valor = Integer.parseInt(btn32.getText());
+
+                listaco.insertar("VERDE", valor);
+
+                for (int i = 0; i < 100; i++) {
+                    if (valor == ListaSimple.valoR[i]) {
+                        ListaSimple.valoR[i] = 0;
+                        ListaSimple.enColumna[i] = 6;
+                        ListaSimple.enFila[i] = 6;
+                        ListaSimple.coloR[i] = "";
+                    }
+                }
+
+                btn32.setBackground(Color.white);
+                btn32.setLocation(197, 1000);
+
             }
 
         }
@@ -1397,7 +1807,7 @@ public class Seleccion {
                 btn33.setBackground(Color.white);
                 btn33.setLocation(289, 1000);
 
-            }else if (btn33.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
+            } else if (btn33.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
                 System.out.println("Es AMARILLO");
                 int valor = Integer.parseInt(btn33.getText());
                 listap.insertarPila("AMARILLO", valor);
@@ -1411,6 +1821,24 @@ public class Seleccion {
                 }
                 btn33.setBackground(Color.white);
                 btn33.setLocation(289, 1000);
+            } else if (btn33.getBackground().toString().equals("java.awt.Color[r=0,g=255,b=0]")) {
+                System.out.println("Es VERDE");
+                int valor = Integer.parseInt(btn33.getText());
+
+                listaco.insertar("VERDE", valor);
+
+                for (int i = 0; i < 100; i++) {
+                    if (valor == ListaSimple.valoR[i]) {
+                        ListaSimple.valoR[i] = 0;
+                        ListaSimple.enColumna[i] = 6;
+                        ListaSimple.enFila[i] = 6;
+                        ListaSimple.coloR[i] = "";
+                    }
+                }
+
+                btn33.setBackground(Color.white);
+                btn33.setLocation(289, 1000);
+
             }
 
         }
@@ -1452,7 +1880,7 @@ public class Seleccion {
                 btn34.setBackground(Color.white);
                 btn34.setLocation(381, 1000);
 
-            }else if (btn34.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
+            } else if (btn34.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
                 System.out.println("Es AMARILLO");
                 int valor = Integer.parseInt(btn34.getText());
                 listap.insertarPila("AMARILLO", valor);
@@ -1466,6 +1894,24 @@ public class Seleccion {
                 }
                 btn34.setBackground(Color.white);
                 btn34.setLocation(381, 1000);
+            } else if (btn34.getBackground().toString().equals("java.awt.Color[r=0,g=255,b=0]")) {
+                System.out.println("Es VERDE");
+                int valor = Integer.parseInt(btn34.getText());
+
+                listaco.insertar("VERDE", valor);
+
+                for (int i = 0; i < 100; i++) {
+                    if (valor == ListaSimple.valoR[i]) {
+                        ListaSimple.valoR[i] = 0;
+                        ListaSimple.enColumna[i] = 6;
+                        ListaSimple.enFila[i] = 6;
+                        ListaSimple.coloR[i] = "";
+                    }
+                }
+
+                btn34.setBackground(Color.white);
+                btn34.setLocation(381, 1000);
+
             }
 
         }
@@ -1507,7 +1953,7 @@ public class Seleccion {
                 btn35.setBackground(Color.white);
                 btn35.setLocation(473, 1000);
 
-            }else if (btn35.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
+            } else if (btn35.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
                 System.out.println("Es AMARILLO");
                 int valor = Integer.parseInt(btn35.getText());
                 listap.insertarPila("AMARILLO", valor);
@@ -1521,6 +1967,24 @@ public class Seleccion {
                 }
                 btn35.setBackground(Color.white);
                 btn35.setLocation(473, 1000);
+            } else if (btn35.getBackground().toString().equals("java.awt.Color[r=0,g=255,b=0]")) {
+                System.out.println("Es VERDE");
+                int valor = Integer.parseInt(btn35.getText());
+
+                listaco.insertar("VERDE", valor);
+
+                for (int i = 0; i < 100; i++) {
+                    if (valor == ListaSimple.valoR[i]) {
+                        ListaSimple.valoR[i] = 0;
+                        ListaSimple.enColumna[i] = 6;
+                        ListaSimple.enFila[i] = 6;
+                        ListaSimple.coloR[i] = "";
+                    }
+                }
+
+                btn35.setBackground(Color.white);
+                btn35.setLocation(473, 1000);
+
             }
 
         }
@@ -1562,7 +2026,7 @@ public class Seleccion {
                 btn36.setBackground(Color.white);
                 btn36.setLocation(565, 1000);
 
-            }else if (btn36.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
+            } else if (btn36.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
                 System.out.println("Es AMARILLO");
                 int valor = Integer.parseInt(btn36.getText());
                 listap.insertarPila("AMARILLO", valor);
@@ -1576,6 +2040,24 @@ public class Seleccion {
                 }
                 btn36.setBackground(Color.white);
                 btn36.setLocation(565, 1000);
+            } else if (btn36.getBackground().toString().equals("java.awt.Color[r=0,g=255,b=0]")) {
+                System.out.println("Es VERDE");
+                int valor = Integer.parseInt(btn36.getText());
+
+                listaco.insertar("VERDE", valor);
+
+                for (int i = 0; i < 100; i++) {
+                    if (valor == ListaSimple.valoR[i]) {
+                        ListaSimple.valoR[i] = 0;
+                        ListaSimple.enColumna[i] = 6;
+                        ListaSimple.enFila[i] = 6;
+                        ListaSimple.coloR[i] = "";
+                    }
+                }
+
+                btn36.setBackground(Color.white);
+                btn36.setLocation(565, 1000);
+
             }
 
         }
@@ -1619,7 +2101,7 @@ public class Seleccion {
                 btn40.setBackground(Color.white);
                 btn40.setLocation(13, 1000);
 
-            }else if (btn40.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
+            } else if (btn40.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
                 System.out.println("Es AMARILLO");
                 int valor = Integer.parseInt(btn40.getText());
                 listap.insertarPila("AMARILLO", valor);
@@ -1633,6 +2115,24 @@ public class Seleccion {
                 }
                 btn40.setBackground(Color.white);
                 btn40.setLocation(13, 1000);
+            } else if (btn40.getBackground().toString().equals("java.awt.Color[r=0,g=255,b=0]")) {
+                System.out.println("Es VERDE");
+                int valor = Integer.parseInt(btn40.getText());
+
+                listaco.insertar("VERDE", valor);
+
+                for (int i = 0; i < 100; i++) {
+                    if (valor == ListaSimple.valoR[i]) {
+                        ListaSimple.valoR[i] = 0;
+                        ListaSimple.enColumna[i] = 6;
+                        ListaSimple.enFila[i] = 6;
+                        ListaSimple.coloR[i] = "";
+                    }
+                }
+
+                btn40.setBackground(Color.white);
+                btn40.setLocation(13, 1000);
+
             }
 
         }
@@ -1674,9 +2174,9 @@ public class Seleccion {
                 btn41.setBackground(Color.white);
                 btn41.setLocation(105, 1000);
 
-            }else if (btn41.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
+            } else if (btn41.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
                 System.out.println("Es AMARILLO");
-                int valor = Integer.parseInt(btn40.getText());
+                int valor = Integer.parseInt(btn41.getText());
                 listap.insertarPila("AMARILLO", valor);
                 for (int i = 0; i < 100; i++) {
                     if (valor == ListaSimple.valoR[i]) {
@@ -1688,6 +2188,24 @@ public class Seleccion {
                 }
                 btn41.setBackground(Color.white);
                 btn41.setLocation(105, 1000);
+            } else if (btn41.getBackground().toString().equals("java.awt.Color[r=0,g=255,b=0]")) {
+                System.out.println("Es VERDE");
+                int valor = Integer.parseInt(btn41.getText());
+
+                listaco.insertar("VERDE", valor);
+
+                for (int i = 0; i < 100; i++) {
+                    if (valor == ListaSimple.valoR[i]) {
+                        ListaSimple.valoR[i] = 0;
+                        ListaSimple.enColumna[i] = 6;
+                        ListaSimple.enFila[i] = 6;
+                        ListaSimple.coloR[i] = "";
+                    }
+                }
+
+                btn41.setBackground(Color.white);
+                btn41.setLocation(105, 1000);
+
             }
 
         }
@@ -1729,7 +2247,7 @@ public class Seleccion {
                 btn42.setBackground(Color.white);
                 btn42.setLocation(197, 1000);
 
-            }else if (btn42.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
+            } else if (btn42.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
                 System.out.println("Es AMARILLO");
                 int valor = Integer.parseInt(btn42.getText());
                 listap.insertarPila("AMARILLO", valor);
@@ -1743,6 +2261,24 @@ public class Seleccion {
                 }
                 btn42.setBackground(Color.white);
                 btn42.setLocation(197, 1000);
+            } else if (btn42.getBackground().toString().equals("java.awt.Color[r=0,g=255,b=0]")) {
+                System.out.println("Es VERDE");
+                int valor = Integer.parseInt(btn42.getText());
+
+                listaco.insertar("VERDE", valor);
+
+                for (int i = 0; i < 100; i++) {
+                    if (valor == ListaSimple.valoR[i]) {
+                        ListaSimple.valoR[i] = 0;
+                        ListaSimple.enColumna[i] = 6;
+                        ListaSimple.enFila[i] = 6;
+                        ListaSimple.coloR[i] = "";
+                    }
+                }
+
+                btn42.setBackground(Color.white);
+                btn42.setLocation(197, 1000);
+
             }
 
         }
@@ -1784,7 +2320,7 @@ public class Seleccion {
                 btn43.setBackground(Color.white);
                 btn43.setLocation(289, 1000);
 
-            }else if (btn43.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
+            } else if (btn43.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
                 System.out.println("Es AMARILLO");
                 int valor = Integer.parseInt(btn43.getText());
                 listap.insertarPila("AMARILLO", valor);
@@ -1798,6 +2334,24 @@ public class Seleccion {
                 }
                 btn43.setBackground(Color.white);
                 btn43.setLocation(289, 1000);
+            } else if (btn43.getBackground().toString().equals("java.awt.Color[r=0,g=255,b=0]")) {
+                System.out.println("Es VERDE");
+                int valor = Integer.parseInt(btn43.getText());
+
+                listaco.insertar("VERDE", valor);
+
+                for (int i = 0; i < 100; i++) {
+                    if (valor == ListaSimple.valoR[i]) {
+                        ListaSimple.valoR[i] = 0;
+                        ListaSimple.enColumna[i] = 6;
+                        ListaSimple.enFila[i] = 6;
+                        ListaSimple.coloR[i] = "";
+                    }
+                }
+
+                btn43.setBackground(Color.white);
+                btn43.setLocation(289, 1000);
+
             }
 
         }
@@ -1839,7 +2393,7 @@ public class Seleccion {
                 btn44.setBackground(Color.white);
                 btn44.setLocation(381, 1000);
 
-            }else if (btn44.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
+            } else if (btn44.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
                 System.out.println("Es AMARILLO");
                 int valor = Integer.parseInt(btn44.getText());
                 listap.insertarPila("AMARILLO", valor);
@@ -1853,6 +2407,24 @@ public class Seleccion {
                 }
                 btn44.setBackground(Color.white);
                 btn44.setLocation(381, 1000);
+            } else if (btn44.getBackground().toString().equals("java.awt.Color[r=0,g=255,b=0]")) {
+                System.out.println("Es VERDE");
+                int valor = Integer.parseInt(btn44.getText());
+
+                listaco.insertar("VERDE", valor);
+
+                for (int i = 0; i < 100; i++) {
+                    if (valor == ListaSimple.valoR[i]) {
+                        ListaSimple.valoR[i] = 0;
+                        ListaSimple.enColumna[i] = 6;
+                        ListaSimple.enFila[i] = 6;
+                        ListaSimple.coloR[i] = "";
+                    }
+                }
+
+                btn44.setBackground(Color.white);
+                btn44.setLocation(381, 1000);
+
             }
 
         }
@@ -1894,7 +2466,7 @@ public class Seleccion {
                 btn45.setBackground(Color.white);
                 btn45.setLocation(473, 1000);
 
-            }else if (btn45.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
+            } else if (btn45.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
                 System.out.println("Es AMARILLO");
                 int valor = Integer.parseInt(btn45.getText());
                 listap.insertarPila("AMARILLO", valor);
@@ -1908,6 +2480,24 @@ public class Seleccion {
                 }
                 btn45.setBackground(Color.white);
                 btn45.setLocation(473, 1000);
+            } else if (btn45.getBackground().toString().equals("java.awt.Color[r=0,g=255,b=0]")) {
+                System.out.println("Es VERDE");
+                int valor = Integer.parseInt(btn45.getText());
+
+                listaco.insertar("VERDE", valor);
+
+                for (int i = 0; i < 100; i++) {
+                    if (valor == ListaSimple.valoR[i]) {
+                        ListaSimple.valoR[i] = 0;
+                        ListaSimple.enColumna[i] = 6;
+                        ListaSimple.enFila[i] = 6;
+                        ListaSimple.coloR[i] = "";
+                    }
+                }
+
+                btn45.setBackground(Color.white);
+                btn45.setLocation(473, 1000);
+
             }
 
         }
@@ -1949,7 +2539,7 @@ public class Seleccion {
                 btn46.setBackground(Color.white);
                 btn46.setLocation(565, 1000);
 
-            }else if (btn46.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
+            } else if (btn46.getBackground().toString().equals("java.awt.Color[r=255,g=255,b=0]")) {
                 System.out.println("Es AMARILLO");
                 int valor = Integer.parseInt(btn46.getText());
                 listap.insertarPila("AMARILLO", valor);
@@ -1963,6 +2553,24 @@ public class Seleccion {
                 }
                 btn46.setBackground(Color.white);
                 btn46.setLocation(565, 1000);
+            } else if (btn46.getBackground().toString().equals("java.awt.Color[r=0,g=255,b=0]")) {
+                System.out.println("Es VERDE");
+                int valor = Integer.parseInt(btn46.getText());
+
+                listaco.insertar("VERDE", valor);
+
+                for (int i = 0; i < 100; i++) {
+                    if (valor == ListaSimple.valoR[i]) {
+                        ListaSimple.valoR[i] = 0;
+                        ListaSimple.enColumna[i] = 6;
+                        ListaSimple.enFila[i] = 6;
+                        ListaSimple.coloR[i] = "";
+                    }
+                }
+
+                btn46.setBackground(Color.white);
+                btn46.setLocation(565, 1000);
+
             }
 
         }

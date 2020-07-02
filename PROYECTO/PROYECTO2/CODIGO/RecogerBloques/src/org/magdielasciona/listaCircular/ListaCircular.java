@@ -1,5 +1,7 @@
 package org.magdielasciona.listaCircular;
 
+import javax.swing.JTextArea;
+
 /**
  *
  * @author FRANMAGDIEL_PC
@@ -17,6 +19,8 @@ public class ListaCircular {
 
     private NodoListaC cabeza;
     private NodoListaC fin;
+    private static JTextArea areaTexto;
+    private static int contador = 0;
 
     public ListaCircular() {
         this.cabeza = null;
@@ -27,6 +31,7 @@ public class ListaCircular {
     }
 
     public void insertar(String color, int valor) {
+        contador++;
         NodoListaC nuevo = new NodoListaC(color, valor);
         if (esVacia()) {
             cabeza = nuevo;
@@ -60,6 +65,57 @@ public class ListaCircular {
         } else {
             System.out.println("");
         }
+    }
+
+    public void imprimirAreaCircular() {
+        if (!esVacia()) {
+            NodoListaC aux = cabeza;
+            int i = 0;
+            areaTexto.append("digraph G {\n");
+            do {
+                i++;
+                areaTexto.append(i + "[label=\"" + aux.getValor() + "," + aux.getColor() + "\"]" + "\n");
+
+                if (i >= 2) {
+                    int con = i;
+                    con--;
+                    areaTexto.append(con + "->" + i + ";" + "\n");
+                    areaTexto.append(i + "->" + con + ";" + "\n");
+                    if (contador == i) {
+
+                        areaTexto.append(1 + "->" + i + ";" + "\n");
+                        areaTexto.append(i + "->" + 1 + ";" + "\n");
+                    }
+                } else if (contador == 1) {
+                    areaTexto.append(i + "->" + i + ";" + "\n");
+                    areaTexto.append(i + "->" + i + ";" + "\n");
+                }
+                aux = aux.getSiguiente();
+            } while (aux != cabeza);
+            i = 0;
+            areaTexto.append("}\n");
+        }
+
+    }
+
+    public void eliminarValor(int valor) {
+        contador--;
+        if (!esVacia()) {
+            NodoListaC aux = cabeza;
+            do {
+                if (aux.getSiguiente().getValor() == valor) {
+                    aux.setSiguiente(aux.getSiguiente().getSiguiente());
+                    break;
+                }
+                aux = aux.getSiguiente();
+            } while (aux != cabeza);
+
+        }
+
+    }
+
+    public void obtenerAreaCircular(JTextArea areacircular) {
+        this.areaTexto = areacircular;
     }
 
     public NodoListaC getCabeza() {

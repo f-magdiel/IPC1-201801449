@@ -161,7 +161,7 @@ public class ListaSimple {
             String color = coloR[contL];
             int valor = valoR[contL];
 
-            System.out.println(boton);
+            
             switch (boton) {
                 case "00":
                     //NO 
@@ -779,6 +779,7 @@ public class ListaSimple {
                     }
                     break;
                 case "66":
+                    System.out.println("");
                     break;
 
                 default:
