@@ -131,13 +131,17 @@ public class ListaSimple {
     }
 
     public void eliminar(int valor) {
+        if (cabeza.getValor() == valor) {
+            cabeza = cabeza.getSiguiente();
+        }else{
         NodoDatos aux = this.getCabeza();
-        while (aux != null) {
+        while (aux.getSiguiente() != null) {
             if (aux.getSiguiente().getValor() == valor) {
                 aux.setSiguiente(aux.getSiguiente().getSiguiente());
                 break;
             }
             aux = aux.getSiguiente();
+        }
         }
     }
 

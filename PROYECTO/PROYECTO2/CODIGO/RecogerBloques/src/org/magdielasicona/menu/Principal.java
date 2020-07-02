@@ -15,6 +15,7 @@ import org.magdielasciona.listaCircular.MenuListaC;
 import org.magdielasicona.cola.ListaCola;
 import org.magdielasicona.controlador.Seleccion;
 import org.magdielasicona.listaDoble.ListaDoble;
+import org.magdielasicona.listaDoble.MenuDoble;
 import org.magdielasicona.listaSimple.FrameListaSimple;
 import org.magdielasicona.listaSimple.ListaSimple;
 import org.magdielasicona.pila.ListaPila;
@@ -562,10 +563,8 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonListaDobleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaDobleActionPerformed
-        
-        MenuListaC ld = new MenuListaC();
-        ld.setVisible(true);
-        
+        MenuDoble menu = new MenuDoble();
+        menu.setVisible(true);
         dispose();
 
 
@@ -640,7 +639,7 @@ public class Principal extends javax.swing.JFrame {
         MenuListaC menu = new MenuListaC();
         menu.setVisible(true);
         dispose();
-       
+
     }//GEN-LAST:event_jButtonListaCircularActionPerformed
 
     private void jButtonPilaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPilaActionPerformed
