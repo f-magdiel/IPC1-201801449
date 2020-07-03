@@ -145,6 +145,9 @@ Metodo que elimina un valor ingresado en la lista.
 
 
 
+## Autor ✒️
+201801449
+FRANCISCO MAGDIEL ASICONA MATEO
 
 
 
