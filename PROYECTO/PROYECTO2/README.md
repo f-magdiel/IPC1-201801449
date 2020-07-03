@@ -81,7 +81,73 @@ Clase que contiene el nodo de la Cola.
 
 ###
 ## METODOS IMPLEMENTADOS
-### 
+### Principal.agregarDatos(): void
+Metodo que permite agregar los datos cargados en el ipc1 por medio del JFileChooser.
+### ListaSimple.esVacia(): boolean
+Metodo que verifica que la cabeza de la lista es nulo.
+### ListaSimple.insertarDatos(): void
+Metodo que inserta los datos a la lista simple.
+### ListaSimple.imprimirArea(): void
+Metodo que imprime los datos en el JTextArea.
+### ListaSimple.reiniciarListaSimple(): void
+Metodo que elimina un valor en la lista.
+### ListaSimple.copia(): void
+Metodo que copia los datos de la lista a un arreglo.
+### ListaSimple.llenarTabla(): void
+Metodo que se encarga de llenar la tabla con los datos.
+### ListaSimple.eliminar(): void
+Metodo que elimina un valor ingresado en la lista.
+
+### ListaCircular.insertar(): void
+Metodo que inserta los datos a la lista circular.
+### ListaCircular.esVacia(): boolean
+Metodo que verifica que la cabeza de la lista es nulo.
+### ListaCircular.imprimirArea(): void
+Metodo que imprime los datos en el JTextArea.
+### ListaCircular.reiniciarListaSimple(): void
+Metodo que elimina un valor en la lista.
+### ListaCircular.eliminarValor(): void
+Metodo que elimina un valor ingresado en la lista.
+
+
+### ListaDoble.insertar(): void
+Metodo que inserta los datos a la lista doble.
+### ListaDoble.esVacia(): boolean
+Metodo que verifica que la cabeza de la lista es nulo.
+### ListaDoble.imprimirArea(): void
+Metodo que imprime los datos en el JTextArea.
+### ListaDoble.reiniciarListaSimple(): void
+Metodo que elimina un valor en la lista.
+### ListaDoble.eliminarValor(): void
+Metodo que elimina un valor ingresado en la lista.
+
+### ListaPila.insertar(): void
+Metodo que inserta los datos a la lista pila.
+### ListaPila.esVacia(): boolean
+Metodo que verifica que la cabeza de la lista es nulo.
+### ListaPila.imprimirArea(): void
+Metodo que imprime los datos en el JTextArea.
+### ListaPila.reiniciarListaPila(): void
+Metodo que elimina un valor en la lista.
+### ListaPila.retirarpila(): void
+Metodo que elimina un valor ingresado en la lista.
+
+### ListaCola.insertar(): void
+Metodo que inserta los datos a la lista pila.
+### ListaCola.esVacia(): boolean
+Metodo que verifica que la cabeza de la lista es nulo.
+### ListaCola.imprimirArea(): void
+Metodo que imprime los datos en el JTextArea.
+### ListaCola.reiniciarListaCola(): void
+Metodo que elimina un valor en la lista.
+### ListaCola.eliminarCola(): void
+Metodo que elimina un valor ingresado en la lista.
+
+
+
+
+
+
 
 
 
