@@ -1,4 +1,4 @@
-package org.magdielasicona.listaSimple;
+ package org.magdielasicona.listaSimple;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -159,10 +159,7 @@ public class ListaSimple {
             coloR[contG] = aux.getColor();
             contG++;
             aux = aux.getSiguiente();
-            if (cont == 34) {
-                JOptionPane.showMessageDialog(null, "LIMITE MÁXIMO 34 CELDAS");
-                break;
-            }
+            
         }
 
     }
