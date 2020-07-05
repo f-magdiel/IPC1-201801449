@@ -49,7 +49,7 @@ public class Tiempo extends Thread {
                     ship.setIcon(setIcono("/Imagenes/space-ship.png", ship));
                     MenuJuego.getInstancia().setLlavePoder(true);
                     Ship.getInstancia().setLlaveAccion(true);
-                    contadorLlave=0;
+                    contadorLlave = 0;
                 }
             }
             if (timer1 == 240) {
